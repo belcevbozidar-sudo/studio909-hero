@@ -60,13 +60,11 @@
     justify-content:space-between;
     padding:28px 64px;
   }
-  .logo{
-    font-family:'Inter', sans-serif;
-    font-size:20px;
-    font-weight:800;
-    letter-spacing:0.5px;
+  .logo-img{
+    height:34px;
+    width:auto;
+    display:block;
   }
-  .logo .dot{color:var(--orange);}
 
   .nav-links{
     display:flex;
@@ -284,7 +282,7 @@
   /* ===== MOBILE ===== */
   @media (max-width:560px){
     nav{padding:16px;}
-    .logo{font-size:17px;}
+    .logo-img{height:28px;}
     .contact-btn{padding:8px 14px;font-size:12px;}
 
     .hero-content{padding:32px 16px 0;}
@@ -316,7 +314,7 @@
   <div class="grid-overlay"></div>
 
   <nav>
-    <div class="logo">Studio <span class="dot">9</span></div>
+    <img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img">
     <div class="nav-links">
       <a href="#" class="active">Предимства</a>
       <a href="#">Резултати</a>
