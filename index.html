@@ -397,17 +397,17 @@
   }
   .offer-toggle-btn{
     flex-shrink:0;
-    width:38px;
-    height:38px;
+    width:44px;
+    height:44px;
     border-radius:50%;
-    border:1px solid rgba(255,255,255,0.22);
-    background:rgba(255,255,255,0.04);
+    border:none;
+    background:rgba(255,255,255,0.06);
     color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
     cursor:pointer;
-    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+    transition:background .2s ease, transform .2s ease;
   }
   .offer-toggle-btn svg{
     transition:transform .3s ease;
@@ -416,28 +416,26 @@
     transform:rotate(180deg);
   }
   .offer-toggle-btn:hover{
-    background:rgba(242,113,45,0.18);
-    border-color:var(--orange);
+    background:rgba(242,113,45,0.22);
   }
   .offer-toggle-btn.pulse-btn{
     background:var(--orange);
-    border-color:var(--orange);
     animation:btn-pulse 1.8s ease-out infinite;
   }
   .offer-toggle-btn.bounce{
-    animation:btn-bounce 2.2s ease-in-out infinite;
+    animation:btn-bounce 2.4s ease-in-out infinite;
   }
   .offer-row.open .offer-toggle-btn{
     animation:none;
   }
   @keyframes btn-pulse{
     0%{ box-shadow:0 0 0 0 rgba(242,113,45,0.55); }
-    70%{ box-shadow:0 0 0 14px rgba(242,113,45,0); }
+    70%{ box-shadow:0 0 0 16px rgba(242,113,45,0); }
     100%{ box-shadow:0 0 0 0 rgba(242,113,45,0); }
   }
   @keyframes btn-bounce{
-    0%, 100%{ transform:translateY(0); }
-    50%{ transform:translateY(4px); }
+    0%, 100%{ transform:translateY(0); box-shadow:0 0 0 0 rgba(242,113,45,0.4); }
+    50%{ transform:translateY(6px); box-shadow:0 0 0 9px rgba(242,113,45,0); }
   }
 
   /* ACCORDION PANEL */
@@ -621,7 +619,7 @@
     .offer-check{width:24px;height:24px;font-size:13px;}
     .offer-row h3{font-size:14.5px;}
     .offer-row p{font-size:12.5px;}
-    .offer-toggle-btn{width:34px;height:34px;}
+    .offer-toggle-btn{width:38px;height:38px;}
     .offer-row-panel-inner p{padding:0 16px 20px 50px;}
     .example-slider{margin:0 16px 20px 50px;}
     .example-slide{flex:0 0 100%;}
@@ -738,7 +736,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn pulse-btn" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -772,7 +770,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -803,7 +801,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -822,7 +820,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -841,7 +839,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -860,7 +858,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -889,7 +887,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -908,7 +906,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -927,7 +925,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -946,7 +944,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -965,7 +963,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
@@ -984,7 +982,7 @@
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
         <div class="offer-row-panel">
