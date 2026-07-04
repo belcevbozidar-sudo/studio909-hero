@@ -117,16 +117,7 @@
     align-items:center;
     gap:10px;
   }
-  .menu-toggle{
-    display:none;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.2);
-    color:#fff;
-    font-size:18px;
-    line-height:1;
-    padding:9px 13px;
-    border-radius:8px;
-  }
+  .label-mobile{display:none;}
 
   /* MAIN CONTENT */
   .hero-content{
@@ -169,11 +160,10 @@
 
   h1{
     font-family:'Inter', sans-serif;
-    font-size:clamp(38px, 5.6vw, 72px);
-    line-height:1.15;
-    font-weight:800;
-    letter-spacing:-0.02em;
-    text-transform:uppercase;
+    font-size:clamp(30px, 4vw, 50px);
+    line-height:1.2;
+    font-weight:700;
+    letter-spacing:-0.01em;
   }
 
   .subtext{
@@ -240,7 +230,7 @@
   .marquee-wrap{
     position:relative;
     z-index:2;
-    margin-top:56px;
+    margin-top:36px;
     background:#050505;
   }
   .marquee{
@@ -281,25 +271,9 @@
   /* ===== TABLET ===== */
   @media (max-width:900px){
     nav{padding:20px 24px;}
-    .menu-toggle{display:block;}
-    .nav-links{
-      display:none;
-      position:absolute;
-      top:74px;
-      left:20px;
-      right:20px;
-      z-index:20;
-      flex-direction:column;
-      align-items:stretch;
-      background:rgba(10,10,10,0.98);
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:16px;
-      padding:10px;
-      gap:4px;
-    }
-    .nav-links.open{display:flex;}
-    .nav-links a{text-align:center;padding:12px;}
-    .nav-links a.active{order:-1;}
+    .nav-links{display:none;}
+    .label-desktop{display:none;}
+    .label-mobile{display:inline;}
 
     .hero-content{padding:44px 20px 50px;}
     .subtext{font-size:15px;}
@@ -351,8 +325,10 @@
       <a href="#">Блог</a>
     </div>
     <div class="nav-right">
-      <a href="#" class="contact-btn">Свържете се</a>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <a href="#" class="contact-btn">
+        <span class="label-desktop">Свържете се</span>
+        <span class="label-mobile">Научи повече</span>
+      </a>
     </div>
   </nav>
 
@@ -371,8 +347,8 @@
     </div>
 
     <h1>
-      ПЪЛЕН ПАКЕТ ЗА ТВОЯ БИЗНЕС.<br>
-      НЕУСТОИМАТА ОФЕРТА
+      Пълен пакет за твоя бизнес.<br>
+      Неустоимата оферта
     </h1>
 
     <p class="subtext">
@@ -380,7 +356,7 @@
       изработен лично от нас. Приемаме ограничен брой нови партньори всеки месец.
     </p>
 
-    <a href="#" class="cta">ЗАЯВИ НЕУСТОИМАТА ОФЕРТА ↗</a>
+    <a href="#" class="cta">Виж какво получаваш ↗</a>
     <div class="cta-note"><span class="pulse-dot"></span>Към момента има свободни места</div>
   </div>
 </section>
@@ -412,11 +388,5 @@
   </div>
 </div>
 
-<script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-</script>
 </body>
 </html>
