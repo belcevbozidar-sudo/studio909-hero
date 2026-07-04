@@ -479,8 +479,7 @@
     scroll-snap-type:none;
   }
   .example-slide{
-    flex:0 0 100%;
-    width:100%;
+    flex:0 0 calc(50% - 7px);
     scroll-snap-align:start;
     border-radius:10px;
     overflow:hidden;
@@ -497,6 +496,14 @@
     display:block;
     pointer-events:none;
     background:#0a0a0a;
+  }
+
+  /* compact variant (e.g. Meta ads examples) - shows more, smaller slides */
+  .example-slider.compact .example-slide{
+    flex:0 0 calc(33.333% - 10px);
+  }
+  .example-slider.compact .example-slide img{
+    height:180px;
   }
   .example-nav{
     position:absolute;
@@ -612,7 +619,10 @@
     .offer-toggle-btn{width:34px;height:34px;}
     .offer-row-panel-inner p{padding:0 16px 20px 50px;}
     .example-slider{margin:0 16px 20px 50px;}
+    .example-slide{flex:0 0 100%;}
     .example-slide img{height:180px;}
+    .example-slider.compact .example-slide{flex:0 0 calc(50% - 5px);}
+    .example-slider.compact .example-slide img{height:110px;}
     .example-nav{width:28px;height:28px;font-size:15px;}
     .offer-price{margin-top:48px;}
     .price-new{font-size:36px;}
@@ -995,9 +1005,10 @@
     const slides = track.querySelectorAll('.example-slide');
     let index = 0;
 
+    const step = () => slides[0].getBoundingClientRect().width + 14;
     const goTo = i => {
       index = (i + slides.length) % slides.length;
-      track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
+      track.scrollTo({ left: index * step(), behavior: 'smooth' });
     };
     prev.addEventListener('click', () => goTo(index - 1));
     next.addEventListener('click', () => goTo(index + 1));
@@ -1017,7 +1028,7 @@
     const endDrag = () => {
       isDown = false;
       track.classList.remove('dragging');
-      index = Math.round(track.scrollLeft / track.clientWidth);
+      index = Math.round(track.scrollLeft / step());
       goTo(index);
     };
     track.addEventListener('pointerup', endDrag);
