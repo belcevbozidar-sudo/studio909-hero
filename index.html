@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio.909</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#f2712d;
+    --bg:#050505;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;
+    color:#fff;
+    overflow-x:hidden;
+  }
+
+  .hero{
+    position:relative;
+    background:#050505;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* glow background */
+  .glow{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 78% 28%, rgba(255,140,40,0.35), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 55% 35%, rgba(160,30,90,0.35), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 40% 20%, rgba(60,20,90,0.25), transparent 65%);
+    pointer-events:none;
+  }
+  .grid-overlay{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 900px 600px at 65% 25%, black 40%, transparent 75%);
+    mask-image: radial-gradient(ellipse 900px 600px at 65% 25%, black 40%, transparent 75%);
+    pointer-events:none;
+  }
+
+  /* NAV */
+  nav{
+    position:relative;
+    z-index:30;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:28px 64px;
+  }
+  .logo{
+    font-family:'Golos Text', sans-serif;
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:0.5px;
+  }
+  .logo .dot{color:var(--orange);}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:6px;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:#ddd;
+    font-size:13px;
+    font-weight:500;
+    padding:8px 16px;
+    border-radius:18px;
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .nav-links a.active{
+    background:#fff;
+    color:#111;
+    font-weight:700;
+  }
+  .nav-links a:not(.active):hover{
+    color:#fff;
+  }
+
+  .contact-btn{
+    border:1px solid rgba(255,255,255,0.25);
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    padding:10px 20px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.03);
+    transition:background .2s ease;
+    white-space:nowrap;
+  }
+  .contact-btn:hover{
+    background:rgba(255,255,255,0.1);
+  }
+
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .menu-toggle{
+    display:none;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    font-size:18px;
+    line-height:1;
+    padding:9px 13px;
+    border-radius:8px;
+  }
+
+  /* MAIN CONTENT */
+  .hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:60px 20px 70px;
+    max-width:1450px;
+    margin:0 auto;
+  }
+
+  .trusted-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:14px;
+    font-weight:500;
+    color:#e5e5e5;
+    margin-bottom:36px;
+  }
+  .avatars{
+    display:flex;
+  }
+  .avatars span{
+    width:28px;height:28px;
+    border-radius:50%;
+    border:2px solid #111;
+    margin-left:-8px;
+    display:inline-block;
+    background-size:cover;
+    background-position:center;
+  }
+  .avatars span:first-child{margin-left:0;}
+  .stars{
+    color:#f7b500;
+    letter-spacing:2px;
+  }
+
+  h1{
+    font-family:'Golos Text', sans-serif;
+    font-size:clamp(34px, 5vw, 64px);
+    line-height:1.12;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+  }
+  h1 .bold{
+    font-weight:900;
+  }
+
+  .subtext{
+    max-width:640px;
+    margin:28px auto 0;
+    color:#c9c9c9;
+    font-size:17px;
+    font-weight:400;
+    line-height:1.6;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:38px;
+    background:var(--orange);
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.5px;
+    padding:18px 34px;
+    border-radius:8px;
+    box-shadow:0 10px 30px rgba(242,113,45,0.35);
+    transition:transform .2s ease;
+  }
+  .cta:hover{
+    transform:translateY(-2px);
+  }
+
+  .cta-note{
+    margin-top:16px;
+    font-size:13px;
+    color:#999;
+  }
+
+  /* MARQUEE TICKER */
+  .marquee-wrap{
+    position:relative;
+    z-index:2;
+    background:#050505;
+  }
+  .marquee{
+    border-top:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding:22px 0;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    white-space:nowrap;
+    width:max-content;
+    animation:scroll-left 32s linear infinite;
+    font-family:'Golos Text', sans-serif;
+    font-size:1.1rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+  }
+  .marquee-track span{
+    display:inline-flex;
+    align-items:center;
+  }
+  .marquee-track span:nth-child(odd){
+    color:rgba(255,255,255,0.9);
+  }
+  .marquee-track span:nth-child(even){
+    color:var(--orange);
+  }
+  @keyframes scroll-left{
+    from{ transform:translate3d(0,0,0); }
+    to{ transform:translate3d(-50%,0,0); }
+  }
+
+  /* ===== TABLET ===== */
+  @media (max-width:900px){
+    nav{padding:20px 24px;}
+    .menu-toggle{display:block;}
+    .nav-links{
+      display:none;
+      position:absolute;
+      top:74px;
+      left:20px;
+      right:20px;
+      z-index:20;
+      flex-direction:column;
+      align-items:stretch;
+      background:rgba(10,10,10,0.98);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:16px;
+      padding:10px;
+      gap:4px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{text-align:center;padding:12px;}
+    .nav-links a.active{order:-1;}
+
+    .hero-content{padding:44px 20px 50px;}
+    .subtext{font-size:15px;}
+    .marquee-track{font-size:0.95rem;gap:20px;}
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width:560px){
+    nav{padding:16px;}
+    .logo{font-size:17px;}
+    .contact-btn{padding:8px 14px;font-size:12px;}
+
+    .hero-content{padding:32px 16px 0;}
+    .trusted-row{
+      row-gap:8px;
+      font-size:12px;
+      margin-bottom:24px;
+    }
+    .avatars span{width:24px;height:24px;}
+    .subtext{font-size:14px;margin-top:18px;}
+    .cta{
+      margin-top:26px;
+      padding:15px 24px;
+      font-size:13px;
+      width:100%;
+      justify-content:center;
+    }
+    .hero-content{padding-bottom:36px;}
+    .marquee{padding:16px 0;}
+    .marquee-track{font-size:0.8rem;gap:14px;letter-spacing:0.05em;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="glow"></div>
+  <div class="grid-overlay"></div>
+
+  <nav>
+    <div class="logo">STUDIO<span class="dot">.</span>909</div>
+    <div class="nav-links">
+      <a href="#" class="active">Предимства</a>
+      <a href="#">Резултати</a>
+      <a href="#">Процес</a>
+      <a href="#">Казуси</a>
+      <a href="#">Блог</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="contact-btn">Свържете се</a>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="trusted-row">
+      <span>Доверени от</span>
+      <div class="avatars">
+        <span style="background-image:url('photos/image-1783144446077.png')"></span>
+        <span style="background-image:url('photos/image-1783144448316.png')"></span>
+        <span style="background-image:url('photos/image-1783144449995.png')"></span>
+        <span style="background-image:url('photos/image-1783144451635.png')"></span>
+        <span style="background-image:url('photos/image-1783144453296.png')"></span>
+      </div>
+      <span>20+ доволни собственици на бизнес</span>
+      <span class="stars">★★★★★</span>
+    </div>
+
+    <h1>
+      ПЪЛЕН ПАКЕТ ЗА ТВОЯ БИЗНЕС<br>
+      <span class="bold">НЕУСТОИМАТА ОФЕРТА</span> – само за 650€
+    </h1>
+
+    <p class="subtext">
+      Сайт, лого, SEO, чат-бот, реклами в Meta и още 7 услуги — на цена с 73% отстъпка
+      (от 2400€ на 650€). Приемаме ограничен брой нови партньори всеки месец.
+    </p>
+
+    <a href="#" class="cta">ЗАЯВИ НЕУСТОИМАТА ОФЕРТА ↗</a>
+    <div class="cta-note">Само няколко свободни места остават този месец</div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>ДИЗАЙН</span><span>·</span>
+      <span>КОПИРАЙТИНГ</span><span>·</span>
+      <span>SEO</span><span>·</span>
+      <span>ЧАТБОТ</span><span>·</span>
+      <span>ХОСТИНГ</span><span>·</span>
+      <span>ПОДДРЪЖКА</span><span>·</span>
+      <span>1 МЕСЕЦ META ADS</span><span>·</span>
+      <span>ЛОГО</span><span>·</span>
+      <span>МАРКЕТИНГ МАТЕРИАЛИ</span><span>·</span>
+      <span>ПРОФЕСИОНАЛЕН ИМЕЙЛ</span><span>·</span>
+      <span>ДИЗАЙН</span><span>·</span>
+      <span>КОПИРАЙТИНГ</span><span>·</span>
+      <span>SEO</span><span>·</span>
+      <span>ЧАТБОТ</span><span>·</span>
+      <span>ХОСТИНГ</span><span>·</span>
+      <span>ПОДДРЪЖКА</span><span>·</span>
+      <span>1 МЕСЕЦ META ADS</span><span>·</span>
+      <span>ЛОГО</span><span>·</span>
+      <span>МАРКЕТИНГ МАТЕРИАЛИ</span><span>·</span>
+      <span>ПРОФЕСИОНАЛЕН ИМЕЙЛ</span><span>·</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>
