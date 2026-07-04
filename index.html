@@ -340,10 +340,10 @@
 
   .offer-card{
     margin-top:56px;
-    border:1px solid rgba(255,255,255,0.14);
+    border:2px solid var(--orange);
     border-radius:20px;
     background:rgba(255,255,255,0.02);
-    box-shadow:0 0 0 1px rgba(242,113,45,0.06), 0 40px 80px -40px rgba(0,0,0,0.7);
+    box-shadow:0 0 0 1px rgba(242,113,45,0.25), 0 0 40px rgba(242,113,45,0.15), 0 40px 80px -40px rgba(0,0,0,0.7);
     text-align:left;
     overflow:hidden;
   }
@@ -471,20 +471,24 @@
     scroll-snap-type:none;
   }
   .example-slide{
-    flex:0 0 auto;
-    width:200px;
+    flex:0 0 100%;
+    width:100%;
     scroll-snap-align:start;
     border-radius:10px;
     overflow:hidden;
     border:1px solid rgba(255,255,255,0.14);
     background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
   .example-slide img{
     width:100%;
-    height:130px;
-    object-fit:cover;
+    height:280px;
+    object-fit:contain;
     display:block;
     pointer-events:none;
+    background:#0a0a0a;
   }
   .example-nav{
     position:absolute;
@@ -600,8 +604,7 @@
     .offer-toggle-btn{width:34px;height:34px;}
     .offer-row-panel-inner p{padding:0 16px 20px 50px;}
     .example-slider{margin:0 16px 20px 50px;}
-    .example-slide{width:150px;}
-    .example-slide img{height:100px;}
+    .example-slide img{height:180px;}
     .example-nav{width:28px;height:28px;font-size:15px;}
     .offer-price{margin-top:48px;}
     .price-new{font-size:36px;}
@@ -697,7 +700,7 @@
   <div class="offer-inner">
     <span class="offer-eyebrow">Какво получаваш</span>
     <h2>Всичко, от което се нуждае бизнесът ти - в един пакет</h2>
-    <p class="offer-sub">12 услуги, обединени в „Неустоимата оферта“ и изработени лично от нас.</p>
+    <p class="offer-sub">12 услуги, обединени в едно, които могат да изкарат бизнеса ти от застой.</p>
 
     <div class="offer-card">
       <div class="offer-row">
@@ -981,14 +984,15 @@
     const track = slider.querySelector('.example-track');
     const prev = slider.querySelector('.example-nav.prev');
     const next = slider.querySelector('.example-nav.next');
+    const slides = track.querySelectorAll('.example-slide');
+    let index = 0;
 
-    const scrollByOne = dir => {
-      const slide = track.querySelector('.example-slide');
-      const amount = slide ? slide.offsetWidth + 14 : 200;
-      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    const goTo = i => {
+      index = (i + slides.length) % slides.length;
+      track.scrollTo({ left: index * track.clientWidth, behavior: 'smooth' });
     };
-    prev.addEventListener('click', () => scrollByOne(-1));
-    next.addEventListener('click', () => scrollByOne(1));
+    prev.addEventListener('click', () => goTo(index - 1));
+    next.addEventListener('click', () => goTo(index + 1));
 
     let isDown = false, startX = 0, scrollStart = 0;
     track.addEventListener('pointerdown', e => {
@@ -1002,7 +1006,12 @@
       if (!isDown) return;
       track.scrollLeft = scrollStart - (e.clientX - startX);
     });
-    const endDrag = () => { isDown = false; track.classList.remove('dragging'); };
+    const endDrag = () => {
+      isDown = false;
+      track.classList.remove('dragging');
+      index = Math.round(track.scrollLeft / track.clientWidth);
+      goTo(index);
+    };
     track.addEventListener('pointerup', endDrag);
     track.addEventListener('pointerleave', endDrag);
     track.addEventListener('pointercancel', endDrag);
