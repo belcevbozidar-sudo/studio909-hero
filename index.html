@@ -448,6 +448,70 @@
     line-height:1.65;
   }
 
+  /* EXAMPLE SITES SLIDER */
+  .example-slider{
+    position:relative;
+    margin:0 26px 26px 68px;
+  }
+  .example-track{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    cursor:grab;
+    padding-bottom:4px;
+    scrollbar-width:none;
+    user-select:none;
+  }
+  .example-track::-webkit-scrollbar{
+    display:none;
+  }
+  .example-track.dragging{
+    cursor:grabbing;
+    scroll-snap-type:none;
+  }
+  .example-slide{
+    flex:0 0 auto;
+    width:200px;
+    scroll-snap-align:start;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.14);
+    background:#000;
+  }
+  .example-slide img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+    display:block;
+    pointer-events:none;
+  }
+  .example-nav{
+    position:absolute;
+    top:calc(50% - 10px);
+    transform:translateY(-50%);
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.28);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+    line-height:1;
+    backdrop-filter:blur(4px);
+    transition:background .2s ease;
+  }
+  .example-nav:hover{
+    background:var(--orange);
+    border-color:var(--orange);
+  }
+  .example-nav.prev{ left:-4px; }
+  .example-nav.next{ right:-4px; }
+
   .offer-price{
     margin-top:70px;
     text-align:center;
@@ -535,6 +599,10 @@
     .offer-row p{font-size:12.5px;}
     .offer-toggle-btn{width:34px;height:34px;}
     .offer-row-panel-inner p{padding:0 16px 20px 50px;}
+    .example-slider{margin:0 16px 20px 50px;}
+    .example-slide{width:150px;}
+    .example-slide img{height:100px;}
+    .example-nav{width:28px;height:28px;font-size:15px;}
     .offer-price{margin-top:48px;}
     .price-new{font-size:36px;}
     .price-old{font-size:18px;}
@@ -637,8 +705,8 @@
           <div class="offer-row-left">
             <span class="offer-check">✓</span>
             <div>
-              <h3>Уебсайт по мярка</h3>
-              <p>Уникален дизайн и разработка за бранда ти, без готови шаблони.</p>
+              <h3>Уебсайт с брандинг</h3>
+              <p>Уникален дизайн (не шаблон), който следва определена визуална концепция и те различава от всеки конкурент.</p>
             </div>
           </div>
           <button type="button" class="offer-toggle-btn pulse-btn" aria-label="Научи повече" aria-expanded="false">
@@ -647,7 +715,22 @@
         </div>
         <div class="offer-row-panel">
           <div class="offer-row-panel-inner">
-            <p>Изграждаме сайта ти от нулата - без готови шаблони. Персонализирана структура, текстове и дизайн, съобразени с твоя бранд и целева аудитория. Сайтът е оптимизиран за мобилни и настолни устройства и е насочен към едно нещо - повече запитвания.</p>
+            <p>Изграждаме сайта ти от нулата - без готови шаблони. Всеки проект получава своя собствена визуална концепция - цветове, шрифтове и стил, съобразени с бранда ти, така че да изглеждаш различно от всеки конкурент. Персонализирана структура и текстове, оптимизирани за мобилни и настолни устройства, насочени към едно нещо - повече запитвания.</p>
+            <div class="example-slider">
+              <div class="example-track" id="exampleTrack">
+                <div class="example-slide"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/aurion.jpg" alt="Aurion - SaaS платформа" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/vladi-build24.jpg" alt="Влади Билд 24 - покриви и ремонти" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/arlika-property.jpg" alt="Arlika Property - недвижими имоти" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/dsm.jpg" alt="ДеАрт Стил М - енергоефективно строителство" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" loading="lazy"></div>
+              </div>
+              <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
+              <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+            </div>
           </div>
         </div>
       </div>
@@ -885,6 +968,44 @@
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       panel.style.maxHeight = isOpen ? inner.scrollHeight + 'px' : '0px';
     });
+    inner.querySelectorAll('img').forEach(img => {
+      img.addEventListener('load', () => {
+        if (row.classList.contains('open')) {
+          panel.style.maxHeight = inner.scrollHeight + 'px';
+        }
+      });
+    });
+  });
+
+  document.querySelectorAll('.example-slider').forEach(slider => {
+    const track = slider.querySelector('.example-track');
+    const prev = slider.querySelector('.example-nav.prev');
+    const next = slider.querySelector('.example-nav.next');
+
+    const scrollByOne = dir => {
+      const slide = track.querySelector('.example-slide');
+      const amount = slide ? slide.offsetWidth + 14 : 200;
+      track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    };
+    prev.addEventListener('click', () => scrollByOne(-1));
+    next.addEventListener('click', () => scrollByOne(1));
+
+    let isDown = false, startX = 0, scrollStart = 0;
+    track.addEventListener('pointerdown', e => {
+      isDown = true;
+      startX = e.clientX;
+      scrollStart = track.scrollLeft;
+      track.classList.add('dragging');
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', e => {
+      if (!isDown) return;
+      track.scrollLeft = scrollStart - (e.clientX - startX);
+    });
+    const endDrag = () => { isDown = false; track.classList.remove('dragging'); };
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointerleave', endDrag);
+    track.addEventListener('pointercancel', endDrag);
   });
 </script>
 
