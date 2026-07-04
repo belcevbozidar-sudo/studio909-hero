@@ -338,25 +338,30 @@
     margin:16px auto 0;
   }
 
-  .offer-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:20px;
+  .offer-card{
     margin-top:56px;
-    text-align:left;
-  }
-  .offer-item{
-    display:flex;
-    gap:14px;
-    padding:24px;
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:20px;
     background:rgba(255,255,255,0.02);
-    transition:border-color .2s ease, transform .2s ease;
+    box-shadow:0 0 0 1px rgba(242,113,45,0.06), 0 40px 80px -40px rgba(0,0,0,0.7);
+    text-align:left;
+    overflow:hidden;
   }
-  .offer-item:hover{
-    border-color:rgba(242,113,45,0.4);
-    transform:translateY(-2px);
+  .offer-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:22px 26px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .offer-row:last-child{
+    border-bottom:none;
+  }
+  .offer-row-left{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
   }
   .offer-check{
     flex-shrink:0;
@@ -370,16 +375,117 @@
     justify-content:center;
     font-weight:800;
     font-size:15px;
+    margin-top:2px;
   }
-  .offer-item h3{
+  .offer-row h3{
     font-size:16px;
     font-weight:700;
-    margin-bottom:6px;
+    margin-bottom:4px;
   }
-  .offer-item p{
+  .offer-row p{
     font-size:13.5px;
     color:#aaa;
     line-height:1.5;
+  }
+  .offer-info-btn{
+    flex-shrink:0;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.22);
+    background:rgba(255,255,255,0.04);
+    color:#fff;
+    font-weight:700;
+    font-size:16px;
+    font-family:'Inter', sans-serif;
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .offer-info-btn:hover{
+    background:rgba(242,113,45,0.18);
+    border-color:var(--orange);
+    transform:scale(1.08);
+  }
+  .offer-info-btn.pulse-btn{
+    background:var(--orange);
+    border-color:var(--orange);
+    animation:btn-pulse 1.8s ease-out infinite;
+  }
+  @keyframes btn-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(242,113,45,0.55); }
+    70%{ box-shadow:0 0 0 14px rgba(242,113,45,0); }
+    100%{ box-shadow:0 0 0 0 rgba(242,113,45,0); }
+  }
+
+  /* BENEFIT MODAL */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+  }
+  .modal-overlay.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .modal-box{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;
+    padding:36px;
+    max-width:480px;
+    width:100%;
+    position:relative;
+    transform:translateY(12px) scale(0.98);
+    transition:transform .25s ease;
+  }
+  .modal-overlay.open .modal-box{
+    transform:translateY(0) scale(1);
+  }
+  .modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.05);
+    color:#fff;
+    font-size:16px;
+    font-family:'Inter', sans-serif;
+    cursor:pointer;
+  }
+  .modal-close:hover{
+    background:rgba(255,255,255,0.12);
+  }
+  .modal-eyebrow{
+    display:inline-block;
+    color:var(--orange);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .modal-box h3{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:12px;
+    padding-right:30px;
+  }
+  .modal-box p{
+    font-size:15px;
+    color:#c9c9c9;
+    line-height:1.65;
   }
 
   .offer-price{
@@ -430,7 +536,8 @@
     .marquee-track{font-size:1.15rem;gap:24px;}
 
     .offer{padding:80px 20px 90px;}
-    .offer-grid{grid-template-columns:repeat(2, 1fr);}
+    .offer-card{margin-top:44px;}
+    .offer-row{padding:18px 20px;}
   }
 
   /* ===== MOBILE ===== */
@@ -460,10 +567,17 @@
     .marquee-track{font-size:0.95rem;gap:18px;letter-spacing:0.05em;}
 
     .offer{padding:60px 16px 70px;}
-    .offer-grid{grid-template-columns:1fr;margin-top:40px;gap:14px;}
+    .offer-card{margin-top:36px;}
+    .offer-row{padding:16px;gap:12px;}
+    .offer-row-left{gap:10px;}
+    .offer-check{width:24px;height:24px;font-size:13px;}
+    .offer-row h3{font-size:14.5px;}
+    .offer-row p{font-size:12.5px;}
+    .offer-info-btn{width:34px;height:34px;font-size:14px;}
     .offer-price{margin-top:48px;}
     .price-new{font-size:36px;}
     .price-old{font-size:18px;}
+    .modal-box{padding:26px;}
   }
 </style>
 </head>
@@ -509,7 +623,7 @@
       <span class="h1-sub-wrap">
         <span class="h1-sub">„Неустоимата оферта“</span>
         <svg class="h1-underline" viewBox="0 0 300 14" preserveAspectRatio="none">
-          <path pathLength="1" d="M4 8 Q 80 2, 150 7 T 296 6"></path>
+          <path pathLength="1" d="M4 7 L 296 7"></path>
         </svg>
       </span>
     </h1>
@@ -554,93 +668,129 @@
 <section class="offer">
   <div class="offer-inner">
     <span class="offer-eyebrow">Какво получаваш</span>
-    <h2>Всичко, от което се нуждае бизнесът ти — в един пакет</h2>
+    <h2>Всичко, от което се нуждае бизнесът ти - в един пакет</h2>
     <p class="offer-sub">12 услуги, обединени в „Неустоимата оферта“ и изработени лично от нас.</p>
 
-    <div class="offer-grid">
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Уебсайт по мярка</h3>
-          <p>Уникален дизайн и разработка за бранда ти, без готови шаблони.</p>
+    <div class="offer-card">
+      <div class="offer-row" data-title="Уебсайт по мярка" data-desc="Изграждаме сайта ти от нулата - без готови шаблони. Персонализирана структура, текстове и дизайн, съобразени с твоя бранд и целева аудитория. Сайтът е оптимизиран за мобилни и настолни устройства и е насочен към едно нещо - повече запитвания.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Уебсайт по мярка</h3>
+            <p>Уникален дизайн и разработка за бранда ти, без готови шаблони.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn pulse-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>1 месец Meta реклами</h3>
-          <p>Настройваме и управляваме кампании в Facebook и Instagram безплатно.</p>
+      <div class="offer-row" data-title="1 месец Meta реклами" data-desc="Настройваме и управляваме рекламни кампании във Facebook и Instagram през първия месец напълно безплатно - ти плащаш единствено рекламния бюджет към Meta. Тестваме аудитории и креативи, за да достигнем точните клиенти за твоя бизнес.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>1 месец Meta реклами</h3>
+            <p>Настройваме и управляваме кампании в Facebook и Instagram безплатно.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>SEO оптимизация</h3>
-          <p>Техническо и съдържателно SEO, за да те намират в Google от старта.</p>
+      <div class="offer-row" data-title="SEO оптимизация" data-desc="Пълна техническа и съдържателна SEO оптимизация - мета данни, структура, скорост на зареждане и ключови думи, за да може сайтът ти да бъде намиран органично в Google от самото начало.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>SEO оптимизация</h3>
+            <p>Техническо и съдържателно SEO, за да те намират в Google от старта.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Чат-бот</h3>
-          <p>Автоматично отговаря на клиенти и ги насочва към действие 24/7.</p>
+      <div class="offer-row" data-title="Чат-бот" data-desc="Вграден автоматичен асистент, който отговаря на най-честите въпроси на посетителите ти 24/7 и активно ги насочва към конкретно действие - обаждане, запитване или поръчка, дори извън работно време.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Чат-бот</h3>
+            <p>Автоматично отговаря на клиенти и ги насочва към действие 24/7.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Собствен домейн (.com)</h3>
-          <p>Регистриран на твое име, без скрити такси за първата година.</p>
+      <div class="offer-row" data-title="Собствен домейн (.com)" data-desc="Регистрираме и настройваме домейн на твое име (.com), без скрити такси за първата година - твоят бизнес получава професионален адрес в интернет.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Собствен домейн (.com)</h3>
+            <p>Регистриран на твое име, без скрити такси за първата година.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Уникално лого</h3>
-          <p>Професионален дизайн на лого и базов брандинг пакет.</p>
+      <div class="offer-row" data-title="Уникално лого" data-desc="Професионален дизайн на лого, съобразено с бранда ти, плюс минимален визуален пакет - цветова палитра и шрифтове, които да използваш навсякъде.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Уникално лого</h3>
+            <p>Професионален дизайн на лого и базов брандинг пакет.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Професионален имейл</h3>
-          <p>На твоя домейн, вместо генеричен адрес.</p>
+      <div class="offer-row" data-title="Професионален имейл" data-desc="Създаваме ти имейл адрес на собствения домейн, вместо генеричен @gmail адрес - изглеждаш по-професионално пред клиентите си.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Професионален имейл</h3>
+            <p>На твоя домейн, вместо генеричен адрес.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>365 дни хостинг и поддръжка</h3>
-          <p>Цяла година грижа за сигурността на сайта, без скрити разходи.</p>
+      <div class="offer-row" data-title="365 дни хостинг и поддръжка" data-desc="Цяла година хостинг и техническа поддръжка без допълнителни месечни разходи - грижим се сайтът ти да е винаги достъпен, бърз и защитен.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>365 дни хостинг и поддръжка</h3>
+            <p>Цяла година грижа за сигурността на сайта, без скрити разходи.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Копирайтинг</h3>
-          <p>Текстове, писани да продават, не просто да информират.</p>
+      <div class="offer-row" data-title="Копирайтинг" data-desc="Всички текстове на сайта се пишат от нас с фокус върху убеждаване и продажба - не просто информативно описание, а текст, който кара посетителите да действат.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Копирайтинг</h3>
+            <p>Текстове, писани да продават, не просто да информират.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Неограничени редакции</h3>
-          <p>Промени по всяко време след пускането, без допълнително таксуване.</p>
+      <div class="offer-row" data-title="Неограничени редакции" data-desc="След пускането на сайта можеш да поискаш промени по всяко време - текст, снимки, цени или нови секции - без допълнително таксуване.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Неограничени редакции</h3>
+            <p>Промени по всяко време след пускането, без допълнително таксуване.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Маркетингови материали</h3>
-          <p>Текстове и идеи за визуализации за социалните мрежи.</p>
+      <div class="offer-row" data-title="Маркетингови материали" data-desc="Подготвяме текстове за постове, идеи за визуализации и насоки за тон на комуникация в социалните мрежи на бизнеса ти.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Маркетингови материали</h3>
+            <p>Текстове и идеи за визуализации за социалните мрежи.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
-      <div class="offer-item">
-        <span class="offer-check">✓</span>
-        <div>
-          <h3>Директна връзка с екипа</h3>
-          <p>Говориш лично с Божидар и Калоян, без анонимен саппорт отдел.</p>
+      <div class="offer-row" data-title="Директна връзка с екипа" data-desc="Комуникацията е директно с Божидар и Калоян - без анонимен саппорт отдел или система от тикети. Винаги знаеш с кого говориш.">
+        <div class="offer-row-left">
+          <span class="offer-check">✓</span>
+          <div>
+            <h3>Директна връзка с екипа</h3>
+            <p>Говориш лично с Божидар и Калоян, без анонимен саппорт отдел.</p>
+          </div>
         </div>
+        <button type="button" class="offer-info-btn" aria-label="Научи повече">i</button>
       </div>
     </div>
 
@@ -650,12 +800,45 @@
         <span class="price-new">650€</span>
         <span class="price-badge">-73%</span>
       </div>
-      <p class="price-note">Спестяваш 1750€ — с 365 дни безплатна поддръжка и нулев риск.</p>
-      <a href="#" class="cta">Заяви „Неустоимата оферта“</a>
+      <p class="price-note">Спестяваш 1750€ - с 365 дни безплатна поддръжка и нулев риск.</p>
+      <a href="#" class="cta">Заяви офертата</a>
       <div class="cta-note"><span class="pulse-dot"></span>Към момента има свободни места</div>
     </div>
   </div>
 </section>
+
+<div class="modal-overlay" id="benefitModal">
+  <div class="modal-box">
+    <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Затвори">✕</button>
+    <span class="modal-eyebrow">Какво получаваш</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('benefitModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+
+  function openModal(title, desc){
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    modal.classList.add('open');
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+  }
+
+  document.querySelectorAll('.offer-row').forEach(row => {
+    row.querySelector('.offer-info-btn').addEventListener('click', () => {
+      openModal(row.dataset.title, row.dataset.desc);
+    });
+  });
+  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
 
 </body>
 </html>
