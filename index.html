@@ -61,7 +61,7 @@
     padding:28px 64px;
   }
   .logo-img{
-    height:64px;
+    height:80px;
     width:auto;
     display:block;
   }
@@ -423,7 +423,12 @@
     animation:btn-pulse 1.8s ease-out infinite;
   }
   .offer-toggle-btn.bounce{
+    background:transparent;
     animation:btn-bounce 2.4s ease-in-out infinite;
+  }
+  .offer-toggle-btn.bounce:hover{
+    background:transparent;
+    color:var(--orange);
   }
   .offer-row.open .offer-toggle-btn{
     animation:none;
@@ -434,8 +439,8 @@
     100%{ box-shadow:0 0 0 0 rgba(242,113,45,0); }
   }
   @keyframes btn-bounce{
-    0%, 100%{ transform:translateY(0); box-shadow:0 0 0 0 rgba(242,113,45,0.4); }
-    50%{ transform:translateY(6px); box-shadow:0 0 0 9px rgba(242,113,45,0); }
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(6px); }
   }
 
   /* ACCORDION PANEL */
@@ -589,7 +594,7 @@
   /* ===== MOBILE ===== */
   @media (max-width:560px){
     nav{padding:16px;}
-    .logo-img{height:48px;}
+    .logo-img{height:58px;}
     .contact-btn{padding:8px 14px;font-size:12px;}
 
     .hero-content{padding:32px 16px 0;}
@@ -723,7 +728,7 @@
   <div class="offer-inner">
     <span class="offer-eyebrow">Какво получаваш</span>
     <h2>Всичко, от което се нуждае бизнесът ти - в един пакет</h2>
-    <p class="offer-sub">12 услуги, обединени в едно, които могат да изкарат бизнеса ти от застой.</p>
+    <p class="offer-sub">12 услуги, обединени в едно, които целят да изкарат бизнеса ти от застой.</p>
 
     <div class="offer-card">
       <div class="offer-row">
