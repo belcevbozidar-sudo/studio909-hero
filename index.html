@@ -1432,6 +1432,10 @@
     .problem-grid{grid-template-columns:repeat(2,1fr);}
     .solution{padding:80px 20px 90px;}
     .pillars{grid-template-columns:repeat(2,1fr);}
+    .pillar.in-view{
+      transform:translateY(-6px);
+      border-color:rgba(242,113,45,0.4);
+    }
     .process{padding:80px 20px 90px;}
     .faq{padding:80px 20px 90px;}
     .final-cta{padding:90px 20px 100px;}
@@ -1665,13 +1669,13 @@
   <div class="problem-inner">
     <span class="section-eyebrow">Проблемът</span>
     <h2 class="section-title">Присъствието ти онлайн трябва да е видимо за точните хора</h2>
-    <p class="section-sub">Ако разпознаваш някое от тези неща, бизнесът ти губи клиенти всеки ден - не защото услугата ти е лоша, а защото никой не я вижда правилно представена.</p>
+    <p class="section-sub">Ако разпознаваш някое от тези неща, бизнесът ти може би губи клиенти всеки ден - не защото услугата ти е лоша, а защото никой не я вижда правилно представена.</p>
 
     <div class="problem-grid">
       <div class="problem-card">
         <div class="problem-icon">✕</div>
         <h3>Остарял или любителски сайт</h3>
-        <p>Сайтът ти изглежда шаблонен и като на всички останали. Никой не усеща разликата и си просто един от всички.</p>
+        <p>Сайтът ти изглежда шаблонен или като на всички останали. Никой не усеща разликата и ти си просто един от всички останали.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon">✕</div>
@@ -1686,7 +1690,7 @@
       <div class="problem-card">
         <div class="problem-icon">✕</div>
         <h3>Разчиташ само на "уста на уста"</h3>
-        <p>Работиш добре, но растежът спира, ако не намираш нови клиенти активно и постоянно. Може би осъзнаваш, че конкурентът с добър маркетинг обира почти всички твои клиенти.</p>
+        <p>Работиш добре, но растежът спира, ако не намираш нови клиенти активно и постоянно. Може би осъзнаваш, че конкурентът с добър маркетинг обира повечето ти клиенти.</p>
       </div>
     </div>
   </div>
@@ -2524,6 +2528,16 @@
       cookieBanner.classList.remove('show');
     }
   });
+
+  /* ===== PILLAR SCROLL-TRIGGER (mobile) ===== */
+  if ('IntersectionObserver' in window) {
+    const pillarObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.pillar').forEach(pillar => pillarObserver.observe(pillar));
+  }
 </script>
 
 </body>
