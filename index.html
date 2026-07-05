@@ -1070,7 +1070,7 @@
     position:absolute;
     inset:0;
     z-index:0;
-    background:radial-gradient(ellipse 900px 560px at 50% 0%, rgba(255,140,40,0.16), transparent 62%);
+    background:radial-gradient(ellipse 900px 560px at 50% 40%, rgba(255,140,40,0.16), transparent 65%);
     pointer-events:none;
   }
   .faq-grid-overlay{
@@ -1081,8 +1081,8 @@
       linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size:60px 60px;
-    -webkit-mask-image: radial-gradient(ellipse 900px 560px at 50% 10%, black 40%, transparent 75%);
-    mask-image: radial-gradient(ellipse 900px 560px at 50% 10%, black 40%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 900px 560px at 50% 40%, black 40%, transparent 75%);
+    mask-image: radial-gradient(ellipse 900px 560px at 50% 40%, black 40%, transparent 75%);
     pointer-events:none;
   }
   .faq-inner{
@@ -1140,12 +1140,13 @@
     padding:110px 20px 120px;
     overflow:hidden;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,0.06);
   }
   .final-cta-glow{
     position:absolute;
     inset:0;
     background:radial-gradient(ellipse 900px 460px at 50% 78%, rgba(242,113,45,0.16), transparent 55%);
+    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
     pointer-events:none;
   }
   .final-cta-inner{
