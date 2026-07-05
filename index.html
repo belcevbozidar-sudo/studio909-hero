@@ -782,6 +782,56 @@
     font-size:12.5px;
   }
 
+  /* AVAILABILITY */
+  .availability{
+    background:#050505;
+    padding:0 20px 90px;
+  }
+  .availability-card{
+    position:relative;
+    max-width:720px;
+    margin:0 auto;
+    text-align:center;
+    padding:44px 34px 40px;
+    border-radius:20px;
+    border:1px solid rgba(61,220,114,0.35);
+    background:
+      radial-gradient(ellipse 500px 260px at 50% 0%, rgba(61,220,114,0.10), transparent 70%),
+      rgba(255,255,255,0.02);
+    box-shadow:0 0 44px -12px rgba(61,220,114,0.18);
+    overflow:hidden;
+  }
+  .availability-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 18px;
+    border-radius:20px;
+    border:1px solid rgba(61,220,114,0.4);
+    background:rgba(61,220,114,0.08);
+    color:#7ce7a2;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .availability-card h2{
+    font-size:clamp(20px, 2.6vw, 28px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.3;
+    max-width:560px;
+    margin:0 auto 12px;
+  }
+  .availability-card p{
+    color:#b9c9be;
+    font-size:15px;
+    line-height:1.65;
+    max-width:480px;
+    margin:0 auto;
+  }
+
   /* PROBLEM SECTION */
   .problem{
     background:#050505;
@@ -1457,6 +1507,7 @@
     .team-grid{margin-top:44px;}
 
     .proof{padding:80px 20px 90px;}
+    .availability{padding:0 20px 80px;}
     .proof-grid{grid-template-columns:repeat(2,1fr);}
     .problem{padding:80px 20px 90px;}
     .problem-grid{grid-template-columns:repeat(2,1fr);}
@@ -1524,6 +1575,8 @@
     .team-photo{width:108px;height:108px;margin-bottom:20px;}
 
     .proof{padding:60px 16px 70px;}
+    .availability{padding:0 16px 60px;}
+    .availability-card{padding:32px 20px 30px;}
     .proof-grid{grid-template-columns:1fr;gap:16px;margin-top:36px;}
     .problem{padding:60px 16px 70px;}
     .problem-grid{grid-template-columns:1fr;gap:14px;margin-top:36px;}
@@ -1693,6 +1746,16 @@
       </div>
     </div>
     <button type="button" class="add-review-link open-review-btn">+ Добави ревю</button>
+  </div>
+</section>
+
+<!-- Когато студиото е затворено за нови проекти: смени класа "open" с "closed" на .availability-card,
+     текста на бадж-а на "Затворено за нови проекти" и заглавието/описанието съответно. -->
+<section class="availability">
+  <div class="availability-card open">
+    <div class="availability-badge"><span class="pulse-dot"></span>Отворено за нови проекти</div>
+    <h2>Към момента студиото ни е отворено за няколко нови бизнеса</h2>
+    <p>Ти можеш да си следващият, който ще работи заедно с нас и ще издигне бизнеса си.</p>
   </div>
 </section>
 
@@ -2062,29 +2125,29 @@
       <div class="process-step">
         <div class="process-num">2</div>
         <div>
-          <h3>Обсъждаме плана и целта</h3>
-          <p>Уточняваме какво точно искаш да постигнеш.</p>
-        </div>
-      </div>
-      <div class="process-step">
-        <div class="process-num">3</div>
-        <div>
           <h3>Правим ти безплатно демо</h3>
           <p>Виждаш реален демо на сайта си, преди да платиш каквото и да е.</p>
         </div>
       </div>
       <div class="process-step">
+        <div class="process-num">3</div>
+        <div>
+          <h3>Решаваш дали да продължим</h3>
+          <p>Ако демото ти хареса, плащаш само 50% от цената.</p>
+        </div>
+      </div>
+      <div class="process-step">
         <div class="process-num">4</div>
         <div>
-          <h3>Харесва ли ти - плащаш 50%</h3>
-          <p>Довършваме целия сайт до последния детайл.</p>
+          <h3>Довършваме сайта изцяло</h3>
+          <p>Остатъкът от цената се плаща едва накрая, когато сайтът те удовлетворява изцяло.</p>
         </div>
       </div>
       <div class="process-step">
         <div class="process-num">5</div>
         <div>
-          <h3>Готово и одобрено - плащаш остатъка</h3>
-          <p>Стартираме маркетинга и намирането на нови клиенти.</p>
+          <h3>Стартираме активния маркетинг</h3>
+          <p>Започваме рекламите и намирането на нови клиенти за бизнеса ти.</p>
         </div>
       </div>
     </div>
