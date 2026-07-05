@@ -464,7 +464,7 @@
     padding-bottom:1px;
   }
   .offer-row-panel-inner p{
-    padding:0 26px 24px 68px;
+    padding:0 26px 24px 26px;
     font-size:14px;
     color:#c9c9c9;
     line-height:1.65;
@@ -487,7 +487,7 @@
   /* EXAMPLE SITES SLIDER */
   .example-slider{
     position:relative;
-    margin:0 26px 26px 68px;
+    margin:0 26px 26px 26px;
   }
   .example-track{
     display:flex;
@@ -654,7 +654,7 @@
     height:100%;
     border-radius:50%;
     overflow:hidden;
-    background:#111;
+    background:#fff;
     border:3px solid #050505;
   }
   .team-photo img{
@@ -748,6 +748,12 @@
     letter-spacing:2px;
     margin-bottom:14px;
   }
+  .stars-count{
+    color:#999;
+    font-size:12.5px;
+    letter-spacing:normal;
+    font-weight:500;
+  }
   .proof-card p{
     color:#dcdcdc;
     font-size:14.5px;
@@ -834,15 +840,14 @@
   /* SOLUTION SECTION */
   .solution{
     position:relative;
-    background:#0a0603;
+    background:linear-gradient(180deg, #050505 0%, #0a0603 30%, #0a0603 70%, #050505 100%);
     padding:100px 20px 110px;
     overflow:hidden;
-    border-top:1px solid rgba(255,255,255,0.06);
   }
   .solution-glow{
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse 900px 500px at 50% 0%, rgba(242,113,45,0.12), transparent 65%);
+    background:radial-gradient(ellipse 900px 560px at 50% 42%, rgba(242,113,45,0.12), transparent 68%);
     pointer-events:none;
   }
   .solution-inner{
@@ -912,27 +917,44 @@
     text-align:center;
   }
   .process-steps{
+    position:relative;
     display:flex;
     flex-direction:column;
     margin-top:56px;
     text-align:left;
   }
+  .process-line{
+    position:absolute;
+    left:23px;
+    top:26px;
+    bottom:26px;
+    width:2px;
+    background:rgba(255,255,255,0.1);
+  }
+  .process-line-fill{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:0%;
+    background:var(--orange);
+    transition:height .15s linear;
+  }
   .process-step{
+    position:relative;
     display:flex;
     gap:24px;
     padding:26px 0;
-    border-bottom:1px solid rgba(255,255,255,0.08);
     align-items:flex-start;
   }
-  .process-step:last-child{
-    border-bottom:none;
-  }
   .process-num{
+    position:relative;
+    z-index:2;
     flex-shrink:0;
     width:48px;
     height:48px;
     border-radius:50%;
-    background:rgba(242,113,45,0.12);
+    background:#0d0906;
     border:1px solid rgba(242,113,45,0.4);
     color:var(--orange);
     display:flex;
@@ -940,6 +962,13 @@
     justify-content:center;
     font-weight:800;
     font-size:17px;
+    transition:transform .3s ease, background .3s ease, color .3s ease, border-color .3s ease;
+  }
+  .process-step.reached .process-num{
+    transform:scale(1.18);
+    background:var(--orange);
+    border-color:var(--orange);
+    color:#fff;
   }
   .process-step h3{
     font-size:17px;
@@ -1083,8 +1112,9 @@
 
   /* FOOTER */
   .site-footer{
-    background:#020202;
-    border-top:1px solid rgba(255,255,255,0.08);
+    background:
+      radial-gradient(ellipse 900px 320px at 50% 0%, rgba(242,113,45,0.10), transparent 65%),
+      linear-gradient(180deg, #0a0603, #020202 55%);
     padding:56px 20px 28px;
   }
   .footer-inner{
@@ -1205,13 +1235,13 @@
   /* ADD REVIEW LINK */
   .add-review-link{
     display:block;
-    margin:36px auto 0;
+    margin:40px auto 0;
     background:none;
     border:1px dashed rgba(255,255,255,0.25);
     color:#ccc;
-    padding:12px 24px;
-    border-radius:10px;
-    font-size:13.5px;
+    padding:16px 38px;
+    border-radius:12px;
+    font-size:15px;
     font-weight:600;
     font-family:inherit;
     cursor:pointer;
@@ -1475,8 +1505,8 @@
     .offer-row h3{font-size:14.5px;}
     .offer-row p{font-size:12.5px;}
     .offer-toggle-btn{width:38px;height:38px;}
-    .offer-row-panel-inner p{padding:0 16px 20px 50px;}
-    .example-slider{margin:0 16px 20px 50px;}
+    .offer-row-panel-inner p{padding:0 16px 20px 16px;}
+    .example-slider{margin:0 16px 20px 16px;}
     .example-slide{flex:0 0 100%;}
     .example-slide img{height:180px;}
     .example-slider.compact .example-slide{flex:0 0 calc(50% - 5px);}
@@ -1504,6 +1534,7 @@
     .process-steps{margin-top:36px;}
     .process-step{gap:16px;padding:20px 0;}
     .process-num{width:40px;height:40px;font-size:15px;}
+    .process-line{left:19px;top:22px;bottom:22px;}
     .faq{padding:60px 16px 70px;}
     .faq-list{margin-top:32px;}
     .faq-question{padding:18px 2px;}
@@ -1617,7 +1648,7 @@
 
     <div class="proof-grid">
       <div class="proof-card">
-        <div class="proof-stars">★★★★★</div>
+        <div class="proof-stars">★★★★★ <span class="stars-count">(5 звезди)</span></div>
         <p>„Преди сайта ни хората трудно ни намираха. Сега получаваме запитвания директно от Facebook рекламите всяка седмица - нещо, което преди изобщо не се случваше."</p>
         <div class="proof-person">
           <img src="photos/image-1783144446077.png" alt="Клиент на Studio 9">
@@ -1628,7 +1659,7 @@
         </div>
       </div>
       <div class="proof-card">
-        <div class="proof-stars">★★★★★</div>
+        <div class="proof-stars">★★★★★ <span class="stars-count">(5 звезди)</span></div>
         <p>„Работата с Божидар и Калоян беше най-лесната част от целия процес - обясниха всичко ясно, спазиха срока и до ден днешен отговарят директно, когато имам нужда от нещо. Маркетинга им е добър и определено има ефект."</p>
         <div class="proof-person">
           <img src="photos/image-1783144453296.png" alt="Клиент на Studio 9">
@@ -1639,7 +1670,7 @@
         </div>
       </div>
       <div class="proof-card">
-        <div class="proof-stars">★★★★<span class="star-empty">★</span></div>
+        <div class="proof-stars">★★★★<span class="star-empty">★</span> <span class="stars-count">(4 звезди)</span></div>
         <p>„Резултатите си заслужаваха. Единственото - процесът по съгласуване на текстовете отне малко повече от очакваното, но резултатът беше точно това, което търсехме."</p>
         <div class="proof-person">
           <img src="photos/image-1783144451635.png" alt="Клиент на Studio 9">
@@ -1650,7 +1681,7 @@
         </div>
       </div>
       <div class="proof-card">
-        <div class="proof-stars">★★★★★</div>
+        <div class="proof-stars">★★★★★ <span class="stars-count">(5 звезди)</span></div>
         <p>„Като строителна фирма имахме нужда от доверие онлайн и повече клиенти. Новият сайт с рекламите след това просто надминаха очакванията ни."</p>
         <div class="proof-person">
           <img src="photos/image-1783144449995.png" alt="Клиент на Studio 9">
@@ -1738,7 +1769,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Уебсайт с брандинг</h3>
               <p>Уникален дизайн (не шаблон), който следва определена визуална концепция и те различава от всеки конкурент.</p>
@@ -1775,7 +1805,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>1 месец Meta реклами</h3>
               <p>Настройваме и управляваме кампании в Facebook и Instagram безплатно.</p>
@@ -1808,7 +1837,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>SEO оптимизация</h3>
               <p>Техническо и съдържателно SEO, което помага на Google да започне да те показва по-скоро.</p>
@@ -1827,7 +1855,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Чат-бот + Домейн + Имейл</h3>
               <p>Автоматизиран чат-бот, собствен .com домейн и професионален имейл - в подарък.</p>
@@ -1848,7 +1875,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Уникално лого</h3>
               <p>Дизайнерска изработка, не типично AI лого като от ChatGPT.</p>
@@ -1885,7 +1911,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>365 дни хостинг и поддръжка</h3>
               <p>Цяла година грижа за сигурността на сайта, без скрити разходи.</p>
@@ -1904,7 +1929,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Копирайтинг</h3>
               <p>Текстове, писани да продават, не просто да информират.</p>
@@ -1923,7 +1947,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Неограничени редакции</h3>
               <p>Промени по всяко време след пускането, без допълнително таксуване.</p>
@@ -1942,7 +1965,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Маркетингови материали</h3>
               <p>Визуални маркетингови материали за социалните мрежи на бизнеса ти.</p>
@@ -1961,7 +1983,6 @@
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
-            <span class="offer-check"><img src="icons/icon-check.png" alt=""></span>
             <div>
               <h3>Директна връзка с екипа</h3>
               <p>Говориш лично с Божидар и Калоян.</p>
@@ -2030,6 +2051,7 @@
     <h2 class="section-title">Ясен процес</h2>
 
     <div class="process-steps">
+      <div class="process-line"><div class="process-line-fill"></div></div>
       <div class="process-step">
         <div class="process-num">1</div>
         <div>
@@ -2538,6 +2560,29 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.pillar').forEach(pillar => pillarObserver.observe(pillar));
   }
+
+  /* ===== PROCESS LINE SCROLL FILL ===== */
+  const processSteps = document.querySelector('.process-steps');
+  const processLine = document.querySelector('.process-line');
+  const processLineFill = document.querySelector('.process-line-fill');
+
+  function updateProcessLine() {
+    if (!processSteps || !processLineFill) return;
+    const lineRect = processLine.getBoundingClientRect();
+    const trigger = window.innerHeight * 0.65;
+    const progress = Math.min(1, Math.max(0, (trigger - lineRect.top) / lineRect.height));
+    processLineFill.style.height = (progress * 100) + '%';
+
+    const fillY = lineRect.top + lineRect.height * progress;
+    document.querySelectorAll('.process-step').forEach(step => {
+      const num = step.querySelector('.process-num');
+      const numRect = num.getBoundingClientRect();
+      step.classList.toggle('reached', fillY >= numRect.top + numRect.height / 2);
+    });
+  }
+  window.addEventListener('scroll', updateProcessLine, { passive: true });
+  window.addEventListener('resize', updateProcessLine);
+  updateProcessLine();
 </script>
 
 </body>
