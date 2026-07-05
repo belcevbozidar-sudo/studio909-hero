@@ -1078,6 +1078,127 @@
     display:none !important;
   }
 
+  /* FOOTER */
+  .site-footer{
+    background:#020202;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:56px 20px 28px;
+  }
+  .footer-inner{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .footer-top{
+    text-align:center;
+    margin-bottom:36px;
+  }
+  .footer-logo{
+    height:44px;
+    width:auto;
+    display:block;
+    margin:0 auto 14px;
+  }
+  .footer-tagline{
+    color:#999;
+    font-size:14px;
+    max-width:420px;
+    margin:0 auto;
+    line-height:1.6;
+  }
+  .footer-links{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+    padding-bottom:32px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:13.5px;
+    font-weight:500;
+    transition:color .2s ease;
+  }
+  .footer-links a:hover{
+    color:var(--orange);
+  }
+  .footer-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    padding-top:24px;
+  }
+  .footer-copy{
+    color:#777;
+    font-size:12.5px;
+  }
+  .footer-legal{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .footer-legal a{
+    color:#777;
+    text-decoration:none;
+    font-size:12.5px;
+    transition:color .2s ease;
+  }
+  .footer-legal a:hover{
+    color:#fff;
+  }
+
+  /* COOKIE BANNER */
+  .cookie-banner{
+    position:fixed;
+    left:20px;
+    right:20px;
+    bottom:20px;
+    z-index:150;
+    max-width:640px;
+    margin:0 auto;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:16px;
+    padding:22px 24px;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);
+    transform:translateY(140%);
+    transition:transform .4s ease;
+  }
+  .cookie-banner.show{
+    transform:translateY(0);
+  }
+  .cookie-text{
+    color:#eee;
+    font-size:13.5px;
+    line-height:1.6;
+    margin-bottom:14px;
+  }
+  .cookie-more{
+    color:#aaa;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:14px;
+  }
+  .cookie-more a{
+    color:var(--orange);
+    text-decoration:underline;
+  }
+  .cookie-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .cookie-actions .cta,
+  .cookie-actions .cta-secondary{
+    margin-top:0;
+    padding:12px 22px;
+    font-size:13px;
+  }
+
   /* ADD REVIEW LINK */
   .add-review-link{
     display:block;
@@ -1387,6 +1508,13 @@
     .modal-box{padding:26px;border-radius:16px;}
     .modal-box h3{font-size:18px;}
     .form-actions{flex-direction:column;}
+
+    .site-footer{padding:40px 16px 24px;}
+    .footer-links{gap:16px 22px;padding-bottom:24px;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;padding-top:20px;}
+    .cookie-banner{left:12px;right:12px;bottom:12px;padding:18px 18px;}
+    .cookie-actions{flex-direction:column;}
+    .cookie-actions .cta, .cookie-actions .cta-secondary{width:100%;justify-content:center;}
   }
 </style>
 </head>
@@ -1942,11 +2070,11 @@
       </div>
       <div class="faq-item">
         <div class="faq-question">
-          <h3>Колко време отнема изработката?</h3>
+          <h3>Мога ли да получа фактура?</h3>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
-          <p>Обичайно между 1 и 2 седмици от уточняване на детайлите, в зависимост от обема на съдържанието и колко бързо получаваме обратна връзка от теб.</p>
+          <p>Да.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -1982,16 +2110,7 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
-          <p>Цяла година след пускането се грижим сайтът ти да е достъпен, бърз и защитен - без допълнителни месечни разходи за хостинг или техническа поддръжка.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>Може ли да се правят промени след пускането?</h3>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="faq-answer">
-          <p>Да, по всяко време - текст, снимки, цени или нови секции, без допълнително таксуване.</p>
+          <p>Цяла година след пускането се грижим сайтът ти да е достъпен, бърз и защитен - без допълнителни месечни разходи за хостинг или техническа поддръжка. По всяко време можеш да поискаш всякакви промени - текст, снимки, цени или нови секции, без допълнително таксуване.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2016,6 +2135,41 @@
     <div class="cta-note"><span class="pulse-dot"></span>Към момента има свободни места</div>
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <img src="assets/studio9-logo.png" alt="Studio 9" class="footer-logo">
+      <p class="footer-tagline">Уебсайт и дигитален маркетинг за бизнеси, които искат повече клиенти.</p>
+    </div>
+    <nav class="footer-links">
+      <a href="#offer">Предимства</a>
+      <a href="#proof">Резултати</a>
+      <a href="#process">Процес</a>
+      <a href="#team">Екип</a>
+      <a href="#faq">Въпроси</a>
+    </nav>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Studio 9. Всички права запазени.</span>
+      <div class="footer-legal">
+        <a href="privacy.html">Политика за поверителност</a>
+        <a href="terms.html">Условия за ползване</a>
+        <a href="cookies.html">Бисквитки</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p class="cookie-text">Този сайт използва бисквитки, за да подобри твоето преживяване.</p>
+    <p class="cookie-more" id="cookieMore" hidden>Използваме единствено технически необходими бисквитки - например за да запомним избора ти тук. Не използваме бисквитки за реклама или проследяване. Прочети повече в нашата <a href="cookies.html">Политика за бисквитки</a>.</p>
+    <div class="cookie-actions">
+      <button type="button" class="cta cookie-accept">Потвърждавам</button>
+      <button type="button" class="cta-secondary cookie-more-btn">Научи повече</button>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="inquiryModal">
   <div class="modal-box">
@@ -2331,6 +2485,31 @@
     }
     reviewForm.hidden = true;
     reviewSuccess.hidden = false;
+  });
+
+  /* ===== COOKIE BANNER ===== */
+  const cookieBanner = document.getElementById('cookieBanner');
+  const cookieMore = document.getElementById('cookieMore');
+  const cookieMoreBtn = document.querySelector('.cookie-more-btn');
+  const cookieAcceptBtn = document.querySelector('.cookie-accept');
+
+  if (!localStorage.getItem('studio9_cookie_choice')) {
+    setTimeout(() => cookieBanner.classList.add('show'), 600);
+  }
+
+  cookieAcceptBtn.addEventListener('click', () => {
+    localStorage.setItem('studio9_cookie_choice', 'accepted');
+    cookieBanner.classList.remove('show');
+  });
+
+  cookieMoreBtn.addEventListener('click', () => {
+    if (cookieMore.hidden) {
+      cookieMore.hidden = false;
+      cookieMoreBtn.textContent = 'Отказвам';
+    } else {
+      localStorage.setItem('studio9_cookie_choice', 'declined');
+      cookieBanner.classList.remove('show');
+    }
   });
 </script>
 
