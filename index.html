@@ -586,6 +586,93 @@
     font-size:14px;
   }
 
+  /* TEAM / WHO WE ARE */
+  .team{
+    position:relative;
+    background:#050505;
+    padding:100px 20px 120px;
+    overflow:hidden;
+  }
+  .team-glow{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(ellipse 800px 460px at 20% 15%, rgba(242,113,45,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 460px at 85% 85%, rgba(160,30,90,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .team-inner{
+    position:relative;
+    z-index:2;
+    max-width:920px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .team-grid{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:32px;
+    margin-top:56px;
+  }
+  .team-card{
+    flex:1 1 300px;
+    max-width:340px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:22px;
+    padding:40px 30px 34px;
+    transition:transform .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .team-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(242,113,45,0.45);
+    background:rgba(255,255,255,0.045);
+  }
+  .team-photo{
+    width:132px;
+    height:132px;
+    margin:0 auto 24px;
+    border-radius:50%;
+    padding:4px;
+    background:linear-gradient(135deg, var(--orange), rgba(242,113,45,0.15));
+  }
+  .team-photo-inner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    overflow:hidden;
+    background:#111;
+    border:3px solid #050505;
+  }
+  .team-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .team-card h3{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin-bottom:6px;
+  }
+  .team-role{
+    display:inline-block;
+    color:var(--orange);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .team-card p{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.65;
+  }
+
   /* ===== TABLET ===== */
   @media (max-width:900px){
     nav{padding:20px 24px;}
@@ -601,6 +688,9 @@
     .offer{padding:80px 20px 90px;}
     .offer-card{margin-top:44px;}
     .offer-row-main{padding:18px 20px;}
+
+    .team{padding:80px 20px 90px;}
+    .team-grid{margin-top:44px;}
   }
 
   /* ===== MOBILE ===== */
@@ -649,6 +739,11 @@
     .offer-price{margin-top:48px;}
     .price-new{font-size:36px;}
     .price-old{font-size:18px;}
+
+    .team{padding:60px 16px 70px;}
+    .team-grid{margin-top:36px;gap:20px;}
+    .team-card{padding:32px 22px 28px;}
+    .team-photo{width:108px;height:108px;margin-bottom:20px;}
   }
 </style>
 </head>
@@ -763,12 +858,13 @@
               <div class="example-track" id="exampleTrack">
                 <div class="example-slide"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" loading="lazy"></div>
                 <div class="example-slide"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" loading="lazy"></div>
-                <div class="example-slide"><img src="examples/aurion.jpg" alt="Aurion - SaaS платформа" loading="lazy"></div>
-                <div class="example-slide"><img src="examples/vladi-build24.jpg" alt="Влади Билд 24 - покриви и ремонти" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/codercrest.jpg" alt="CoderCrest - AI платформа" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/deposit.jpg" alt="deposit - соларни системи" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/qelora.jpg" alt="Qelora - устойчива архитектура" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" loading="lazy"></div>
+                <div class="example-slide"><img src="examples/viktoroddy.jpg" alt="Viktoroddy - дизайн портфолио" loading="lazy"></div>
                 <div class="example-slide"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" loading="lazy"></div>
                 <div class="example-slide"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" loading="lazy"></div>
-                <div class="example-slide"><img src="examples/arlika-property.jpg" alt="Arlika Property - недвижими имоти" loading="lazy"></div>
-                <div class="example-slide"><img src="examples/dsm.jpg" alt="ДеАрт Стил М - енергоефективно строителство" loading="lazy"></div>
                 <div class="example-slide"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" loading="lazy"></div>
               </div>
               <div class="example-nav-row">
