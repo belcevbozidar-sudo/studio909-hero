@@ -519,14 +519,19 @@
   .example-slider.compact .example-slide img{
     height:360px;
   }
+  .example-nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin-top:12px;
+  }
   .example-nav{
-    position:absolute;
-    top:calc(50% - 10px);
-    transform:translateY(-50%);
+    flex-shrink:0;
     width:34px;
     height:34px;
     border-radius:50%;
-    background:rgba(0,0,0,0.6);
+    background:rgba(255,255,255,0.06);
     border:1px solid rgba(255,255,255,0.28);
     color:#fff;
     display:flex;
@@ -535,15 +540,12 @@
     cursor:pointer;
     font-size:18px;
     line-height:1;
-    backdrop-filter:blur(4px);
     transition:background .2s ease;
   }
   .example-nav:hover{
     background:var(--orange);
     border-color:var(--orange);
   }
-  .example-nav.prev{ left:-4px; }
-  .example-nav.next{ right:-4px; }
 
   .offer-price{
     margin-top:70px;
@@ -765,8 +767,10 @@
                 <div class="example-slide"><img src="examples/dsm.jpg" alt="ДеАрт Стил М - енергоефективно строителство" loading="lazy"></div>
                 <div class="example-slide"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" loading="lazy"></div>
               </div>
-              <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
-              <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+              <div class="example-nav-row">
+                <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
+                <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+              </div>
             </div>
           </div>
         </div>
@@ -796,8 +800,10 @@
                 <div class="example-slide"><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" loading="lazy"></div>
                 <div class="example-slide"><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" loading="lazy"></div>
               </div>
-              <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
-              <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+              <div class="example-nav-row">
+                <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
+                <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+              </div>
             </div>
           </div>
         </div>
@@ -869,8 +875,10 @@
                 <div class="example-slide"><img src="logo-examples/lead-system.jpg" alt="Лого Lead System" loading="lazy"></div>
                 <div class="example-slide"><img src="logo-examples/dsm.jpg" alt="Лого DSM" loading="lazy"></div>
               </div>
-              <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
-              <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+              <div class="example-nav-row">
+                <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
+                <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
+              </div>
             </div>
           </div>
         </div>
