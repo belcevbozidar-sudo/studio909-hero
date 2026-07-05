@@ -988,7 +988,7 @@
     width:100%;
     height:0%;
     background:var(--orange);
-    transition:height .15s linear;
+    will-change:height;
   }
   .process-step{
     position:relative;
@@ -1034,11 +1034,34 @@
 
   /* FAQ */
   .faq{
+    position:relative;
+    overflow:hidden;
     background:#050505;
     padding:100px 20px 110px;
     border-top:1px solid rgba(255,255,255,0.06);
   }
+  .faq-glow{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:radial-gradient(ellipse 900px 560px at 50% 0%, rgba(255,140,40,0.16), transparent 62%);
+    pointer-events:none;
+  }
+  .faq-grid-overlay{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 900px 560px at 50% 10%, black 40%, transparent 75%);
+    mask-image: radial-gradient(ellipse 900px 560px at 50% 10%, black 40%, transparent 75%);
+    pointer-events:none;
+  }
   .faq-inner{
+    position:relative;
+    z-index:1;
     max-width:800px;
     margin:0 auto;
     text-align:center;
@@ -1096,7 +1119,7 @@
   .final-cta-glow{
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse 900px 500px at 50% 100%, rgba(242,113,45,0.18), transparent 65%);
+    background:radial-gradient(ellipse 900px 460px at 50% 78%, rgba(242,113,45,0.16), transparent 55%);
     pointer-events:none;
   }
   .final-cta-inner{
@@ -1162,9 +1185,7 @@
 
   /* FOOTER */
   .site-footer{
-    background:
-      radial-gradient(ellipse 900px 320px at 50% 0%, rgba(242,113,45,0.10), transparent 65%),
-      linear-gradient(180deg, #0a0603, #020202 55%);
+    background:linear-gradient(180deg, #0a0603, #020202 55%);
     padding:56px 20px 28px;
   }
   .footer-inner{
@@ -1601,8 +1622,9 @@
     .form-actions{flex-direction:column;}
 
     .site-footer{padding:40px 16px 24px;}
-    .footer-links{gap:16px 22px;padding-bottom:24px;}
-    .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;padding-top:20px;}
+    .footer-logo{height:68px;}
+    .footer-links{display:none;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
     .cookie-banner{left:12px;right:12px;bottom:12px;padding:18px 18px;}
     .cookie-actions{flex-direction:column;}
     .cookie-actions .cta, .cookie-actions .cta-secondary{width:100%;justify-content:center;}
@@ -2145,6 +2167,8 @@
 </section>
 
 <section class="faq" id="faq">
+  <div class="faq-glow"></div>
+  <div class="faq-grid-overlay"></div>
   <div class="faq-inner">
     <span class="section-eyebrow">Въпроси</span>
     <h2 class="section-title">Преди да заявиш съвместна работа, моля първо прочети нашите често задавани въпроси</h2>
@@ -2619,7 +2643,9 @@
   const processLine = document.querySelector('.process-line');
   const processLineFill = document.querySelector('.process-line-fill');
 
+  let processLineTicking = false;
   function updateProcessLine() {
+    processLineTicking = false;
     if (!processSteps || !processLineFill) return;
     const lineRect = processLine.getBoundingClientRect();
     const trigger = window.innerHeight * 0.65;
@@ -2633,8 +2659,13 @@
       step.classList.toggle('reached', fillY >= numRect.top + numRect.height / 2);
     });
   }
-  window.addEventListener('scroll', updateProcessLine, { passive: true });
-  window.addEventListener('resize', updateProcessLine);
+  function requestProcessLineUpdate() {
+    if (processLineTicking) return;
+    processLineTicking = true;
+    requestAnimationFrame(updateProcessLine);
+  }
+  window.addEventListener('scroll', requestProcessLineUpdate, { passive: true });
+  window.addEventListener('resize', requestProcessLineUpdate);
   updateProcessLine();
 </script>
 
