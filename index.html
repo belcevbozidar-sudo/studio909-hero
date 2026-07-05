@@ -367,15 +367,17 @@
   .offer-row-main{
     display:flex;
     align-items:center;
-    justify-content:space-between;
     gap:20px;
     padding:22px 26px;
     cursor:pointer;
   }
   .offer-row-left{
     display:flex;
-    align-items:flex-start;
+    align-items:center;
+    justify-content:center;
     gap:14px;
+    flex:1;
+    text-align:center;
   }
   .offer-check{
     flex-shrink:0;
@@ -397,9 +399,11 @@
     object-fit:contain;
   }
   .offer-row h3{
-    font-size:16px;
-    font-weight:700;
-    margin-bottom:4px;
+    display:inline-block;
+    font-size:19px;
+    font-weight:800;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--orange);
   }
   .offer-row p{
     font-size:13.5px;
@@ -591,10 +595,39 @@
     padding:6px 12px;
     border-radius:20px;
   }
+  .price-bgn{
+    font-size:16px;
+    font-weight:600;
+    color:#999;
+  }
   .price-note{
     margin-top:14px;
     color:#999;
     font-size:14px;
+  }
+  .price-note-fx{
+    margin-top:4px;
+    color:#666;
+    font-size:12px;
+  }
+
+  .offer-mini-review{
+    max-width:600px;
+    margin:64px auto 0;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;
+    padding:28px 30px;
+    text-align:left;
+  }
+  .offer-mini-review .proof-stars{
+    margin-bottom:12px;
+  }
+  .offer-mini-review p{
+    color:#ddd;
+    font-size:15px;
+    line-height:1.65;
+    margin-bottom:20px;
   }
 
   /* TEAM / WHO WE ARE */
@@ -1422,17 +1455,17 @@
   .form-check{
     display:flex;
     align-items:flex-start;
-    gap:10px;
+    gap:12px;
     margin-bottom:16px;
-    font-size:13.5px;
-    color:#ddd;
-    line-height:1.5;
+    font-size:14.5px;
+    color:#f0f0f0;
+    line-height:1.55;
     cursor:pointer;
   }
   .form-check input{
-    margin-top:3px;
-    width:16px;
-    height:16px;
+    margin-top:2px;
+    width:21px;
+    height:21px;
     accent-color:var(--orange);
     flex-shrink:0;
   }
@@ -1477,6 +1510,23 @@
     color:#bbb;
     font-size:14.5px;
     line-height:1.6;
+  }
+  .form-loading{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:70px 0;
+  }
+  .spinner{
+    width:44px;
+    height:44px;
+    border:4px solid rgba(255,255,255,0.15);
+    border-top-color:var(--orange);
+    border-radius:50%;
+    animation:spinner-rotate .8s linear infinite;
+  }
+  @keyframes spinner-rotate{
+    to{transform:rotate(360deg);}
   }
 
   /* STAR PICKER */
@@ -1574,8 +1624,9 @@
     .offer-row-main{padding:16px;gap:12px;}
     .offer-row-left{gap:10px;}
     .offer-check{width:24px;height:24px;font-size:13px;}
-    .offer-row h3{font-size:14.5px;}
+    .offer-row h3{font-size:16px;padding-bottom:6px;}
     .offer-row p{font-size:12.5px;}
+    .offer-mini-review{padding:22px 20px;margin-top:40px;}
     .offer-toggle-btn{width:38px;height:38px;}
     .offer-row-panel-inner p{padding:0 16px 20px 16px;}
     .example-slider{margin:0 16px 20px 16px;}
@@ -1624,7 +1675,9 @@
     .site-footer{padding:40px 16px 24px;}
     .footer-logo{height:68px;}
     .footer-links{display:none;}
-    .footer-bottom{flex-direction:column;align-items:flex-start;gap:14px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+    .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:14px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+    .footer-legal{order:1;justify-content:center;width:100%;}
+    .footer-copy{order:2;}
     .cookie-banner{left:12px;right:12px;bottom:12px;padding:18px 18px;}
     .cookie-actions{flex-direction:column;}
     .cookie-actions .cta, .cookie-actions .cta-secondary{width:100%;justify-content:center;}
@@ -2075,13 +2128,27 @@
       </div>
     </div>
 
+    <div class="offer-mini-review">
+      <div class="proof-stars">★★★★★ <span class="stars-count">(5 звезди)</span></div>
+      <p>„Най-хубавото за мен беше, че видях безплатно демо на сайта си, преди изобщо да платя каквото и да е - разбрах веднага, че посоката е правилна и чак тогава реших да продължим. Нулев риск от моя страна."</p>
+      <div class="proof-person">
+        <img src="photos/image-1783144448316.png" alt="Клиент на Studio 9">
+        <div>
+          <span class="proof-person-name">Радост</span>
+          <span class="proof-person-role">Фризьорски салон</span>
+        </div>
+      </div>
+    </div>
+
     <div class="offer-price">
       <div class="price-row">
         <span class="price-old">2400€</span>
         <span class="price-new">650€</span>
+        <span class="price-bgn">(1271,29 лв.)</span>
         <span class="price-badge">-73%</span>
       </div>
       <p class="price-note">Спестяваш 1750€ - с 365 дни безплатна поддръжка и нулев риск.</p>
+      <p class="price-note-fx">Левовата равностойност е по официалния фиксиран курс 1€ = 1,95583 лв.</p>
       <button type="button" class="cta open-inquiry-btn">Заяви офертата</button>
       <div class="cta-note"><span class="pulse-dot"></span>Към момента има свободни места</div>
     </div>
@@ -2181,7 +2248,7 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
-          <p>Да.</p>
+          <p>Да, можете да получите фактура.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2218,15 +2285,6 @@
         </div>
         <div class="faq-answer">
           <p>Ти. Управлението на рекламите от наша страна е безплатно през първия месец, но самият рекламен бюджет се плаща от теб директно към Meta. Препоръчителният минимален бюджет е 500€, а ти можеш да получиш фактура за него.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3>Какво значи 365 дни поддръжка?</h3>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="faq-answer">
-          <p>Цяла година след пускането се грижим сайтът ти да е достъпен, бърз и защитен - без допълнителни месечни разходи за хостинг или техническа поддръжка. По всяко време можеш да поискаш всякакви промени - текст, снимки, цени или нови секции, без допълнително таксуване.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2310,16 +2368,12 @@
         <span class="modal-eyebrow">Последна стъпка</span>
         <h3>Преди да изпратиш</h3>
         <label class="form-check">
-          <input type="checkbox" name="price_ack" required>
-          <span>Запознат съм, че началната цена на пакета е <strong>650€</strong>.</span>
-        </label>
-        <label class="form-check">
           <input type="checkbox" name="ads_ack" required id="adsAck">
           <span>Запознат съм, че е нужно да заделя бюджет за реклами във <strong>Facebook и Instagram</strong>, отделно от цената на пакета.</span>
         </label>
         <label class="form-label" id="budgetField" hidden>
           Приблизителен бюджет за първия месец реклами <span class="optional-tag">(незадължително)</span>
-          <input type="text" name="budget" placeholder="напр. 500€">
+          <input type="text" name="budget" placeholder="напр. 500-5000">
         </label>
         <div class="form-actions">
           <button type="button" class="cta-secondary form-back">Назад</button>
@@ -2327,10 +2381,8 @@
         </div>
       </div>
 
-      <div class="form-step form-success" data-step="success" hidden>
-        <span class="modal-eyebrow">Готово</span>
-        <h3>Получихме запитването ти!</h3>
-        <p>Ще се свържем с теб възможно най-скоро.</p>
+      <div class="form-step form-loading" data-step="loading" hidden>
+        <div class="spinner"></div>
       </div>
     </form>
   </div>
@@ -2493,7 +2545,7 @@
   const inquiryForm = document.getElementById('inquiryForm');
   const inquiryStep1 = inquiryForm.querySelector('[data-step="1"]');
   const inquiryStep2 = inquiryForm.querySelector('[data-step="2"]');
-  const inquirySuccess = inquiryForm.querySelector('[data-step="success"]');
+  const inquiryLoading = inquiryForm.querySelector('[data-step="loading"]');
   const adsAck = document.getElementById('adsAck');
   const budgetField = document.getElementById('budgetField');
 
@@ -2501,7 +2553,7 @@
     inquiryForm.reset();
     inquiryStep1.hidden = false;
     inquiryStep2.hidden = true;
-    inquirySuccess.hidden = true;
+    inquiryLoading.hidden = true;
     budgetField.hidden = true;
   }
 
@@ -2535,7 +2587,7 @@
 
   inquiryForm.addEventListener('submit', e => {
     e.preventDefault();
-    if (!inquiryForm.price_ack.checked || !inquiryForm.ads_ack.checked) {
+    if (!inquiryForm.ads_ack.checked) {
       inquiryForm.reportValidity();
       return;
     }
@@ -2549,14 +2601,16 @@
       `Индустрия: ${industry}`,
       `Описание: ${description}`,
       `Телефон: ${phone}`,
-      'Запознат с цена 650€: Да',
       'Запознат с бюджет за реклами: Да',
     ];
     if (budget) lines.push(`Приблизителен бюджет: ${budget}`);
     sendTelegramMessage(lines.join('\n'));
 
     inquiryStep2.hidden = true;
-    inquirySuccess.hidden = false;
+    inquiryLoading.hidden = false;
+    setTimeout(() => {
+      window.location.href = 'thank-you.html';
+    }, 1000);
   });
 
   /* ===== REVIEW FORM ===== */
