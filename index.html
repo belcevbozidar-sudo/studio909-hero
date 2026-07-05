@@ -2605,6 +2605,11 @@
     ];
     if (budget) lines.push(`Приблизителен бюджет: ${budget}`);
     sendTelegramMessage(lines.join('\n'));
+    fetch('/api/send-sms', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone }),
+    }).catch(() => {});
 
     inquiryStep2.hidden = true;
     inquiryLoading.hidden = false;
