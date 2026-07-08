@@ -2,7 +2,7 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Studio 9</title>
 <!-- Meta Pixel Code -->
 <script>
@@ -1457,7 +1457,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     padding:12px 14px;
     color:#fff;
     font-family:inherit;
-    font-size:14px;
+    font-size:16px;
     resize:vertical;
   }
   .form-label input:focus,
@@ -2404,9 +2404,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div class="form-step" data-step="1">
         <span class="modal-eyebrow">ЗАЯВЕТЕ ОФЕРТА</span>
         <h3>Разкажете ни малко за бизнеса си</h3>
-        <label class="form-label">Име на бизнеса
-          <input type="text" name="business_name" required placeholder="напр. Автосервиз Иванов">
-        </label>
         <label class="form-label">Индустрия
           <input type="text" name="industry" required placeholder="напр. Автосервиз, Козметично студио...">
         </label>
@@ -2420,21 +2417,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
 
       <div class="form-step" data-step="2" hidden>
-        <span class="modal-eyebrow">Последна стъпка</span>
-        <h3>Преди да изпратиш</h3>
-        <label class="form-check" style="margin-bottom: 24px;">
-          <input type="checkbox" name="ads_ack" required id="adsAck">
-          <span>Запознат съм, че е нужно да заделя бюджет за реклами в Meta и Google, отделно от нашите услуги.</span>
-        </label>
-        <label class="form-label" id="budgetField" style="margin-bottom: 24px;" hidden>
-          Приблизителен бюджет за първия месец реклами <span class="optional-tag">(незадължително)</span>
-          <input type="text" name="budget" placeholder="напр. 500-5000">
-        </label>
+        <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
+        <h3>Данни за връзка</h3>
         <label class="form-label" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">Имейл адрес
-          <input type="email" name="email" required placeholder="напр. ivan@example.com" style="font-size: 18px; padding: 16px; margin-top: 10px;">
+          <input type="email" name="email" required placeholder="напр. ivan@example.com" style="font-size: 16px; padding: 16px; margin-top: 10px;">
         </label>
-        <label class="form-label" style="font-size: 16px; font-weight: 700;">Телефонен номер за връзка
-          <input type="tel" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX" style="font-size: 18px; padding: 16px; margin-top: 10px;">
+        <label class="form-label" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">Телефонен номер за връзка
+          <input type="tel" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX" style="font-size: 16px; padding: 16px; margin-top: 10px;">
+        </label>
+        <label class="form-label" id="budgetField" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">
+          Приблизителен бюджет за първия месец реклами <span class="optional-tag">(незадължително)</span>
+          <input type="text" name="budget" placeholder="напр. 500-5000" style="font-size: 16px; padding: 16px; margin-top: 10px;">
         </label>
         <div class="form-actions" style="margin-top: 24px;">
           <button type="button" class="cta-secondary form-back">Назад</button>
@@ -2615,7 +2608,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     inquiryStep1.hidden = false;
     inquiryStep2.hidden = true;
     inquiryLoading.hidden = true;
-    budgetField.hidden = true;
   }
 
   document.querySelectorAll('.open-inquiry-btn').forEach(btn => {
@@ -2626,11 +2618,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   });
 
   inquiryForm.querySelector('.form-next').addEventListener('click', () => {
-    const businessName = inquiryForm.business_name.value.trim();
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
     const noChange = inquiryForm.no_change.value.trim();
-    if (!businessName || !industry || !problem || !noChange) {
+    if (!industry || !problem || !noChange) {
       inquiryForm.reportValidity();
       return;
     }
@@ -2643,17 +2634,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     inquiryStep1.hidden = false;
   });
 
-  adsAck.addEventListener('change', () => {
-    budgetField.hidden = !adsAck.checked;
-  });
-
   inquiryForm.addEventListener('submit', e => {
     e.preventDefault();
-    if (!inquiryForm.ads_ack.checked) {
-      inquiryForm.reportValidity();
-      return;
-    }
-    const businessName = inquiryForm.business_name.value.trim();
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
     const noChange = inquiryForm.no_change.value.trim();
@@ -2672,13 +2654,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
     const lines = [
       '📩 Ново запитване от Big Offer сайта',
-      `Бизнес име: ${businessName}`,
       `Индустрия: ${industry}`,
       `Проблем: ${problem}`,
       `Ако нищо не се промени: ${noChange}`,
       `Имейл: ${email}`,
       `Телефон: ${phone}`,
-      'Запознат с бюджет за реклами: Да',
     ];
     if (budget) lines.push(`Приблизителен бюджет: ${budget}`);
     sendTelegramMessage(lines.join('\n'));
