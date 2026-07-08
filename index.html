@@ -1446,6 +1446,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:600;
     margin-bottom:16px;
   }
+  #inquiryForm input[type="text"],
+  #inquiryForm input[type="email"],
+  #inquiryForm input[type="tel"],
+  #inquiryForm textarea,
   .form-label input,
   .form-label textarea{
     display:block;
@@ -1460,6 +1464,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-size:16px;
     resize:vertical;
   }
+  #inquiryForm input:focus,
+  #inquiryForm textarea:focus,
   .form-label input:focus,
   .form-label textarea:focus{
     outline:none;
@@ -2404,32 +2410,30 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div class="form-step" data-step="1">
         <span class="modal-eyebrow">ЗАЯВЕТЕ ОФЕРТА</span>
         <h3>Разкажете ни малко за бизнеса си</h3>
-        <label class="form-label">Индустрия
-          <input type="text" name="industry" required placeholder="напр. Автосервиз, Козметично студио...">
-        </label>
-        <label class="form-label">Какъв е най-големият проблем с вашето онлайн присъствие сега?
-          <textarea name="problem" required rows="3" placeholder="напр. Сайтът не носи запитвания, нямаме реклами..."></textarea>
-        </label>
-        <label class="form-label">Какво се случва, ако нищо не се промени?
-          <textarea name="no_change" required rows="3" placeholder="напр. Продължаваме да губим клиенти на конкурента"></textarea>
-        </label>
-        <button type="button" class="cta form-next">Продължи</button>
+        
+        <label for="industryInput" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-bottom: 10px;">Индустрия</label>
+        <input type="text" id="industryInput" name="industry" required placeholder="напр. Автосервиз, Козметично студио...">
+        
+        <label for="problemText" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Какъв е най-големият проблем с вашето онлайн присъствие сега?</label>
+        <textarea id="problemText" name="problem" required rows="3" placeholder="напр. Сайтът не носи запитвания, нямаме реклами..."></textarea>
+        
+        <label for="noChangeText" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Какво се случва, ако нищо не се промени?</label>
+        <textarea id="noChangeText" name="no_change" required rows="3" placeholder="напр. Продължаваме да губим клиенти на конкурента"></textarea>
+        
+        <button type="button" class="cta form-next" style="margin-top: 24px;">Продължи</button>
       </div>
 
       <div class="form-step" data-step="2" hidden>
         <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
         <h3>Данни за връзка</h3>
-        <label class="form-label" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">Имейл адрес
-          <input type="email" name="email" required placeholder="напр. ivan@example.com" style="font-size: 16px; padding: 16px; margin-top: 10px;">
-        </label>
-        <label class="form-label" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">Телефонен номер за връзка
-          <input type="tel" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX" style="font-size: 16px; padding: 16px; margin-top: 10px;">
-        </label>
-        <label class="form-label" id="budgetField" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">
-          Приблизителен бюджет за първия месец реклами <span class="optional-tag">(незадължително)</span>
-          <input type="text" name="budget" placeholder="напр. 500-5000" style="font-size: 16px; padding: 16px; margin-top: 10px;">
-        </label>
-        <div class="form-actions" style="margin-top: 24px;">
+        
+        <label for="emailInput" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Имейл адрес</label>
+        <input type="email" id="emailInput" name="email" required placeholder="напр. ivan@example.com" style="padding: 16px;">
+        
+        <label for="phoneInput" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Телефонен номер за връзка</label>
+        <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX" style="padding: 16px;">
+        
+        <div class="form-actions" style="margin-top: 32px;">
           <button type="button" class="cta-secondary form-back">Назад</button>
           <button type="submit" class="cta">Изпрати запитването</button>
         </div>
@@ -2641,7 +2645,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     const noChange = inquiryForm.no_change.value.trim();
     const email = inquiryForm.email.value.trim();
     const phone = inquiryForm.phone.value.trim();
-    const budget = inquiryForm.budget.value.trim();
 
     if (!email) {
       inquiryForm.email.reportValidity();
@@ -2660,7 +2663,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       `Имейл: ${email}`,
       `Телефон: ${phone}`,
     ];
-    if (budget) lines.push(`Приблизителен бюджет: ${budget}`);
     sendTelegramMessage(lines.join('\n'));
     fetch('/api/send-sms', {
       method: 'POST',
