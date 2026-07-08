@@ -2449,6 +2449,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
           Приблизителен бюджет за първия месец реклами <span class="optional-tag">(незадължително)</span>
           <input type="text" name="budget" placeholder="напр. 500-5000">
         </label>
+        <label class="form-label" style="font-size: 16px; font-weight: 700; margin-bottom: 24px;">Имейл адрес
+          <input type="email" name="email" required placeholder="напр. ivan@example.com" style="font-size: 18px; padding: 16px; margin-top: 10px;">
+        </label>
         <label class="form-label" style="font-size: 16px; font-weight: 700;">Телефонен номер за връзка
           <input type="tel" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX" style="font-size: 18px; padding: 16px; margin-top: 10px;">
         </label>
@@ -2673,9 +2676,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
     const noChange = inquiryForm.no_change.value.trim();
+    const email = inquiryForm.email.value.trim();
     const phone = inquiryForm.phone.value.trim();
     const budget = inquiryForm.budget.value.trim();
 
+    if (!email) {
+      inquiryForm.email.reportValidity();
+      return;
+    }
     if (!phone) {
       inquiryForm.phone.reportValidity();
       return;
@@ -2687,6 +2695,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       `Индустрия: ${industry}`,
       `Проблем: ${problem}`,
       `Ако нищо не се промени: ${noChange}`,
+      `Имейл: ${email}`,
       `Телефон: ${phone}`,
       'Запознат с бюджет за реклами: Да',
     ];
