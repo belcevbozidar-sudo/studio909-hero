@@ -374,55 +374,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   .offer-card{
     margin-top:56px;
-    position:relative;
-    border:none;
+    border:2px solid var(--orange);
     border-radius:20px;
     background:rgba(255,255,255,0.02);
-    box-shadow:0 0 0 1px rgba(242,113,45,0.15), 0 0 40px rgba(242,113,45,0.15), 0 40px 80px -40px rgba(0,0,0,0.7);
+    box-shadow:0 0 0 1px rgba(242,113,45,0.25), 0 0 40px rgba(242,113,45,0.15), 0 40px 80px -40px rgba(0,0,0,0.7);
     text-align:left;
     overflow:hidden;
-  }
-  .offer-card-border{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:10;
-  }
-  .offer-card-border rect{
-    x:1.5px;
-    y:1.5px;
-    width:calc(100% - 3px);
-    height:calc(100% - 3px);
-    rx:19px;
-    fill:none;
-  }
-  .offer-card-border .border-bg{
-    stroke:rgba(242,113,45,0.2);
-    stroke-width:2px;
-  }
-  .offer-card-border .border-tail{
-    stroke:#f2712d;
-    stroke-width:2px;
-    opacity:0.45;
-    stroke-dasharray:180 320;
-    animation:borderMove 10s linear infinite;
-  }
-  .offer-card-border .border-head{
-    stroke:#fff;
-    stroke-width:2px;
-    opacity:0.9;
-    stroke-dasharray:60 440;
-    animation:borderMove 10s linear infinite;
-  }
-  @keyframes borderMove {
-    from {
-      stroke-dashoffset: 1000;
-    }
-    to {
-      stroke-dashoffset: 0;
-    }
   }
   .offer-row{
     border-bottom:1px solid rgba(255,255,255,0.08);
@@ -1781,8 +1738,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     </div>
     <div class="nav-right">
       <a href="#offer" class="contact-btn">
-        <span class="label-desktop">Заяви оферта</span>
-        <span class="label-mobile">Заяви оферта</span>
+        <span class="label-desktop">Виж офертата</span>
+        <span class="label-mobile">Виж офертата</span>
       </a>
     </div>
   </nav>
@@ -1975,11 +1932,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <p class="offer-sub">12 услуги, обединени в едно, които целят да изкарат бизнеса ти от застой.</p>
 
     <div class="offer-card">
-      <svg class="offer-card-border" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect class="border-bg" />
-        <rect class="border-tail" pathLength="1000" />
-        <rect class="border-head" pathLength="1000" />
-      </svg>
+
       <div class="offer-row">
         <div class="offer-row-main">
           <div class="offer-row-left">
