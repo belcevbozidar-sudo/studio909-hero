@@ -2717,7 +2717,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       entries.forEach(entry => {
         entry.target.classList.toggle('in-view', entry.isIntersecting);
       });
-    }, { threshold: 0.5 });
+    }, { rootMargin: '-25% 0px -25% 0px', threshold: 0.2 });
     document.querySelectorAll('.pillar').forEach(pillar => pillarObserver.observe(pillar));
   }
 
