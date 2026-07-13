@@ -1186,16 +1186,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .wobble-question{
     display:inline-block;
-    animation:question-wiggle 2.5s ease-in-out infinite;
+    margin-left:8px;
+    animation:question-wiggle 4.5s ease-in-out infinite;
     transform-origin:bottom center;
     will-change:transform;
   }
   @keyframes question-wiggle{
-    0%, 100% { transform: rotate(0deg); }
-    20% { transform: rotate(-8deg); }
-    40% { transform: rotate(6deg); }
-    60% { transform: rotate(-6deg); }
-    80% { transform: rotate(4deg); }
+    0%, 75%, 100% { transform: rotate(0deg); }
+    78% { transform: rotate(-6deg); }
+    82% { transform: rotate(4deg); }
+    86% { transform: rotate(-3deg); }
+    90% { transform: rotate(2deg); }
+    94% { transform: rotate(-1deg); }
   }
   .final-cta-sub{
     color:#c9c9c9;
