@@ -1184,6 +1184,19 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     letter-spacing:-0.01em;
     line-height:1.2;
   }
+  .wobble-question{
+    display:inline-block;
+    animation:question-wiggle 2.5s ease-in-out infinite;
+    transform-origin:bottom center;
+    will-change:transform;
+  }
+  @keyframes question-wiggle{
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(6deg); }
+    60% { transform: rotate(-6deg); }
+    80% { transform: rotate(4deg); }
+  }
   .final-cta-sub{
     color:#c9c9c9;
     font-size:16.5px;
@@ -2330,7 +2343,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="final-cta">
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner">
-    <h2>Имаш ли възможност да инвестираш в развитието на бизнеса си?</h2>
+    <h2>Имаш ли възможност да инвестираш в развитието на бизнеса си<span class="wobble-question">?</span></h2>
     <button type="button" class="cta open-inquiry-btn" style="margin-top: 24px;">Заяви офертата</button>
     <div class="cta-note"><span class="pulse-dot"></span>Към момента има свободни места</div>
   </div>
