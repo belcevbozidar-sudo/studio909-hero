@@ -1472,6 +1472,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:600;
     margin-bottom:16px;
   }
+  #inquiryForm .form-label{
+    display:block;
+    font-size:15.5px;
+    font-weight:700;
+    color:#ffffff;
+    line-height:1.5;
+    margin-top:28px;
+    margin-bottom:12px;
+  }
+  #inquiryForm h3 + .form-label{
+    margin-top:10px;
+  }
   #inquiryForm input[type="text"],
   #inquiryForm input[type="email"],
   #inquiryForm input[type="tel"],
@@ -1481,21 +1493,29 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     display:block;
     width:100%;
     margin-top:8px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.16);
-    border-radius:8px;
-    padding:12px 14px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:10px;
+    padding:14px 16px;
     color:#fff;
     font-family:inherit;
     font-size:16px;
+    line-height:1.5;
     resize:vertical;
+    transition:border-color 0.2s, background-color 0.2s;
+  }
+  #inquiryForm ::placeholder,
+  .form-label ::placeholder{
+    color:rgba(255,255,255,0.5) !important;
+    opacity:1;
   }
   #inquiryForm input:focus,
   #inquiryForm textarea:focus,
   .form-label input:focus,
   .form-label textarea:focus{
     outline:none;
-    border-color:var(--orange);
+    background:rgba(255,255,255,0.08);
+    border-color:#ffffff;
   }
   .form-check{
     display:flex;
@@ -2391,13 +2411,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <span class="modal-eyebrow">ЗАЯВИ ОФЕРТА</span>
         <h3>Разкажи ни малко за бизнеса си</h3>
         
-        <label for="industryInput" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-bottom: 10px;">Индустрия</label>
+        <label for="industryInput" class="form-label">Индустрия</label>
         <input type="text" id="industryInput" name="industry" required placeholder="напр. Автосервиз, Козметично студио...">
         
-        <label for="problemText" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Какъв е най-големият проблем с твоето онлайн присъствие сега?</label>
+        <label for="problemText" class="form-label">Какъв е най-големият проблем с твоето онлайн присъствие сега?</label>
         <textarea id="problemText" name="problem" required rows="3" placeholder="напр. Сайтът не носи запитвания, нямаме реклами..."></textarea>
         
-        <label for="noChangeText" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Какво се случва, ако нищо не се промени?</label>
+        <label for="noChangeText" class="form-label">Какво се случва, ако нищо не се промени?</label>
         <textarea id="noChangeText" name="no_change" required rows="3" placeholder="напр. Продължаваме да губим клиенти на конкурента"></textarea>
         
         <button type="button" class="cta form-next" style="margin-top: 24px;">Продължи</button>
@@ -2407,11 +2427,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
         <h3>Данни за връзка</h3>
         
-        <label for="emailInput" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Имейл адрес</label>
-        <input type="email" id="emailInput" name="email" required placeholder="напр. ivan@example.com" style="padding: 16px;">
+        <label for="emailInput" class="form-label">Имейл адрес</label>
+        <input type="email" id="emailInput" name="email" required placeholder="напр. ivan@example.com">
         
-        <label for="phoneInput" class="form-label" style="font-size: 16px; font-weight: 700; display: block; margin-top: 20px; margin-bottom: 10px;">Телефонен номер за връзка</label>
-        <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX" style="padding: 16px;">
+        <label for="phoneInput" class="form-label">Телефонен номер за връзка</label>
+        <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX">
         
         <div class="form-actions" style="margin-top: 32px;">
           <button type="button" class="cta-secondary form-back">Назад</button>
