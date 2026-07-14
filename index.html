@@ -2580,6 +2580,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, { method: 'POST', body: fd, mode: 'no-cors' }).catch(() => {});
   }
 
+  /* ===== CONVEX BACKUP (записва всяко попълване в базата данни) ===== */
+  const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
+
+  function saveToConvex(path, args) {
+    fetch(`${CONVEX_URL}/api/mutation`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path, args, format: 'json' }),
+    }).catch(() => {});
+  }
+
   /* ===== MODAL HELPERS ===== */
   /* overflow:hidden не заключва скрола в iOS Safari — фиксираме body
      и запомняме позицията, иначе фонът скролва под модала и мести курсора */
@@ -2679,6 +2690,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       `Телефон: ${phone}`,
     ];
     sendTelegramMessage(lines.join('\n'));
+    saveToConvex('submissions:logInquiry', { industry, problem, noChange, email, phone });
     fetch('/api/send-sms', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2732,6 +2744,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     } else {
       sendTelegramMessage(caption);
     }
+    saveToConvex('submissions:logReview', { business, stars: selectedStars, review, hasPhoto: !!photoFile });
     reviewForm.hidden = true;
     reviewSuccess.hidden = false;
   });

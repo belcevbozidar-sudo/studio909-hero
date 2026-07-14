@@ -1,0 +1,27 @@
+{
+  "name": "new-model---big-offer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belcevbozidar-sudo/studio909-hero.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/belcevbozidar-sudo/studio909-hero/issues"
+  },
+  "homepage": "https://github.com/belcevbozidar-sudo/studio909-hero#readme",
+  "dependencies": {
+    "convex": "^1.42.1"
+  }
+}
