@@ -504,6 +504,50 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-decoration-thickness:2px;
     text-underline-offset:3px;
   }
+  .google-partner-badge{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    width:180px;
+    height:180px;
+    background:#ffffff;
+    border:1.5px solid #dadce0;
+    border-radius:12px;
+    text-decoration:none;
+    box-sizing:border-box;
+    padding:20px;
+    transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .google-partner-badge:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    border-color:#4285F4;
+  }
+  .google-partner-badge .ext-icon{
+    position:absolute;
+    top:12px;
+    right:12px;
+    color:#4285F4;
+    opacity:0.85;
+    transition:opacity 0.2s;
+  }
+  .google-partner-badge:hover .ext-icon{
+    opacity:1;
+  }
+  .google-partner-badge .google-g{
+    width:48px;
+    height:48px;
+    margin-bottom:14px;
+  }
+  .google-partner-badge .partner-text{
+    font-family:'Inter', 'Roboto', sans-serif;
+    font-size:18px;
+    font-weight:600;
+    color:#5f6368;
+    letter-spacing:-0.01em;
+  }
 
   /* EXAMPLE SITES SLIDER */
   .example-slider{
@@ -2026,6 +2070,23 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
                 <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
                 <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
               </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; width: 100%; margin-top: 24px; margin-bottom: 8px; padding: 0 26px; box-sizing: border-box;">
+              <a href="https://www.google.com/partners/agency?id=8564535390" target="_blank" rel="noopener" class="google-partner-badge">
+                <svg class="ext-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <svg class="google-g" viewBox="0 0 24 24">
+                  <path fill="#EA4335" d="M12 5.04c1.78 0 3.37.61 4.62 1.8l3.47-3.47C17.99 1.19 15.22 0 12 0 7.35 0 3.37 2.67 1.39 6.56l4.09 3.18C6.44 6.84 9 5.04 12 5.04z"></path>
+                  <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.41-4.91 3.41-8.6z"></path>
+                  <path fill="#FBBC05" d="M5.48 14.26c-.25-.75-.39-1.56-.39-2.39s.14-1.64.39-2.39L1.39 6.3C.5 8.09 0 10.09 0 12s.5 3.91 1.39 5.7l4.09-3.44z"></path>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.7-2.87c-1.02.68-2.33 1.09-3.96 1.09-3 0-5.56-1.8-6.52-4.7L1.39 17.7C3.37 21.33 7.35 24 12 24z"></path>
+                </svg>
+                <span class="partner-text">Google Partner</span>
+              </a>
             </div>
           </div>
         </div>
