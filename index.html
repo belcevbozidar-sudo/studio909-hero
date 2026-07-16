@@ -183,6 +183,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:800;
     letter-spacing:-0.015em;
   }
+  .hero-title .line-1,
+  .hero-title .line-2,
+  .hero-title .line-3{
+    display:inline;
+  }
   .mobile-br{
     display:none;
   }
@@ -1718,9 +1723,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .hero-content{padding:32px 12px 0;}
     .mobile-br{display:inline;}
     h1{
-      font-size:clamp(34px, 9.5vw, 38px);
+      font-size:clamp(31px, 8.8vw, 38px);
       line-height:1.15;
       letter-spacing:-0.045em;
+    }
+    .hero-title .line-1,
+    .hero-title .line-2,
+    .hero-title .line-3{
+      display:block;
+      white-space:nowrap;
     }
     .trusted-row{
       row-gap:8px;
@@ -1843,7 +1854,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <img src="assets/stars.png" alt="5 звезди" class="stars">
     </div>
 
-    <h1>Ако си сериозен в развитието<br class="mobile-br">на бизнеса си, виж<br class="mobile-br"><span class="h1-sub-wrap" style="margin-top: 0;">тази възможност<svg class="h1-underline" viewBox="0 0 300 14" preserveAspectRatio="none"><path pathLength="1" d="M4 7 L 296 7"></path></svg></span></h1>
+    <h1 class="hero-title">
+      <span class="line-1">Ако си сериозен в развитието</span><br class="mobile-br">
+      <span class="line-2">на бизнеса си, виж</span><br class="mobile-br">
+      <span class="line-3"><span class="h1-sub-wrap" style="margin-top: 0;">тази възможност<svg class="h1-underline" viewBox="0 0 300 14" preserveAspectRatio="none"><path pathLength="1" d="M4 7 L 296 7"></path></svg></span></span>
+    </h1>
 
     <p class="subtext">
       Сайт, SEO, реклами в Meta & Google. Цялостна стратегия за намиране на повече клиенти за бизнеса ти.
@@ -2242,16 +2257,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     </div>
 
     <div class="offer-price">
-      <h3 style="font-size:24px; font-weight:700; margin-bottom:12px;">Вземи цялата оферта (всички 12 услуги) за:</h3>
-      <div class="price-row" style="margin: 18px 0 22px;">
-        <span class="price-new" style="font-size: clamp(38px, 6vw, 52px); color: var(--orange, #f2712d);">850€</span>
-        <span class="price-bgn" style="font-size: clamp(22px, 3.5vw, 28px); color: #a0a0a0; margin-left: 6px;">/ 1662 лв.</span>
-      </div>
-      <p style="color:#ccc; font-size:16px; max-width:540px; margin:0 auto 24px; line-height:1.6;">
-        Фиксирана цена. Без скрити такси или месечни абонаменти. <br>
-        Изработваме <strong>безплатно демо</strong> на сайта ти предварително, за да видиш визията преди да платиш.
+      <h3 style="font-size:24px; font-weight:700; margin-bottom:12px;">Получи стратегия, оферта и безплатно демо</h3>
+      <p style="color:#ccc; font-size:16px; max-width:640px; margin:0 auto 20px; line-height:1.6; border:1px solid rgba(242, 113, 45, 0.35); background:rgba(242, 113, 45, 0.05); border-radius:12px; padding:18px 24px; box-sizing:border-box;">
+        Нормално е да не си експерт във всички тези сфери. Ако и ти смяташ, че добрият бизнес се развива тогава, когато хора от различни области се обединят, то нищо не ти коства да опиташ.
       </p>
-      <button type="button" class="cta open-inquiry-btn">Заяви безплатно демо</button>
+      <p style="color:#ccc; font-size:16px; max-width:640px; margin:0 auto 24px; line-height:1.6;">
+        Свържи се с нас, за да обсъдим плана и стратегията за твоя бизнес. Ще ти предоставим индивидуална оферта и ще изработим безплатно демо на сайта ти, за да видиш посоката и визията, преди да сме започнали.
+      </p>
+      <button type="button" class="cta open-inquiry-btn">Заяви безплатно демо и оферта</button>
       <div class="cta-note"><span class="pulse-dot"></span>Към момента има свободни места</div>
     </div>
 
