@@ -1450,7 +1450,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     pointer-events:none;
     transition:opacity .25s ease;
   }
-  /* Затъмнението и блурът са в ::before, а не върху самия overlay —
+  /* Затъмнението и блурът са в ::before, а не върху самия overlay -
      backdrop-filter върху родител на input чупи позицията на курсора в iOS Safari */
   .modal-overlay::before{
     content:"";
@@ -1478,7 +1478,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     transition:transform .25s ease;
   }
   .modal-overlay.open .modal-box{
-    /* transform:none (а не translateY(0)) — активен transform върху родител
+    /* transform:none (а не translateY(0)) - активен transform върху родител
        на input мести мигащия курсор на грешно място в iOS Safari */
     transform:none;
   }
@@ -2270,7 +2270,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div style="border: 1px solid rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.05); border-radius: 12px; padding: 22px 24px; max-width: 640px; margin: 0 auto 24px; text-align: center; box-sizing: border-box;">
         <p style="margin: 0 0 6px; color: #2ecc71; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Цена на услугата</p>
         <p style="margin: 0 0 4px; color: #fff; font-size: 30px; font-weight: 800; line-height: 1.2;">1400 € <span style="color: #aaa; font-size: 17px; font-weight: 600;">(2737 лв.)</span></p>
-        <p style="margin: 0 0 14px; color: #ccc; font-size: 14px;">еднократно — за всички изброени услуги по-горе освен Meta и Google рекламите</p>
+        <p style="margin: 0 0 14px; color: #ccc; font-size: 14px;">еднократно - за всички изброени услуги по-горе освен Meta и Google рекламите</p>
         <p style="margin: 0 0 4px; color: #fff; font-size: 24px; font-weight: 800; line-height: 1.2;">+ 250 € <span style="color: #aaa; font-size: 15px; font-weight: 600;">(489 лв.)</span> <span style="color: #ccc; font-size: 16px; font-weight: 600;">/ месец</span></p>
         <p style="margin: 0; color: #ccc; font-size: 14px;">за менажиране и оптимизиране на Meta и Google рекламите</p>
       </div>
@@ -2514,9 +2514,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <label for="problemText" class="form-label">Какъв е най-големият проблем с твоето онлайн присъствие сега?</label>
         <textarea id="problemText" name="problem" required rows="3" placeholder="напр. Сайтът не носи запитвания, нямаме реклами..."></textarea>
         
-        <label for="noChangeText" class="form-label">Какво се случва, ако нищо не се промени?</label>
-        <textarea id="noChangeText" name="no_change" required rows="3" placeholder="напр. Продължаваме да губим клиенти на конкурента"></textarea>
-        
         <button type="button" class="cta form-next" style="margin-top: 24px;">Продължи</button>
       </div>
 
@@ -2689,7 +2686,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
 
   /* ===== MODAL HELPERS ===== */
-  /* overflow:hidden не заключва скрола в iOS Safari — фиксираме body
+  /* overflow:hidden не заключва скрола в iOS Safari - фиксираме body
      и запомняме позицията, иначе фонът скролва под модала и мести курсора */
   let modalScrollY = 0;
   function openModal(id) {
@@ -2747,8 +2744,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   inquiryForm.querySelector('.form-next').addEventListener('click', () => {
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
-    const noChange = inquiryForm.no_change.value.trim();
-    if (!industry || !problem || !noChange) {
+    if (!industry || !problem) {
       inquiryForm.reportValidity();
       return;
     }
@@ -2765,7 +2761,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     e.preventDefault();
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
-    const noChange = inquiryForm.no_change.value.trim();
     const email = inquiryForm.email.value.trim();
     const phone = inquiryForm.phone.value.trim();
 
@@ -2782,12 +2777,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       '📩 Ново запитване от Big Offer сайта',
       `Индустрия: ${industry}`,
       `Проблем: ${problem}`,
-      `Ако нищо не се промени: ${noChange}`,
       `Имейл: ${email}`,
       `Телефон: ${phone}`,
     ];
     sendTelegramMessage(lines.join('\n'));
-    saveToConvex('submissions:logInquiry', { industry, problem, noChange, email, phone });
+    saveToConvex('submissions:logInquiry', { industry, problem, noChange: '', email, phone });
     fetch('/api/send-sms', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
