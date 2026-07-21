@@ -2338,10 +2338,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div>
           <h3>Изпращаш запитване</h3>
           <p>Попълваш кратка форма:</p>
-          <ul style="color:#aaa; font-size:14px; margin-top:8px; margin-left:20px; line-height:1.65; list-style-type: disc;">
+          <ul style="color:#aaa; font-size:14px; margin-top:14px; margin-left:20px; line-height:1.65; list-style-type: disc;">
             <li>Какъв е твоят бизнес?</li>
             <li>Какъв е най-големият проблем с онлайн присъствието ти сега?</li>
-            <li>Данни за връзка и линк към сегашния ти сайт, ако имаш такъв</li>
           </ul>
         </div>
       </div>
@@ -2509,10 +2508,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <h3>Разкажи ни малко за бизнеса си</h3>
         
         <label for="industryInput" class="form-label">Индустрия</label>
-        <input type="text" id="industryInput" name="industry" required placeholder="напр. Автосервиз, Козметично студио...">
+        <input type="text" id="industryInput" name="industry" required maxlength="200" placeholder="напр. Автосервиз, Козметично студио...">
         
         <label for="problemText" class="form-label">Какъв е най-големият проблем с твоето онлайн присъствие сега?</label>
-        <textarea id="problemText" name="problem" required rows="3" placeholder="напр. Сайтът не носи запитвания, нямаме реклами..."></textarea>
+        <textarea id="problemText" name="problem" required rows="3" maxlength="2000" placeholder="напр. Сайтът не носи запитвания, нямаме реклами..."></textarea>
         
         <button type="button" class="cta form-next" style="margin-top: 24px;">Продължи</button>
       </div>
@@ -2522,13 +2521,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <h3>Данни за връзка</h3>
         
         <label for="emailInput" class="form-label">Имейл адрес</label>
-        <input type="email" id="emailInput" name="email" required placeholder="напр. ivan@example.com">
+        <input type="email" id="emailInput" name="email" required maxlength="320" placeholder="напр. ivan@example.com">
         
         <label for="phoneInput" class="form-label">Телефонен номер за връзка</label>
-        <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX">
+        <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" maxlength="20" placeholder="08XX XXX XXX">
 
         <label for="websiteInput" class="form-label">Ако имаш сегашен сайт, остави ни линк към него (по избор)</label>
-        <input type="text" id="websiteInput" name="website" placeholder="напр. www.твоятсайт.bg">
+        <input type="text" id="websiteInput" name="website" maxlength="200" placeholder="напр. www.твоятсайт.bg">
 
         <div class="form-actions" style="margin-top: 32px;">
           <button type="button" class="cta-secondary form-back">Назад</button>
@@ -2555,11 +2554,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </label>
 
       <label class="form-label">Име на бизнеса
-        <input type="text" name="business" required placeholder="напр. Автосервиз Иванов">
+        <input type="text" name="business" required maxlength="200" placeholder="напр. Автосервиз Иванов">
       </label>
 
       <label class="form-label">Твоето ревю
-        <textarea name="review" required rows="4" placeholder="Разкажи какъв е твоят опит със Studio 9"></textarea>
+        <textarea name="review" required rows="4" maxlength="3000" placeholder="Разкажи какъв е твоят опит със Studio 9"></textarea>
       </label>
 
       <div class="star-picker" id="starPicker">
@@ -2660,21 +2659,32 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     });
   });
 
-  /* ===== TELEGRAM NOTIFICATIONS ===== */
-  const TG_TOKEN = '8691287054:AAHMb7f1fbTSxdzKvzRyytuRit-fJqYhI7c';
-  const TG_CHAT_ID = '8625026165';
-
+  /* ===== TELEGRAM NOTIFICATIONS =====
+     Минават през /api/notify на сървъра - бот токенът не присъства в браузъра. */
   function sendTelegramMessage(text) {
-    const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(text)}`;
-    fetch(url, { mode: 'no-cors' }).catch(() => {});
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text }),
+    }).catch(() => {});
   }
 
   function sendTelegramPhoto(photoFile, caption) {
-    const fd = new FormData();
-    fd.append('chat_id', TG_CHAT_ID);
-    fd.append('caption', caption);
-    fd.append('photo', photoFile);
-    fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, { method: 'POST', body: fd, mode: 'no-cors' }).catch(() => {});
+    if (photoFile.size > 3 * 1024 * 1024) {
+      sendTelegramMessage(caption + '\n(Прикачената снимка е над 3 MB и не беше изпратена)');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const photoBase64 = String(reader.result).split(',')[1];
+      fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ caption, photoBase64 }),
+      }).catch(() => {});
+    };
+    reader.onerror = () => sendTelegramMessage(caption + '\n(Снимката не можа да бъде прочетена)');
+    reader.readAsDataURL(photoFile);
   }
 
   /* ===== CONVEX BACKUP (записва всяко попълване в базата данни) ===== */

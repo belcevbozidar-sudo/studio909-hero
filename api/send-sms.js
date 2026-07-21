@@ -1,10 +1,40 @@
-function normalizeBgPhone(raw) {
+/* Праща потвърдителен SMS през Twilio. Приема САМО български мобилни номера
+   (+359 8x/9x...) — защита срещу SMS pumping измами с чужди премиум номера.
+   Rate limit по IP ограничава масови заявки. */
+
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_WINDOW = 3;
+const hits = new Map();
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  if (hits.size > 5000) hits.clear();
+  const recent = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
+  if (recent.length >= MAX_PER_WINDOW) {
+    hits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  hits.set(ip, recent);
+  return false;
+}
+
+function clientIp(req) {
+  const fwd = req.headers['x-forwarded-for'];
+  if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+  return req.socket?.remoteAddress || 'unknown';
+}
+
+/* Нормализира до +3598XXXXXXXX / +3599XXXXXXXX; всичко друго → null. */
+function normalizeBgMobile(raw) {
   const phone = String(raw || '').replace(/[\s\-().]/g, '');
-  if (phone.startsWith('+')) return /^\+\d{8,15}$/.test(phone) ? phone : null;
-  if (phone.startsWith('00')) return normalizeBgPhone('+' + phone.slice(2));
-  if (phone.startsWith('0')) return /^0\d{9}$/.test(phone) ? '+359' + phone.slice(1) : null;
-  if (/^359\d{9}$/.test(phone)) return '+' + phone;
-  return null;
+  let rest = null;
+  if (phone.startsWith('+359')) rest = phone.slice(4);
+  else if (phone.startsWith('00359')) rest = phone.slice(5);
+  else if (phone.startsWith('359')) rest = phone.slice(3);
+  else if (phone.startsWith('0')) rest = phone.slice(1);
+  if (!rest || !/^[89]\d{8}$/.test(rest)) return null;
+  return '+359' + rest;
 }
 
 export default async function handler(req, res) {
@@ -13,8 +43,13 @@ export default async function handler(req, res) {
     return;
   }
 
+  if (isRateLimited(clientIp(req))) {
+    res.status(429).json({ error: 'Too many requests' });
+    return;
+  }
+
   const { phone } = req.body || {};
-  const to = normalizeBgPhone(phone);
+  const to = normalizeBgMobile(phone);
   if (!to) {
     res.status(400).json({ error: 'Invalid phone' });
     return;
