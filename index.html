@@ -2341,7 +2341,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
           <ul style="color:#aaa; font-size:14px; margin-top:8px; margin-left:20px; line-height:1.65; list-style-type: disc;">
             <li>Какъв е твоят бизнес?</li>
             <li>Какъв е най-големият проблем с онлайн присъствието ти сега?</li>
-            <li>Какво се случва, ако нищо не се промени през следващите 6 месеца?</li>
+            <li>Данни за връзка и линк към сегашния ти сайт, ако имаш такъв</li>
           </ul>
         </div>
       </div>
@@ -2526,7 +2526,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         
         <label for="phoneInput" class="form-label">Телефонен номер за връзка</label>
         <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" placeholder="08XX XXX XXX">
-        
+
+        <label for="websiteInput" class="form-label">Ако имаш сегашен сайт, остави ни линк към него (по избор)</label>
+        <input type="text" id="websiteInput" name="website" placeholder="напр. www.твоятсайт.bg">
+
         <div class="form-actions" style="margin-top: 32px;">
           <button type="button" class="cta-secondary form-back">Назад</button>
           <button type="submit" class="cta">Изпрати запитването</button>
@@ -2763,6 +2766,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     const problem = inquiryForm.problem.value.trim();
     const email = inquiryForm.email.value.trim();
     const phone = inquiryForm.phone.value.trim();
+    const website = inquiryForm.website.value.trim();
 
     if (!email) {
       inquiryForm.email.reportValidity();
@@ -2779,6 +2783,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       `Проблем: ${problem}`,
       `Имейл: ${email}`,
       `Телефон: ${phone}`,
+      `Сегашен сайт: ${website || 'не е посочен'}`,
     ];
     sendTelegramMessage(lines.join('\n'));
     saveToConvex('submissions:logInquiry', { industry, problem, noChange: '', email, phone });
