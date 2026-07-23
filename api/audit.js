@@ -364,6 +364,23 @@ async function reviewSite({ url, screenshots, pageInfo }) {
   return JSON.parse(textBlock.text);
 }
 
+/* ---------------- Telegram известие (същия бот като формите) ---------------- */
+
+async function notifyTelegram(text) {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) return;
+  try {
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: String(text).slice(0, 4096) }),
+    });
+  } catch {
+    /* известието никога не трябва да проваля самия одит */
+  }
+}
+
 /* ---------------- HTTP handler ---------------- */
 
 export default async function handler(req, res) {
@@ -381,10 +398,19 @@ export default async function handler(req, res) {
   }
 
   const { url } = req.body || {};
+  const startedAt = Date.now();
   try {
     const safeUrl = await normalizeAndCheckUrl(url);
     const { screenshots, pageInfo } = await captureSite(safeUrl);
     const result = await reviewSite({ url: safeUrl, screenshots, pageInfo });
+    const elapsed = Math.round((Date.now() - startedAt) / 1000);
+    await notifyTelegram(
+      `🤖 Нов AI одит на сайт\n\n` +
+      `Сайт: ${safeUrl}\n` +
+      `Оценка: ${result.overall_score}/10\n` +
+      `Находки: ${result.findings?.length ?? '?'}\n` +
+      `Време: ${elapsed} сек`
+    );
     res.status(200).json({ url: safeUrl, result, screenshots });
   } catch (err) {
     const msg = err?.message || '';
@@ -395,6 +421,13 @@ export default async function handler(req, res) {
           ? 'Не успях да отворя сайта - провери дали адресът е верен и дали сайтът работи.'
           : 'Възникна неочаквана грешка при одита - опитай отново след малко.';
     console.error('[audit]', msg);
+    if (url && String(url).trim()) {
+      await notifyTelegram(
+        `⚠️ Неуспешен опит за AI одит\n\n` +
+        `Въведен адрес: ${String(url).trim().slice(0, 200)}\n` +
+        `Причина: ${friendly}`
+      );
+    }
     res.status(400).json({ error: friendly });
   }
 }
