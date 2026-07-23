@@ -23,8 +23,8 @@
   "homepage": "https://github.com/belcevbozidar-sudo/studio909-hero#readme",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
-    "@sparticuz/chromium": "^131.0.1",
+    "@sparticuz/chromium": "131.0.1",
     "convex": "^1.42.1",
-    "playwright-core": "^1.49.1"
+    "playwright-core": "1.49.1"
   }
 }
