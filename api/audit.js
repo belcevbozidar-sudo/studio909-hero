@@ -7,8 +7,10 @@
 import dns from 'node:dns/promises';
 import net from 'node:net';
 import chromiumPack from '@sparticuz/chromium';
-import { chromium as playwright } from 'playwright-core';
+import puppeteer from 'puppeteer-core';
 import Anthropic from '@anthropic-ai/sdk';
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 export const config = { maxDuration: 300 };
 
@@ -109,17 +111,24 @@ const COOKIE_BUTTON_TEXTS = [
 ];
 
 async function tryDismissCookieBanner(page) {
-  for (const text of COOKIE_BUTTON_TEXTS) {
-    try {
-      const btn = page.getByRole('button', { name: text, exact: false }).first();
-      if (await btn.isVisible({ timeout: 600 })) {
-        await btn.click({ timeout: 600 });
-        await page.waitForTimeout(300);
-        return;
+  try {
+    const clicked = await page.evaluate((texts) => {
+      const candidates = Array.from(document.querySelectorAll('button, [role="button"], a'));
+      for (const t of texts) {
+        const el = candidates.find(c => {
+          const txt = (c.innerText || '').trim().toLowerCase();
+          return txt && txt.length < 40 && txt.includes(t.toLowerCase());
+        });
+        if (el && el.offsetParent !== null) {
+          el.click();
+          return true;
+        }
       }
-    } catch {
-      /* продължи към следващия текст */
-    }
+      return false;
+    }, COOKIE_BUTTON_TEXTS);
+    if (clicked) await sleep(350);
+  } catch {
+    /* не е фатално */
   }
 }
 
@@ -136,7 +145,7 @@ async function waitForStableContent(page, { maxChecks = 5, intervalMs = 450 } = 
     }
     if (previous !== null && current === previous) return;
     previous = current;
-    await page.waitForTimeout(intervalMs);
+    await sleep(intervalMs);
   }
 }
 
@@ -165,8 +174,9 @@ async function extractPageInfo(page) {
 }
 
 async function launchBrowser() {
-  /* На Vercel ползваме лекия linux Chromium на @sparticuz; локално (dev) -
-     каквото playwright-core намери в системата. */
+  /* На Vercel ползваме лекия linux Chromium на @sparticuz с puppeteer-core -
+     това е двойката, за която @sparticuz/chromium е направен и тестван.
+     Локално (dev) - системният Chrome. */
   if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
     try {
       /* Шрифт с кирилица, иначе screenshot-ите на български сайтове са с "квадратчета" */
@@ -175,14 +185,18 @@ async function launchBrowser() {
     } catch {
       /* не е фатално */
     }
-    const executablePath = await chromiumPack.executablePath();
-    return playwright.launch({
+    return puppeteer.launch({
       args: chromiumPack.args,
-      executablePath,
-      headless: true,
+      defaultViewport: DESKTOP_VIEWPORT,
+      executablePath: await chromiumPack.executablePath(),
+      headless: chromiumPack.headless,
     });
   }
-  return playwright.launch({ headless: true });
+  return puppeteer.launch({
+    executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    defaultViewport: DESKTOP_VIEWPORT,
+    headless: true,
+  });
 }
 
 async function captureSite(url) {
@@ -190,10 +204,10 @@ async function captureSite(url) {
   const screenshots = [];
   let pageInfo = {};
   try {
-    const desktopContext = await browser.newContext({ viewport: DESKTOP_VIEWPORT });
-    const page = await desktopContext.newPage();
+    const page = await browser.newPage();
+    await page.setViewport(DESKTOP_VIEWPORT);
     await page.goto(url, { waitUntil: 'load', timeout: NAV_TIMEOUT_MS });
-    await page.waitForTimeout(500);
+    await sleep(500);
     await waitForStableContent(page);
     await tryDismissCookieBanner(page);
 
@@ -201,7 +215,7 @@ async function captureSite(url) {
 
     const shoot = async (label) => {
       const buffer = await page.screenshot({ type: 'jpeg', quality: JPEG_QUALITY });
-      screenshots.push({ label, base64: buffer.toString('base64') });
+      screenshots.push({ label, base64: Buffer.from(buffer).toString('base64') });
     };
 
     await shoot('Десктоп - горна част (hero)');
@@ -210,26 +224,26 @@ async function captureSite(url) {
     if (fullHeight > DESKTOP_VIEWPORT.height * 1.3) {
       const maxScroll = fullHeight - DESKTOP_VIEWPORT.height;
       await page.evaluate(y => window.scrollTo(0, y), Math.round(maxScroll * 0.45));
-      await page.waitForTimeout(350);
+      await sleep(350);
       await waitForStableContent(page);
       await shoot('Десктоп - среда на страницата');
 
       await page.evaluate(y => window.scrollTo(0, y), maxScroll);
-      await page.waitForTimeout(350);
+      await sleep(350);
       await waitForStableContent(page);
       await shoot('Десктоп - долна част / футър');
     }
-    await desktopContext.close();
+    await page.close();
 
-    const mobileContext = await browser.newContext({ viewport: MOBILE_VIEWPORT, isMobile: true });
-    const mobilePage = await mobileContext.newPage();
+    const mobilePage = await browser.newPage();
+    await mobilePage.setViewport({ ...MOBILE_VIEWPORT, isMobile: true, hasTouch: true });
     await mobilePage.goto(url, { waitUntil: 'load', timeout: NAV_TIMEOUT_MS });
-    await mobilePage.waitForTimeout(500);
+    await sleep(500);
     await waitForStableContent(mobilePage);
     await tryDismissCookieBanner(mobilePage);
     const mobileBuffer = await mobilePage.screenshot({ type: 'jpeg', quality: JPEG_QUALITY });
-    screenshots.push({ label: 'Мобилен изглед', base64: mobileBuffer.toString('base64') });
-    await mobileContext.close();
+    screenshots.push({ label: 'Мобилен изглед', base64: Buffer.from(mobileBuffer).toString('base64') });
+    await mobilePage.close();
   } finally {
     await browser.close();
   }
