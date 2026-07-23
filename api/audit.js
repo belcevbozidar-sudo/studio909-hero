@@ -13,6 +13,9 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 export const config = { maxDuration: 300 };
 
+const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
+const SITE_URL = 'https://www.studio9.site';
+
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
 const NAV_TIMEOUT_MS = 25000;
 const DESKTOP_VIEWPORT = { width: 1440, height: 900 };
@@ -397,6 +400,56 @@ async function reviewSite({ url, screenshots, pageInfo }) {
   return JSON.parse(textBlock.text);
 }
 
+/* ---------------- Запис в Convex (за админ страницата с всички одити) ---------------- */
+
+async function convexMutation(path, args) {
+  const resp = await fetch(`${CONVEX_URL}/api/mutation`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path, args, format: 'json' }),
+  });
+  const data = await resp.json();
+  if (data.status !== 'success') throw new Error(data.errorMessage || 'Convex mutation failed');
+  return data.value;
+}
+
+async function uploadScreenshotToConvex(base64) {
+  const uploadUrl = await convexMutation('audits:generateUploadUrl', {});
+  const buffer = Buffer.from(base64, 'base64');
+  const resp = await fetch(uploadUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'image/jpeg' },
+    body: buffer,
+  });
+  const data = await resp.json();
+  if (!data.storageId) throw new Error('Convex upload failed');
+  return data.storageId;
+}
+
+/* Записва пълния резултат в Convex, за да е видим по-късно в защитената
+   админ страница. Никога не трябва да проваля самия одит за посетителя -
+   грешка тук просто означава, че този одит няма да се вижда в архива. */
+async function saveAuditToConvex({ url, result, screenshots }) {
+  const screenshotIds = [];
+  for (const s of screenshots) {
+    screenshotIds.push(await uploadScreenshotToConvex(s.base64));
+  }
+  return convexMutation('audits:save', {
+    url,
+    overallScore: result.overall_score,
+    overallImpression: result.overall_impression,
+    topPriority: result.top_priority,
+    findings: (result.findings || []).map(f => ({
+      category: f.category,
+      severity: f.severity,
+      summary: f.summary,
+      recommendation: f.recommendation,
+      screenshotIndex: f.screenshot_index ?? null,
+    })),
+    screenshotIds,
+  });
+}
+
 /* ---------------- Telegram известие (същия бот като формите) ---------------- */
 
 async function notifyTelegram(text) {
@@ -437,12 +490,21 @@ export default async function handler(req, res) {
     const { screenshots, pageInfo } = await captureSite(safeUrl);
     const result = await reviewSite({ url: safeUrl, screenshots, pageInfo });
     const elapsed = Math.round((Date.now() - startedAt) / 1000);
+
+    let auditId = null;
+    try {
+      auditId = await saveAuditToConvex({ url: safeUrl, result, screenshots });
+    } catch (saveErr) {
+      console.error('[audit] Convex save failed:', saveErr.message);
+    }
+
     await notifyTelegram(
       `🤖 Нов AI одит на сайт\n\n` +
       `Сайт: ${safeUrl}\n` +
       `Оценка: ${result.overall_score}/10\n` +
       `Находки: ${result.findings?.length ?? '?'}\n` +
-      `Време: ${elapsed} сек`
+      `Време: ${elapsed} сек` +
+      (auditId ? `\n\nПълен резултат: ${SITE_URL}/admin/?id=${auditId}` : '')
     );
     res.status(200).json({ url: safeUrl, result, screenshots });
   } catch (err) {

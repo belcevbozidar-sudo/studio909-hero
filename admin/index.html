@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AI одити - Studio 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{ --orange:#f2712d; --bg:#050505; }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:#eee;
+    font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;
+    min-height:100vh;
+  }
+  .wrap{ max-width:860px; margin:0 auto; padding:48px 20px 100px; }
+  h1{ font-size:26px; font-weight:800; margin:0 0 6px; }
+  .sub{ color:#888; font-size:14px; margin:0 0 32px; }
+
+  /* ---- Login ---- */
+  #loginBox{
+    max-width:380px;
+    margin:80px auto 0;
+    background:#0d0d0d;
+    border:1px solid #1f1f1f;
+    border-radius:16px;
+    padding:32px 28px;
+    text-align:center;
+  }
+  #loginBox h1{ font-size:20px; }
+  #loginBox input{
+    width:100%;
+    background:#161616;
+    border:1px solid #2a2a2a;
+    border-radius:10px;
+    color:#fff;
+    font-family:inherit;
+    font-size:16px;
+    padding:14px 16px;
+    margin:18px 0 12px;
+    outline:none;
+  }
+  #loginBox input:focus{ border-color:var(--orange); }
+  .btn{
+    display:inline-block;
+    background:var(--orange);
+    color:#fff;
+    border:none;
+    font-family:inherit;
+    font-weight:700;
+    font-size:14px;
+    padding:14px 26px;
+    border-radius:8px;
+    cursor:pointer;
+    width:100%;
+  }
+  #loginError{ color:#ff6b57; font-size:13px; margin-top:12px; min-height:16px; }
+
+  /* ---- List ---- */
+  .audit-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:#101010;
+    border:1px solid #1f1f1f;
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+    transition:border-color .15s ease;
+  }
+  .audit-row:hover{ border-color:#3a3a3a; }
+  .audit-row-score{
+    flex-shrink:0;
+    width:46px; height:46px;
+    border-radius:50%;
+    border:2px solid var(--orange);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:14px;
+  }
+  .audit-row-main{ flex:1; min-width:0; }
+  .audit-row-url{ font-size:15px; font-weight:600; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .audit-row-meta{ font-size:12.5px; color:#888; margin-top:3px; }
+  .empty-state{ color:#777; text-align:center; padding:60px 0; }
+  .back-link{ display:inline-block; color:#999; font-size:13.5px; text-decoration:none; margin-bottom:18px; }
+  .back-link:hover{ color:#fff; }
+
+  /* ---- Single audit (reused styling from the public results view) ---- */
+  .score-row{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin-bottom:24px; }
+  .score-badge{
+    flex-shrink:0; width:96px; height:96px; border-radius:50%;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:radial-gradient(circle at 30% 25%, #1d1d1d, #101010);
+    border:3px solid var(--orange);
+  }
+  .score-badge strong{ color:#fff; font-size:30px; line-height:1; }
+  .score-badge span{ color:#888; font-size:11px; margin-top:4px; }
+  .impression{ color:#ccc; font-size:15px; line-height:1.65; flex:1 1 320px; margin:0; }
+  .top-priority{
+    background:rgba(242,113,45,0.07); border:1px solid rgba(242,113,45,0.4);
+    border-radius:12px; padding:18px 20px; margin-bottom:28px;
+  }
+  .top-priority strong{ display:block; color:var(--orange); font-size:12px; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:8px; }
+  .top-priority p{ color:#eee; font-size:15px; line-height:1.6; margin:0; }
+  .finding{ background:#121212; border:1px solid #222; border-radius:12px; padding:20px 22px; margin-bottom:14px; }
+  .finding-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .sev{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; border-radius:6px; padding:4px 9px; }
+  .sev.high{ background:rgba(231,76,60,0.15); color:#ff7b6b; }
+  .sev.medium{ background:rgba(242,113,45,0.15); color:#ff9d5c; }
+  .sev.low{ background:rgba(255,255,255,0.07); color:#aaa; }
+  .finding-cat{ color:#fff; font-size:14.5px; font-weight:700; }
+  .finding p{ color:#bbb; font-size:14px; line-height:1.6; margin:0 0 10px; }
+  .finding p.rec b{ color:var(--orange); font-weight:700; }
+  .shot{ margin-top:6px; max-height:110px; border-radius:8px; border:1px solid #2a2a2a; cursor:zoom-in; object-fit:cover; object-position:top; max-width:100%; transition:max-height .3s ease; }
+  .shot.expanded{ max-height:2000px; cursor:zoom-out; object-fit:contain; }
+
+  [hidden]{ display:none !important; }
+</style>
+</head>
+<body>
+
+<div id="loginBox">
+  <h1>AI одити - вход</h1>
+  <input type="password" id="pwInput" placeholder="Парола" autocomplete="current-password">
+  <button type="button" class="btn" id="loginBtn">Влез</button>
+  <p id="loginError"></p>
+</div>
+
+<div class="wrap" id="appWrap" hidden>
+
+  <div id="listView">
+    <h1>AI одити на сайтове</h1>
+    <p class="sub">Всички проверки, направени през формата на сайта.</p>
+    <div id="listBody"></div>
+  </div>
+
+  <div id="singleView" hidden>
+    <a href="/admin/" class="back-link">← Обратно към всички одити</a>
+    <div id="singleBody"></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const TOKEN_KEY = 'studio9_admin_token';
+  const loginBox = document.getElementById('loginBox');
+  const appWrap = document.getElementById('appWrap');
+  const pwInput = document.getElementById('pwInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginError = document.getElementById('loginError');
+  const listView = document.getElementById('listView');
+  const singleView = document.getElementById('singleView');
+  const listBody = document.getElementById('listBody');
+  const singleBody = document.getElementById('singleBody');
+
+  function getToken() { return localStorage.getItem(TOKEN_KEY); }
+  function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+  function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+  async function login(password) {
+    loginError.textContent = '';
+    loginBtn.disabled = true;
+    try {
+      const resp = await fetch('/api/admin-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || 'Грешка при вход.');
+      setToken(data.token);
+      showApp();
+    } catch (err) {
+      loginError.textContent = err.message;
+    } finally {
+      loginBtn.disabled = false;
+    }
+  }
+
+  loginBtn.addEventListener('click', () => {
+    if (!pwInput.value) return;
+    login(pwInput.value);
+  });
+  pwInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); loginBtn.click(); }
+  });
+
+  async function apiGet(path) {
+    const token = getToken();
+    const resp = await fetch(path, { headers: { Authorization: 'Bearer ' + token } });
+    if (resp.status === 401) {
+      clearToken();
+      showLogin();
+      throw new Error('Сесията е изтекла.');
+    }
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'Грешка.');
+    return data;
+  }
+
+  function fmtDate(ts) {
+    return new Date(ts).toLocaleString('bg-BG', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  async function renderList() {
+    listBody.textContent = 'Зареждам...';
+    try {
+      const { items } = await apiGet('/api/admin-data?action=list');
+      if (!items.length) {
+        listBody.innerHTML = '';
+        const empty = document.createElement('p');
+        empty.className = 'empty-state';
+        empty.textContent = 'Все още няма направени одити.';
+        listBody.appendChild(empty);
+        return;
+      }
+      listBody.innerHTML = '';
+      items.forEach(item => {
+        const row = document.createElement('a');
+        row.className = 'audit-row';
+        row.href = '/admin/?id=' + item.id;
+        row.addEventListener('click', e => { e.preventDefault(); openAudit(item.id); });
+
+        const badge = document.createElement('div');
+        badge.className = 'audit-row-score';
+        badge.textContent = item.overallScore;
+
+        const main = document.createElement('div');
+        main.className = 'audit-row-main';
+        const urlEl = document.createElement('div');
+        urlEl.className = 'audit-row-url';
+        urlEl.textContent = item.url;
+        const meta = document.createElement('div');
+        meta.className = 'audit-row-meta';
+        meta.textContent = fmtDate(item.createdAt) + ' · ' + item.findingsCount + ' находки';
+        main.appendChild(urlEl);
+        main.appendChild(meta);
+
+        row.appendChild(badge);
+        row.appendChild(main);
+        listBody.appendChild(row);
+      });
+    } catch (err) {
+      listBody.textContent = err.message;
+    }
+  }
+
+  const SEV_LABELS = { high: 'Важно', medium: 'Средно', low: 'Дребно' };
+
+  function renderSingle(item) {
+    singleBody.innerHTML = '';
+
+    const h1 = document.createElement('h1');
+    h1.textContent = item.url;
+    const sub = document.createElement('p');
+    sub.className = 'sub';
+    sub.textContent = fmtDate(item.createdAt);
+    singleBody.appendChild(h1);
+    singleBody.appendChild(sub);
+
+    const scoreRow = document.createElement('div');
+    scoreRow.className = 'score-row';
+    const badge = document.createElement('div');
+    badge.className = 'score-badge';
+    badge.innerHTML = '<strong>' + item.overallScore + '/10</strong><span>обща оценка</span>';
+    const impression = document.createElement('p');
+    impression.className = 'impression';
+    impression.textContent = item.overallImpression || '';
+    scoreRow.appendChild(badge);
+    scoreRow.appendChild(impression);
+    singleBody.appendChild(scoreRow);
+
+    if (item.topPriority) {
+      const top = document.createElement('div');
+      top.className = 'top-priority';
+      top.innerHTML = '<strong>Започни от тук - най-голям ефект</strong><p></p>';
+      top.querySelector('p').textContent = item.topPriority;
+      singleBody.appendChild(top);
+    }
+
+    (item.findings || []).forEach(f => {
+      const card = document.createElement('div');
+      card.className = 'finding';
+      const head = document.createElement('div');
+      head.className = 'finding-head';
+      const sev = document.createElement('span');
+      sev.className = 'sev ' + (f.severity || 'low');
+      sev.textContent = SEV_LABELS[f.severity] || f.severity || '';
+      const cat = document.createElement('span');
+      cat.className = 'finding-cat';
+      cat.textContent = f.category || '';
+      head.appendChild(sev);
+      head.appendChild(cat);
+      card.appendChild(head);
+
+      const sum = document.createElement('p');
+      sum.textContent = f.summary || '';
+      card.appendChild(sum);
+
+      const rec = document.createElement('p');
+      rec.className = 'rec';
+      rec.innerHTML = '<b>Какво да направиш: </b>';
+      rec.appendChild(document.createTextNode(f.recommendation || ''));
+      card.appendChild(rec);
+
+      const idx = f.screenshotIndex;
+      if (idx !== null && idx !== undefined && item.screenshotUrls[idx]) {
+        const img = document.createElement('img');
+        img.className = 'shot';
+        img.loading = 'lazy';
+        img.src = item.screenshotUrls[idx];
+        img.addEventListener('click', () => img.classList.toggle('expanded'));
+        card.appendChild(img);
+      }
+      singleBody.appendChild(card);
+    });
+  }
+
+  async function openAudit(id) {
+    history.pushState({}, '', '/admin/?id=' + id);
+    listView.hidden = true;
+    singleView.hidden = false;
+    singleBody.textContent = 'Зареждам...';
+    try {
+      const { item } = await apiGet('/api/admin-data?action=get&id=' + encodeURIComponent(id));
+      renderSingle(item);
+    } catch (err) {
+      singleBody.textContent = err.message;
+    }
+  }
+
+  function showList() {
+    history.pushState({}, '', '/admin/');
+    singleView.hidden = true;
+    listView.hidden = false;
+    renderList();
+  }
+
+  document.querySelector('.back-link').addEventListener('click', e => {
+    e.preventDefault();
+    showList();
+  });
+
+  function showApp() {
+    loginBox.hidden = true;
+    appWrap.hidden = false;
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    if (id) openAudit(id); else renderList();
+  }
+
+  function showLogin() {
+    loginBox.hidden = false;
+    appWrap.hidden = true;
+    pwInput.focus();
+  }
+
+  if (getToken()) showApp(); else showLogin();
+})();
+</script>
+
+</body>
+</html>
