@@ -2626,18 +2626,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .ai-audit-cta-box p{ color:#eee; font-size:16px; font-weight:600; margin:0; }
   .ai-audit-cta-box .cta{ margin-top:18px; }
-  .ai-audit-restart{
-    display:block;
-    margin:22px auto 0;
-    background:none;
-    border:none;
-    color:#777;
-    font-family:inherit;
-    font-size:13px;
-    cursor:pointer;
-    text-decoration:underline;
-  }
-  .ai-audit-restart:hover{ color:#aaa; }
   @media (max-width:600px){
     .ai-audit{ padding:70px 18px 80px; }
     .ai-audit-panel{ padding:26px 18px; }
@@ -2683,10 +2671,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div id="aiAuditResults" hidden>
         <div id="aiAuditResultsBody"></div>
         <div class="ai-audit-cta-box">
-          <p>Искаш ли ние да оправим всичко това вместо теб - и да направим сайт, който носи клиенти?</p>
+          <p>Ако искаш да видиш как бихме ти помогнали и каква стратегия бихме предложили - свържи се с нас.</p>
           <button type="button" class="cta open-inquiry-btn">Заяви безплатно демо</button>
         </div>
-        <button type="button" class="ai-audit-restart" id="aiAuditRestartBtn">Провери друг сайт</button>
       </div>
 
     </div>
@@ -3336,7 +3323,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   const errorEl = document.getElementById('aiAuditError');
   const barFill = document.getElementById('aiAuditBarFill');
   const statusText = document.getElementById('aiAuditStatusText');
-  const restartBtn = document.getElementById('aiAuditRestartBtn');
   if (!openBtn || !panel) return;
 
   /* Статуси - подредени, без повторения. Прогресът върви бързо в началото
@@ -3593,11 +3579,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   startBtn.addEventListener('click', startAudit);
   urlInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') { e.preventDefault(); startAudit(); }
-  });
-  restartBtn.addEventListener('click', () => {
-    urlInput.value = '';
-    setState('form');
-    urlInput.focus();
   });
 })();
 </script>
