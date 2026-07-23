@@ -12,6 +12,14 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
+/* Vercel не изпраща AWS_* променливите, по които @sparticuz/chromium разбира,
+   че работи в Lambda-подобна среда и че трябва да разархивира и системните
+   библиотеки на браузъра (libnss3 и др.), не само самия binary. Без това
+   стартирането гърми с "libnss3.so: cannot open shared object file". */
+if (process.env.VERCEL && !process.env.AWS_LAMBDA_JS_RUNTIME) {
+  process.env.AWS_LAMBDA_JS_RUNTIME = 'nodejs20.x';
+}
+
 export const config = { maxDuration: 300 };
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
