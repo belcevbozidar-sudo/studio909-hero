@@ -20,6 +20,28 @@ const MOBILE_VIEWPORT = { width: 390, height: 844 };
 const MAX_BODY_TEXT_CHARS = 5000;
 const JPEG_QUALITY = 55;
 
+/* Нормален браузърски User-Agent (без "HeadlessChrome") + български език -
+   иначе някои хостинги/WAF-ове разпознават заявката като бот и блокират. */
+const DESKTOP_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+const MOBILE_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
+const ACCEPT_LANGUAGE = 'bg-BG,bg;q=0.9,en;q=0.8';
+
+/* Маркери, че сме получили блокираща/защитна страница вместо реалния сайт.
+   В такъв случай е по-честно да спрем одита, отколкото да дадем подвеждаща
+   ниска оценка на сайт, който реално си работи за нормални посетители. */
+const BLOCK_MARKERS = [
+  'local_rate_limited', 'rate limited', 'too many requests', 'access denied',
+  'attention required', 'checking your browser', 'verify you are human',
+  'enable javascript and cookies', 'ddos protection', 'captcha',
+];
+
+function looksBlocked(bodyText) {
+  const text = (bodyText || '').trim().toLowerCase();
+  if (text.length < 40) return true;
+  if (text.length < 600 && BLOCK_MARKERS.some(m => text.includes(m))) return true;
+  return false;
+}
+
 /* ---------------- Rate limit (както в notify.js) ---------------- */
 
 const WINDOW_MS = 10 * 60 * 1000;
@@ -215,12 +237,20 @@ async function captureSite(url) {
   try {
     const page = await browser.newPage();
     await page.setViewport(DESKTOP_VIEWPORT);
+    await page.setUserAgent(DESKTOP_UA);
+    await page.setExtraHTTPHeaders({ 'Accept-Language': ACCEPT_LANGUAGE });
     await page.goto(url, { waitUntil: 'load', timeout: NAV_TIMEOUT_MS });
     await sleep(500);
     await waitForStableContent(page);
     await tryDismissCookieBanner(page);
 
     pageInfo = await extractPageInfo(page);
+
+    if (looksBlocked(pageInfo.bodyText)) {
+      throw new Error(
+        'Сайтът не се зареди коректно при автоматизираната проверка - вероятно хостингът му блокира заявки от сървъри. Одитът е спрян, за да не получиш подвеждащ резултат.'
+      );
+    }
 
     const shoot = async (label) => {
       const buffer = await page.screenshot({ type: 'jpeg', quality: JPEG_QUALITY });
@@ -246,6 +276,8 @@ async function captureSite(url) {
 
     const mobilePage = await browser.newPage();
     await mobilePage.setViewport({ ...MOBILE_VIEWPORT, isMobile: true, hasTouch: true });
+    await mobilePage.setUserAgent(MOBILE_UA);
+    await mobilePage.setExtraHTTPHeaders({ 'Accept-Language': ACCEPT_LANGUAGE });
     await mobilePage.goto(url, { waitUntil: 'load', timeout: NAV_TIMEOUT_MS });
     await sleep(500);
     await waitForStableContent(mobilePage);
@@ -415,7 +447,7 @@ export default async function handler(req, res) {
   } catch (err) {
     const msg = err?.message || '';
     const friendly =
-      /Моля|адрес|сайт|проверен|валиден|http/.test(msg)
+      /Моля|адрес|сайт|проверен|валиден|http|зареди|блокира/i.test(msg)
         ? msg
         : /Timeout|timeout|net::|NS_ERROR/.test(msg)
           ? 'Не успях да отворя сайта - провери дали адресът е верен и дали сайтът работи.'
