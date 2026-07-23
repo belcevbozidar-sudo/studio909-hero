@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/audit.js": { "maxDuration": 300, "memory": 1792 }
+  },
   "headers": [
     {
       "source": "/(.*)",

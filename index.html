@@ -2386,6 +2386,311 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   </div>
 </section>
 
+<section class="ai-audit" id="ai-audit">
+<style>
+  .ai-audit{
+    background:var(--bg);
+    padding:90px 24px 100px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .ai-audit-glow{
+    position:absolute;
+    top:-120px; left:50%;
+    transform:translateX(-50%);
+    width:640px; height:420px;
+    background:radial-gradient(ellipse at center, rgba(242,113,45,0.14), transparent 65%);
+    pointer-events:none;
+  }
+  .ai-audit-inner{ max-width:860px; margin:0 auto; position:relative; }
+  .ai-audit-mega-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-top:36px;
+    background:linear-gradient(135deg, #ff8a3d, var(--orange) 55%, #e05a15);
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+    font-weight:800;
+    font-size:17px;
+    letter-spacing:0.3px;
+    padding:22px 40px;
+    border-radius:12px;
+    box-shadow:0 14px 44px rgba(242,113,45,0.5), 0 0 0 0 rgba(242,113,45,0.5);
+    animation:aiAuditPulse 2.2s infinite;
+    transition:transform .2s ease;
+  }
+  .ai-audit-mega-btn:hover{ transform:translateY(-2px) scale(1.02); }
+  @keyframes aiAuditPulse{
+    0%{ box-shadow:0 14px 44px rgba(242,113,45,0.5), 0 0 0 0 rgba(242,113,45,0.45); }
+    70%{ box-shadow:0 14px 44px rgba(242,113,45,0.5), 0 0 0 22px rgba(242,113,45,0); }
+    100%{ box-shadow:0 14px 44px rgba(242,113,45,0.5), 0 0 0 0 rgba(242,113,45,0); }
+  }
+  .ai-audit-panel{
+    margin-top:38px;
+    background:#0d0d0d;
+    border:1px solid #1f1f1f;
+    border-radius:16px;
+    padding:34px 30px;
+    text-align:left;
+  }
+  .ai-audit-panel[hidden]{ display:none; }
+  .ai-audit-label{ display:block; color:#ccc; font-size:14px; font-weight:600; margin-bottom:10px; }
+  .ai-audit-input-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .ai-audit-input-row input{
+    flex:1 1 260px;
+    background:#161616;
+    border:1px solid #2a2a2a;
+    border-radius:10px;
+    color:#fff;
+    font-family:inherit;
+    font-size:16px;
+    padding:16px 18px;
+    outline:none;
+    transition:border-color .2s ease;
+  }
+  .ai-audit-input-row input:focus{ border-color:var(--orange); }
+  .ai-audit-input-row .cta{ margin-top:0; padding:16px 28px; }
+  .ai-audit-hint{ color:#777; font-size:13px; margin-top:12px; }
+  .ai-audit-error{
+    margin-top:14px;
+    color:#ff6b57;
+    background:rgba(231,76,60,0.08);
+    border:1px solid rgba(231,76,60,0.35);
+    border-radius:10px;
+    padding:12px 16px;
+    font-size:14px;
+  }
+  .ai-audit-error[hidden]{ display:none; }
+  .ai-audit-bar{
+    width:100%;
+    height:12px;
+    background:#1b1b1b;
+    border-radius:99px;
+    overflow:hidden;
+  }
+  #aiAuditBarFill{
+    height:100%;
+    width:0%;
+    border-radius:99px;
+    background:linear-gradient(90deg, #ff8a3d, var(--orange));
+    box-shadow:0 0 16px rgba(242,113,45,0.6);
+    transition:width .35s ease;
+  }
+  #aiAuditStatusText{
+    margin-top:16px;
+    color:#ddd;
+    font-size:15px;
+    min-height:22px;
+  }
+  #aiAuditStatusText::after{
+    content:'';
+    display:inline-block;
+    width:1.2em;
+    text-align:left;
+    animation:aiAuditDots 1.4s steps(4) infinite;
+  }
+  @keyframes aiAuditDots{
+    0%{ content:''; } 25%{ content:'.'; } 50%{ content:'..'; } 75%{ content:'...'; }
+  }
+  .ai-audit-quiz{
+    margin-top:30px;
+    background:#121212;
+    border:1px solid #222;
+    border-radius:14px;
+    padding:24px;
+  }
+  .ai-audit-quiz-eyebrow{
+    display:block;
+    color:var(--orange);
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:12px;
+  }
+  #aiQuizQuestion{ color:#fff; font-size:16px; font-weight:600; line-height:1.5; margin:0 0 16px; }
+  #aiQuizOptions{ display:flex; flex-direction:column; gap:10px; }
+  .ai-quiz-opt{
+    background:#181818;
+    border:1px solid #2a2a2a;
+    border-radius:10px;
+    color:#ddd;
+    font-family:inherit;
+    font-size:14.5px;
+    text-align:left;
+    padding:13px 16px;
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .ai-quiz-opt:hover{ border-color:var(--orange); }
+  .ai-quiz-opt.correct{ border-color:#2ecc71; background:rgba(46,204,113,0.1); color:#fff; }
+  .ai-quiz-opt.wrong{ border-color:#e74c3c; background:rgba(231,76,60,0.1); }
+  .ai-quiz-opt:disabled{ cursor:default; }
+  #aiQuizFeedback{ margin:14px 0 0; color:#bbb; font-size:13.5px; line-height:1.5; }
+  #aiQuizFeedback[hidden]{ display:none; }
+  #aiQuizScore{ display:block; margin-top:14px; color:#777; font-size:12.5px; }
+  #aiAuditResults[hidden]{ display:none; }
+  .ai-audit-score-row{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+    margin-bottom:24px;
+  }
+  .ai-audit-score-badge{
+    flex-shrink:0;
+    width:96px; height:96px;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(circle at 30% 25%, #1d1d1d, #101010);
+    border:3px solid var(--orange);
+    box-shadow:0 0 28px rgba(242,113,45,0.35);
+  }
+  .ai-audit-score-badge strong{ color:#fff; font-size:30px; line-height:1; }
+  .ai-audit-score-badge span{ color:#888; font-size:11px; margin-top:4px; }
+  .ai-audit-impression{ color:#ccc; font-size:15px; line-height:1.65; flex:1 1 320px; margin:0; }
+  .ai-audit-top-priority{
+    background:rgba(242,113,45,0.07);
+    border:1px solid rgba(242,113,45,0.4);
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:28px;
+  }
+  .ai-audit-top-priority strong{
+    display:block;
+    color:var(--orange);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    margin-bottom:8px;
+  }
+  .ai-audit-top-priority p{ color:#eee; font-size:15px; line-height:1.6; margin:0; }
+  .ai-audit-finding{
+    background:#121212;
+    border:1px solid #222;
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:14px;
+  }
+  .ai-audit-finding-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .ai-audit-sev{
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    border-radius:6px;
+    padding:4px 9px;
+  }
+  .ai-audit-sev.high{ background:rgba(231,76,60,0.15); color:#ff7b6b; }
+  .ai-audit-sev.medium{ background:rgba(242,113,45,0.15); color:#ff9d5c; }
+  .ai-audit-sev.low{ background:rgba(255,255,255,0.07); color:#aaa; }
+  .ai-audit-finding-cat{ color:#fff; font-size:14.5px; font-weight:700; }
+  .ai-audit-finding p{ color:#bbb; font-size:14px; line-height:1.6; margin:0 0 10px; }
+  .ai-audit-finding p.rec{ color:#ddd; }
+  .ai-audit-finding p.rec b{ color:var(--orange); font-weight:700; }
+  .ai-audit-shot{
+    margin-top:6px;
+    max-height:110px;
+    border-radius:8px;
+    border:1px solid #2a2a2a;
+    cursor:zoom-in;
+    object-fit:cover;
+    object-position:top;
+    max-width:100%;
+    transition:max-height .3s ease;
+  }
+  .ai-audit-shot.expanded{ max-height:2000px; cursor:zoom-out; object-fit:contain; }
+  .ai-audit-cta-box{
+    margin-top:30px;
+    text-align:center;
+    background:linear-gradient(180deg, rgba(242,113,45,0.09), rgba(242,113,45,0.03));
+    border:1px solid rgba(242,113,45,0.35);
+    border-radius:14px;
+    padding:30px 24px;
+  }
+  .ai-audit-cta-box p{ color:#eee; font-size:16px; font-weight:600; margin:0; }
+  .ai-audit-cta-box .cta{ margin-top:18px; }
+  .ai-audit-restart{
+    display:block;
+    margin:22px auto 0;
+    background:none;
+    border:none;
+    color:#777;
+    font-family:inherit;
+    font-size:13px;
+    cursor:pointer;
+    text-decoration:underline;
+  }
+  .ai-audit-restart:hover{ color:#aaa; }
+  @media (max-width:600px){
+    .ai-audit{ padding:70px 18px 80px; }
+    .ai-audit-panel{ padding:26px 18px; }
+    .ai-audit-mega-btn{ font-size:15px; padding:19px 26px; }
+    .ai-audit-input-row .cta{ width:100%; justify-content:center; }
+  }
+</style>
+  <div class="ai-audit-glow"></div>
+  <div class="ai-audit-inner">
+    <span class="section-eyebrow">Безплатен AI одит</span>
+    <h2 class="section-title">Чудиш се защо сайтът ти не носи клиенти?</h2>
+    <p class="section-sub">Нашият изкуствен интелект разглежда сайта ти като истински консултант - дизайн, текстове, доверие, SEO - и ти показва какво точно да подобриш. Безплатно, без имейл, без обвързване.</p>
+
+    <button type="button" id="aiAuditOpenBtn" class="ai-audit-mega-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.9 5.8L20 9.7l-5.9 1.9L12 17.4l-2.1-5.8L4 9.7l6.1-1.9L12 2z" fill="#fff"/><path d="M19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9L19 14z" fill="#fff" opacity="0.8"/></svg>
+      Виж одит с ИИ на сайта ти за 1 минута
+    </button>
+
+    <div class="ai-audit-panel" id="aiAuditPanel" hidden>
+
+      <div id="aiAuditFormState">
+        <label class="ai-audit-label" for="aiAuditUrl">Адресът на твоя сайт</label>
+        <div class="ai-audit-input-row">
+          <input type="text" id="aiAuditUrl" placeholder="например: moyatsait.bg" autocomplete="url" inputmode="url">
+          <button type="button" id="aiAuditStartBtn" class="cta">Стартирай одита</button>
+        </div>
+        <p class="ai-audit-hint">Не е нужно да пишеш https:// - просто въведи адреса на сайта.</p>
+        <p class="ai-audit-error" id="aiAuditError" hidden></p>
+      </div>
+
+      <div id="aiAuditProgressState" hidden>
+        <div class="ai-audit-bar"><div id="aiAuditBarFill"></div></div>
+        <p id="aiAuditStatusText">Отварям сайта</p>
+
+        <div class="ai-audit-quiz">
+          <span class="ai-audit-quiz-eyebrow">Докато чакаш - бърз тест: познай факта</span>
+          <p id="aiQuizQuestion"></p>
+          <div id="aiQuizOptions"></div>
+          <p id="aiQuizFeedback" hidden></p>
+          <span id="aiQuizScore"></span>
+        </div>
+      </div>
+
+      <div id="aiAuditResults" hidden>
+        <div id="aiAuditResultsBody"></div>
+        <div class="ai-audit-cta-box">
+          <p>Искаш ли ние да оправим всичко това вместо теб - и да направим сайт, който носи клиенти?</p>
+          <button type="button" class="cta open-inquiry-btn">Заяви безплатно демо</button>
+        </div>
+        <button type="button" class="ai-audit-restart" id="aiAuditRestartBtn">Провери друг сайт</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="team" id="team">
   <div class="team-glow"></div>
   <div class="team-inner">
@@ -3013,6 +3318,286 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   window.addEventListener('scroll', requestProcessLineUpdate, { passive: true });
   window.addEventListener('resize', requestProcessLineUpdate);
   updateProcessLine();
+</script>
+
+<script>
+/* ---------------- Безплатен AI одит ---------------- */
+(function () {
+  const openBtn = document.getElementById('aiAuditOpenBtn');
+  const panel = document.getElementById('aiAuditPanel');
+  const formState = document.getElementById('aiAuditFormState');
+  const progressState = document.getElementById('aiAuditProgressState');
+  const resultsWrap = document.getElementById('aiAuditResults');
+  const resultsBody = document.getElementById('aiAuditResultsBody');
+  const urlInput = document.getElementById('aiAuditUrl');
+  const startBtn = document.getElementById('aiAuditStartBtn');
+  const errorEl = document.getElementById('aiAuditError');
+  const barFill = document.getElementById('aiAuditBarFill');
+  const statusText = document.getElementById('aiAuditStatusText');
+  const restartBtn = document.getElementById('aiAuditRestartBtn');
+  if (!openBtn || !panel) return;
+
+  /* Статуси - подредени, без повторения. Прогресът върви бързо в началото
+     и естествено се забавя към края. */
+  const STATUSES = [
+    [0,  'Отварям сайта'],
+    [7,  'Зареждам страницата докрай'],
+    [14, 'Правя снимка на десктоп изгледа'],
+    [21, 'Скролвам надолу през съдържанието'],
+    [28, 'Правя снимка и на мобилния изглед'],
+    [36, 'Чета заглавията и текстовете'],
+    [44, 'Преглеждам структурата и навигацията'],
+    [52, 'Анализирам дизайна и цветовете'],
+    [60, 'Оценявам посланията и призивите за действие'],
+    [68, 'Проверявам SEO сигналите'],
+    [76, 'Подреждам препоръките по важност'],
+    [85, 'Почти съм готов, преглеждам всичко още веднъж'],
+    [92, 'Довършвам доклада'],
+  ];
+
+  const QUIZ = [
+    { q: 'За колко време посетителят си създава първо впечатление от един сайт?', opts: ['Около 0.05 секунди', 'Около 3 секунди', 'Около 10 секунди'], correct: 0, why: 'Проучванията показват, че мозъкът оценява сайта за около 50 милисекунди - преди изобщо да прочетеш и една дума.' },
+    { q: 'Каква част от хората четат само заглавията, без основния текст?', opts: ['Около половината', 'Около 8 от 10 души', 'Почти никой'], correct: 1, why: 'Около 80% от посетителите четат само заглавията. Затова те трябва да продават, не просто да описват.' },
+    { q: 'Какво се случва с конверсията, ако сайтът зарежда 3 секунди вместо 1?', opts: ['Нищо особено', 'Пада с няколко процента', 'Може да падне с над 50%'], correct: 2, why: 'Всяка допълнителна секунда зареждане прогонва посетители - при 3+ секунди повечето мобилни потребители просто затварят.' },
+    { q: 'Каква част от трафика в България днес идва от телефони?', opts: ['Около 30%', 'Около 45%', 'Над 60%'], correct: 2, why: 'Затова мобилният изглед не е "бонус", а основната версия на сайта ти.' },
+    { q: 'Кой цвят на бутона конвертира най-добре?', opts: ['Червеният', 'Зеленият', 'Няма универсален - контрастът решава'], correct: 2, why: 'Не цветът сам по себе си, а колко ясно бутонът изпъква спрямо фона - и колко ясно казва какво ще получиш.' },
+    { q: 'Колко сайта средно разглежда човек, преди да избере услуга?', opts: ['Само първия', '3 до 5', 'Над 10'], correct: 1, why: 'Клиентът ти почти винаги те сравнява с 2-4 конкурента. Въпросът е кой сайт изгражда най-много доверие.' },
+    { q: 'Наказва ли Google бавните сайтове в класирането?', opts: ['Да, скоростта е официален фактор', 'Не, няма значение', 'Само при онлайн магазини'], correct: 0, why: 'Скоростта е официален ranking фактор - бавният сайт губи и посетители, и позиции в търсачката.' },
+    { q: 'Колко от кликовете в Google взимат първите 3 резултата?', opts: ['Около 20%', 'Над 50%', 'Около 35%'], correct: 1, why: 'Първите 3 позиции прибират повече от половината кликове - да си на страница 2 е почти като да те няма.' },
+    { q: 'Отзивите с истинско име и снимка повишават ли доверието?', opts: ['Да, значително', 'Не, хората не им вярват', 'Само при скъпи услуги'], correct: 0, why: 'Конкретен човек + конкретен резултат е едно от най-силните оръжия за доверие на един сайт.' },
+    { q: 'Колко призива за действие (CTA) трябва да има един екран?', opts: ['Колкото повече, толкова по-добре', 'Един ясен основен', 'Нито един - да не сме навлечени'], correct: 1, why: 'Един ясен основен призив на екран. Когато всичко крещи "кликни ме", посетителят не кликва нищо.' },
+  ];
+
+  let progressTimer = null;
+  let startTs = 0;
+  let running = false;
+  let quizIndex = 0;
+  let quizCorrect = 0;
+  let quizAnswered = 0;
+  let quizAdvanceTimer = null;
+
+  openBtn.addEventListener('click', () => {
+    panel.hidden = false;
+    openBtn.style.display = 'none';
+    urlInput.focus();
+  });
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+  }
+
+  function setState(state) {
+    formState.hidden = state !== 'form';
+    progressState.hidden = state !== 'progress';
+    resultsWrap.hidden = state !== 'results';
+  }
+
+  /* Прогрес: бърз старт (до ~35% за 8 сек), после плавно и естествено забавяне
+     към ~93%, без никога да спира видимо. */
+  function progressAt(tSec) {
+    if (tSec < 8) return (tSec / 8) * 35;
+    return 35 + 58 * (1 - Math.exp(-(tSec - 8) / 45));
+  }
+
+  function tickProgress() {
+    const t = (Date.now() - startTs) / 1000;
+    const p = Math.min(progressAt(t), 96);
+    barFill.style.width = p.toFixed(1) + '%';
+    let label = STATUSES[0][1];
+    for (const [threshold, text] of STATUSES) {
+      if (p >= threshold) label = text;
+    }
+    if (statusText.textContent !== label) statusText.textContent = label;
+  }
+
+  /* ---- Мини игра ---- */
+  function renderQuizQuestion() {
+    const qEl = document.getElementById('aiQuizQuestion');
+    const optsEl = document.getElementById('aiQuizOptions');
+    const fbEl = document.getElementById('aiQuizFeedback');
+    const scoreEl = document.getElementById('aiQuizScore');
+    fbEl.hidden = true;
+    fbEl.textContent = '';
+    optsEl.innerHTML = '';
+    if (quizIndex >= QUIZ.length) {
+      qEl.textContent = 'Това беше целият тест - одитът е на финалната права.';
+      scoreEl.textContent = 'Позна ' + quizCorrect + ' от ' + quizAnswered + ' въпроса.';
+      return;
+    }
+    const item = QUIZ[quizIndex];
+    qEl.textContent = item.q;
+    scoreEl.textContent = 'Въпрос ' + (quizIndex + 1) + ' от ' + QUIZ.length + (quizAnswered ? ' · Познати досега: ' + quizCorrect : '');
+    item.opts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ai-quiz-opt';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => {
+        if (btn.disabled) return;
+        quizAnswered++;
+        const buttons = optsEl.querySelectorAll('.ai-quiz-opt');
+        buttons.forEach(b => { b.disabled = true; });
+        buttons[item.correct].classList.add('correct');
+        if (i === item.correct) {
+          quizCorrect++;
+        } else {
+          btn.classList.add('wrong');
+        }
+        fbEl.textContent = item.why;
+        fbEl.hidden = false;
+        quizAdvanceTimer = setTimeout(() => {
+          quizIndex++;
+          renderQuizQuestion();
+        }, 3200);
+      });
+      optsEl.appendChild(btn);
+    });
+  }
+
+  function startQuiz() {
+    quizIndex = 0;
+    quizCorrect = 0;
+    quizAnswered = 0;
+    renderQuizQuestion();
+  }
+
+  function stopTimers() {
+    if (progressTimer) { clearInterval(progressTimer); progressTimer = null; }
+    if (quizAdvanceTimer) { clearTimeout(quizAdvanceTimer); quizAdvanceTimer = null; }
+  }
+
+  /* ---- Резултати ---- */
+  const SEV_LABELS = { high: 'Важно', medium: 'Средно', low: 'Дребно' };
+
+  function renderResults(data) {
+    resultsBody.innerHTML = '';
+    const r = data.result;
+    const shots = data.screenshots || [];
+
+    const scoreRow = document.createElement('div');
+    scoreRow.className = 'ai-audit-score-row';
+    const badge = document.createElement('div');
+    badge.className = 'ai-audit-score-badge';
+    const num = document.createElement('strong');
+    num.textContent = (r.overall_score ?? '-') + '/10';
+    const lbl = document.createElement('span');
+    lbl.textContent = 'обща оценка';
+    badge.appendChild(num);
+    badge.appendChild(lbl);
+    const impression = document.createElement('p');
+    impression.className = 'ai-audit-impression';
+    impression.textContent = r.overall_impression || '';
+    scoreRow.appendChild(badge);
+    scoreRow.appendChild(impression);
+    resultsBody.appendChild(scoreRow);
+
+    if (r.top_priority) {
+      const top = document.createElement('div');
+      top.className = 'ai-audit-top-priority';
+      const t = document.createElement('strong');
+      t.textContent = 'Започни от тук - най-голям ефект';
+      const p = document.createElement('p');
+      p.textContent = r.top_priority;
+      top.appendChild(t);
+      top.appendChild(p);
+      resultsBody.appendChild(top);
+    }
+
+    (r.findings || []).forEach(f => {
+      const card = document.createElement('div');
+      card.className = 'ai-audit-finding';
+      const head = document.createElement('div');
+      head.className = 'ai-audit-finding-head';
+      const sev = document.createElement('span');
+      sev.className = 'ai-audit-sev ' + (f.severity || 'low');
+      sev.textContent = SEV_LABELS[f.severity] || f.severity || '';
+      const cat = document.createElement('span');
+      cat.className = 'ai-audit-finding-cat';
+      cat.textContent = f.category || '';
+      head.appendChild(sev);
+      head.appendChild(cat);
+      card.appendChild(head);
+
+      const sum = document.createElement('p');
+      sum.textContent = f.summary || '';
+      card.appendChild(sum);
+
+      const rec = document.createElement('p');
+      rec.className = 'rec';
+      const recLabel = document.createElement('b');
+      recLabel.textContent = 'Какво да направиш: ';
+      rec.appendChild(recLabel);
+      rec.appendChild(document.createTextNode(f.recommendation || ''));
+      card.appendChild(rec);
+
+      const idx = f.screenshot_index;
+      if (idx !== null && idx !== undefined && shots[idx]) {
+        const img = document.createElement('img');
+        img.className = 'ai-audit-shot';
+        img.loading = 'lazy';
+        img.alt = shots[idx].label || 'Screenshot';
+        img.src = 'data:image/jpeg;base64,' + shots[idx].base64;
+        img.addEventListener('click', () => img.classList.toggle('expanded'));
+        card.appendChild(img);
+      }
+      resultsBody.appendChild(card);
+    });
+  }
+
+  /* ---- Старт ---- */
+  async function startAudit() {
+    if (running) return;
+    const raw = urlInput.value.trim();
+    if (!raw) { showError('Моля, въведи адреса на сайта си.'); return; }
+    errorEl.hidden = true;
+    running = true;
+    startBtn.disabled = true;
+    setState('progress');
+    barFill.style.width = '0%';
+    startTs = Date.now();
+    progressTimer = setInterval(tickProgress, 180);
+    tickProgress();
+    startQuiz();
+
+    try {
+      const resp = await fetch('/api/audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: raw }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        throw new Error(data.error || 'Възникна грешка при одита - опитай отново след малко.');
+      }
+      stopTimers();
+      barFill.style.width = '100%';
+      statusText.textContent = 'Готово! Показвам резултатите';
+      setTimeout(() => {
+        renderResults(data);
+        setState('results');
+        resultsWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 600);
+    } catch (err) {
+      stopTimers();
+      setState('form');
+      showError(err.message || 'Възникна грешка при одита - опитай отново след малко.');
+    } finally {
+      running = false;
+      startBtn.disabled = false;
+    }
+  }
+
+  startBtn.addEventListener('click', startAudit);
+  urlInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); startAudit(); }
+  });
+  restartBtn.addEventListener('click', () => {
+    urlInput.value = '';
+    setState('form');
+    urlInput.focus();
+  });
+})();
 </script>
 
 </body>
