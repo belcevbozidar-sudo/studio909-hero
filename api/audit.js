@@ -6,19 +6,10 @@
 
 import dns from 'node:dns/promises';
 import net from 'node:net';
-import chromiumPack from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 import Anthropic from '@anthropic-ai/sdk';
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-
-/* Vercel не изпраща AWS_* променливите, по които @sparticuz/chromium разбира,
-   че работи в Lambda-подобна среда и че трябва да разархивира и системните
-   библиотеки на браузъра (libnss3 и др.), не само самия binary. Без това
-   стартирането гърми с "libnss3.so: cannot open shared object file". */
-if (process.env.VERCEL && !process.env.AWS_LAMBDA_JS_RUNTIME) {
-  process.env.AWS_LAMBDA_JS_RUNTIME = 'nodejs20.x';
-}
 
 export const config = { maxDuration: 300 };
 
@@ -186,6 +177,16 @@ async function launchBrowser() {
      това е двойката, за която @sparticuz/chromium е направен и тестван.
      Локално (dev) - системният Chrome. */
   if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    /* Vercel не изпраща AWS_* променливите, по които @sparticuz/chromium
+       разбира, че е в Lambda-подобна среда и че трябва да разархивира и
+       системните библиотеки на браузъра (libnss3 и др.) и да настрои
+       LD_LIBRARY_PATH. Задаваме променливата ПРЕДИ пакетът да се зареди
+       (той чете средата в момента на зареждане), затова import-ът тук е
+       динамичен, а не в началото на файла. */
+    if (!process.env.AWS_LAMBDA_JS_RUNTIME) {
+      process.env.AWS_LAMBDA_JS_RUNTIME = 'nodejs22.x';
+    }
+    const { default: chromiumPack } = await import('@sparticuz/chromium');
     try {
       /* Шрифт с кирилица, иначе screenshot-ите на български сайтове са с "квадратчета" */
       await chromiumPack.font('https://raw.githubusercontent.com/googlefonts/noto-fonts/main/hinted/ttf/NotoSans/NotoSans-Regular.ttf');
