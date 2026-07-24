@@ -172,8 +172,21 @@ async function normalizeAndCheckUrl(rawUrl) {
   if (!/^https?:$/.test(url.protocol)) {
     throw new Error('Поддържат се само http/https адреси.');
   }
-  if (!(await isHostSafe(url.hostname))) {
+  const host = url.hostname.toLowerCase();
+  if (host === 'localhost' || host.endsWith('.local') || host.endsWith('.internal')) {
     throw new Error('Този адрес не може да бъде проверен.');
+  }
+  if (net.isIP(host)) {
+    if (isPrivateIp(host)) throw new Error('Този адрес не може да бъде проверен.');
+  } else {
+    try {
+      await dns.lookup(host, { all: true });
+    } catch {
+      throw new Error('Не намерих такъв сайт - провери адреса и опитай пак.');
+    }
+    if (!(await isHostSafe(host))) {
+      throw new Error('Този адрес не може да бъде проверен.');
+    }
   }
   return url.toString();
 }
