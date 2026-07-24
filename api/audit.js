@@ -237,8 +237,27 @@ async function waitForStableContent(page, { maxChecks = 5, intervalMs = 450 } = 
   }
 }
 
+function isContextDestroyedError(err) {
+  return /Execution context was destroyed|Cannot find context|detached Frame|Target closed/i.test(err?.message || '');
+}
+
+/* Някои сайтове правят собствено (JS) пренасочване секунда-две след първото
+   зареждане (напр. смяна на www/без-www, локал, канонизиране на адреса) -
+   ако точно тогава извикаме page.evaluate(), браузърът "събаря" контекста и
+   хвърля грешка, вместо да върне резултат. Изчакваме кратко и опитваме
+   веднъж повторно - по това време новата навигация обикновено вече е спряла. */
+async function evaluateResilient(page, fn, ...args) {
+  try {
+    return await page.evaluate(fn, ...args);
+  } catch (err) {
+    if (!isContextDestroyedError(err)) throw err;
+    await sleep(1000);
+    return await page.evaluate(fn, ...args);
+  }
+}
+
 async function extractPageInfo(page) {
-  return page.evaluate((maxChars) => {
+  return evaluateResilient(page, (maxChars) => {
     const meta = (name) =>
       document.querySelector(`meta[name="${name}"]`)?.getAttribute('content') || '';
     const headings = Array.from(document.querySelectorAll('h1, h2'))
@@ -328,7 +347,7 @@ async function captureSite(url) {
 
     await shoot('Десктоп - горна част (hero)');
 
-    const fullHeight = await page.evaluate(() => document.body.scrollHeight);
+    const fullHeight = await evaluateResilient(page, () => document.body.scrollHeight);
     if (fullHeight > DESKTOP_VIEWPORT.height * 1.3) {
       const maxScroll = fullHeight - DESKTOP_VIEWPORT.height;
       await page.evaluate(y => window.scrollTo(0, y), Math.round(maxScroll * 0.45));
@@ -583,7 +602,7 @@ export default async function handler(req, res) {
         : /Timeout|timeout|net::|NS_ERROR/.test(msg)
           ? 'Не успях да отворя сайта - провери дали адресът е верен и дали сайтът работи.'
           : 'Възникна неочаквана грешка при одита - опитай отново след малко.';
-    console.error('[audit]', msg);
+    console.error('[audit]', url ? `(${url})` : '', msg);
     if (url && String(url).trim()) {
       await notifyTelegram(
         `⚠️ Неуспешен опит за AI одит\n\n` +
