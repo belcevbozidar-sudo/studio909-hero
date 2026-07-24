@@ -124,10 +124,35 @@ async function isHostSafe(host) {
   return !addresses.some(a => isPrivateIp(a.address));
 }
 
+/* Домейни на рекламни/тракинг пиксели (Meta, Google, TikTok и т.н.) - никога
+   не бива да се зареждат по време на одит. Одитваният сайт не бива да
+   регистрира "посещение" от нашия робот в чужда рекламна статистика -
+   собственикът му (или собственикът на конкурентен сайт) не е давал съгласие
+   за това, а и такива фалшиви посещения замърсяват данните, по които се
+   оптимизират реклами. Проверката е по точен домейн/поддомейн, не по
+   компания-майка, за да не блокираме случайно легитимно съдържание (напр.
+   вградена Google карта или YouTube видео). */
+const TRACKING_HOST_SUFFIXES = [
+  'facebook.com', 'facebook.net', 'fbcdn.net',
+  'google-analytics.com', 'googletagmanager.com', 'doubleclick.net',
+  'googlesyndication.com', 'googleadservices.com', 'google.com/ads',
+  'analytics.tiktok.com', 'ads-api.tiktok.com',
+  'hotjar.com', 'hotjar.io', 'clarity.ms',
+  'mixpanel.com', 'segment.io', 'segment.com', 'amplitude.com',
+  'px.ads.linkedin.com', 'snap.licdn.com', 'ads.linkedin.com',
+  'events.pinterest.com', 'ct.pinterest.com', 'tr.snapchat.com', 'sc-static.net',
+  'bing.com/bat', 'clarity.microsoft.com',
+];
+
+function isTrackingHost(host) {
+  return TRACKING_HOST_SUFFIXES.some((suffix) => host === suffix || host.endsWith('.' + suffix));
+}
+
 /* Проверява дали цял мрежов адрес (не само хоста) е безопасен за заявка -
    позволява всичко, което не е реална мрежова заявка (data:, blob: и т.н.),
-   и кешира резултата по хост за времетраенето на един одит, за да не бави
-   зареждането с повторни DNS проверки на едни и същи домейни. */
+   блокира известни тракинг/рекламни домейни, и кешира резултата по хост за
+   времетраенето на един одит, за да не бави зареждането с повторни DNS
+   проверки на едни и същи домейни. */
 function createSafeRequestGuard() {
   const cache = new Map();
   return async function isUrlSafe(urlStr) {
@@ -139,6 +164,7 @@ function createSafeRequestGuard() {
     }
     if (!/^https?:$/.test(u.protocol)) return true;
     const host = u.hostname.toLowerCase();
+    if (isTrackingHost(host)) return false;
     if (cache.has(host)) return cache.get(host);
     const safe = await isHostSafe(host);
     cache.set(host, safe);
