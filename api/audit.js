@@ -15,7 +15,7 @@ export const config = { maxDuration: 300 };
 
 const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
 const SITE_URL = 'https://www.studio9.site';
-const AUDIT_INTERNAL_SECRET = process.env.AUDIT_INTERNAL_SECRET || '';
+const AUDIT_INTERNAL_SECRET = (process.env.AUDIT_INTERNAL_SECRET || '').trim();
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
 const NAV_TIMEOUT_MS = 25000;

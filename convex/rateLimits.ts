@@ -2,7 +2,7 @@ import { mutation } from "./_generated/server";
 import { v } from "convex/values";
 
 function checkSecret(secret: string) {
-  if (secret !== process.env.AUDIT_INTERNAL_SECRET) {
+  if (secret.trim() !== (process.env.AUDIT_INTERNAL_SECRET || "").trim()) {
     throw new Error("Unauthorized");
   }
 }

@@ -9,7 +9,7 @@ import { v } from "convex/values";
    базата или да чете всички минали одити в заобикаляне на паролата. */
 
 function checkSecret(secret: string) {
-  if (secret !== process.env.AUDIT_INTERNAL_SECRET) {
+  if (secret.trim() !== (process.env.AUDIT_INTERNAL_SECRET || "").trim()) {
     throw new Error("Unauthorized");
   }
 }

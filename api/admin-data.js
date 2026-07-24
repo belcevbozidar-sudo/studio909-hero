@@ -6,7 +6,7 @@
 import crypto from 'node:crypto';
 
 const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
-const AUDIT_INTERNAL_SECRET = process.env.AUDIT_INTERNAL_SECRET || '';
+const AUDIT_INTERNAL_SECRET = (process.env.AUDIT_INTERNAL_SECRET || '').trim();
 
 function verifyToken(token) {
   if (!process.env.ADMIN_PASSWORD || typeof token !== 'string') return false;
