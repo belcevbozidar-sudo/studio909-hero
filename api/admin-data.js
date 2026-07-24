@@ -6,6 +6,7 @@
 import crypto from 'node:crypto';
 
 const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
+const AUDIT_INTERNAL_SECRET = process.env.AUDIT_INTERNAL_SECRET || '';
 
 function verifyToken(token) {
   if (!process.env.ADMIN_PASSWORD || typeof token !== 'string') return false;
@@ -47,7 +48,7 @@ export default async function handler(req, res) {
   try {
     const { action, id } = req.query || {};
     if (action === 'list') {
-      const items = await convexQuery('audits:list', {});
+      const items = await convexQuery('audits:list', { secret: AUDIT_INTERNAL_SECRET });
       res.status(200).json({ items });
       return;
     }
@@ -56,7 +57,7 @@ export default async function handler(req, res) {
         res.status(400).json({ error: 'Липсва id.' });
         return;
       }
-      const item = await convexQuery('audits:get', { id });
+      const item = await convexQuery('audits:get', { secret: AUDIT_INTERNAL_SECRET, id });
       if (!item) {
         res.status(404).json({ error: 'Няма такъв одит.' });
         return;

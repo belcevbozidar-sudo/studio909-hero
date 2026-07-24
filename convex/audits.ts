@@ -1,14 +1,23 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
-/* Извикват се от сървъра (api/audit.js и api/admin-data.js), не директно от
-   браузъра на посетителя - там няма нужда от паролна защита на ниво Convex,
-   защото истинската защита е в api/admin-data.js (проверява админ токена),
-   преди изобщо да достигне дотук. */
+/* Всички функции тук изискват таен подпис (AUDIT_INTERNAL_SECRET), известен
+   само на нашите два сървърни файла - api/audit.js (записва) и
+   api/admin-data.js (чете, след като вече е проверил паролата на админа).
+   Без това всеки, който познава адреса на Convex проекта (виден в кода на
+   страницата - това е нормално за Convex), би могъл да пише директно в
+   базата или да чете всички минали одити в заобикаляне на паролата. */
+
+function checkSecret(secret: string) {
+  if (secret !== process.env.AUDIT_INTERNAL_SECRET) {
+    throw new Error("Unauthorized");
+  }
+}
 
 export const generateUploadUrl = mutation({
-  args: {},
-  handler: async (ctx) => {
+  args: { secret: v.string() },
+  handler: async (ctx, { secret }) => {
+    checkSecret(secret);
     return await ctx.storage.generateUploadUrl();
   },
 });
@@ -23,6 +32,7 @@ const findingValidator = v.object({
 
 export const save = mutation({
   args: {
+    secret: v.string(),
     url: v.string(),
     overallScore: v.number(),
     overallImpression: v.string(),
@@ -31,13 +41,16 @@ export const save = mutation({
     screenshotIds: v.array(v.id("_storage")),
   },
   handler: async (ctx, args) => {
-    return await ctx.db.insert("audits", args);
+    checkSecret(args.secret);
+    const { secret, ...doc } = args;
+    return await ctx.db.insert("audits", doc);
   },
 });
 
 export const list = query({
-  args: {},
-  handler: async (ctx) => {
+  args: { secret: v.string() },
+  handler: async (ctx, { secret }) => {
+    checkSecret(secret);
     const docs = await ctx.db.query("audits").order("desc").take(200);
     return docs.map((d) => ({
       id: d._id,
@@ -50,12 +63,13 @@ export const list = query({
 });
 
 export const get = query({
-  args: { id: v.id("audits") },
-  handler: async (ctx, args) => {
-    const doc = await ctx.db.get(args.id);
+  args: { secret: v.string(), id: v.id("audits") },
+  handler: async (ctx, { secret, id }) => {
+    checkSecret(secret);
+    const doc = await ctx.db.get(id);
     if (!doc) return null;
     const screenshotUrls = await Promise.all(
-      doc.screenshotIds.map((id) => ctx.storage.getUrl(id))
+      doc.screenshotIds.map((sid) => ctx.storage.getUrl(sid))
     );
     return {
       id: doc._id,

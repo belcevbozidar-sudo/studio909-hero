@@ -9,6 +9,7 @@
  */
 
 import type * as audits from "../audits.js";
+import type * as rateLimits from "../rateLimits.js";
 import type * as submissions from "../submissions.js";
 
 import type {
@@ -19,6 +20,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   audits: typeof audits;
+  rateLimits: typeof rateLimits;
   submissions: typeof submissions;
 }>;
 

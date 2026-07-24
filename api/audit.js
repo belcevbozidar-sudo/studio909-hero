@@ -15,6 +15,7 @@ export const config = { maxDuration: 300 };
 
 const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
 const SITE_URL = 'https://www.studio9.site';
+const AUDIT_INTERNAL_SECRET = process.env.AUDIT_INTERNAL_SECRET || '';
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5';
 const NAV_TIMEOUT_MS = 25000;
@@ -45,28 +46,40 @@ function looksBlocked(bodyText) {
   return false;
 }
 
-/* ---------------- Rate limit (както в notify.js) ---------------- */
+/* ---------------- Rate limit (споделен през Convex - виж бележката по-долу) ---------------- */
 
-const WINDOW_MS = 10 * 60 * 1000;
-const MAX_PER_WINDOW = 3;
-const hits = new Map();
-
-function isRateLimited(ip) {
-  const now = Date.now();
-  if (hits.size > 5000) hits.clear();
-  const recent = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
-  if (recent.length >= MAX_PER_WINDOW) {
-    hits.set(ip, recent);
-    return true;
+/* Пази от заявка от два клиента, представящи се с еднакъв IP, и не разчита
+   само на памет в конкретната сървърна инстанция (Vercel може да пусне
+   няколко копия на функцията едновременно/в различни региони - лимит "3 на
+   10 минути" в паметта на всяка копие поотделно означава лимит по инстанция,
+   не общо за целия сайт). Проверката и записът стават атомарно в Convex. */
+async function isRateLimited(ip) {
+  try {
+    const result = await convexMutation('rateLimits:checkAndRecord', {
+      secret: AUDIT_INTERNAL_SECRET,
+      key: `audit:${ip}`,
+      windowMs: 10 * 60 * 1000,
+      max: 3,
+    });
+    return !!result.limited;
+  } catch (err) {
+    console.error('[audit] Rate limit check failed, allowing request:', err.message);
+    return false;
   }
-  recent.push(now);
-  hits.set(ip, recent);
-  return false;
 }
 
 function clientIp(req) {
+  /* x-forwarded-for може да съдържа стойност, зададена от самия клиент, преди
+     Vercel да добави истинския адрес накрая на списъка - затова взимаме
+     ПОСЛЕДНИЯ запис (най-близкия, добавен от самия Vercel edge), не първия.
+     x-real-ip, когато е наличен, е единичен адрес, зададен директно от Vercel. */
+  const real = req.headers['x-real-ip'];
+  if (typeof real === 'string' && real.trim()) return real.trim();
   const fwd = req.headers['x-forwarded-for'];
-  if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+  if (typeof fwd === 'string' && fwd.length) {
+    const parts = fwd.split(',').map(s => s.trim()).filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
   return req.socket?.remoteAddress || 'unknown';
 }
 
@@ -84,12 +97,65 @@ function isPrivateIp(ip) {
     );
   }
   const low = ip.toLowerCase();
-  return (
-    low === '::' || low === '::1' ||
-    low.startsWith('fc') || low.startsWith('fd') ||
-    low.startsWith('fe80') || low.startsWith('::ffff:127.') ||
-    low.startsWith('::ffff:10.') || low.startsWith('::ffff:192.168.')
-  );
+  if (low === '::' || low === '::1' || low.startsWith('fc') || low.startsWith('fd') || low.startsWith('fe80')) {
+    return true;
+  }
+  const mapped = low.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
+  if (mapped) return isPrivateIp(mapped[1]);
+  return false;
+}
+
+/* Проверява дали хост-името/IP е безопасно за достъп - извиква реална DNS
+   резолюция за имена (домейни). Използва се и на входа (normalizeAndCheckUrl),
+   и повторно за ВСЯКА следваща заявка/пренасочване по време на самото
+   зареждане на страницата (виж createSafeRequestGuard) - защото проверка само
+   веднъж, на самото начало, не пази срещу сайт, който пренасочва към вътрешен
+   адрес чак след като вече е минал първата проверка. */
+async function isHostSafe(host) {
+  const h = host.toLowerCase();
+  if (h === 'localhost' || h.endsWith('.local') || h.endsWith('.internal')) return false;
+  if (net.isIP(h)) return !isPrivateIp(h);
+  let addresses;
+  try {
+    addresses = await dns.lookup(h, { all: true });
+  } catch {
+    return false;
+  }
+  return !addresses.some(a => isPrivateIp(a.address));
+}
+
+/* Проверява дали цял мрежов адрес (не само хоста) е безопасен за заявка -
+   позволява всичко, което не е реална мрежова заявка (data:, blob: и т.н.),
+   и кешира резултата по хост за времетраенето на един одит, за да не бави
+   зареждането с повторни DNS проверки на едни и същи домейни. */
+function createSafeRequestGuard() {
+  const cache = new Map();
+  return async function isUrlSafe(urlStr) {
+    let u;
+    try {
+      u = new URL(urlStr);
+    } catch {
+      return false;
+    }
+    if (!/^https?:$/.test(u.protocol)) return true;
+    const host = u.hostname.toLowerCase();
+    if (cache.has(host)) return cache.get(host);
+    const safe = await isHostSafe(host);
+    cache.set(host, safe);
+    return safe;
+  };
+}
+
+/* Абортира всяка заявка (навигация, пренасочване, под-ресурс) към адрес,
+   който при реалната резолюция излиза вътрешен - вместо да разчитаме само на
+   еднократната проверка на въведения адрес. */
+async function guardPageRequests(page, isUrlSafe) {
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    isUrlSafe(req.url())
+      .then((safe) => (safe ? req.continue() : req.abort('blockedbyclient')))
+      .catch(() => req.abort('blockedbyclient').catch(() => {}));
+  });
 }
 
 async function normalizeAndCheckUrl(rawUrl) {
@@ -106,23 +172,8 @@ async function normalizeAndCheckUrl(rawUrl) {
   if (!/^https?:$/.test(url.protocol)) {
     throw new Error('Поддържат се само http/https адреси.');
   }
-  const host = url.hostname.toLowerCase();
-  if (host === 'localhost' || host.endsWith('.local') || host.endsWith('.internal')) {
+  if (!(await isHostSafe(url.hostname))) {
     throw new Error('Този адрес не може да бъде проверен.');
-  }
-  if (net.isIP(host) && isPrivateIp(host)) {
-    throw new Error('Този адрес не може да бъде проверен.');
-  }
-  if (!net.isIP(host)) {
-    let addresses;
-    try {
-      addresses = await dns.lookup(host, { all: true });
-    } catch {
-      throw new Error('Не намерих такъв сайт - провери адреса и опитай пак.');
-    }
-    if (addresses.some(a => isPrivateIp(a.address))) {
-      throw new Error('Този адрес не може да бъде проверен.');
-    }
   }
   return url.toString();
 }
@@ -237,8 +288,10 @@ async function captureSite(url) {
   const browser = await launchBrowser();
   const screenshots = [];
   let pageInfo = {};
+  const isUrlSafe = createSafeRequestGuard();
   try {
     const page = await browser.newPage();
+    await guardPageRequests(page, isUrlSafe);
     await page.setViewport(DESKTOP_VIEWPORT);
     await page.setUserAgent(DESKTOP_UA);
     await page.setExtraHTTPHeaders({ 'Accept-Language': ACCEPT_LANGUAGE });
@@ -278,6 +331,7 @@ async function captureSite(url) {
     await page.close();
 
     const mobilePage = await browser.newPage();
+    await guardPageRequests(mobilePage, isUrlSafe);
     await mobilePage.setViewport({ ...MOBILE_VIEWPORT, isMobile: true, hasTouch: true });
     await mobilePage.setUserAgent(MOBILE_UA);
     await mobilePage.setExtraHTTPHeaders({ 'Accept-Language': ACCEPT_LANGUAGE });
@@ -414,7 +468,7 @@ async function convexMutation(path, args) {
 }
 
 async function uploadScreenshotToConvex(base64) {
-  const uploadUrl = await convexMutation('audits:generateUploadUrl', {});
+  const uploadUrl = await convexMutation('audits:generateUploadUrl', { secret: AUDIT_INTERNAL_SECRET });
   const buffer = Buffer.from(base64, 'base64');
   const resp = await fetch(uploadUrl, {
     method: 'POST',
@@ -435,6 +489,7 @@ async function saveAuditToConvex({ url, result, screenshots }) {
     screenshotIds.push(await uploadScreenshotToConvex(s.base64));
   }
   return convexMutation('audits:save', {
+    secret: AUDIT_INTERNAL_SECRET,
     url,
     overallScore: result.overall_score,
     overallImpression: result.overall_impression,
@@ -478,7 +533,7 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Одитът временно не е наличен.' });
     return;
   }
-  if (isRateLimited(clientIp(req))) {
+  if (await isRateLimited(clientIp(req))) {
     res.status(429).json({ error: 'Твърде много заявки от този адрес - опитай отново след 10 минути.' });
     return;
   }
