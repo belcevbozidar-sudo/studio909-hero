@@ -110,24 +110,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     width:auto;
     display:block;
   }
-  .brand-link{
-    display:inline-flex;
-    align-items:flex-end;
-    text-decoration:none;
-  }
-  .brand-mark{
-    display:inline-flex;
-    align-items:flex-end;
-    gap:1px;
-    color:#fff;
-    font-size:42px;
-    font-weight:900;
-    line-height:1;
-    letter-spacing:-0.04em;
-  }
-  .brand-mark span{
-    color:var(--orange);
-  }
 
   .nav-links{
     display:flex;
@@ -1711,7 +1693,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   /* ===== MOBILE ===== */
   @media (max-width:560px){
     nav{padding:16px;}
-    .brand-mark{font-size:30px;}
+    .logo-img{height:58px;}
     .contact-btn{padding:8px 14px;font-size:12px;}
 
     .hero-content{padding:24px 12px 0;}
@@ -1887,7 +1869,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   <div class="grid-overlay"></div>
 
   <nav>
-    <a href="/" class="brand-link" aria-label="Алинея 9"><span class="brand-mark">Алинея <span>9</span></span></a>
+    <picture><source srcset="assets/studio9-logo.webp" type="image/webp"><img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img"></picture>
     <div class="nav-links">
       <a href="#offer" class="active">Услуги</a>
       <a href="#proof">Резултати</a>
