@@ -1492,6 +1492,37 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-transform:uppercase;
     margin-bottom:10px;
   }
+  .form-progress{
+    display:flex;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .form-progress-dot{
+    flex:1;
+    max-width:70px;
+    height:4px;
+    border-radius:2px;
+    background:rgba(255,255,255,0.12);
+  }
+  .form-progress-dot.active{
+    background:var(--orange);
+    transition:background .35s ease;
+  }
+  .form-steps-viewport{
+    overflow:hidden;
+  }
+  .form-steps-track{
+    display:flex;
+    width:200%;
+    transition:transform .45s cubic-bezier(0.65,0,0.35,1);
+  }
+  .form-steps-track .form-step{
+    width:50%;
+    flex-shrink:0;
+  }
+  .form-steps-track.step-2{
+    transform:translateX(-50%);
+  }
   .modal-box h3{
     font-size:21px;
     font-weight:700;
@@ -1855,7 +1886,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         { "@type": "Review", "author": { "@type": "Person", "name": "Радост" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Най-хубавото за мен беше, че видях безплатно демо на сайта си, преди изобщо да платя каквото и да е - разбрах веднага, че посоката е правилна и чак тогава реших да продължим." },
         { "@type": "Review", "author": { "@type": "Person", "name": "Иван" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Старият ни сайт беше отпреди години и вече не пасваше на бизнеса, който сме сега. Новият изглежда сериозно, а когато поискаме промени, стават в рамките на същия ден." },
         { "@type": "Review", "author": { "@type": "Person", "name": "Николай" }, "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" }, "reviewBody": "Най-хубавото е, че не плащам за всяка дребна промяна - просто пишем и е готово. Единствено настройването на новия ми имейл отне малко повече време от очакваното." },
-        { "@type": "Review", "author": { "@type": "Person", "name": "Георги" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Като една от водещите строителни фирми в града трябваше да имаме добър и различен сайт. Мога да кажа, че новият сайт наистина започна да ни докарва около 30% повече клиенти месечно." }
+        { "@type": "Review", "author": { "@type": "Person", "name": "Георги" }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Като една от водещите строителни фирми в града трябваше да имаме наистина добър уебсайт. Мога да кажа, че новият сайт наистина започна да ни докарва около 30% повече клиенти месечно." }
       ]
     },
     {
@@ -1865,7 +1896,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         { "@type": "Question", "name": "Защо месечна такса, а не еднократно плащане?", "acceptedAnswer": { "@type": "Answer", "text": "Защото сайтът не е нещо, което се предава и забравя. В месечната такса влизат хостингът, поддръжката, сигурността, обновленията и всяка промяна, която поискаш. Плащаш, докато го ползваш, вместо да дадеш хиляди в началото и после да плащаш отделно за всяко дребно нещо." } },
         { "@type": "Question", "name": "Какво означават неограничени промени?", "acceptedAnswer": { "@type": "Answer", "text": "Означава, че абсолютно всичко може да бъде създадено, добавено, премахнато или променено без допълнително заплащане - нов текст, други снимки, нови секции, сменена цена, допълнителни страници, пиксели, интеграции или каквото друго поискаш. Пишеш ни и го правим." } },
         { "@type": "Question", "name": "Ще имам ли достъп до сайта?", "acceptedAnswer": { "@type": "Answer", "text": "Да, ще ти изработим и предоставим цялостен и лесен за работа административен панел." } },
-        { "@type": "Question", "name": "Какво става със сайта и домейна, ако спрем да работим заедно?", "acceptedAnswer": { "@type": "Answer", "text": "Домейнът е регистриран на твое име и остава твой при всички случаи. Ако платиш сумата за една година напред, сайтът ти се предава изцяло и става твоя собственост - без по-нататъшен ангажимент от наша страна." } },
+        { "@type": "Question", "name": "Какво става със сайта, ако спрем да работим заедно?", "acceptedAnswer": { "@type": "Answer", "text": "Сайтът може да ти бъде предаден изцяло като твоя собственост, ако се заплати сумата за 12-месечен период наведнъж." } },
         { "@type": "Question", "name": "Колко време отнема?", "acceptedAnswer": { "@type": "Answer", "text": "Обикновено целия процес отнема под 2 седмици." } },
         { "@type": "Question", "name": "Мога ли да получа фактура?", "acceptedAnswer": { "@type": "Answer", "text": "Да, издаваме фактура за всяко плащане." } }
       ]
@@ -2219,7 +2250,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
       <div class="proof-card">
         <div class="proof-stars">★★★★★ <span class="stars-count">(5 звезди)</span></div>
-        <p>„Като една от водещите строителни фирми в града трябваше да имаме добър и различен сайт. Мога да кажа, че новият сайт наистина започна да ни докарва около 30% повече клиенти месечно."</p>
+        <p>„Като една от водещите строителни фирми в града трябваше да имаме наистина добър уебсайт. Мога да кажа, че новият сайт наистина започна да ни докарва около 30% повече клиенти месечно."</p>
         <div class="proof-person">
           <picture><source srcset="photos/image-1783144449995.webp" type="image/webp"><img src="photos/image-1783144449995.png" alt="Клиент на Studio 9" loading="lazy" decoding="async"></picture>
           <div>
@@ -2229,7 +2260,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
-    <button type="button" class="add-review-link open-review-btn">+ Добави ревю</button>
+    <button type="button" class="add-review-link open-review-btn">+ Добави ревю, ако си работил с нас</button>
   </div>
 </section>
 
@@ -2262,7 +2293,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <p>Отговаря за дизайна и техническата част - от първия макет до пуснатия сайт.</p>
       </div>
     </div>
-    <p style="color:#ccc; font-size:15px; max-width:520px; margin:36px auto 28px; line-height:1.6;">Ако искаш да видиш как би изглеждал сайтът ти при нас, започваме с кратък разговор.</p>
+    <p style="color:#ccc; font-size:15px; max-width:520px; margin:36px auto 28px; line-height:1.6;">Преди да започнем работа, винаги правим демо версия, която ти показваме и обсъждаме.</p>
     <button type="button" class="cta open-inquiry-btn">Заяви демо</button>
   </div>
 </section>
@@ -2281,7 +2312,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
           <p>Попълваш кратка форма:</p>
           <ul style="color:#aaa; font-size:14px; margin-top:14px; margin-left:20px; line-height:1.65; list-style-type: disc;">
             <li>Какъв е твоят бизнес?</li>
-            <li>Какъв е най-големият проблем с онлайн присъствието ти сега?</li>
+            <li>Какъв е проблемът и какво се опитваш да постигнеш?</li>
           </ul>
         </div>
       </div>
@@ -2289,7 +2320,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="process-num">2</div>
         <div>
           <h3>Правим ти демо</h3>
-          <p>Изграждаме реално демо на началната страница, за да видиш посоката с очите си - преди да поемеш какъвто и да е ангажимент.</p>
+          <p>Изграждаме реално демо на началната страница, за да видиш посоката предварително - преди да поемеш какъвто и да е ангажимент.</p>
         </div>
       </div>
       <div class="process-step">
@@ -2340,11 +2371,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
       <div class="faq-item">
         <div class="faq-question">
-          <h3>Какво става със сайта и домейна, ако спрем да работим заедно?</h3>
+          <h3>Какво става със сайта, ако спрем да работим заедно?</h3>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
-          <p>Домейнът е регистриран на твое име и остава твой при всички случаи. Ако платиш сумата за една година напред, сайтът ти се предава изцяло и става твоя собственост - без по-нататъшен ангажимент от наша страна.</p>
+          <p>Сайтът може да ти бъде предаден изцяло като твоя собственост, ако се заплати сумата за 12-месечен период наведнъж.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2372,8 +2403,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="final-cta">
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner">
-    <h2>Сайтът ти на нивото на бизнеса ли е<span class="wobble-question">?</span></h2>
-    <p style="color:#ccc; font-size:15px; max-width:520px; margin:20px auto 0; line-height:1.6;">Ако не си сигурен, започни с разговор. Ще ти кажем честно какво според нас липсва - независимо дали ще работим заедно.</p>
+    <h2>Готов ли си да видиш демо версията<span class="wobble-question">?</span></h2>
+    <p style="color:#ccc; font-size:15px; max-width:520px; margin:20px auto 0; line-height:1.6;">Свържи се и ще ти направим такава.</p>
     <button type="button" class="cta open-inquiry-btn" style="margin-top: 24px;">Заяви демо</button>
     <div class="cta-note"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
   </div>
@@ -2418,6 +2449,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   <div class="modal-box">
     <button type="button" class="modal-close" aria-label="Затвори">✕</button>
     <form id="inquiryForm" novalidate>
+      <div class="form-progress" aria-hidden="true">
+        <span class="form-progress-dot" data-progress-dot="1"></span>
+        <span class="form-progress-dot" data-progress-dot="2"></span>
+      </div>
+      <div class="form-steps-viewport">
+        <div class="form-steps-track" id="inquiryStepsTrack">
       <div class="form-step" data-step="1">
         <span class="modal-eyebrow">ЗАПИТВАНЕ</span>
         <h3>Разкажи ни малко за бизнеса си</h3>
@@ -2425,19 +2462,19 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <label for="industryInput" class="form-label">С какво се занимава фирмата?</label>
         <input type="text" id="industryInput" name="industry" required maxlength="200" placeholder="напр. Строителна фирма, Стоматологичен център...">
 
-        <label for="problemText" class="form-label">Какво не ти върши работа в сегашния сайт?</label>
+        <label for="problemText" class="form-label">Какъв е проблемът и какво се опитваш да постигнеш?</label>
         <textarea id="problemText" name="problem" required rows="3" maxlength="2000" placeholder="напр. Стар е и не отговаря на бизнеса, всяка промяна отнема седмици..."></textarea>
-        
+
         <button type="button" class="cta form-next" style="margin-top: 24px;">Продължи</button>
       </div>
 
-      <div class="form-step" data-step="2" hidden>
+      <div class="form-step" data-step="2">
         <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
         <h3>Данни за връзка</h3>
-        
+
         <label for="emailInput" class="form-label">Имейл адрес</label>
         <input type="email" id="emailInput" name="email" required maxlength="320" placeholder="напр. ivan@example.com">
-        
+
         <label for="phoneInput" class="form-label">Телефонен номер за връзка</label>
         <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" maxlength="20" placeholder="08XX XXX XXX">
 
@@ -2447,6 +2484,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="form-actions" style="margin-top: 32px;">
           <button type="button" class="cta-secondary form-back">Назад</button>
           <button type="submit" class="cta">Изпрати запитването</button>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -2649,16 +2688,22 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* ===== INQUIRY FORM ===== */
   const inquiryForm = document.getElementById('inquiryForm');
-  const inquiryStep1 = inquiryForm.querySelector('[data-step="1"]');
-  const inquiryStep2 = inquiryForm.querySelector('[data-step="2"]');
+  const inquiryViewport = inquiryForm.querySelector('.form-steps-viewport');
+  const inquiryProgress = inquiryForm.querySelector('.form-progress');
+  const inquiryTrack = document.getElementById('inquiryStepsTrack');
+  const inquiryDots = inquiryForm.querySelectorAll('.form-progress-dot');
   const inquiryLoading = inquiryForm.querySelector('[data-step="loading"]');
-  const adsAck = document.getElementById('adsAck');
-  const budgetField = document.getElementById('budgetField');
+
+  function setInquiryStep(step) {
+    inquiryTrack.classList.toggle('step-2', step === 2);
+    inquiryDots.forEach((dot, i) => dot.classList.toggle('active', i < step));
+  }
 
   function resetInquiryForm() {
     inquiryForm.reset();
-    inquiryStep1.hidden = false;
-    inquiryStep2.hidden = true;
+    setInquiryStep(1);
+    inquiryViewport.hidden = false;
+    inquiryProgress.hidden = false;
     inquiryLoading.hidden = true;
   }
 
@@ -2676,13 +2721,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       inquiryForm.reportValidity();
       return;
     }
-    inquiryStep1.hidden = true;
-    inquiryStep2.hidden = false;
+    setInquiryStep(2);
   });
 
   inquiryForm.querySelector('.form-back').addEventListener('click', () => {
-    inquiryStep2.hidden = true;
-    inquiryStep1.hidden = false;
+    setInquiryStep(1);
   });
 
   inquiryForm.addEventListener('submit', e => {
@@ -2718,7 +2761,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       body: JSON.stringify({ phone }),
     }).catch(() => {});
 
-    inquiryStep2.hidden = true;
+    inquiryViewport.hidden = true;
+    inquiryProgress.hidden = true;
     inquiryLoading.hidden = false;
     setTimeout(() => {
       window.location.href = 'thank-you.html';
