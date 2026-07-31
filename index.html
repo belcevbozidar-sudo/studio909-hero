@@ -1493,9 +1493,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin-bottom:10px;
   }
   .form-progress{
+    margin-bottom:18px;
+  }
+  .form-progress-label{
+    display:block;
+    color:#999;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .form-progress-bar{
     display:flex;
     gap:6px;
-    margin-bottom:22px;
   }
   .form-progress-dot{
     flex:1;
@@ -2449,9 +2460,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   <div class="modal-box">
     <button type="button" class="modal-close" aria-label="Затвори">✕</button>
     <form id="inquiryForm" novalidate>
-      <div class="form-progress" aria-hidden="true">
-        <span class="form-progress-dot" data-progress-dot="1"></span>
-        <span class="form-progress-dot" data-progress-dot="2"></span>
+      <div class="form-progress">
+        <span class="form-progress-label" id="inquiryProgressLabel">Стъпка 1 от 2</span>
+        <div class="form-progress-bar">
+          <span class="form-progress-dot" data-progress-dot="1"></span>
+          <span class="form-progress-dot" data-progress-dot="2"></span>
+        </div>
       </div>
       <div class="form-steps-viewport">
         <div class="form-steps-track" id="inquiryStepsTrack">
@@ -2692,11 +2706,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   const inquiryProgress = inquiryForm.querySelector('.form-progress');
   const inquiryTrack = document.getElementById('inquiryStepsTrack');
   const inquiryDots = inquiryForm.querySelectorAll('.form-progress-dot');
+  const inquiryProgressLabel = document.getElementById('inquiryProgressLabel');
   const inquiryLoading = inquiryForm.querySelector('[data-step="loading"]');
 
   function setInquiryStep(step) {
     inquiryTrack.classList.toggle('step-2', step === 2);
     inquiryDots.forEach((dot, i) => dot.classList.toggle('active', i < step));
+    inquiryProgressLabel.textContent = `Стъпка ${step} от 2`;
   }
 
   function resetInquiryForm() {
