@@ -1041,6 +1041,119 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     line-height:1.6;
   }
 
+  /* COMPARISON SECTION */
+  .comparison{
+    position:relative;
+    background:linear-gradient(180deg, #050505 0%, #090606 55%, #050505 100%);
+    padding:100px 20px 110px;
+    overflow:hidden;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .comparison::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse 900px 460px at 50% 30%, rgba(242,113,45,0.1), transparent 70%);
+    pointer-events:none;
+  }
+  .comparison-inner{
+    position:relative;
+    z-index:2;
+    max-width:1100px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .comparison-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    margin-top:56px;
+    text-align:left;
+  }
+  .comparison-card{
+    position:relative;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:28px 24px 26px;
+    min-height:100%;
+  }
+  .comparison-card.bad{
+    border-color:rgba(239,68,68,0.24);
+  }
+  .comparison-card.good{
+    border-color:rgba(61,220,114,0.3);
+    background:linear-gradient(180deg, rgba(61,220,114,0.07), rgba(255,255,255,0.03));
+    box-shadow:0 18px 50px rgba(61,220,114,0.06);
+  }
+  .comparison-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .comparison-kicker .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:currentColor;
+    flex-shrink:0;
+  }
+  .comparison-card.bad .comparison-kicker{
+    color:#f87171;
+  }
+  .comparison-card.good .comparison-kicker{
+    color:#3ddc72;
+  }
+  .comparison-card h3{
+    font-size:22px;
+    line-height:1.25;
+    font-weight:800;
+    margin-bottom:12px;
+  }
+  .comparison-card p{
+    color:#d1d1d1;
+    font-size:14.5px;
+    line-height:1.65;
+    margin-bottom:18px;
+  }
+  .comparison-list{
+    display:grid;
+    gap:10px;
+    margin-top:18px;
+  }
+  .comparison-item{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.07);
+    color:#ededed;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .comparison-card.bad .comparison-item{
+    color:#d8d8d8;
+  }
+  .comparison-card.good .comparison-item{
+    border-color:rgba(61,220,114,0.16);
+    background:rgba(61,220,114,0.05);
+  }
+  .comparison-bullet{
+    font-weight:800;
+    line-height:1;
+    margin-top:1px;
+    font-size:16px;
+    color:var(--orange);
+    flex-shrink:0;
+  }
+
   /* PROCESS */
   .process{
     background:#050505;
@@ -1825,6 +1938,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .solution{padding:60px 16px 70px;}
     .solution-statement{font-size:18px;margin-top:24px;}
     .pillars{grid-template-columns:1fr;gap:14px;margin-top:36px;}
+    .comparison{padding:60px 16px 70px;}
+    .comparison-grid{grid-template-columns:1fr;gap:14px;margin-top:36px;}
+    .comparison-card{padding:22px 18px;}
+    .comparison-card h3{font-size:18px;}
+    .comparison-card p{font-size:14px;margin-bottom:16px;}
+    .comparison-item{padding:11px 12px;font-size:13.5px;}
     .process{padding:60px 16px 70px;}
     .process-steps{margin-top:36px;}
     .process-step{gap:16px;padding:20px 0;}
@@ -1994,8 +2113,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="problem">
   <div class="problem-inner">
     <span class="section-eyebrow" style="color: #ef4444;">Проблемът</span>
-    <h2 class="section-title">Повечето сайтове звучат еднакво</h2>
-    <p class="section-sub">Бизнесът ти може да е силен, но ако сайтът му говори като на всеки друг, клиентът не усеща защо точно теб да избере.</p>
+    <h2 class="section-title">Повечето сайтове изглеждат еднакво</h2>
+    <p class="section-sub">Може и да си по-добър от повечето, но ако сайтът ти е като на всеки друг, клиентът не усеща защо да избере точно теб и ти си просто &quot;един от всички&quot;.</p>
 
     <div class="problem-grid">
       <div class="problem-card">
@@ -2010,8 +2129,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
       <div class="problem-card">
         <div class="problem-icon">✕</div>
-        <h3>Бизнесът остава просто един от всички</h3>
-        <p>Без ясно позициониране сайтът не показва защо точно твоят бизнес заслужава внимание.</p>
+        <h3>Липсва ясно позициониране</h3>
+        <p>Сайтът не показва ясно защо да изберат точно теб.</p>
       </div>
     </div>
   </div>
@@ -2039,6 +2158,40 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <span class="pillar-num">03</span>
         <h3>Правим дизайн, който не изглежда шаблонно</h3>
         <p>Сайтът изглежда различно от масовите решения и подсилва усещането, че бизнесът ти не е просто един от всички.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comparison">
+  <div class="comparison-inner">
+    <span class="section-eyebrow" style="color: #f59e0b;">Studio 9 срещу повечето</span>
+    <h2 class="section-title">Не просто сайт. По-добра причина да изберат теб.</h2>
+    <p class="section-sub">Повечето сайтове представят бизнеса. Studio 9 го позиционира така, че точният клиент да се разпознае и да усети защо именно ти си правилният избор.</p>
+
+    <div class="comparison-grid">
+      <div class="comparison-card bad">
+        <div class="comparison-kicker"><span class="dot"></span>Повечето</div>
+        <h3>Шаблонен сайт, който говори общо</h3>
+        <p>Представя бизнеса, но не го отличава. Звучи като още един вариант в интернет.</p>
+        <div class="comparison-list">
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Говори на всички, вместо на точния човек</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Изглежда като още един шаблон</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Липсва ясно позициониране</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Бизнесът остава просто един от всички</span></div>
+        </div>
+      </div>
+
+      <div class="comparison-card good">
+        <div class="comparison-kicker"><span class="dot"></span>Studio 9</div>
+        <h3>Сайт по Метод 9, написан за идеалния клиент</h3>
+        <p>Проучваме човека, когото искаш да привлечеш, и пишем посланията така, че той да се припознае веднага.</p>
+        <div class="comparison-list">
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Проучваме идеалния клиент</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Пишем посланията по него</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Правим дизайн, който не изглежда шаблонно</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Бизнесът ти изпъква и привлича точния клиент</span></div>
+        </div>
       </div>
     </div>
   </div>
