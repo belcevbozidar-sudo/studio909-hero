@@ -1212,21 +1212,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .comparison-card.animate.bad{
     border-color:rgba(239,68,68,0.98);
-    box-shadow:0 0 0 1px rgba(239,68,68,0.18), 0 18px 60px rgba(19,34,56,0.06), 0 0 38px rgba(239,68,68,0.18);
   }
   .comparison-card.animate.good{
     border-color:rgba(34,197,94,0.98);
-    box-shadow:0 0 0 1px rgba(34,197,94,0.18), 0 18px 60px rgba(19,34,56,0.06), 0 0 46px rgba(34,197,94,0.22);
-  }
-  .comparison-card.animate.bad::after,
-  .comparison-card.animate.good::after{
-    content:"";
-    position:absolute;
-    inset:-1px;
-    border-radius:20px;
-    pointer-events:none;
-    opacity:0.44;
-    background:linear-gradient(180deg, transparent 0%, currentColor 50%, transparent 100%);
   }
 
   /* PROCESS */
@@ -1970,11 +1958,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       width:100%;
       max-width:100%;
       white-space:nowrap;
-      font-size:clamp(20px, 6.7vw, 31px);
-      line-height:1;
+      font-size:clamp(21px, 7.1vw, 34px);
+      line-height:0.98;
     }
     .hero-title .line-3{
-      font-size:clamp(19px, 6.1vw, 28px);
+      font-size:clamp(21px, 6.85vw, 31px);
     }
     .trusted-row{
       row-gap:8px;
@@ -2223,6 +2211,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .team-card p,
   .proof-card p,
   .problem-card p,
+  .offer-mini-review p,
   .offer-row-panel-inner p,
   .faq-answer p,
   .price-note,
@@ -2239,6 +2228,23 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .trusted-row{
     color:#111827 !important;
+  }
+  .process-step p,
+  .process-step li,
+  .footer-tagline{
+    color:#1f2937 !important;
+  }
+  .add-review-link{
+    background:#111111 !important;
+    color:#ffffff !important;
+    border-color:#111111 !important;
+  }
+  .faq-item{
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+  .comparison-card{
+    box-shadow:none !important;
   }
   .section-eyebrow,
   .offer-eyebrow,
@@ -2259,11 +2265,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .problem-card.in-view{
     border-color:rgba(239,68,68,0.98) !important;
-    box-shadow:0 0 0 1px rgba(239,68,68,0.18), 0 18px 52px rgba(239,68,68,0.14);
   }
   .pillar.in-view{
     border-color:rgba(34,197,94,0.98) !important;
-    box-shadow:0 0 0 1px rgba(34,197,94,0.18), 0 18px 52px rgba(34,197,94,0.14);
   }
   .problem-card.in-view .problem-icon{
     background:rgba(239,68,68,0.16);
@@ -2302,7 +2306,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       "@id": "https://www.studio9.site/#organization",
       "name": "Studio 9",
       "url": "https://www.studio9.site/",
-      "logo": "https://www.studio9.site/assets/studio9-logo.png",
+      "logo": "https://www.studio9.site/assets/studio9-logo-light.svg",
       "image": "https://www.studio9.site/assets/og-image.jpg",
       "description": "Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него - 800 € еднократно и 49 €/месец за хостинг, поддръжка и редакции. Първият месец менажиране на реклами е включен в офертата.",
       "slogan": "Сайт, направен за твоя клиент. Реклами, които го намират.",
@@ -2369,7 +2373,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   <div class="hero-arc"></div>
 
   <nav>
-    <picture><source srcset="assets/studio9-logo.webp" type="image/webp"><img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img"></picture>
+    <img src="assets/studio9-logo-light.svg" alt="Studio 9" class="logo-img">
     <div class="nav-links">
       <a href="#offer" class="active">Услуги</a>
       <a href="#proof">Резултати</a>
@@ -2735,14 +2739,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     </div>
 
     <div class="offer-price">
-      <p style="color:#ccc; font-size:16px; max-width:640px; margin:0 auto 24px; line-height:1.6;">
+      <p style="color:#1f2937; font-size:16px; max-width:640px; margin:0 auto 24px; line-height:1.6;">
         Подхождаме към всеки проект с идеята сайтът да е ясен, различен и написан така, че да привлича максимален брой нови клиенти за бизнеса ти.
       </p>
-      <div style="border: 1px solid rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.05); border-radius: 12px; padding: 26px 24px; max-width: 640px; margin: 0 auto 12px; text-align: center; box-sizing: border-box;">
+      <div style="border: 1px solid rgba(46, 204, 113, 0.55); background: rgba(46, 204, 113, 0.08); border-radius: 12px; padding: 26px 24px; max-width: 640px; margin: 0 auto 12px; text-align: center; box-sizing: border-box;">
         <p style="margin: 0 0 14px; color: #2ecc71; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Инвестиция</p>
-        <p style="margin: 0 0 6px; line-height: 1.2;"><span style="color: #fff; font-size: 32px; font-weight: 800;">800 €</span><span style="color: #999; font-size: 17px; font-weight: 600;"> + 49 € / месец</span></p>
-        <p style="margin: 0; color: #999; font-size: 13px;">еднократно за сайта, след това хостинг, поддръжка, редакции и промени</p>
-        <p style="margin: 16px 0 0; color: #ccc; font-size: 14px;">всичко изброено по-горе е включено в пакета</p>
+        <p style="margin: 0 0 6px; line-height: 1.2;"><span style="color: #0f172a; font-size: 32px; font-weight: 800;">800 €</span><span style="color: #4b5563; font-size: 17px; font-weight: 600;"> + 49 € / месец</span></p>
+        <p style="margin: 0; color: #374151; font-size: 13px;">еднократно за сайта, след това хостинг, поддръжка, редакции и промени</p>
+        <p style="margin: 16px 0 0; color: #1f2937; font-size: 14px;">всичко изброено по-горе е включено в пакета</p>
       </div>
 
       <button type="button" class="cta open-inquiry-btn">Заяви демо</button>
@@ -2836,7 +2840,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <p>Отговаря за дизайна и техническата част - от първия макет до пуснатия сайт.</p>
       </div>
     </div>
-    <p style="color:#ccc; font-size:15px; max-width:520px; margin:36px auto 28px; line-height:1.6;">Преди да започнем работа, винаги правим демо версия, която ти показваме и обсъждаме.</p>
+    <p style="color:#1f2937; font-size:15px; max-width:520px; margin:36px auto 28px; line-height:1.6;">Преди да започнем работа, винаги правим демо версия, която ти показваме и обсъждаме.</p>
     <button type="button" class="cta open-inquiry-btn">Заяви демо</button>
   </div>
 </section>
@@ -2853,7 +2857,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div>
           <h3>Диагностика</h3>
           <p>Попълваш кратка форма:</p>
-          <ul style="color:#aaa; font-size:14px; margin-top:14px; margin-left:20px; line-height:1.65; list-style-type: disc;">
+          <ul style="color:#1f2937; font-size:14px; margin-top:14px; margin-left:20px; line-height:1.65; list-style-type: disc;">
             <li>Какъв е твоят бизнес?</li>
             <li>Какъв е проблемът и какво се опитваш да постигнеш?</li>
           </ul>
@@ -2990,7 +2994,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner">
     <h2>Готов ли си да видиш демо версията<span class="wobble-question">?</span></h2>
-    <p style="color:#ccc; font-size:15px; max-width:520px; margin:20px auto 0; line-height:1.6;">Свържи се и ще ти направим такава.</p>
+    <p style="color:#1f2937; font-size:15px; max-width:520px; margin:20px auto 0; line-height:1.6;">Свържи се и ще ти направим такава.</p>
     <button type="button" class="cta open-inquiry-btn" style="margin-top: 24px;">Заяви демо</button>
     <div class="cta-note"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
   </div>
@@ -2999,7 +3003,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <picture><source srcset="assets/studio9-logo.webp" type="image/webp"><img src="assets/studio9-logo.png" alt="Studio 9" class="footer-logo" loading="lazy" decoding="async"></picture>
+      <img src="assets/studio9-logo-light.svg" alt="Studio 9" class="footer-logo" loading="lazy" decoding="async">
       <p class="footer-tagline">Професионални уебсайтове за изградени бизнеси.</p>
     </div>
     <nav class="footer-links">
