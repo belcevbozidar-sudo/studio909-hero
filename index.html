@@ -70,6 +70,27 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     background:#050505;
     display:flex;
     flex-direction:column;
+    overflow:hidden;
+  }
+
+  /* eclipse arc */
+  .hero-arc{
+    position:absolute;
+    z-index:1;
+    left:50%;
+    top:170px;
+    width:1750px;
+    height:5000px;
+    max-width:none;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:#050505;
+    border:1.5px solid rgba(29,78,216,0.75);
+    box-shadow:
+      0 0 50px 8px rgba(29,78,216,0.55),
+      0 0 130px 34px rgba(29,78,216,0.3),
+      0 0 260px 70px rgba(29,78,216,0.14);
+    pointer-events:none;
   }
 
   /* glow background */
@@ -78,9 +99,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     inset:0;
     z-index:0;
     background:
-      radial-gradient(ellipse 900px 500px at 78% 28%, rgba(29,78,216,0.35), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 55% 35%, rgba(160,30,90,0.35), transparent 60%),
-      radial-gradient(ellipse 600px 400px at 40% 20%, rgba(60,20,90,0.25), transparent 65%);
+      radial-gradient(ellipse 800px 420px at 50% 10%, rgba(29,78,216,0.28), transparent 62%),
+      radial-gradient(ellipse 1100px 480px at 50% 14%, rgba(29,78,216,0.14), transparent 68%);
     pointer-events:none;
   }
   .grid-overlay{
@@ -1821,6 +1841,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .label-desktop{display:none;}
     .label-mobile{display:inline;}
 
+    .hero-arc{
+      top:130px;
+      width:900px;
+      height:2600px;
+    }
+
     .hero-content{padding:36px 20px 44px;}
     .hero-title{
       max-width:840px;
@@ -2046,6 +2072,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="hero">
   <div class="glow"></div>
   <div class="grid-overlay"></div>
+  <div class="hero-arc"></div>
 
   <nav>
     <picture><source srcset="assets/studio9-logo.webp" type="image/webp"><img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img"></picture>
