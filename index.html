@@ -1899,6 +1899,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       line-height:0.96;
     }
     .hero-title{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
       text-align:center;
       max-width:100%;
       width:100%;
@@ -1907,12 +1910,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .hero-title .line-2,
     .hero-title .line-3{
       display:block;
-      width:fit-content;
+      width:100%;
       max-width:100%;
-      margin-left:auto;
-      margin-right:auto;
       white-space:nowrap;
-      font-size:clamp(20px, 7.2vw, 34px);
+      font-size:clamp(18px, 5.9vw, 27px);
+      line-height:1;
+    }
+    .hero-title .line-3{
+      font-size:clamp(17px, 5.4vw, 25px);
     }
     .trusted-row{
       row-gap:8px;
