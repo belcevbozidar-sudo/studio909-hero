@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Сайт, направен за твоя клиент, и реклами, които го намират - Studio 9</title>
-<meta name="description" content="Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него. 1200 € еднократно + 49 €/месец за пълна поддръжка. Първи месец реклами - безплатно.">
+<meta name="description" content="Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него. 800 € еднократно + 49 €/месец за хостинг, поддръжка и редакции. Първият месец менажиране на реклами е включен в офертата.">
 <link rel="canonical" href="https://www.studio9.site/">
 <meta name="robots" content="index, follow">
 
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="bg_BG">
 <meta property="og:url" content="https://www.studio9.site/">
 <meta property="og:title" content="Сайт, направен за твоя клиент, и реклами, които го намират - Studio 9">
-<meta property="og:description" content="Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него. 1200 € еднократно + 49 €/месец за пълна поддръжка. Първи месец реклами - безплатно.">
+<meta property="og:description" content="Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него. 800 € еднократно + 49 €/месец за хостинг, поддръжка и редакции. Първият месец менажиране на реклами е включен в офертата.">
 <meta property="og:image" content="https://www.studio9.site/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Сайт, направен за твоя клиент, и реклами, които го намират - Studio 9">
-<meta name="twitter:description" content="Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него. 1200 € еднократно + 49 €/месец за пълна поддръжка. Първи месец реклами - безплатно.">
+<meta name="twitter:description" content="Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него. 800 € еднократно + 49 €/месец за хостинг, поддръжка и редакции. Първият месец менажиране на реклами е включен в офертата.">
 <meta name="twitter:image" content="https://www.studio9.site/assets/og-image.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -1095,6 +1095,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     border-radius:20px;
     padding:28px 24px 26px;
     min-height:100%;
+    overflow:hidden;
   }
   .comparison-card.bad{
     border-color:rgba(239,68,68,0.24);
@@ -1170,6 +1171,43 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-size:16px;
     color:var(--accent);
     flex-shrink:0;
+  }
+  .comparison-track{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+  }
+  .comparison-track::before,
+  .comparison-track::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    transform:translateX(-50%);
+    box-shadow:0 0 18px currentColor;
+  }
+  .comparison-card.bad .comparison-track{color:#ef4444;}
+  .comparison-card.good .comparison-track{color:#22c55e;}
+  .comparison-card.animate .comparison-track{opacity:1;}
+  .comparison-card.animate .comparison-track::before{
+    animation:track-split-left 1.1s ease forwards;
+  }
+  .comparison-card.animate .comparison-track::after{
+    animation:track-split-right 1.1s ease forwards;
+  }
+  @keyframes track-split-left{
+    0%{transform:translateX(-50%) translateY(0); opacity:0.2;}
+    18%{opacity:1;}
+    100%{transform:translateX(-50%) translateX(-98px) translateY(100%); opacity:0.95;}
+  }
+  @keyframes track-split-right{
+    0%{transform:translateX(-50%) translateY(0); opacity:0.2;}
+    18%{opacity:1;}
+    100%{transform:translateX(-50%) translateX(98px) translateY(100%); opacity:0.95;}
   }
 
   /* PROCESS */
@@ -2015,28 +2053,28 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       "url": "https://www.studio9.site/",
       "logo": "https://www.studio9.site/assets/studio9-logo.png",
       "image": "https://www.studio9.site/assets/og-image.jpg",
-      "description": "Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него - 1200 € еднократно и 49 €/месец за пълна поддръжка. Първи месец реклами - безплатно.",
+      "description": "Проучваме идеалния ти клиент, правим сайт за него и пускаме Meta или Google реклами директно към него - 800 € еднократно и 49 €/месец за хостинг, поддръжка и редакции. Първият месец менажиране на реклами е включен в офертата.",
       "slogan": "Сайт, направен за твоя клиент. Реклами, които го намират.",
-      "priceRange": "1200 EUR",
+      "priceRange": "800 EUR",
       "areaServed": { "@type": "Country", "name": "България" },
       "founder": [
         { "@type": "Person", "name": "Божидар Иванов", "jobTitle": "Съосновател" },
         { "@type": "Person", "name": "Калоян Димитров", "jobTitle": "Съосновател" }
       ],
       "makesOffer": [
-        { "@type": "Offer", "priceCurrency": "EUR", "price": "1200", "description": "Уебсайт с брандинг, Meta или Google реклами (първи месец менажиране безплатно), SEO оптимизация, чат-бот, домейн, имейл, копирайтинг - еднократна такса." },
-        { "@type": "Offer", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "49", "priceCurrency": "EUR", "unitText": "MONTH" }, "description": "Хостинг, поддръжка и неограничени промени по сайта - месечна такса." }
+        { "@type": "Offer", "priceCurrency": "EUR", "price": "800", "description": "Уебсайт с брандинг, Meta или Google реклами (първият месец е включен), SEO оптимизация, чат-бот, домейн, имейл, копирайтинг - еднократна такса." },
+        { "@type": "Offer", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "49", "priceCurrency": "EUR", "unitText": "MONTH" }, "description": "Хостинг, поддръжка, редакции и неограничени промени по сайта - месечна такса." }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Услуги на Studio 9",
         "itemListElement": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Уебсайт с брандинг", "description": "Изграждане на уникален сайт от нулата, без готови шаблони, със собствена визуална концепция." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta или Google реклами", "description": "Настройваме и менажираме рекламни кампании във Facebook, Instagram или Google, насочени към идеалния клиент на сайта. Първи месец менажиране - безплатно." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta или Google реклами", "description": "Настройваме и менажираме рекламни кампании във Facebook, Instagram или Google, насочени към идеалния клиент на сайта. Първият месец е включен в офертата." } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Маркетингови материали", "description": "Банери и визуални материали за социални мрежи - първите 10 са подарък през първия месец, следващите продължават при желание." } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Първоначална SEO оптимизация", "description": "Техническа и съдържателна SEO оптимизация - мета данни, структура, скорост на зареждане и подбор на думи." } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Чат-бот, домейн, имейл и копирайтинг", "description": "Автоматичен чат асистент 24/7, .com домейн, професионален имейл адрес и продаващ копирайтинг." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Хостинг, поддръжка и неограничени промени", "description": "Хостинг, техническа поддръжка и неограничени промени по сайта, включени в месечната такса от 49 €." } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Хостинг, поддръжка и неограничени промени", "description": "Хостинг, техническа поддръжка, редакции и неограничени промени по сайта, включени в месечната такса от 49 €." } }
         ]
       },
       "aggregateRating": {
@@ -2062,7 +2100,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         { "@type": "Question", "name": "Ще имам ли достъп до сайта?", "acceptedAnswer": { "@type": "Answer", "text": "Да, ще ти изработим и предоставим цялостен и лесен за работа административен панел." } },
         { "@type": "Question", "name": "Колко време отнема?", "acceptedAnswer": { "@type": "Answer", "text": "Обикновено целия процес отнема под 2 седмици." } },
         { "@type": "Question", "name": "Какъв рекламен бюджет ми трябва?", "acceptedAnswer": { "@type": "Answer", "text": "Ти определяш бюджета - той е изцяло по твоя преценка и се плаща директно към Meta или Google. При първия разговор ще ти кажем какво реалистично можеш да очакваш при различни нива на бюджет." } },
-        { "@type": "Question", "name": "Какво става след безплатния първи месец реклами?", "acceptedAnswer": { "@type": "Answer", "text": "Спрямо резултатите от първия месец се договаряме за справедлива сума за управление на кампанията, която устройва и двете страни." } },
+        { "@type": "Question", "name": "Какво става след първия месец реклами?", "acceptedAnswer": { "@type": "Answer", "text": "Спрямо резултатите от първия месец се договаряме за справедлива сума за управление на кампанията, която устройва и двете страни." } },
         { "@type": "Question", "name": "Meta или Google реклами - кое е за мен?", "acceptedAnswer": { "@type": "Answer", "text": "Зависи от бизнеса ти. Meta работи добре за визуални продукти и локални услуги, а Google е силен при хора, които вече активно търсят това, което предлагаш. Препоръчваме канала след като разберем бизнеса ти в детайли." } },
         { "@type": "Question", "name": "Има ли риск, ако все още не съм сигурен?", "acceptedAnswer": { "@type": "Answer", "text": "Не. Преди да платиш каквото и да е, ти правим безплатно демо на сайта, за да видиш посоката с очите си. Плащаш едва след като си сигурен - нулев риск от твоя страна." } },
         { "@type": "Question", "name": "Мога ли да получа фактура?", "acceptedAnswer": { "@type": "Answer", "text": "Да, издаваме фактура за всяко плащане." } }
@@ -2198,15 +2236,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <h3>Пишем посланията по него</h3>
         <p>Подреждаме текста така, че правилният клиент да се разпознае, да усети нуждата и да поиска да продължи.</p>
       </div>
-      <div class="pillar">
+      <div class="pillar" style="grid-column:1 / -1;">
         <span class="pillar-num">03</span>
-        <h3>Правим дизайн, който не изглежда шаблонно</h3>
-        <p>Сайтът изглежда различно от масовите решения и подсилва усещането, че бизнесът ти не е просто един от всички.</p>
-      </div>
-      <div class="pillar" style="background:transparent; border-style:dashed; opacity:0.85;">
-        <span class="pillar-num" style="color:#999;">04</span>
-        <h3>По избор, след готовия сайт: пускаме и рекламите</h3>
-        <p>Ако решиш, добавяме Meta или Google кампания върху същия профил на идеалния клиент - вместо реклама „към всички".</p>
+        <h3>Всичко на едно място: сайт, хостинг, поддръжка и реклами</h3>
+        <p>Работиш с един екип за целия процес - сайт, уникален дизайн, хостинг, поддръжка, редакции, рекламни материали и Meta/Google реклами. Няма прехвърляне между агенции и няма разминаване в посланието.</p>
       </div>
     </div>
   </div>
@@ -2221,7 +2254,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div class="comparison-card bad">
         <div class="comparison-kicker"><span class="dot"></span>Повечето</div>
         <h3>Сайт от една агенция, реклами от друга</h3>
-        <p>Плащаш на едни за сайта и на други за рекламите - и никой от двамата не отговаря за крайния резултат.</p>
+        <p>Плащаш на едни за сайта и на други за рекламите - и никой не носи пълната отговорност за резултата.</p>
         <div class="comparison-list">
           <div class="comparison-item"><span class="comparison-bullet">•</span><span>Плащаш отделно на дизайнер и на маркетинг агенция</span></div>
           <div class="comparison-item"><span class="comparison-bullet">•</span><span>Сайтът и рекламите говорят различни неща</span></div>
@@ -2231,14 +2264,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
 
       <div class="comparison-card good">
+        <div class="comparison-track"></div>
         <div class="comparison-kicker"><span class="dot"></span>Метод 9</div>
-        <h3>Един екип - сайт и реклами, изградени заедно</h3>
-        <p>Проучваме човека, когото искаш да привлечеш, и изграждаме сайта и рекламите върху един и същ профил.</p>
+        <h3>Един екип - всичко на едно място</h3>
+        <p>Проучваме човека, когото искаш да привлечеш, и изграждаме сайта, рекламите и поддръжката върху един и същ профил.</p>
         <div class="comparison-list">
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Един екип за сайта и за рекламите</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Едно послание, насочено към един и същ клиент</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Ясна цена за сайта, а рекламите - опция при нужда</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Ние отговаряме за целия път до запитването</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Сайт, хостинг, поддръжка и редакции от един екип</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Рекламни материали и Meta/Google кампании в същата посока</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Уникален дизайн, който те различава от шаблонните сайтове</span></div>
+          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Послание, насочено точно към клиента, което вдига конверсиите</span></div>
         </div>
       </div>
     </div>
@@ -2248,8 +2282,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="offer" id="offer">
   <div class="offer-inner">
     <span class="offer-eyebrow">Какво включва</span>
-    <h2>Какво получаваш за 1 200 €</h2>
-    <p class="offer-sub">Сайт, реклами и всичко около тях - от проучването на клиента до поддръжката, без отделни фактури за всяка промяна.</p>
+    <h2>Какво получаваш в пакета</h2>
+    <p class="offer-sub">Един екип, един процес и една посока - от проучването на клиента до сайта, рекламите, хостинга, поддръжката и редакциите.</p>
 
     <div class="offer-card">
 
@@ -2295,7 +2329,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="offer-row-main">
           <div class="offer-row-left">
             <div>
-              <h3>Маркетингови материали</h3>
+              <h3>Рекламни материали</h3>
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
@@ -2304,7 +2338,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         </div>
         <div class="offer-row-panel">
           <div class="offer-row-panel-inner">
-            <p>Изработваме ти банери и визуални материали за социалните мрежи, съобразени с бранда и продуктите ти. Първите 10 са подарък през първия месец - ако видиш ефект и решиш да продължим, правим нови всеки следващ месец.</p>
+            <p>Изработваме ти банери и визуални материали за социалните мрежи, съобразени с бранда, продукта и рекламите ти. Първите 10 са включени в старта, а след това можем да продължим според нуждите ти.</p>
             <div class="example-slider compact">
               <div class="example-track">
                 <div class="example-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" loading="lazy"></picture></div>
@@ -2357,7 +2391,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="offer-row-panel">
           <div class="offer-row-panel-inner">
             <p>Спрямо бизнеса ти избираме правилния канал - Facebook и Instagram или Google - и настройваме кампанията върху същия профил на идеалния клиент, използван и за сайта. Тестваме аудитории, търсения и криейтиви, за да достигнем точните хора за твоя бизнес.</p>
-            <p>Първият месец менажирането е изцяло безплатно от нас - ти плащаш само рекламния бюджет директно към Meta или Google. След първия месец се договаряме за справедлива такса за управление, съобразена с резултатите и мащаба на кампанията - устройваща и двете страни. Бюджетът за самите реклами определяш ти, като препоръчителния минимум е 400 евро.</p>
+            <p>Първият месец менажирането е включено в офертата - ти покриваш само рекламния бюджет директно към Meta или Google. Ако продължим след това, уточняваме цена за управление според резултатите и мащаба на кампанията. Бюджетът за самите реклами определяш ти, като препоръчителния минимум е 400 евро.</p>
             <div class="example-slider compact">
               <div class="example-track">
                 <div class="example-slide"><picture><source srcset="meta-examples/meta-1.webp" type="image/webp"><img src="meta-examples/meta-1.png" alt="Реклама AERVO" loading="lazy"></picture></div>
@@ -2416,7 +2450,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="offer-row-main">
           <div class="offer-row-left">
             <div>
-              <h3>Хостинг, поддръжка и неограничени промени</h3>
+              <h3>Хостинг, поддръжка и редакции</h3>
             </div>
           </div>
           <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
@@ -2426,7 +2460,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="offer-row-panel">
           <div class="offer-row-panel-inner">
             <p><strong>Хостинг и поддръжка</strong> - Сайтът се хоства на платформата Vercel и ние отговаряме за него: достъпност, скорост, сертификати и обновления. Всичко това вече е наша грижа.</p>
-            <p><strong>Неограничени промени</strong> - Създаване на нова страница, нова услуга или инсталиране на пиксел - пишеш ни и го правим. По всяко време и без да ти струва нищо допълнително.</p>
+            <p><strong>Редакции и промени</strong> - Създаване на нова страница, нова услуга или инсталиране на пиксел - пишеш ни и го правим. По всяко време и без да ти струва нищо допълнително.</p>
           </div>
         </div>
       </div>
@@ -2455,15 +2489,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         Подхождаме към всеки проект с идеята сайтът да е ясен, различен и написан за хората, които искаш да привлечеш.
       </p>
       <div style="border: 1px solid rgba(46, 204, 113, 0.35); background: rgba(46, 204, 113, 0.05); border-radius: 12px; padding: 26px 24px; max-width: 640px; margin: 0 auto 12px; text-align: center; box-sizing: border-box;">
-        <p style="margin: 0 0 14px; color: #2ecc71; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Цена</p>
-        <p style="margin: 0 0 6px; line-height: 1.2;"><span style="color: #fff; font-size: 32px; font-weight: 800;">1 200 €</span><span style="color: #999; font-size: 17px; font-weight: 600;"> + 49 € / месец</span></p>
-        <p style="margin: 0; color: #999; font-size: 13px;">еднократно за сайта, след това хостинг, поддръжка и промени</p>
-        <p style="margin: 16px 0 0; color: #ccc; font-size: 14px;">всичко изброено по-горе е включено в цената</p>
+        <p style="margin: 0 0 14px; color: #2ecc71; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Инвестиция</p>
+        <p style="margin: 0 0 6px; line-height: 1.2;"><span style="color: #fff; font-size: 32px; font-weight: 800;">800 €</span><span style="color: #999; font-size: 17px; font-weight: 600;"> + 49 € / месец</span></p>
+        <p style="margin: 0; color: #999; font-size: 13px;">еднократно за сайта, след това хостинг, поддръжка, редакции и промени</p>
+        <p style="margin: 16px 0 0; color: #ccc; font-size: 14px;">всичко изброено по-горе е включено в пакета</p>
       </div>
 
       <div style="border: 1px dashed rgba(255,255,255,0.15); background: transparent; border-radius: 12px; padding: 14px 22px; max-width: 640px; margin: 0 auto 24px; text-align: center; box-sizing: border-box;">
-        <p style="margin: 0; color: #aaa; font-size: 13.5px; font-weight: 600;">+ По избор: първи месец Meta или Google реклами - менажирани безплатно от нас</p>
-        <p style="margin: 6px 0 0; color: #777; font-size: 12.5px; line-height: 1.5;">Плащаш само рекламния бюджет директно към Meta или Google. За управлението след първия месец се договаряме на честна цена, спрямо резултатите.</p>
+        <p style="margin: 0; color: #aaa; font-size: 13.5px; font-weight: 600;">+ Първи месец Meta или Google реклами - включен в старта</p>
+        <p style="margin: 6px 0 0; color: #777; font-size: 12.5px; line-height: 1.5;">Плащаш само рекламния бюджет директно към Meta или Google. Ако продължим след първия месец, уточняваме цена за управление според резултатите.</p>
       </div>
 
       <button type="button" class="cta open-inquiry-btn">Заяви демо</button>
@@ -2598,14 +2632,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="process-num">4</div>
         <div>
           <h3>Пускаме рекламите</h3>
-          <p>Настройваме Meta или Google кампания върху същия профил на идеалния клиент - първият месец менажиране е безплатно от нас.</p>
+          <p>Настройваме Meta или Google кампания върху същия профил на идеалния клиент - първият месец менажирането е включено в офертата.</p>
         </div>
       </div>
       <div class="process-step">
         <div class="process-num">5</div>
         <div>
           <h3>Постоянна грижа</h3>
-          <p>Сайтът тръгва, а ние оставаме зад него - хостинг, обновления, оптимизация на кампаниите и всяка промяна, която поискаш оттук нататък.</p>
+          <p>Сайтът тръгва, а ние оставаме зад него - хостинг, обновления, редакции, оптимизация на кампаниите и всяка промяна, която поискаш оттук нататък.</p>
         </div>
       </div>
     </div>
@@ -2628,7 +2662,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
-          <p>Метод 9 е нашият начин да проучим бизнеса ти, да разберем идеалния клиент и да подредим посланията, дизайна и рекламите така, че всичко да говори точно на него - това пряко вдига процента на конверсиите и качеството на запитванията.</p>
+          <p>Метод 9 е нашият начин да проучим бизнеса ти, да разберем идеалния клиент и да подредим посланията, дизайна и рекламите така, че всичко да говори точно на него - това вдига процента на конверсиите и качеството на запитванията.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -2669,7 +2703,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
       <div class="faq-item">
         <div class="faq-question">
-          <h3>Какво става след безплатния първи месец реклами?</h3>
+          <h3>Какво става след първия месец реклами?</h3>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
@@ -2912,6 +2946,24 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       answer.style.maxHeight = isOpen ? inner.scrollHeight + 'px' : '0px';
     });
   });
+
+  const comparisonCards = document.querySelectorAll('.comparison-card');
+  if (comparisonCards.length && 'IntersectionObserver' in window) {
+    const comparisonObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          comparisonObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    comparisonCards.forEach(card => {
+      if (window.matchMedia('(max-width: 560px)').matches) {
+        comparisonObserver.observe(card);
+      }
+    });
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
