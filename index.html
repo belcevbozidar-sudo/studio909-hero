@@ -1177,6 +1177,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     inset:0;
     pointer-events:none;
     opacity:0;
+    will-change:opacity, transform;
   }
   .comparison-track::before,
   .comparison-track::after{
@@ -1208,6 +1209,24 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     0%{transform:translateX(-50%) translateY(0); opacity:0.2;}
     18%{opacity:1;}
     100%{transform:translateX(-50%) translateX(98px) translateY(100%); opacity:0.95;}
+  }
+  .comparison-card.animate.bad{
+    border-color:rgba(239,68,68,0.34);
+    box-shadow:0 0 0 1px rgba(239,68,68,0.10), 0 18px 60px rgba(19,34,56,0.06), 0 0 36px rgba(239,68,68,0.10);
+  }
+  .comparison-card.animate.good{
+    border-color:rgba(34,197,94,0.40);
+    box-shadow:0 0 0 1px rgba(34,197,94,0.10), 0 18px 60px rgba(19,34,56,0.06), 0 0 42px rgba(34,197,94,0.14);
+  }
+  .comparison-card.animate.bad::after,
+  .comparison-card.animate.good::after{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:20px;
+    pointer-events:none;
+    opacity:0.22;
+    background:linear-gradient(180deg, transparent 0%, currentColor 50%, transparent 100%);
   }
 
   /* PROCESS */
@@ -2196,6 +2215,58 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   h1{
     color:#132238;
   }
+  .cta-note,
+  .subtext,
+  .offer-sub,
+  .section-sub,
+  .solution-statement,
+  .team-card p,
+  .proof-card p,
+  .problem-card p,
+  .offer-row-panel-inner p,
+  .faq-answer p,
+  .price-note,
+  .price-note-fx,
+  .footer-copy,
+  .footer-legal,
+  .star-label,
+  .proof-person-role,
+  .comparison-card p,
+  .comparison-item{
+    color:#445366 !important;
+  }
+  .trusted-row{
+    color:#4b5968 !important;
+  }
+  .section-eyebrow,
+  .offer-eyebrow,
+  .team-role,
+  .comparison-kicker,
+  .faq-question svg,
+  .offer-toggle-btn,
+  .example-nav{
+    color:var(--accent);
+  }
+  .offer-row h3,
+  .comparison-card h3,
+  .team-card h3,
+  .proof-person-name,
+  .section-title,
+  .offer h2{
+    color:#132238;
+  }
+  .offer-card,
+  .comparison-card,
+  .team-card,
+  .proof-card,
+  .problem-card,
+  .pillar,
+  .offer-mini-review,
+  .faq-item,
+  .modal-box,
+  .cookie-banner{
+    background:rgba(255,255,255,0.92);
+  }
   .spinner{
     border-color:rgba(19,34,56,0.12);
     border-top-color:var(--accent);
@@ -3109,13 +3180,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
           comparisonObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.35 });
+    }, { threshold: 0.15, rootMargin: '0px 0px -15% 0px' });
 
-    comparisonCards.forEach(card => {
-      if (window.matchMedia('(max-width: 560px)').matches) {
-        comparisonObserver.observe(card);
-      }
-    });
+    comparisonCards.forEach(card => comparisonObserver.observe(card));
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
