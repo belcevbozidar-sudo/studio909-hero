@@ -245,14 +245,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:absolute;
     left:0;
     right:0;
-    bottom:-10px;
-    height:8px;
+    bottom:-8px;
+    height:6px;
     border-radius:999px;
-    background:linear-gradient(90deg, rgba(29,78,216,0), rgba(29,78,216,0.95), rgba(29,78,216,0));
+    background:rgba(29,78,216,0.98);
     transform:scaleX(0);
     transform-origin:center;
     animation:hero-underline-draw 1.1s 0.8s ease-out forwards;
-    box-shadow:0 0 18px rgba(29,78,216,0.35);
+    box-shadow:0 0 0 1px rgba(29,78,216,0.08), 0 0 14px rgba(29,78,216,0.22);
   }
   @keyframes hero-underline-draw{
     0%{transform:scaleX(0); opacity:0;}
@@ -2583,7 +2583,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
     <h1 class="hero-title">
       <span class="line-1">Уебсайтове за <span class="hero-underline">големи бизнеси</span>,</span>
-      <span class="line-2">които искат повече пазарен дял онлайн.</span>
+      <span class="line-2">които искат повече <span class="hero-underline">клиенти</span> и пазарен дял онлайн.</span>
     </h1>
 
     <p class="subtext">
@@ -2777,17 +2777,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div class="cta-note"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
     </div>
 
-    <div class="offer-mini-review">
-      <div class="proof-stars">★★★★★ <span class="stars-count">(5 звезди)</span></div>
-      <p>„Най-хубавото за мен беше, че видях безплатно демо на сайта си, преди изобщо да платя каквото и да е - разбрах веднага, че посоката е правилна и чак тогава реших да продължим. Нулев риск от моя страна."</p>
-      <div class="proof-person">
-        <picture><source srcset="photos/image-1783144448316.webp" type="image/webp"><img src="photos/image-1783144448316.png" alt="Клиент на Studio 9" loading="lazy" decoding="async"></picture>
-        <div>
-          <span class="proof-person-name">Радост</span>
-          <span class="proof-person-role">Фризьорски салон Белисима</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -3085,7 +3074,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(entries => {
         active = entries[0].isIntersecting;
-      }, { rootMargin: '35% 0px' }).observe(statement);
+      }, { rootMargin: '15% 0px -18% 0px' }).observe(statement);
     } else {
       active = true;
     }
@@ -3094,8 +3083,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       if (active) {
         const vh = window.innerHeight;
         const rect = statement.getBoundingClientRect();
-        const start = vh * 0.85;
-        const end = vh * 0.25;
+        const start = vh * 0.7;
+        const end = vh * 0.05;
         const t = clamp01((start - rect.top) / (start - end));
         line1.style.color = mixColor(STRONG, MUTED, t);
         line2.style.color = mixColor(MUTED, STRONG, t);
