@@ -695,6 +695,169 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     border-color:var(--accent);
   }
 
+  /* ===== QUIET STATEMENT ===== */
+  .statement{
+    background:#f7faff;
+    padding:150px 24px;
+    text-align:center;
+  }
+  .statement-inner{
+    max-width:840px;
+    margin:0 auto;
+  }
+  .statement p{
+    font-size:clamp(23px, 3.2vw, 38px);
+    font-weight:700;
+    letter-spacing:-0.03em;
+    line-height:1.2;
+    margin:0;
+  }
+  .statement-muted{color:#94a1b2;}
+  .statement-strong{color:#132238;margin-top:20px !important;}
+
+  /* ===== SCROLL-LINKED MOMENTS ===== */
+  .moment{
+    position:relative;
+    background:#f7faff;
+  }
+  .moment-sticky{
+    padding:120px 0;
+  }
+  .moment.pinned{
+    height:var(--pin, 240vh);
+  }
+  .moment.pinned .moment-sticky{
+    position:sticky;
+    top:0;
+    height:100vh;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .moment-head{
+    max-width:760px;
+    margin:0 auto 56px;
+    padding:0 24px;
+    text-align:center;
+  }
+  .moment-head h2{
+    font-size:clamp(30px, 4.6vw, 58px);
+    font-weight:700;
+    letter-spacing:-0.035em;
+    line-height:1.05;
+    color:#132238;
+    margin:0 0 18px;
+  }
+  .moment-head p{
+    font-size:18px;
+    line-height:1.5;
+    color:#5f6b7a;
+    max-width:34ch;
+    margin:0 auto;
+  }
+  .moment-foot{
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+    padding:0 24px;
+  }
+  .pan{
+    overflow-x:auto;
+    overflow-y:hidden;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .pan + .pan{
+    margin-top:20px;
+  }
+  .pan::-webkit-scrollbar{display:none;}
+  .moment.pinned .pan{overflow:hidden;}
+  .pan-track{
+    display:flex;
+    gap:20px;
+    padding:0 24px;
+    width:max-content;
+    margin:0 auto;
+    will-change:transform;
+  }
+  .pan-slide{
+    flex:0 0 auto;
+    border-radius:14px;
+    overflow:hidden;
+    background:#fff;
+    border:1px solid rgba(19,34,56,0.08);
+    box-shadow:0 18px 50px rgba(19,34,56,0.07);
+  }
+  .pan-slide img{
+    display:block;
+    height:240px;
+    width:auto;
+    max-width:none;
+  }
+  .pan.portrait .pan-slide img{
+    height:400px;
+  }
+
+  /* ===== QUIET INCLUDED GRID ===== */
+  .included{
+    background:#f7faff;
+    padding:130px 24px 140px;
+  }
+  .included-inner{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .included-head{
+    text-align:center;
+    margin-bottom:80px;
+  }
+  .included-head h2{
+    font-size:clamp(30px, 4.6vw, 58px);
+    font-weight:700;
+    letter-spacing:-0.035em;
+    line-height:1.05;
+    color:#132238;
+    margin:0 0 18px;
+  }
+  .included-head p{
+    font-size:18px;
+    color:#5f6b7a;
+    margin:0;
+  }
+  .included-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:56px 36px;
+  }
+  .included-item h3{
+    font-size:17px;
+    font-weight:700;
+    color:#132238;
+    letter-spacing:-0.01em;
+    margin:0 0 10px;
+    padding-top:16px;
+    border-top:1px solid rgba(19,34,56,0.12);
+  }
+  .included-item p{
+    font-size:14.5px;
+    line-height:1.55;
+    color:#5f6b7a;
+    margin:0;
+  }
+
+  /* ===== PRICING ===== */
+  .pricing{
+    background:#f7faff;
+    padding:0 24px 140px;
+  }
+  .pricing-inner{
+    max-width:1100px;
+    margin:0 auto;
+    text-align:center;
+  }
+
   .offer-price{
     margin-top:70px;
     text-align:center;
@@ -1437,6 +1600,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .footer-logo{
     height:44px;
     width:auto;
+    max-width:100%;
+    object-fit:contain;
     display:block;
     margin:0 auto 14px;
   }
@@ -1893,6 +2058,16 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .process{padding:80px 20px 90px;}
     .faq{padding:80px 20px 90px;}
     .final-cta{padding:90px 20px 100px;}
+
+    .statement{padding:110px 24px;}
+    .moment-sticky{padding:100px 0;}
+    .moment-head{margin-bottom:44px;}
+    .pan-slide img{height:190px;}
+    .pan.portrait .pan-slide img{height:330px;}
+    .included{padding:100px 24px 110px;}
+    .included-grid{grid-template-columns:repeat(2, 1fr);gap:44px 32px;}
+    .included-head{margin-bottom:60px;}
+    .pricing{padding:0 24px 110px;}
   }
 
   /* ===== MOBILE ===== */
@@ -1995,6 +2170,26 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .faq-question{padding:18px 2px;}
     .faq-question h3{font-size:14.5px;}
     .final-cta{padding:70px 16px 80px;}
+
+    .statement{padding:88px 20px;}
+    .statement p{font-size:clamp(20px, 5.6vw, 30px);}
+    .moment-sticky{padding:88px 0;}
+    .moment.pinned{height:var(--pin-m, 200vh);}
+    .moment-head{margin-bottom:36px;padding:0 20px;}
+    .moment-head p{font-size:15.5px;}
+    .moment-foot{margin-top:28px;}
+    .pan-track{gap:12px;padding:0 16px;}
+    .pan + .pan{margin-top:12px;}
+    .pan-slide{border-radius:10px;}
+    .pan-slide img{height:168px;}
+    .pan.portrait .pan-slide img{height:310px;}
+    .included{padding:88px 20px 96px;}
+    .included-head{margin-bottom:48px;}
+    .included-head p{font-size:15.5px;}
+    .included-grid{grid-template-columns:repeat(2, 1fr);gap:34px 22px;}
+    .included-item h3{font-size:14.5px;padding-top:13px;margin-bottom:7px;}
+    .included-item p{font-size:13px;}
+    .pricing{padding:0 20px 96px;}
     .cta-row{flex-direction:column;width:100%;}
     .cta-row .cta, .cta-row .cta-secondary{width:100%;justify-content:center;}
 
@@ -2410,300 +2605,147 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   </div>
 </div>
 
-<section class="problem">
-  <div class="problem-inner">
-    <span class="section-eyebrow" style="color: #ef4444;">Проблемът</span>
-    <h2 class="section-title">Повечето сайтове изглеждат еднакво</h2>
-    <p class="section-sub">Може и да си по-добър от останалите, но ако сайтът ти е като на всеки друг, клиентът не усеща защо да избере точно теб и ти си просто &quot;един от всички&quot;.</p>
+<section class="statement">
+  <div class="statement-inner">
+    <p class="statement-muted">Повечето плащат на едни за сайта и на други за рекламите.</p>
+    <p class="statement-strong">Ние правим и двете - върху един и същ профил на клиента.</p>
+  </div>
+</section>
 
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">✕</div>
-        <h3>Сайтът не говори на точния човек</h3>
-        <p>Посланията са общи и не карат правилния клиент да се разпознае още в първите секунди.</p>
+<section class="moment" id="offer" style="--pin:280vh; --pin-m:230vh;">
+  <div class="moment-sticky">
+    <div class="moment-head">
+      <h2>Сайт, който говори на твоя клиент.</h2>
+      <p>Проучваме кой купува от теб и пишем сайта за него.</p>
+    </div>
+    <div class="pan" data-dir="left">
+      <div class="pan-track">
+        <div class="pan-slide"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/icheraka.webp" type="image/webp"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/vizhun-home.webp" type="image/webp"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/fun-creation.webp" type="image/webp"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/ecovolta.webp" type="image/webp"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/deposit.webp" type="image/webp"><img src="examples/deposit.jpg" alt="deposit - соларни системи" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/hydrolux.webp" type="image/webp"><img src="examples/hydrolux.jpg" alt="Hydrolux Group - индустриални маркучи" loading="lazy"></picture></div>
       </div>
-      <div class="problem-card">
-        <div class="problem-icon">✕</div>
-        <h3>Изглежда като още един шаблон в интернет</h3>
-        <p>Когато дизайнът и текстът са еднакви с всички останали, бизнесът ти не се откроява.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">✕</div>
-        <h3>Липсва ясно позициониране</h3>
-        <p>Сайтът не показва ясно защо да изберат точно теб.</p>
+    </div>
+    <div class="pan" data-dir="right">
+      <div class="pan-track">
+        <div class="pan-slide"><picture><source srcset="examples/hotpoint.webp" type="image/webp"><img src="examples/hotpoint.jpg" alt="Hot Point - антикварни мебели" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/kinetic.webp" type="image/webp"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/greekfeast.webp" type="image/webp"><img src="examples/greekfeast.jpg" alt="Greek Feast - гръцки продукти" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/oranjeriata.webp" type="image/webp"><img src="examples/oranjeriata.jpg" alt="Оранжерията - домашна кухня" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/sogana99.webp" type="image/webp"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" loading="lazy"></picture></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="solution">
-  <div class="solution-glow"></div>
-  <div class="solution-inner">
-    <span class="section-eyebrow" style="color: #3ddc72;">Решението</span>
-    <h2 class="section-title">Методът 9: сайт, написан за идеалния ти клиент</h2>
-    <p class="solution-statement">Проучваме бизнеса ти, намираме човека, който искаш да привлечеш, и пишем посланията така, че той да се припознае веднага.</p>
+<section class="moment" style="--pin:210vh; --pin-m:185vh;">
+  <div class="moment-sticky">
+    <div class="moment-head">
+      <h2>Реклами, които го намират.</h2>
+      <p>Един месец Meta или Google - върху същия профил.</p>
+    </div>
+    <div class="pan portrait" data-dir="right">
+      <div class="pan-track">
+        <div class="pan-slide"><picture><source srcset="meta-examples/meta-1.webp" type="image/webp"><img src="meta-examples/meta-1.png" alt="Реклама AERVO" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="meta-examples/meta-2.webp" type="image/webp"><img src="meta-examples/meta-2.png" alt="Реклама AeroVent Климатични системи" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="meta-examples/meta-3.webp" type="image/webp"><img src="meta-examples/meta-3.png" alt="Реклама Roof Pro BG" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="meta-examples/meta-4.webp" type="image/webp"><img src="meta-examples/meta-4.png" alt="Реклама NEXUS" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="meta-examples/meta-5.webp" type="image/webp"><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="meta-examples/meta-6.webp" type="image/webp"><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" loading="lazy"></picture></div>
+      </div>
+    </div>
+    <div class="moment-foot">
+      <a href="https://www.google.com/partners/agency?id=8564535390" target="_blank" rel="noopener" class="google-partner-badge">
+        <svg class="ext-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <svg class="google-g" viewBox="0 0 24 24">
+          <path fill="#EA4335" d="M12 5.04c1.78 0 3.37.61 4.62 1.8l3.47-3.47C17.99 1.19 15.22 0 12 0 7.35 0 3.37 2.67 1.39 6.56l4.09 3.18C6.44 6.84 9 5.04 12 5.04z"></path>
+          <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.41-4.91 3.41-8.6z"></path>
+          <path fill="#FBBC05" d="M5.48 14.26c-.25-.75-.39-1.56-.39-2.39s.14-1.64.39-2.39L1.39 6.3C.5 8.09 0 10.09 0 12s.5 3.91 1.39 5.7l4.09-3.44z"></path>
+          <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.7-2.87c-1.02.68-2.33 1.09-3.96 1.09-3 0-5.56-1.8-6.52-4.7L1.39 17.7C3.37 21.33 7.35 24 12 24z"></path>
+        </svg>
+        <span class="partner-text">Google Partner</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <div class="pillars">
-      <div class="pillar">
-        <span class="pillar-num">01</span>
-        <h3>Проучваме идеалния клиент</h3>
-        <p>Разбираме кой е човекът, когото искаш да привлечеш, какво търси и как взима решения.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-num">02</span>
-        <h3>Пишем посланията по него</h3>
-        <p>Подреждаме текста така, че правилният клиент да се разпознае, да усети нуждата и да поиска да продължи.</p>
-      </div>
-      <div class="pillar" style="">
-        <span class="pillar-num">03</span>
-        <h3>Всичко на едно място: сайт, хостинг, поддръжка и реклами</h3>
-        <p>Работиш с един екип за целия процес - сайт, уникален дизайн, хостинг, поддръжка, редакции, рекламни материали и Meta/Google реклами. Няма прехвърляне между агенции и няма разминаване в посланието.</p>
+<section class="moment" style="--pin:250vh; --pin-m:205vh;">
+  <div class="moment-sticky">
+    <div class="moment-head">
+      <h2>Визуали, които спират скрола.</h2>
+      <p>Първите 10 банера са включени в старта.</p>
+    </div>
+    <div class="pan" data-dir="left">
+      <div class="pan-track">
+        <div class="pan-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/yslperfume.webp" type="image/webp"><img src="marketing-examples/yslperfume.jpg" alt="Маркетингов банер парфюм" loading="lazy"></picture></div>
+        <div class="pan-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" loading="lazy"></picture></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="comparison">
-  <div class="comparison-inner">
-    <span class="section-eyebrow" style="color: #f59e0b;">Метод 9 срещу повечето</span>
-    <h2 class="section-title">Метод 9 срещу шаблонните сайтове</h2>
-
-    <div class="comparison-grid">
-      <div class="comparison-card bad">
-        <div class="comparison-kicker"><span class="dot"></span>Повечето</div>
-        <h3>Сайт от една агенция, реклами от друга</h3>
-        <p>Плащаш на едни за сайта и на други за рекламите - и никой не носи пълната отговорност за резултата.</p>
-        <div class="comparison-list">
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Плащаш отделно на дизайнер и на маркетинг агенция</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Сайтът и рекламите говорят различни неща</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Скъпо за сайта, после мълчание и никаква поддръжка</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Никой не отговаря за резултата</span></div>
-        </div>
+<section class="included">
+  <div class="included-inner">
+    <div class="included-head">
+      <h2>И всичко останало.</h2>
+      <p>Включено в същата цена. Без добавки.</p>
+    </div>
+    <div class="included-grid">
+      <div class="included-item">
+        <h3>SEO оптимизация</h3>
+        <p>Сайтът е готов да бъде намиран в Google.</p>
       </div>
-
-      <div class="comparison-card good">
-        <div class="comparison-kicker"><span class="dot"></span>Метод 9</div>
-        <h3>Един екип - всичко на едно място</h3>
-        <p>Проучваме човека, когото искаш да привлечеш, и изграждаме сайта, рекламите и поддръжката върху един и същ профил.</p>
-        <div class="comparison-list">
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Сайт, хостинг, поддръжка и редакции от един екип</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Рекламни материали и Meta/Google кампании в същата посока</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Ясен сайт, който говори професионално за бизнеса ти</span></div>
-          <div class="comparison-item"><span class="comparison-bullet">•</span><span>Един процес, една посока, един екип</span></div>
-        </div>
+      <div class="included-item">
+        <h3>Чат-бот</h3>
+        <p>Отговаря на въпроси 24/7 и насочва към действие.</p>
+      </div>
+      <div class="included-item">
+        <h3>Домейн</h3>
+        <p>Купуваме и свързваме домейна вместо теб.</p>
+      </div>
+      <div class="included-item">
+        <h3>Копирайтинг</h3>
+        <p>Текстовете ги пишем ние.</p>
+      </div>
+      <div class="included-item">
+        <h3>Професионален имейл</h3>
+        <p>office@твоядомейн.com вместо адрес в Gmail.</p>
+      </div>
+      <div class="included-item">
+        <h3>Хостинг и поддръжка</h3>
+        <p>Скорост, сертификати и обновления - наша грижа.</p>
+      </div>
+      <div class="included-item">
+        <h3>Неограничени редакции</h3>
+        <p>Пишеш ни и го правим. Без допълнително плащане.</p>
+      </div>
+      <div class="included-item">
+        <h3>Директна връзка</h3>
+        <p>Пишеш на екипа, не на акаунт мениджър.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="offer" id="offer">
-  <div class="offer-inner">
-    <span class="offer-eyebrow">Какво включва</span>
-    <h2>Какво получаваш в пакета</h2>
-    <p class="offer-sub">Един екип, един процес и една посока - от проучването на клиента до сайта, рекламите, хостинга, поддръжката и редакциите.</p>
-
-    <div class="offer-card">
-
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>Уебсайт с брандинг</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn pulse-btn" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p>Правим проучване на бизнеса ти и на идеалния ти клиент, и спрямо него пишем посланията и устройваме сайта - така че в момента, в който попадне на него, човекът да се припознае, да усети нуждата и да ти се довери.</p>
-            <div class="example-slider">
-              <div class="example-track" id="exampleTrack">
-                <div class="example-slide"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/icheraka.webp" type="image/webp"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/vizhun-home.webp" type="image/webp"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/fun-creation.webp" type="image/webp"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/ecovolta.webp" type="image/webp"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/deposit.webp" type="image/webp"><img src="examples/deposit.jpg" alt="deposit - соларни системи" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/hydrolux.webp" type="image/webp"><img src="examples/hydrolux.jpg" alt="Hydrolux Group - индустриални маркучи" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/hotpoint.webp" type="image/webp"><img src="examples/hotpoint.jpg" alt="Hot Point - антикварни мебели" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/kinetic.webp" type="image/webp"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/greekfeast.webp" type="image/webp"><img src="examples/greekfeast.jpg" alt="Greek Feast - гръцки продукти" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/oranjeriata.webp" type="image/webp"><img src="examples/oranjeriata.jpg" alt="Оранжерията - домашна кухня" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/sogana99.webp" type="image/webp"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" loading="lazy"></picture></div>
-              </div>
-              <div class="example-nav-row">
-                <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
-                <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>1 месец Meta или Google реклами</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p>Спрямо бизнеса ти избираме правилния канал - Facebook и Instagram или Google - и настройваме кампанията върху същия профил на идеалния клиент, използван и за сайта. Тестваме аудитории, търсения и криейтиви, за да привлечем максимален брой нови клиенти.</p>
-            <div class="example-slider compact">
-              <div class="example-track">
-                <div class="example-slide"><picture><source srcset="meta-examples/meta-1.webp" type="image/webp"><img src="meta-examples/meta-1.png" alt="Реклама AERVO" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="meta-examples/meta-2.webp" type="image/webp"><img src="meta-examples/meta-2.png" alt="Реклама AeroVent Климатични системи" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="meta-examples/meta-3.webp" type="image/webp"><img src="meta-examples/meta-3.png" alt="Реклама Roof Pro BG" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="meta-examples/meta-4.webp" type="image/webp"><img src="meta-examples/meta-4.png" alt="Реклама NEXUS" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="meta-examples/meta-5.webp" type="image/webp"><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="meta-examples/meta-6.webp" type="image/webp"><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" loading="lazy"></picture></div>
-              </div>
-              <div class="example-nav-row">
-                <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
-                <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
-              </div>
-            </div>
-
-            <div style="display: flex; justify-content: center; width: 100%; margin-top: 24px; margin-bottom: 8px; padding: 0 26px; box-sizing: border-box;">
-              <a href="https://www.google.com/partners/agency?id=8564535390" target="_blank" rel="noopener" class="google-partner-badge">
-                <svg class="ext-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-                <svg class="google-g" viewBox="0 0 24 24">
-                  <path fill="#EA4335" d="M12 5.04c1.78 0 3.37.61 4.62 1.8l3.47-3.47C17.99 1.19 15.22 0 12 0 7.35 0 3.37 2.67 1.39 6.56l4.09 3.18C6.44 6.84 9 5.04 12 5.04z"></path>
-                  <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.41-4.91 3.41-8.6z"></path>
-                  <path fill="#FBBC05" d="M5.48 14.26c-.25-.75-.39-1.56-.39-2.39s.14-1.64.39-2.39L1.39 6.3C.5 8.09 0 10.09 0 12s.5 3.91 1.39 5.7l4.09-3.44z"></path>
-                  <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.7-2.87c-1.02.68-2.33 1.09-3.96 1.09-3 0-5.56-1.8-6.52-4.7L1.39 17.7C3.37 21.33 7.35 24 12 24z"></path>
-                </svg>
-                <span class="partner-text">Google Partner</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>Първоначална SEO оптимизация</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p>Техническа и съдържателна оптимизация - мета данни, структура, скорост на зареждане и подбор на ключови думи, за да може Google да разчете сайта правилно и да те показва на хората, които вече търсят твоята услуга. Органичните позиции се изграждат с времето, не от първия ден.</p>
-          </div>
-        </div>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>Рекламни материали</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p>Изработваме ти банери и визуални материали за социалните мрежи, съобразени с бранда, продукта и рекламите ти. Първите 10 са включени в старта, а след това можем да продължим според нуждите ти.</p>
-            <div class="example-slider compact">
-              <div class="example-track">
-                <div class="example-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/yslperfume.webp" type="image/webp"><img src="marketing-examples/yslperfume.jpg" alt="Маркетингов банер парфюм" loading="lazy"></picture></div>
-                <div class="example-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" loading="lazy"></picture></div>
-              </div>
-              <div class="example-nav-row">
-                <button type="button" class="example-nav prev" aria-label="Предишен пример">‹</button>
-                <button type="button" class="example-nav next" aria-label="Следващ пример">›</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>Чат-бот + Домейн + Имейл + Копирайтинг</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p><strong>Чат-бот</strong> - Вграден асистент, който отговаря на най-честите въпроси 24/7 и насочва посетителя към конкретно действие - обаждане, запитване или поръчка.</p>
-            <p><strong>Домейн (.com)</strong> - Купуваме и свързваме домейн, ако все още нямаш.</p>
-            <p><strong>Копирайтинг</strong> - Текстовете ги пишем ние - така че клиентът да усети нуждата, разбере какво предлагаш и защо си струва.</p>
-            <p><strong>Имейл</strong> - Настройваме професионален имейл на твоя домейн - office@твоядомейн.com вместо адрес в @gmail.com или @abv.bg.</p>
-          </div>
-        </div>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>Хостинг, поддръжка и редакции</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p><strong>Хостинг и поддръжка</strong> - Сайтът се хоства на платформата Vercel и ние отговаряме за него: достъпност, скорост, сертификати и обновления. Всичко това вече е наша грижа.</p>
-            <p><strong>Редакции и промени</strong> - Създаване на нова страница, нова услуга или инсталиране на пиксел - пишеш ни и го правим. По всяко време и без да ти струва нищо допълнително.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="offer-row">
-        <div class="offer-row-main">
-          <div class="offer-row-left">
-            <div>
-              <h3>Директна връзка с екипа</h3>
-            </div>
-          </div>
-          <button type="button" class="offer-toggle-btn bounce" aria-label="Научи повече" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="offer-row-panel">
-          <div class="offer-row-panel-inner">
-            <p>Пишеш директно на нас - няма акаунт мениджъри или препращане между отдели. Човекът, който ти отговаря, е човекът, който работи по сайта ти.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<section class="pricing">
+  <div class="pricing-inner">
     <div class="offer-price">
-      <p style="color:#1f2937; font-size:16px; max-width:640px; margin:0 auto 24px; line-height:1.6;">
-        Подхождаме към всеки проект с идеята сайтът да е ясен, различен и написан така, че да привлича максимален брой нови клиенти за бизнеса ти.
-      </p>
       <div style="border: 1px solid rgba(46, 204, 113, 0.55); background: rgba(46, 204, 113, 0.08); border-radius: 12px; padding: 26px 24px; max-width: 640px; margin: 0 auto 12px; text-align: center; box-sizing: border-box;">
         <p style="margin: 0 0 14px; color: #2ecc71; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Инвестиция</p>
         <p style="margin: 0 0 6px; line-height: 1.2;"><span style="color: #0f172a; font-size: 32px; font-weight: 800;">1800 €</span><span style="color: #4b5563; font-size: 17px; font-weight: 600;"> + 59 € / месец</span></p>
@@ -3084,61 +3126,53 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 </div>
 
 <script>
-  document.querySelectorAll('.offer-row').forEach(row => {
-    const btn = row.querySelector('.offer-toggle-btn');
-    const panel = row.querySelector('.offer-row-panel');
-    const inner = row.querySelector('.offer-row-panel-inner');
-    row.querySelector('.offer-row-main').addEventListener('click', () => {
-      const isOpen = row.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      panel.style.maxHeight = isOpen ? inner.scrollHeight + 'px' : '0px';
-    });
-    inner.querySelectorAll('img').forEach(img => {
-      img.addEventListener('load', () => {
-        if (row.classList.contains('open')) {
-          panel.style.maxHeight = inner.scrollHeight + 'px';
-        }
+  /* Scroll-linked horizontal pan for the offer "moments".
+     Each .moment is pinned; its scroll progress drives the X offset of every
+     .pan-track inside it. Falls back to a plain swipeable row when the user
+     prefers reduced motion or when the track already fits the viewport. */
+  (() => {
+    const moments = Array.from(document.querySelectorAll('.moment'));
+    if (!moments.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    moments.forEach(m => m.classList.add('pinned'));
+    const pans = Array.from(document.querySelectorAll('.pan[data-dir]'));
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      pans.forEach(pan => {
+        const track = pan.querySelector('.pan-track');
+        const moment = pan.closest('.moment');
+        if (!track || !moment) return;
+
+        const overflow = track.scrollWidth - pan.clientWidth;
+        if (overflow <= 0) { track.style.transform = ''; return; }
+
+        const rect = moment.getBoundingClientRect();
+        const range = rect.height - vh;
+        if (range <= 0) return;
+
+        const progress = Math.min(1, Math.max(0, -rect.top / range));
+        const travel = pan.dataset.dir === 'right'
+          ? -overflow * (1 - progress)
+          : -overflow * progress;
+        track.style.transform = 'translate3d(' + travel.toFixed(1) + 'px,0,0)';
       });
-    });
-  });
-
-  document.querySelectorAll('.example-slider').forEach(slider => {
-    const track = slider.querySelector('.example-track');
-    const prev = slider.querySelector('.example-nav.prev');
-    const next = slider.querySelector('.example-nav.next');
-    const slides = track.querySelectorAll('.example-slide');
-    let index = 0;
-
-    const step = () => slides[0].getBoundingClientRect().width + 14;
-    const goTo = i => {
-      index = (i + slides.length) % slides.length;
-      track.scrollTo({ left: index * step(), behavior: 'smooth' });
     };
-    prev.addEventListener('click', () => goTo(index - 1));
-    next.addEventListener('click', () => goTo(index + 1));
 
-    let isDown = false, startX = 0, scrollStart = 0;
-    track.addEventListener('pointerdown', e => {
-      isDown = true;
-      startX = e.clientX;
-      scrollStart = track.scrollLeft;
-      track.classList.add('dragging');
-      track.setPointerCapture(e.pointerId);
-    });
-    track.addEventListener('pointermove', e => {
-      if (!isDown) return;
-      track.scrollLeft = scrollStart - (e.clientX - startX);
-    });
-    const endDrag = () => {
-      isDown = false;
-      track.classList.remove('dragging');
-      index = Math.round(track.scrollLeft / step());
-      goTo(index);
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
     };
-    track.addEventListener('pointerup', endDrag);
-    track.addEventListener('pointerleave', endDrag);
-    track.addEventListener('pointercancel', endDrag);
-  });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', update);
+    update();
+  })();
 
   document.querySelectorAll('.faq-item').forEach(item => {
     const answer = item.querySelector('.faq-answer');
@@ -3386,16 +3420,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       cookieBanner.classList.remove('show');
     }
   });
-
-  /* ===== PILLAR SCROLL-TRIGGER (mobile) ===== */
-  if ('IntersectionObserver' in window) {
-    const pillarObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        entry.target.classList.toggle('in-view', entry.isIntersecting);
-      });
-    }, { rootMargin: '-25% 0px -25% 0px', threshold: 0.2 });
-    document.querySelectorAll('.pillar, .problem-card').forEach(el => pillarObserver.observe(el));
-  }
 
   /* ===== PROCESS LINE SCROLL FILL ===== */
   const processSteps = document.querySelector('.process-steps');
