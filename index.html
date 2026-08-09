@@ -1180,50 +1180,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     color:var(--accent);
     flex-shrink:0;
   }
-  .comparison-track{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:0;
-    will-change:opacity, transform;
-  }
-  .comparison-track::before,
-  .comparison-track::after{
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    transform:translateX(-50%);
-    box-shadow:0 0 18px currentColor;
-  }
-  .comparison-card.bad .comparison-track{color:#ef4444;}
-  .comparison-card.good .comparison-track{color:#22c55e;}
-  .comparison-card.animate .comparison-track{opacity:1;}
-  .comparison-card.animate .comparison-track::before{
-    animation:track-split-left 1.1s ease forwards;
-  }
-  .comparison-card.animate .comparison-track::after{
-    animation:track-split-right 1.1s ease forwards;
-  }
-  @keyframes track-split-left{
-    0%{transform:translateX(-50%) translateY(0); opacity:0.2;}
-    18%{opacity:1;}
-    100%{transform:translateX(-50%) translateX(-98px) translateY(100%); opacity:0.95;}
-  }
-  @keyframes track-split-right{
-    0%{transform:translateX(-50%) translateY(0); opacity:0.2;}
-    18%{opacity:1;}
-    100%{transform:translateX(-50%) translateX(98px) translateY(100%); opacity:0.95;}
-  }
-  .comparison-card.animate.bad{
-    border-color:rgba(239,68,68,0.98);
-  }
-  .comparison-card.animate.good{
-    border-color:rgba(34,197,94,0.98);
-  }
 
   /* PROCESS */
   .process{
@@ -2526,7 +2482,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
 
       <div class="comparison-card good">
-        <div class="comparison-track"></div>
         <div class="comparison-kicker"><span class="dot"></span>Метод 9</div>
         <h3>Един екип - всичко на едно място</h3>
         <p>Проучваме човека, когото искаш да привлечеш, и изграждаме сайта, рекламите и поддръжката върху един и същ профил.</p>
@@ -3193,20 +3148,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       answer.style.maxHeight = isOpen ? inner.scrollHeight + 'px' : '0px';
     });
   });
-
-  const comparisonCards = document.querySelectorAll('.comparison-card');
-  if (comparisonCards.length && 'IntersectionObserver' in window) {
-    const comparisonObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          comparisonObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -15% 0px' });
-
-    comparisonCards.forEach(card => comparisonObserver.observe(card));
-  }
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
