@@ -711,9 +711,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     letter-spacing:-0.03em;
     line-height:1.2;
     margin:0;
+    transform:scale(var(--statement-scale, 1));
+    transform-origin:center;
+    transition:transform .2s ease-out, color .2s linear;
+    will-change:transform, color;
   }
-  .statement-muted{color:#94a1b2;}
-  .statement-strong{color:#132238;margin-top:20px !important;}
+  .statement-muted{color:#94a1b2;--statement-scale:1.12;}
+  .statement-strong{color:#132238;margin-top:20px !important;--statement-scale:0.9;}
 
   /* ===== CAROUSEL MOMENTS ===== */
   .moment{
@@ -3065,6 +3069,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         const t = clamp01((start - rect.top) / (start - end));
         line1.style.color = mixColor(STRONG, MUTED, t);
         line2.style.color = mixColor(MUTED, STRONG, t);
+        line1.style.setProperty('--statement-scale', (1.12 - t * 0.22).toFixed(3));
+        line2.style.setProperty('--statement-scale', (0.9 + t * 0.24).toFixed(3));
       }
       requestAnimationFrame(frame);
     };
