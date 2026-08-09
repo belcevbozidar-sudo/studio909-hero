@@ -816,13 +816,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .laptop-showcase{
     position:relative;
-    max-width:1460px;
+    max-width:1680px;
     margin:0 auto;
-    padding:0 18px;
+    padding:0 10px;
   }
   .laptop-stage{
     position:relative;
-    width:min(100%, 1320px);
+    width:min(100%, 1500px);
     margin:0 auto;
     isolation:isolate;
   }
@@ -858,18 +858,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:absolute;
     inset:0;
     opacity:0;
-    transform:translateX(18%) scale(0.985);
+    transform:translateX(8%);
     transition:transform .8s cubic-bezier(.22,1,.36,1), opacity .8s ease;
     z-index:1;
   }
   .laptop-slide.is-active{
     opacity:1;
-    transform:translateX(0) scale(1);
+    transform:translateX(0);
     z-index:2;
   }
   .laptop-slide.is-exit{
     opacity:0;
-    transform:translateX(-18%) scale(0.985);
+    transform:translateX(-8%);
     z-index:1;
   }
   .laptop-slide picture,
@@ -2261,7 +2261,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .final-cta{padding:70px 16px 80px;}
 
     .statement{padding:88px 20px;}
-    .statement p{font-size:clamp(20px, 5.6vw, 30px);}
+    .statement p{
+      font-size:clamp(18px, 5.05vw, 27px);
+      max-width:92%;
+      margin-left:auto;
+      margin-right:auto;
+      line-height:1.24;
+    }
     .moment{padding:88px 0 96px;}
     .moment-head{margin-bottom:36px;padding:0 20px;}
     .moment-head p{font-size:15.5px;}
@@ -2272,7 +2278,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .carousel-slide.pair{gap:14px;}
     .carousel-slide.pair img{height:280px;}
     .carousel.large .carousel-slide img{height:390px;}
-    .laptop-showcase{padding:0 14px;}
+    .laptop-showcase{padding:0 8px;}
     .laptop-screen{
       top:24.4%;
       left:30%;
