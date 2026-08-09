@@ -715,26 +715,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .statement-muted{color:#94a1b2;}
   .statement-strong{color:#132238;margin-top:20px !important;}
 
-  /* ===== SCROLL-LINKED MOMENTS ===== */
+  /* ===== CAROUSEL MOMENTS ===== */
   .moment{
     position:relative;
     background:#f7faff;
-  }
-  .moment-sticky{
-    padding:120px 0;
-  }
-  .moment.pinned{
-    height:var(--pin, 240vh);
-  }
-  .moment.pinned .moment-sticky{
-    position:sticky;
-    top:0;
-    height:100vh;
-    padding:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    overflow:hidden;
+    padding:120px 0 130px;
   }
   .moment-head{
     max-width:760px;
@@ -763,47 +748,88 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin-top:40px;
     padding:0 24px;
   }
-  .pan{
-    overflow-x:auto;
-    overflow-y:hidden;
-    scrollbar-width:none;
-    -webkit-overflow-scrolling:touch;
-  }
-  .pan.active{
-    will-change:transform, opacity;
-  }
-  .pan + .pan{
-    margin-top:20px;
-  }
-  .pan::-webkit-scrollbar{display:none;}
-  .moment.pinned .pan{overflow:hidden;}
-  .pan-track{
-    display:flex;
-    gap:20px;
-    padding:0 24px;
-    width:max-content;
+  .carousel{
+    position:relative;
+    max-width:1100px;
     margin:0 auto;
-    will-change:transform;
+    padding:0 14px;
   }
-  .pan-slide{
-    flex:0 0 auto;
+  .carousel-viewport{
+    overflow:hidden;
+    border-radius:16px;
+  }
+  .carousel-track{
+    display:flex;
+    transition:transform .5s cubic-bezier(.65,0,.35,1);
+  }
+  .carousel-slide{
+    flex:0 0 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .carousel-slide picture{
+    display:block;
     border-radius:14px;
     overflow:hidden;
     background:#fff;
     border:1px solid rgba(19,34,56,0.08);
     box-shadow:0 18px 50px rgba(19,34,56,0.07);
   }
-  .pan-slide img{
+  .carousel-slide img{
     display:block;
-    height:240px;
+    height:480px;
     width:auto;
-    max-width:none;
+    max-width:100%;
   }
-  .pan.portrait .pan-slide img{
-    height:430px;
+  .carousel-slide.pair{
+    gap:22px;
   }
-  .pan.big .pan-slide img{
-    height:520px;
+  .carousel-slide.pair img{
+    height:420px;
+  }
+  .carousel.large .carousel-slide img{
+    height:560px;
+  }
+  /* Site screenshots are landscape (16:9): size by width so they never
+     get squeezed into a fixed height that's narrower than the viewport. */
+  .carousel.wide .carousel-slide{
+    display:block;
+  }
+  .carousel.wide .carousel-slide picture{
+    width:100%;
+  }
+  .carousel.wide .carousel-slide img{
+    width:100%;
+    height:auto;
+  }
+  .carousel-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(4px);
+    border:1px solid rgba(19,34,56,0.12);
+    box-shadow:0 8px 24px rgba(19,34,56,0.14);
+    color:#132238;
+    font-size:20px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .carousel-arrow.prev{left:0;}
+  .carousel-arrow.next{right:0;}
+  .carousel-arrow:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
   }
 
   /* ===== QUIET INCLUDED GRID ===== */
@@ -2066,11 +2092,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .final-cta{padding:90px 20px 100px;}
 
     .statement{padding:110px 24px;}
-    .moment-sticky{padding:100px 0;}
+    .moment{padding:100px 0 110px;}
     .moment-head{margin-bottom:44px;}
-    .pan-slide img{height:190px;}
-    .pan.portrait .pan-slide img{height:350px;}
-    .pan.big .pan-slide img{height:430px;}
+    .carousel-slide img{height:360px;}
+    .carousel-slide.pair img{height:320px;}
+    .carousel.large .carousel-slide img{height:420px;}
     .included{padding:100px 24px 110px;}
     .included-grid{grid-template-columns:repeat(2, 1fr);gap:44px 32px;}
     .included-head{margin-bottom:60px;}
@@ -2180,17 +2206,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
     .statement{padding:88px 20px;}
     .statement p{font-size:clamp(20px, 5.6vw, 30px);}
-    .moment-sticky{padding:88px 0;}
-    .moment.pinned{height:var(--pin-m, 200vh);}
+    .moment{padding:88px 0 96px;}
     .moment-head{margin-bottom:36px;padding:0 20px;}
     .moment-head p{font-size:15.5px;}
     .moment-foot{margin-top:28px;}
-    .pan-track{gap:12px;padding:0 16px;}
-    .pan + .pan{margin-top:12px;}
-    .pan-slide{border-radius:10px;}
-    .pan-slide img{height:168px;}
-    .pan.portrait .pan-slide img{height:330px;}
-    .pan.big .pan-slide img{height:380px;}
+    .carousel{padding:0 8px;}
+    .carousel-slide picture{border-radius:10px;}
+    .carousel-slide img{height:300px;}
+    .carousel-slide.pair{gap:14px;}
+    .carousel-slide.pair img{height:280px;}
+    .carousel.large .carousel-slide img{height:340px;}
+    .carousel-arrow{width:38px;height:38px;font-size:17px;}
     .included{padding:88px 20px 96px;}
     .included-head{margin-bottom:48px;}
     .included-head p{font-size:15.5px;}
@@ -2620,90 +2646,98 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   </div>
 </section>
 
-<section class="moment" id="offer" style="--pin:320vh; --pin-m:260vh;">
-  <div class="moment-sticky">
-    <div class="moment-head">
-      <h2>Сайт, който говори на твоя клиент.</h2>
-      <p>Проучваме кой купува от теб и пишем сайта за него.</p>
-    </div>
-    <div class="pan" data-dir="left" data-enter="rise">
-      <div class="pan-track">
-        <div class="pan-slide"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/icheraka.webp" type="image/webp"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/vizhun-home.webp" type="image/webp"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/fun-creation.webp" type="image/webp"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/ecovolta.webp" type="image/webp"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/deposit.webp" type="image/webp"><img src="examples/deposit.jpg" alt="deposit - соларни системи" decoding="async"></picture></div>
+<section class="moment" id="offer">
+  <div class="moment-head">
+    <h2>Сайт, който говори на твоя клиент.</h2>
+    <p>Проучваме кой купува от теб и пишем сайта за него.</p>
+  </div>
+  <div class="carousel wide" data-interval="1500">
+    <button type="button" class="carousel-arrow prev" aria-label="Предишен сайт">‹</button>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/icheraka.webp" type="image/webp"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/vizhun-home.webp" type="image/webp"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/fun-creation.webp" type="image/webp"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/ecovolta.webp" type="image/webp"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/deposit.webp" type="image/webp"><img src="examples/deposit.jpg" alt="deposit - соларни системи" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/hotpoint.webp" type="image/webp"><img src="examples/hotpoint.jpg" alt="Hot Point - антикварни мебели" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/kinetic.webp" type="image/webp"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/greekfeast.webp" type="image/webp"><img src="examples/greekfeast.jpg" alt="Greek Feast - гръцки продукти" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/oranjeriata.webp" type="image/webp"><img src="examples/oranjeriata.jpg" alt="Оранжерията - домашна кухня" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/sogana99.webp" type="image/webp"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" decoding="async"></picture></div>
       </div>
     </div>
-    <div class="pan" data-dir="right" data-enter="rise">
-      <div class="pan-track">
-        <div class="pan-slide"><picture><source srcset="examples/hotpoint.webp" type="image/webp"><img src="examples/hotpoint.jpg" alt="Hot Point - антикварни мебели" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/kinetic.webp" type="image/webp"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/greekfeast.webp" type="image/webp"><img src="examples/greekfeast.jpg" alt="Greek Feast - гръцки продукти" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/oranjeriata.webp" type="image/webp"><img src="examples/oranjeriata.jpg" alt="Оранжерията - домашна кухня" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/sogana99.webp" type="image/webp"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" decoding="async"></picture></div>
-      </div>
-    </div>
+    <button type="button" class="carousel-arrow next" aria-label="Следващ сайт">›</button>
   </div>
 </section>
 
-<section class="moment" style="--pin:210vh; --pin-m:185vh;">
-  <div class="moment-sticky">
-    <div class="moment-head">
-      <h2>Реклами, които го намират.</h2>
-      <p>Един месец Meta или Google - върху същия профил.</p>
-    </div>
-    <div class="pan portrait" data-dir="left">
-      <div class="pan-track">
-        <div class="pan-slide"><picture><source srcset="meta-examples/meta-1.webp" type="image/webp"><img src="meta-examples/meta-1.png" alt="Реклама AERVO" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="meta-examples/meta-2.webp" type="image/webp"><img src="meta-examples/meta-2.png" alt="Реклама AeroVent Климатични системи" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="meta-examples/meta-3.webp" type="image/webp"><img src="meta-examples/meta-3.png" alt="Реклама Roof Pro BG" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="meta-examples/meta-4.webp" type="image/webp"><img src="meta-examples/meta-4.png" alt="Реклама NEXUS" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="meta-examples/meta-5.webp" type="image/webp"><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="meta-examples/meta-6.webp" type="image/webp"><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" decoding="async"></picture></div>
+<section class="moment">
+  <div class="moment-head">
+    <h2>Реклами, които го намират.</h2>
+    <p>Един месец Meta или Google - върху същия профил.</p>
+  </div>
+  <div class="carousel duo" data-interval="1500">
+    <button type="button" class="carousel-arrow prev" aria-label="Предишни реклами">‹</button>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide pair">
+          <picture><source srcset="meta-examples/meta-1.webp" type="image/webp"><img src="meta-examples/meta-1.png" alt="Реклама AERVO" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-2.webp" type="image/webp"><img src="meta-examples/meta-2.png" alt="Реклама AeroVent Климатични системи" decoding="async"></picture>
+        </div>
+        <div class="carousel-slide pair">
+          <picture><source srcset="meta-examples/meta-3.webp" type="image/webp"><img src="meta-examples/meta-3.png" alt="Реклама Roof Pro BG" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-4.webp" type="image/webp"><img src="meta-examples/meta-4.png" alt="Реклама NEXUS" decoding="async"></picture>
+        </div>
+        <div class="carousel-slide pair">
+          <picture><source srcset="meta-examples/meta-5.webp" type="image/webp"><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-6.webp" type="image/webp"><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" decoding="async"></picture>
+        </div>
       </div>
     </div>
-    <div class="moment-foot">
-      <a href="https://www.google.com/partners/agency?id=8564535390" target="_blank" rel="noopener" class="google-partner-badge">
-        <svg class="ext-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-          <polyline points="15 3 21 3 21 9"></polyline>
-          <line x1="10" y1="14" x2="21" y2="3"></line>
-        </svg>
-        <svg class="google-g" viewBox="0 0 24 24">
-          <path fill="#EA4335" d="M12 5.04c1.78 0 3.37.61 4.62 1.8l3.47-3.47C17.99 1.19 15.22 0 12 0 7.35 0 3.37 2.67 1.39 6.56l4.09 3.18C6.44 6.84 9 5.04 12 5.04z"></path>
-          <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.41-4.91 3.41-8.6z"></path>
-          <path fill="#FBBC05" d="M5.48 14.26c-.25-.75-.39-1.56-.39-2.39s.14-1.64.39-2.39L1.39 6.3C.5 8.09 0 10.09 0 12s.5 3.91 1.39 5.7l4.09-3.44z"></path>
-          <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.7-2.87c-1.02.68-2.33 1.09-3.96 1.09-3 0-5.56-1.8-6.52-4.7L1.39 17.7C3.37 21.33 7.35 24 12 24z"></path>
-        </svg>
-        <span class="partner-text">Google Partner</span>
-      </a>
-    </div>
+    <button type="button" class="carousel-arrow next" aria-label="Следващи реклами">›</button>
+  </div>
+  <div class="moment-foot">
+    <a href="https://www.google.com/partners/agency?id=8564535390" target="_blank" rel="noopener" class="google-partner-badge">
+      <svg class="ext-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+      </svg>
+      <svg class="google-g" viewBox="0 0 24 24">
+        <path fill="#EA4335" d="M12 5.04c1.78 0 3.37.61 4.62 1.8l3.47-3.47C17.99 1.19 15.22 0 12 0 7.35 0 3.37 2.67 1.39 6.56l4.09 3.18C6.44 6.84 9 5.04 12 5.04z"></path>
+        <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.28 1.48-1.12 2.73-2.38 3.58l3.7 2.87c2.16-1.99 3.41-4.91 3.41-8.6z"></path>
+        <path fill="#FBBC05" d="M5.48 14.26c-.25-.75-.39-1.56-.39-2.39s.14-1.64.39-2.39L1.39 6.3C.5 8.09 0 10.09 0 12s.5 3.91 1.39 5.7l4.09-3.44z"></path>
+        <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.7-2.87c-1.02.68-2.33 1.09-3.96 1.09-3 0-5.56-1.8-6.52-4.7L1.39 17.7C3.37 21.33 7.35 24 12 24z"></path>
+      </svg>
+      <span class="partner-text">Google Partner</span>
+    </a>
   </div>
 </section>
 
-<section class="moment" style="--pin:260vh; --pin-m:210vh;">
-  <div class="moment-sticky">
-    <div class="moment-head">
-      <h2>Визуали, които спират скрола.</h2>
-      <p>Първите 10 банера са включени в старта.</p>
-    </div>
-    <div class="pan big" data-dir="left">
-      <div class="pan-track">
-        <div class="pan-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/yslperfume.webp" type="image/webp"><img src="marketing-examples/yslperfume.jpg" alt="Маркетингов банер парфюм" decoding="async"></picture></div>
-        <div class="pan-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" decoding="async"></picture></div>
+<section class="moment">
+  <div class="moment-head">
+    <h2>Визуали, които спират скрола.</h2>
+    <p>Първите 10 банера са включени в старта.</p>
+  </div>
+  <div class="carousel large" data-interval="1500">
+    <button type="button" class="carousel-arrow prev" aria-label="Предишен банер">‹</button>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/yslperfume.webp" type="image/webp"><img src="marketing-examples/yslperfume.jpg" alt="Маркетингов банер парфюм" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" decoding="async"></picture></div>
       </div>
     </div>
+    <button type="button" class="carousel-arrow next" aria-label="Следващ банер">›</button>
   </div>
 </section>
 
@@ -3133,134 +3167,39 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 </div>
 
 <script>
-  /* Scroll-linked horizontal pan for the offer "moments", plus a rise-in
-     entrance for rows marked data-enter, plus a crossfade on the quiet
-     statement section. Runs on a continuous rAF loop (not the scroll event)
-     so motion stays smooth even when scroll events arrive irregularly, and
-     caches each track's overflow so a lazy-loaded image finishing mid-scroll
-     can't suddenly shift the travel distance. Falls back to a plain
-     swipeable row when the user prefers reduced motion.
-
-     Perf notes (mobile was janky): an IntersectionObserver marks each
-     moment/the statement section "active" only while it's near the
-     viewport, so far-away sections skip their getBoundingClientRect() and
-     style writes entirely instead of being recomputed 60x/sec for nothing;
-     .pan only gets `will-change` while active, so idle sections don't sit
-     on a promoted GPU layer; each moment's rect is read once per frame and
-     shared by all its pans instead of once per pan; and on narrow
-     viewports the loop only applies every other frame (~30fps), which is
-     still smooth for a slow pan/rise but roughly halves the main-thread
-     work. */
+  /* Crossfade on the quiet statement section: the top line is dark and the
+     bottom line is gray as the section enters, and they swap emphasis as
+     it scrolls through. Gated by IntersectionObserver so it only runs
+     while the section is actually near the viewport. */
   (() => {
-    const moments = Array.from(document.querySelectorAll('.moment'));
     const statement = document.querySelector('.statement');
-    if (!moments.length && !statement) return;
+    if (!statement) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    moments.forEach(m => m.classList.add('pinned'));
-
-    const pans = Array.from(document.querySelectorAll('.pan[data-dir]')).map(el => ({
-      el,
-      track: el.querySelector('.pan-track'),
-      moment: el.closest('.moment'),
-      dir: el.dataset.dir,
-      enter: el.dataset.enter || null,
-      overflow: 0,
-    }));
-
-    const measure = () => {
-      pans.forEach(p => { p.overflow = Math.max(0, p.track.scrollWidth - p.el.clientWidth); });
-    };
-    measure();
-    window.addEventListener('resize', measure);
-    document.querySelectorAll('.pan-slide img').forEach(img => {
-      if (!img.complete) img.addEventListener('load', measure, { once: true });
-    });
-
-    const activeEls = new Set();
-    if ('IntersectionObserver' in window) {
-      const gate = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          const target = entry.target;
-          if (entry.isIntersecting) {
-            activeEls.add(target);
-            target.querySelectorAll?.('.pan').forEach(p => p.classList.add('active'));
-            if (target.classList?.contains('pan')) target.classList.add('active');
-          } else {
-            activeEls.delete(target);
-            target.querySelectorAll?.('.pan').forEach(p => p.classList.remove('active'));
-            if (target.classList?.contains('pan')) target.classList.remove('active');
-          }
-        });
-      }, { rootMargin: '35% 0px' });
-      moments.forEach(m => gate.observe(m));
-      if (statement) gate.observe(statement);
-    } else {
-      moments.forEach(m => activeEls.add(m));
-      if (statement) activeEls.add(statement);
-      document.querySelectorAll('.pan').forEach(p => p.classList.add('active'));
-    }
-
-    const clamp01 = v => Math.min(1, Math.max(0, v));
-    const ENTER_PHASE = 0.32;
+    const line1 = statement.querySelector('.statement-muted');
+    const line2 = statement.querySelector('.statement-strong');
+    if (!line1 || !line2) return;
 
     const STRONG = [0x13, 0x22, 0x38];
     const MUTED = [0x94, 0xa1, 0xb2];
+    const clamp01 = v => Math.min(1, Math.max(0, v));
     const mixColor = (a, b, t) => 'rgb(' +
       Math.round(a[0] + (b[0] - a[0]) * t) + ',' +
       Math.round(a[1] + (b[1] - a[1]) * t) + ',' +
       Math.round(a[2] + (b[2] - a[2]) * t) + ')';
-    const line1 = statement ? statement.querySelector('.statement-muted') : null;
-    const line2 = statement ? statement.querySelector('.statement-strong') : null;
 
-    const isNarrow = () => window.innerWidth <= 560;
-    let skipNextFrame = false;
-    const momentProgress = new Map();
+    let active = false;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        active = entries[0].isIntersecting;
+      }, { rootMargin: '35% 0px' }).observe(statement);
+    } else {
+      active = true;
+    }
 
     const frame = () => {
-      const throttled = isNarrow();
-      if (throttled) {
-        skipNextFrame = !skipNextFrame;
-        if (skipNextFrame) { requestAnimationFrame(frame); return; }
-      }
-
-      const vh = window.innerHeight;
-      const vw = window.innerWidth;
-      momentProgress.clear();
-
-      pans.forEach(p => {
-        if (!activeEls.has(p.moment)) return;
-
-        let progress = momentProgress.get(p.moment);
-        if (progress === undefined) {
-          const rect = p.moment.getBoundingClientRect();
-          const range = rect.height - vh;
-          progress = range > 0 ? clamp01(-rect.top / range) : null;
-          momentProgress.set(p.moment, progress);
-        }
-        if (progress === null) return;
-
-        let panProgress = progress;
-        let enterT = 1;
-        if (p.enter) {
-          enterT = clamp01(progress / ENTER_PHASE);
-          panProgress = clamp01((progress - ENTER_PHASE) / (1 - ENTER_PHASE));
-        }
-
-        const panX = p.dir === 'right'
-          ? -p.overflow * (1 - panProgress)
-          : -p.overflow * panProgress;
-        p.track.style.transform = 'translate3d(' + panX.toFixed(1) + 'px,0,0)';
-
-        if (p.enter) {
-          const riseY = Math.min(vh * 0.4, 260) * (1 - enterT);
-          const riseX = p.enter === 'diagonal' ? -Math.min(vw * 0.18, 160) * (1 - enterT) : 0;
-          p.el.style.transform = 'translate3d(' + riseX.toFixed(1) + 'px,' + riseY.toFixed(1) + 'px,0)';
-          p.el.style.opacity = (0.15 + enterT * 0.85).toFixed(2);
-        }
-      });
-
-      if (statement && line1 && line2 && activeEls.has(statement)) {
+      if (active) {
+        const vh = window.innerHeight;
         const rect = statement.getBoundingClientRect();
         const start = vh * 0.85;
         const end = vh * 0.25;
@@ -3268,11 +3207,48 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         line1.style.color = mixColor(STRONG, MUTED, t);
         line2.style.color = mixColor(MUTED, STRONG, t);
       }
-
       requestAnimationFrame(frame);
     };
     requestAnimationFrame(frame);
   })();
+
+  /* Auto-advancing carousels for the offer "moments": one slide (or one
+     pair, for the ads carousel) visible at a time, arrows for manual
+     control, and an automatic tick every data-interval ms. Manual clicks
+     reset the auto-advance timer so it doesn't fight the user. */
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prev = carousel.querySelector('.carousel-arrow.prev');
+    const next = carousel.querySelector('.carousel-arrow.next');
+    const interval = parseInt(carousel.dataset.interval, 10) || 1500;
+    const total = slides.length;
+    if (total < 2) return;
+    let index = 0;
+    let timer = null;
+
+    const render = () => {
+      track.style.transform = 'translate3d(-' + (index * 100) + '%,0,0)';
+    };
+    const goTo = i => {
+      index = (i + total) % total;
+      render();
+    };
+    const startAuto = () => {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(index + 1), interval);
+    };
+
+    prev.addEventListener('click', () => { goTo(index - 1); startAuto(); });
+    next.addEventListener('click', () => { goTo(index + 1); startAuto(); });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) clearInterval(timer); else startAuto();
+    });
+
+    render();
+    startAuto();
+  });
 
   document.querySelectorAll('.faq-item').forEach(item => {
     const answer = item.querySelector('.faq-answer');
