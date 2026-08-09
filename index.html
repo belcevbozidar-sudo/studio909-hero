@@ -814,6 +814,71 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     width:100%;
     height:auto;
   }
+  .laptop-showcase{
+    position:relative;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  .laptop-stage{
+    position:relative;
+    width:min(100%, 1080px);
+    margin:0 auto;
+  }
+  .laptop-frame{
+    display:block;
+    width:100%;
+    height:auto;
+    user-select:none;
+    pointer-events:none;
+  }
+  .laptop-screen{
+    position:absolute;
+    top:25.4%;
+    left:30.8%;
+    width:38.2%;
+    height:33%;
+    overflow:hidden;
+    border-radius:14px 14px 10px 10px;
+    background:#edf5ff;
+    box-shadow:inset 0 0 0 1px rgba(19,34,56,0.08);
+  }
+  .laptop-screen::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0));
+    pointer-events:none;
+    z-index:3;
+  }
+  .laptop-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transform:translateX(18%) scale(0.985);
+    transition:transform .8s cubic-bezier(.22,1,.36,1), opacity .8s ease;
+    z-index:1;
+  }
+  .laptop-slide.is-active{
+    opacity:1;
+    transform:translateX(0) scale(1);
+    z-index:2;
+  }
+  .laptop-slide.is-exit{
+    opacity:0;
+    transform:translateX(-18%) scale(0.985);
+    z-index:1;
+  }
+  .laptop-slide picture,
+  .laptop-slide img{
+    display:block;
+    width:100%;
+    height:100%;
+  }
+  .laptop-slide img{
+    object-fit:cover;
+    object-position:top center;
+  }
   /* ===== QUIET INCLUDED GRID ===== */
   .included{
     background:#f7faff;
@@ -2079,6 +2144,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .carousel-slide img{height:360px;}
     .carousel-slide.pair img{height:320px;}
     .carousel.large .carousel-slide img{height:470px;}
+    .laptop-screen{
+      top:25.5%;
+      left:30.6%;
+      width:38.6%;
+      height:33.2%;
+    }
     .included{padding:100px 24px 110px;}
     .included-grid{grid-template-columns:repeat(2, 1fr);gap:44px 32px;}
     .included-head{margin-bottom:60px;}
@@ -2198,6 +2269,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .carousel-slide.pair{gap:14px;}
     .carousel-slide.pair img{height:280px;}
     .carousel.large .carousel-slide img{height:390px;}
+    .laptop-showcase{padding:0 14px;}
+    .laptop-screen{
+      top:25.8%;
+      left:30.2%;
+      width:39.2%;
+      height:33.8%;
+      border-radius:8px 8px 6px 6px;
+    }
     .included{padding:88px 20px 96px;}
     .included-head{margin-bottom:48px;}
     .included-head p{font-size:15.5px;}
@@ -2617,21 +2696,22 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <h2>Сайт, който говори на идеалния ти клиент.</h2>
     <p>Проучваме кой купува от теб и пишем сайта за него.</p>
   </div>
-  <div class="carousel wide" data-interval="1500">
-    <div class="carousel-viewport">
-      <div class="carousel-track">
-        <div class="carousel-slide"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/icheraka.webp" type="image/webp"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/vizhun-home.webp" type="image/webp"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/fun-creation.webp" type="image/webp"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/ecovolta.webp" type="image/webp"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/deposit.webp" type="image/webp"><img src="examples/deposit.jpg" alt="deposit - соларни системи" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/hotpoint.webp" type="image/webp"><img src="examples/hotpoint.jpg" alt="Hot Point - антикварни мебели" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/kinetic.webp" type="image/webp"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/greekfeast.webp" type="image/webp"><img src="examples/greekfeast.jpg" alt="Greek Feast - гръцки продукти" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/oranjeriata.webp" type="image/webp"><img src="examples/oranjeriata.jpg" alt="Оранжерията - домашна кухня" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/sogana99.webp" type="image/webp"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" decoding="async"></picture></div>
+  <div class="laptop-showcase" data-laptop-interval="1500">
+    <div class="laptop-stage">
+      <img src="assets/laptop-showcase.png" alt="Лаптоп макет" class="laptop-frame" decoding="async">
+      <div class="laptop-screen">
+        <div class="laptop-slide is-active"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/icheraka.webp" type="image/webp"><img src="examples/icheraka.jpg" alt="Ичерака - месарница" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/vizhun-home.webp" type="image/webp"><img src="examples/vizhun-home.jpg" alt="Вижън Хоум - недвижими имоти" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/fun-creation.webp" type="image/webp"><img src="examples/fun-creation.jpg" alt="Fun Creation - тениски и печат" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/ecovolta.webp" type="image/webp"><img src="examples/ecovolta.jpg" alt="EcoVolta - възобновяема енергия" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/deposit.webp" type="image/webp"><img src="examples/deposit.jpg" alt="deposit - соларни системи" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/hotpoint.webp" type="image/webp"><img src="examples/hotpoint.jpg" alt="Hot Point - антикварни мебели" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/kinetic.webp" type="image/webp"><img src="examples/kinetic.jpg" alt="Kinetic - спортни очила" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/greekfeast.webp" type="image/webp"><img src="examples/greekfeast.jpg" alt="Greek Feast - гръцки продукти" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/oranjeriata.webp" type="image/webp"><img src="examples/oranjeriata.jpg" alt="Оранжерията - домашна кухня" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/sogana99.webp" type="image/webp"><img src="examples/sogana99.jpg" alt="Согана 99 - пресни заготовки" decoding="async"></picture></div>
+        <div class="laptop-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" decoding="async"></picture></div>
       </div>
     </div>
   </div>
@@ -3129,6 +3209,59 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
     render(false);
     startAuto();
+  });
+
+  /* Dedicated laptop showcase: fixed laptop frame, websites animate inside
+     the screen by entering from the right, settling briefly, then exiting
+     left while fading as the next site takes over. */
+  document.querySelectorAll('.laptop-showcase').forEach(showcase => {
+    const slides = Array.from(showcase.querySelectorAll('.laptop-slide'));
+    const interval = parseInt(showcase.dataset.laptopInterval, 10) || 1500;
+    if (slides.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+    let busy = false;
+
+    const resetState = slide => {
+      slide.classList.remove('is-active', 'is-exit');
+    };
+
+    const advance = () => {
+      if (busy) return;
+      busy = true;
+
+      const current = slides[index];
+      const nextIndex = (index + 1) % slides.length;
+      const next = slides[nextIndex];
+
+      resetState(next);
+      next.offsetHeight;
+
+      current.classList.add('is-exit');
+      next.classList.add('is-active');
+
+      window.setTimeout(() => {
+        resetState(current);
+        index = nextIndex;
+        busy = false;
+      }, 820);
+    };
+
+    const start = () => {
+      clearInterval(timer);
+      timer = window.setInterval(advance, interval);
+    };
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearInterval(timer);
+      } else {
+        start();
+      }
+    });
+
+    start();
   });
 
   document.querySelectorAll('.faq-item').forEach(item => {
