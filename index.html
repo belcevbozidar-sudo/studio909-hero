@@ -121,12 +121,16 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:16px;
     padding:28px 64px;
   }
   .logo-img{
-    height:80px;
+    height:56px;
+    max-width:220px;
     width:auto;
     display:block;
+    flex-shrink:0;
+    object-fit:contain;
   }
 
   .nav-links{
@@ -1938,7 +1942,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   /* ===== MOBILE ===== */
   @media (max-width:560px){
     nav{padding:16px;}
-    .logo-img{height:58px;}
+    .logo-img{height:42px;max-width:150px;}
     .contact-btn{padding:8px 14px;font-size:12px;}
 
     .hero-content{padding:34px 8px 0;}
