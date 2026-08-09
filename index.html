@@ -752,7 +752,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:relative;
     max-width:1100px;
     margin:0 auto;
-    padding:0 14px;
+    padding:0 24px;
   }
   .carousel-viewport{
     overflow:hidden;
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     height:420px;
   }
   .carousel.large .carousel-slide img{
-    height:560px;
+    height:620px;
   }
   /* Site screenshots are landscape (16:9): size by width so they never
      get squeezed into a fixed height that's narrower than the viewport. */
@@ -803,35 +803,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     width:100%;
     height:auto;
   }
-  .carousel-arrow{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    z-index:2;
-    width:46px;
-    height:46px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(4px);
-    border:1px solid rgba(19,34,56,0.12);
-    box-shadow:0 8px 24px rgba(19,34,56,0.14);
-    color:#132238;
-    font-size:20px;
-    line-height:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:background .2s ease, color .2s ease, border-color .2s ease;
-  }
-  .carousel-arrow.prev{left:0;}
-  .carousel-arrow.next{right:0;}
-  .carousel-arrow:hover{
-    background:var(--accent);
-    border-color:var(--accent);
-    color:#fff;
-  }
-
   /* ===== QUIET INCLUDED GRID ===== */
   .included{
     background:#f7faff;
@@ -1086,7 +1057,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-align:left;
   }
   .star-empty{
-    color:#444;
+    color:#999;
   }
   .proof-card{
     background:rgba(255,255,255,0.03);
@@ -2096,7 +2067,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .moment-head{margin-bottom:44px;}
     .carousel-slide img{height:360px;}
     .carousel-slide.pair img{height:320px;}
-    .carousel.large .carousel-slide img{height:420px;}
+    .carousel.large .carousel-slide img{height:470px;}
     .included{padding:100px 24px 110px;}
     .included-grid{grid-template-columns:repeat(2, 1fr);gap:44px 32px;}
     .included-head{margin-bottom:60px;}
@@ -2210,13 +2181,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .moment-head{margin-bottom:36px;padding:0 20px;}
     .moment-head p{font-size:15.5px;}
     .moment-foot{margin-top:28px;}
-    .carousel{padding:0 8px;}
+    .carousel{padding:0 20px;}
     .carousel-slide picture{border-radius:10px;}
     .carousel-slide img{height:300px;}
     .carousel-slide.pair{gap:14px;}
     .carousel-slide.pair img{height:280px;}
-    .carousel.large .carousel-slide img{height:340px;}
-    .carousel-arrow{width:38px;height:38px;font-size:17px;}
+    .carousel.large .carousel-slide img{height:390px;}
     .included{padding:88px 20px 96px;}
     .included-head{margin-bottom:48px;}
     .included-head p{font-size:15.5px;}
@@ -2652,7 +2622,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <p>Проучваме кой купува от теб и пишем сайта за него.</p>
   </div>
   <div class="carousel wide" data-interval="1500">
-    <button type="button" class="carousel-arrow prev" aria-label="Предишен сайт">‹</button>
     <div class="carousel-viewport">
       <div class="carousel-track">
         <div class="carousel-slide"><picture><source srcset="examples/domharmonia.webp" type="image/webp"><img src="examples/domharmonia.jpg" alt="ДомХармония - интериорен дизайн" decoding="async"></picture></div>
@@ -2669,7 +2638,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="carousel-slide"><picture><source srcset="examples/kaysove.webp" type="image/webp"><img src="examples/kaysove.jpg" alt="Кейсове.нет - калъфи за телефони" decoding="async"></picture></div>
       </div>
     </div>
-    <button type="button" class="carousel-arrow next" aria-label="Следващ сайт">›</button>
   </div>
 </section>
 
@@ -2679,7 +2647,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <p>Един месец Meta или Google - върху същия профил.</p>
   </div>
   <div class="carousel duo" data-interval="1500">
-    <button type="button" class="carousel-arrow prev" aria-label="Предишни реклами">‹</button>
     <div class="carousel-viewport">
       <div class="carousel-track">
         <div class="carousel-slide pair">
@@ -2696,7 +2663,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
-    <button type="button" class="carousel-arrow next" aria-label="Следващи реклами">›</button>
   </div>
   <div class="moment-foot">
     <a href="https://www.google.com/partners/agency?id=8564535390" target="_blank" rel="noopener" class="google-partner-badge">
@@ -2718,11 +2684,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
 <section class="moment">
   <div class="moment-head">
-    <h2>Визуали, които спират скрола.</h2>
+    <h2>Материали, които спират скрола.</h2>
     <p>Първите 10 банера са включени в старта.</p>
   </div>
-  <div class="carousel large" data-interval="1500">
-    <button type="button" class="carousel-arrow prev" aria-label="Предишен банер">‹</button>
+  <div class="carousel large" data-interval="1000">
     <div class="carousel-viewport">
       <div class="carousel-track">
         <div class="carousel-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" decoding="async"></picture></div>
@@ -2737,7 +2702,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="carousel-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" decoding="async"></picture></div>
       </div>
     </div>
-    <button type="button" class="carousel-arrow next" aria-label="Следващ банер">›</button>
   </div>
 </section>
 
@@ -3213,40 +3177,56 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   })();
 
   /* Auto-advancing carousels for the offer "moments": one slide (or one
-     pair, for the ads carousel) visible at a time, arrows for manual
-     control, and an automatic tick every data-interval ms. Manual clicks
-     reset the auto-advance timer so it doesn't fight the user. */
+     pair, for the ads carousel) visible at a time, no manual controls,
+     ticking forward every data-interval ms. To loop seamlessly (no visible
+     rewind through every slide when wrapping from last back to first), a
+     clone of the first slide is appended after the real last one: the
+     track animates forward into the clone like any other step, then - the
+     instant that transition ends - snaps back to the real first slide with
+     transitions disabled for one frame. Since the clone is pixel-identical
+     to slide 0, that snap is invisible. */
   document.querySelectorAll('.carousel').forEach(carousel => {
     const track = carousel.querySelector('.carousel-track');
     const slides = Array.from(track.children);
-    const prev = carousel.querySelector('.carousel-arrow.prev');
-    const next = carousel.querySelector('.carousel-arrow.next');
     const interval = parseInt(carousel.dataset.interval, 10) || 1500;
     const total = slides.length;
     if (total < 2) return;
+
+    const clone = slides[0].cloneNode(true);
+    track.appendChild(clone);
+
     let index = 0;
     let timer = null;
 
-    const render = () => {
+    const render = (animate) => {
+      track.style.transition = animate ? '' : 'none';
       track.style.transform = 'translate3d(-' + (index * 100) + '%,0,0)';
     };
-    const goTo = i => {
-      index = (i + total) % total;
-      render();
-    };
-    const startAuto = () => {
-      clearInterval(timer);
-      timer = setInterval(() => goTo(index + 1), interval);
+
+    const advance = () => {
+      index++;
+      render(true);
+      if (index === total) {
+        track.addEventListener('transitionend', function onEnd() {
+          track.removeEventListener('transitionend', onEnd);
+          index = 0;
+          render(false);
+          track.getBoundingClientRect(); // flush the jump before re-enabling transitions
+          track.style.transition = '';
+        }, { once: true });
+      }
     };
 
-    prev.addEventListener('click', () => { goTo(index - 1); startAuto(); });
-    next.addEventListener('click', () => { goTo(index + 1); startAuto(); });
+    const startAuto = () => {
+      clearInterval(timer);
+      timer = setInterval(advance, interval);
+    };
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) clearInterval(timer); else startAuto();
     });
 
-    render();
+    render(false);
     startAuto();
   });
 
