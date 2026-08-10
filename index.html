@@ -29,7 +29,7 @@
 <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#eef3fb">
+<meta name="theme-color" content="#ffffff">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -229,7 +229,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-size:clamp(38px, 5.2vw, 60px);
     line-height:1.06;
     font-weight:800;
-    letter-spacing:0.005em;
+    letter-spacing:-0.01em;
   }
   .hero-title .line-1,
   .hero-title .line-2,
@@ -820,11 +820,24 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin:0 auto;
     padding:0 10px;
   }
+  .laptop-showcase::after{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:90px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 65%, rgba(255,255,255,1) 100%);
+    pointer-events:none;
+    z-index:10;
+  }
   .laptop-stage{
     position:relative;
     width:min(100%, 1950px);
     margin:0 auto;
     isolation:isolate;
+    mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 99%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 99%);
   }
   .laptop-frame{
     display:block;
@@ -2228,7 +2241,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .hero-content{padding:44px 10px 12px;}
     .mobile-br{display:none;}
     h1{
-      letter-spacing:0.005em;
+      letter-spacing:-0.01em;
       line-height:1.05;
     }
     .hero-title{
@@ -2374,7 +2387,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* LIGHT THEME PREVIEW */
   body{
-    background:#eef3fb;
+    background:#ffffff;
     color:#132238;
   }
   .hero,
@@ -2389,17 +2402,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .faq,
   .final-cta,
   .site-footer{
-    background:#f7faff;
+    background:#ffffff;
   }
   .hero{
-    background:
-      radial-gradient(ellipse 900px 520px at 50% 0%, rgba(29,78,216,0.12), transparent 65%),
-      linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+    background:#ffffff;
   }
   .hero-arc{
-    background:#eef3fb;
-    border-color:rgba(29,78,216,0.18);
-    box-shadow:0 0 30px 4px rgba(29,78,216,0.1), 0 0 70px 16px rgba(29,78,216,0.06), 0 0 130px 30px rgba(29,78,216,0.03);
+    background:#ffffff;
+    border-color:rgba(29,78,216,0.12);
+    box-shadow:0 0 30px 4px rgba(29,78,216,0.08), 0 0 70px 16px rgba(29,78,216,0.04), 0 0 130px 30px rgba(29,78,216,0.02);
   }
   .glow{
     background:
@@ -2713,7 +2724,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
     <h1 class="hero-title">
       <span class="line-1">Уебсайтове за големи бизнеси,</span>
-      <span class="line-2">които искат повече клиенти и пазарен дял онлайн.</span>
+      <span class="line-2">които искат повече клиенти</span>
+      <span class="line-3">и пазарен дял онлайн.</span>
     </h1>
 
     <p class="subtext">
