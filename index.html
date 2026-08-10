@@ -3341,10 +3341,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <h3>Разкажи ни малко за бизнеса си</h3>
 
         <label for="industryInput" class="form-label">С какво се занимава фирмата?</label>
-        <input type="text" id="industryInput" name="industry" required maxlength="200" placeholder="напр. Строителна фирма, Стоматологичен център...">
+        <input type="text" id="industryInput" name="industry" required maxlength="200" placeholder="напр. Строителна фирма, Транспортни...">
 
         <label for="problemText" class="form-label">Какъв е проблемът и какво се опитваш да постигнеш?</label>
-        <textarea id="problemText" name="problem" required rows="3" maxlength="2000" placeholder="напр. Стар е и не отговаря на бизнеса, всяка промяна отнема седмици..."></textarea>
+        <textarea id="problemText" name="problem" required rows="3" maxlength="2000" placeholder="напр. Сайта е стар и не отговаря на бизнеса/нямам сайт ......"></textarea>
 
         <button type="button" class="cta form-next" style="margin-top: 24px;">Продължи</button>
       </div>
@@ -3353,13 +3353,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
         <h3>Данни за връзка</h3>
 
-        <label for="emailInput" class="form-label">Имейл адрес</label>
-        <input type="email" id="emailInput" name="email" required maxlength="320" placeholder="напр. ivan@example.com">
+        <label for="emailInput" class="form-label">Имейл адрес (препоръчително)</label>
+        <input type="email" id="emailInput" name="email" maxlength="320" placeholder="напр. ivan@example.com">
 
         <label for="phoneInput" class="form-label">Телефонен номер за връзка</label>
         <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" maxlength="20" placeholder="08XX XXX XXX">
 
-        <label for="websiteInput" class="form-label">Линк към сегашния ти сайт (по избор)</label>
+        <label for="websiteInput" class="form-label">Линк към сегашния ти сайт (ако имаш)</label>
         <input type="text" id="websiteInput" name="website" maxlength="200" placeholder="напр. www.твоятсайт.bg">
 
         <div class="form-actions" style="margin-top: 32px;">
@@ -3675,10 +3675,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     const phone = inquiryForm.phone.value.trim();
     const website = inquiryForm.website.value.trim();
 
-    if (!email) {
-      inquiryForm.email.reportValidity();
-      return;
-    }
     if (!phone) {
       inquiryForm.phone.reportValidity();
       return;
