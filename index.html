@@ -54,8 +54,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
-    --accent:#38bdf8;
-    --accent-pink:#ec4899;
+    --accent:#1d4ed8;
     --bg:#050505;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -85,12 +84,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     max-width:none;
     transform:translateX(-50%);
     border-radius:50%;
-    background:radial-gradient(ellipse at center, rgba(56,189,248,0.16) 0%, rgba(236,72,153,0.12) 34%, rgba(56,189,248,0.04) 54%, rgba(5,5,5,0) 72%);
+    background:radial-gradient(ellipse at center, rgba(29,78,216,0.14) 0%, rgba(29,78,216,0.09) 34%, rgba(29,78,216,0.03) 54%, rgba(5,5,5,0) 72%);
     filter:blur(8px);
     box-shadow:
-      0 0 60px 10px rgba(56,189,248,0.15),
-      0 0 180px 42px rgba(236,72,153,0.12),
-      0 0 320px 84px rgba(56,189,248,0.05);
+      0 0 60px 10px rgba(29,78,216,0.16),
+      0 0 180px 42px rgba(29,78,216,0.09),
+      0 0 320px 84px rgba(29,78,216,0.04);
     pointer-events:none;
   }
 
@@ -100,9 +99,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     inset:0;
     z-index:0;
     background:
-      radial-gradient(ellipse 850px 460px at 25% 12%, rgba(56,189,248,0.22), transparent 64%),
-      radial-gradient(ellipse 850px 460px at 75% 16%, rgba(236,72,153,0.18), transparent 64%),
-      radial-gradient(ellipse 1280px 540px at 50% 14%, rgba(56,189,248,0.08), transparent 72%);
+      radial-gradient(ellipse 920px 460px at 50% 10%, rgba(29,78,216,0.18), transparent 64%),
+      radial-gradient(ellipse 1280px 540px at 50% 14%, rgba(29,78,216,0.08), transparent 72%);
     pointer-events:none;
   }
   .grid-overlay{
@@ -337,9 +335,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .hero-content .cta:hover{
     background: #ffffff;
     border-color: #ffffff;
-    color: #0284c7;
+    color: #1d4ed8;
     transform: translateY(-2px);
-    box-shadow: 0 16px 44px 0 rgba(56, 189, 248, 0.35);
+    box-shadow: 0 16px 44px 0 rgba(29, 78, 216, 0.35);
   }
   .cta-row{
     display:flex;
@@ -367,8 +365,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     width:8px;
     height:8px;
     border-radius:50%;
-    background:#ec4899;
-    box-shadow:0 0 10px #ec4899;
+    background:#3ddc72;
     flex-shrink:0;
   }
   .pulse-dot::after{
@@ -376,7 +373,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:absolute;
     inset:-5px;
     border-radius:50%;
-    background:rgba(236,72,153,0.55);
+    background:rgba(61,220,114,0.55);
     animation:pulse 1.8s ease-out infinite;
   }
   @keyframes pulse{
@@ -420,7 +417,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     color:rgba(255,255,255,0.9);
   }
   .marquee-track span:nth-child(even){
-    color:#ec4899;
+    color:var(--accent);
   }
   @keyframes scroll-left{
     from{ transform:translate3d(0,0,0); }
@@ -982,13 +979,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .philosophy-badge{
     display:inline-block;
-    padding:6px 16px;
-    background:linear-gradient(135deg, rgba(56,189,248,0.12), rgba(236,72,153,0.12));
-    color:#d946ef;
-    border:1px solid rgba(236,72,153,0.3);
+    padding:6px 14px;
+    background:#eff6ff;
+    color:#1d4ed8;
     border-radius:20px;
     font-size:13px;
-    font-weight:800;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.04em;
     margin-bottom:16px;
@@ -1020,9 +1016,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     gap:12px;
   }
   .philosophy-bar{
-    width:4px;
-    height:40px;
-    background:linear-gradient(180deg, #38bdf8 0%, #ec4899 100%);
+    width:3px;
+    height:38px;
+    background:linear-gradient(180deg, #1d4ed8 0%, #3b82f6 100%);
     border-radius:3px;
     flex-shrink:0;
     margin-top:3px;
@@ -1058,11 +1054,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .pricing-badge{
     display:inline-block;
-    background:linear-gradient(135deg, rgba(56,189,248,0.12), rgba(236,72,153,0.12));
-    color:#d946ef;
-    border:1px solid rgba(236,72,153,0.3);
+    background:rgba(29, 78, 216, 0.08);
+    color:var(--accent);
     font-size:13px;
-    font-weight:800;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.08em;
     padding:6px 18px;
@@ -3041,11 +3036,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         </div>
         <div class="pricing-features">
           <div class="pricing-feature">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <span>Всичко изброено по-горе е включено в пакета</span>
           </div>
           <div class="pricing-feature">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             <span>Без скрити такси - нищо допълнително</span>
           </div>
         </div>
