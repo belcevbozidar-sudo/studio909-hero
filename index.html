@@ -77,18 +77,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* Hero Blueprint Grid */
   .hero-blueprint-grid{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    pointer-events:none;
-    background-image:
-      radial-gradient(ellipse 900px 500px at 50% 20%, rgba(29,78,216,0.09) 0%, rgba(29,78,216,0.02) 50%, rgba(255,255,255,0) 80%),
-      radial-gradient(circle 1.5px at 32px 32px, rgba(29,78,216,0.18) 100%, transparent 0),
-      linear-gradient(to right, rgba(29,78,216,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(29,78,216,0.04) 1px, transparent 1px);
-    background-size:100% 100%, 64px 64px, 64px 64px, 64px 64px;
-    -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 30%, black 20%, transparent 85%);
-    mask-image:radial-gradient(ellipse 85% 75% at 50% 30%, black 20%, transparent 85%);
+    display:none !important;
   }
 
   /* NAV */
@@ -376,8 +365,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .marquee-wrap{
     position:relative;
     z-index:2;
-    margin-top:36px;
-    background:#050505;
+    background:transparent url('assets/hero-sky-gradient.png') no-repeat bottom center !important;
+    background-size:cover !important;
   }
   .marquee{
     border-top:1px solid rgba(255,255,255,0.16);
@@ -2020,9 +2009,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     pointer-events:auto;
   }
   .modal-box{
-    background:#0d0d0d;
-    border:1px solid rgba(255,255,255,0.14);
-    border-radius:20px;
+    background:#ffffff;
+    border:1px solid rgba(15,23,42,0.14);
+    border-radius:24px;
     padding:36px;
     max-width:480px;
     width:100%;
@@ -2031,28 +2020,34 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:relative;
     transform:translateY(14px) scale(0.97);
     transition:transform .25s ease;
+    box-shadow:0 25px 60px -15px rgba(15,23,42,0.25);
   }
   .modal-overlay.open .modal-box{
-    /* transform:none (а не translateY(0)) - активен transform върху родител
-       на input мести мигащия курсор на грешно място в iOS Safari */
     transform:none;
   }
   .modal-close{
     position:absolute;
-    top:16px;
-    right:16px;
-    width:34px;
-    height:34px;
+    top:18px;
+    right:18px;
+    width:36px;
+    height:36px;
     border-radius:50%;
-    border:1px solid rgba(255,255,255,0.18);
-    background:rgba(255,255,255,0.05);
-    color:#fff;
-    font-size:15px;
+    border:1px solid rgba(15,23,42,0.15);
+    background:rgba(15,23,42,0.05);
+    color:#0f172a;
+    font-size:16px;
     font-family:inherit;
+    font-weight:700;
     cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all .2s ease;
   }
   .modal-close:hover{
-    background:rgba(255,255,255,0.12);
+    background:#0f172a;
+    color:#ffffff;
+    border-color:#0f172a;
   }
   .modal-eyebrow{
     display:inline-block;
@@ -2068,9 +2063,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .form-progress-label{
     display:block;
-    color:#999;
+    color:#475569;
     font-size:12px;
-    font-weight:600;
+    font-weight:700;
     letter-spacing:0.04em;
     text-transform:uppercase;
     margin-bottom:8px;
@@ -2084,7 +2079,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     max-width:70px;
     height:4px;
     border-radius:2px;
-    background:rgba(255,255,255,0.12);
+    background:rgba(15,23,42,0.12);
   }
   .form-progress-dot.active{
     background:var(--accent);
@@ -2107,7 +2102,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .modal-box h3{
     font-size:21px;
-    font-weight:700;
+    font-weight:800;
+    color:#0f172a;
     margin-bottom:18px;
     padding-right:20px;
     line-height:1.3;
@@ -2117,18 +2113,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .form-label{
     display:block;
     font-size:13.5px;
-    color:#ccc;
-    font-weight:600;
+    color:#334155;
+    font-weight:700;
     margin-bottom:16px;
   }
   #inquiryForm .form-label{
     display:block;
-    font-size:15.5px;
+    font-size:15px;
     font-weight:700;
-    color:#ffffff;
+    color:#0f172a;
     line-height:1.5;
-    margin-top:28px;
-    margin-bottom:12px;
+    margin-top:24px;
+    margin-bottom:8px;
   }
   #inquiryForm h3 + .form-label{
     margin-top:10px;
@@ -2141,21 +2137,31 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .form-label textarea{
     display:block;
     width:100%;
-    margin-top:8px;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.22);
+    margin-top:6px;
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
     border-radius:10px;
     padding:14px 16px;
-    color:#fff;
+    color:#0f172a;
     font-family:inherit;
-    font-size:16px;
+    font-size:15px;
+    font-weight:500;
     line-height:1.5;
     resize:vertical;
-    transition:border-color 0.2s, background-color 0.2s;
+    transition:border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  }
+  #inquiryForm input[type="text"]:focus,
+  #inquiryForm input[type="email"]:focus,
+  #inquiryForm input[type="tel"]:focus,
+  #inquiryForm textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:#ffffff;
+    box-shadow:0 0 0 3px rgba(29,78,216,0.12);
   }
   #inquiryForm ::placeholder,
   .form-label ::placeholder{
-    color:rgba(255,255,255,0.5) !important;
+    color:#94a3b8 !important;
     opacity:1;
   }
   #inquiryForm input:focus,
@@ -3275,9 +3281,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="final-cta">
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner">
-    <h2>Готов ли си да видиш демо версията<span class="wobble-question">?</span></h2>
-    <p style="color:#1f2937; font-size:15px; max-width:520px; margin:20px auto 0; line-height:1.6;">Свържи се и ще ти направим такава.</p>
-    <button type="button" class="cta open-inquiry-btn" style="margin-top: 24px;">Заяви демо</button>
+    <h2>Попълни формата и ще ти направим безплатно демо</h2>
+    <button type="button" class="cta open-inquiry-btn" style="margin-top: 32px;">Заяви демо</button>
     <div class="cta-note"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
   </div>
 </section>
@@ -3609,7 +3614,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
     overlay.querySelector('.modal-close').addEventListener('click', () => closeModal(overlay.id));
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
