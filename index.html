@@ -954,6 +954,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     color:#132238;
     margin:0 0 18px;
   }
+  .included-title-wrap{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+  .included-badge-img{
+    width:clamp(32px, 3.8vw, 52px);
+    height:clamp(32px, 3.8vw, 52px);
+    display:inline-block;
+    vertical-align:middle;
+    filter:drop-shadow(0 8px 18px rgba(29,78,216,0.25));
+    animation:badge-float 4s ease-in-out infinite;
+  }
   .included-head p{
     font-size:18px;
     color:#5f6b7a;
@@ -2904,7 +2918,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   </div>
   <div class="laptop-showcase" data-laptop-interval="1500">
     <div class="laptop-stage">
-      <img src="assets/verified-badge.png" alt="Верифициран знак" class="laptop-badge-floating" decoding="async">
       <img src="assets/laptop-showcase.png" alt="Лаптоп макет" class="laptop-frame" decoding="async">
       <div class="laptop-screen">
         <div class="laptop-slide is-active"><picture><source srcset="examples/showcase-1.webp" type="image/webp"><img src="examples/showcase-1.jpg" alt="Примерен сайт 1" decoding="async"></picture></div>
@@ -2996,7 +3009,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="included">
   <div class="included-inner">
     <div class="included-head">
-      <h2>И всичко останало.</h2>
+      <h2 class="included-title-wrap"><span>И всичко останало</span><img src="assets/verified-badge.png" alt="Verified" class="included-badge-img" decoding="async"></h2>
       <p>Включено в същия пакет. Без нищо допълнително.</p>
     </div>
     <div class="included-grid">
