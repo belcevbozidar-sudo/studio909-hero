@@ -1901,14 +1901,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-align:center;
   }
   .focus-inner{
-    max-width:1050px;
+    max-width:1160px;
     margin:0 auto;
     text-align:center;
   }
   .focus-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:48px 28px;
+    grid-template-columns:repeat(4, 1fr);
+    gap:48px 24px;
     margin-top:52px;
     align-items:start;
   }
@@ -1959,8 +1959,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-size:15px;
     color:#475569;
     line-height:1.5;
-    max-width:320px;
+    max-width:280px;
     margin:0 auto;
+  }
+  @media(max-width:992px){
+    .focus-grid{
+      grid-template-columns:repeat(2, 1fr);
+      gap:48px 32px;
+    }
   }
   @media(max-width:640px){
     .focus-grid{
@@ -3386,6 +3392,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         </div>
         <h3 class="standalone-focus-title">Удобство</h3>
         <p class="standalone-focus-sub">Един екип за всичко, вместо множество различни агенции.</p>
+      </div>
+
+      <!-- Advantage 4: Пълна собственост -->
+      <div class="standalone-focus-item">
+        <div class="standalone-icon-box">
+          <img src="assets/ownership-key.png" alt="Пълна собственост" class="standalone-focus-img" decoding="async">
+        </div>
+        <h3 class="standalone-focus-title">Пълна собственост</h3>
+        <p class="standalone-focus-sub">Сайтът и всичко останало вече е твое и не си обвързан по никакъв начин.</p>
       </div>
     </div>
   </div>
