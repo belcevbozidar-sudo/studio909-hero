@@ -113,7 +113,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     align-items:center;
     justify-content:space-between;
     gap:16px;
-    padding:28px 64px;
+    padding:38px 64px 34px;
   }
   .logo-img{
     height:56px;
@@ -854,6 +854,22 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     isolation:isolate;
     mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
     -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
+  }
+  .laptop-badge-floating{
+    position:absolute;
+    top:12%;
+    right:24%;
+    z-index:20;
+    width: clamp(48px, 4.5vw, 84px);
+    height: clamp(48px, 4.5vw, 84px);
+    filter: drop-shadow(0 14px 28px rgba(29, 78, 216, 0.28));
+    animation: badge-float 4s ease-in-out infinite;
+    pointer-events:none;
+    user-select:none;
+  }
+  @keyframes badge-float{
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(4deg); }
   }
   .laptop-frame{
     display:block;
@@ -2323,7 +2339,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* ===== MOBILE ===== */
   @media (max-width:560px){
-    nav{padding:16px;}
+    nav{padding:22px 16px;}
     .logo-img{height:38px;max-width:135px;margin:0;}
     .contact-btn{padding:7px 13px;font-size:10.8px;}
 
@@ -2873,6 +2889,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   </div>
   <div class="laptop-showcase" data-laptop-interval="1500">
     <div class="laptop-stage">
+      <img src="assets/verified-badge.png" alt="Верифициран знак" class="laptop-badge-floating" decoding="async">
       <img src="assets/laptop-showcase.png" alt="Лаптоп макет" class="laptop-frame" decoding="async">
       <div class="laptop-screen">
         <div class="laptop-slide is-active"><picture><source srcset="examples/showcase-1.webp" type="image/webp"><img src="examples/showcase-1.jpg" alt="Примерен сайт 1" decoding="async"></picture></div>
