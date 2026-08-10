@@ -75,17 +75,30 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     overflow:hidden;
   }
 
-  /* eclipse arc */
-  .hero-arc{
-    display:none !important;
+  /* Soft Ambient Side Gradients */
+  .hero-ambient-left{
+    position:absolute;
+    top:-80px;
+    left:-120px;
+    width:580px;
+    height:580px;
+    background:radial-gradient(circle, rgba(29,78,216,0.12) 0%, rgba(29,78,216,0.03) 50%, rgba(255,255,255,0) 75%);
+    filter:blur(60px);
+    pointer-events:none;
+    z-index:1;
+    border-radius:50%;
   }
-
-  /* glow background */
-  .glow{
-    display:none !important;
-  }
-  .grid-overlay{
-    display:none !important;
+  .hero-ambient-right{
+    position:absolute;
+    top:400px;
+    right:-140px;
+    width:680px;
+    height:680px;
+    background:radial-gradient(circle, rgba(29,78,216,0.11) 0%, rgba(29,78,216,0.02) 55%, rgba(255,255,255,0) 80%);
+    filter:blur(70px);
+    pointer-events:none;
+    z-index:1;
+    border-radius:50%;
   }
 
   /* NAV */
@@ -2810,6 +2823,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <body>
 
 <section class="hero">
+  <div class="hero-ambient-left"></div>
+  <div class="hero-ambient-right"></div>
   <div class="glow"></div>
 
   <nav>
