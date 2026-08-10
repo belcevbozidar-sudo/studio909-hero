@@ -714,7 +714,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   /* ===== QUIET STATEMENT ===== */
   .statement{
     background:#ffffff;
-    padding:150px 24px;
+    padding:80px 24px;
     text-align:center;
   }
   .statement-inner{
@@ -739,11 +739,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .moment{
     position:relative;
     background:#ffffff;
-    padding:120px 0 130px;
+    padding:64px 0 72px;
   }
   .moment-head{
     max-width:760px;
-    margin:0 auto 56px;
+    margin:0 auto 24px;
     padding:0 24px;
     text-align:center;
   }
@@ -2954,18 +2954,25 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <h2>Материали, които спират скрола.</h2>
     <p>Правим ти 10 професионални и отличаващи се банери. Ако видиш резултат, продължаваме всеки месец.</p>
   </div>
-  <div class="carousel large" data-interval="1000">
+  <div class="carousel duo" data-interval="1800">
     <div class="carousel-viewport">
       <div class="carousel-track">
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" decoding="async"></picture></div>
+        <div class="carousel-slide pair">
+          <picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" decoding="async"></picture>
+          <picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" decoding="async"></picture>
+        </div>
+        <div class="carousel-slide pair">
+          <picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" decoding="async"></picture>
+          <picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" decoding="async"></picture>
+        </div>
+        <div class="carousel-slide pair">
+          <picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" decoding="async"></picture>
+          <picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" decoding="async"></picture>
+        </div>
+        <div class="carousel-slide pair">
+          <picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></picture>
+          <picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" decoding="async"></picture>
+        </div>
       </div>
     </div>
   </div>
@@ -3376,8 +3383,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       if (active) {
         const vh = window.innerHeight;
         const rect = statement.getBoundingClientRect();
-        const start = vh * 0.45;
-        const end = vh * -0.08;
+        const start = vh * 0.65;
+        const end = vh * 0.15;
         const t = clamp01((start - rect.top) / (start - end));
         line1.style.color = mixColor(STRONG, MUTED, t);
         line2.style.color = mixColor(MUTED, STRONG, t);
