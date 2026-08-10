@@ -1155,11 +1155,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     color:#0f172a;
   }
   .team-glow{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    background:radial-gradient(ellipse 800px 460px at 50% 30%, rgba(29,78,216,0.06), transparent 60%);
-    pointer-events:none;
+    display:none !important;
   }
   .team-inner{
     position:relative;
@@ -1734,10 +1730,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     border-top:1px solid #e2e8f0;
   }
   .final-cta-glow{
-    position:absolute;
-    inset:0;
-    background:radial-gradient(ellipse 900px 460px at 50% 78%, rgba(29,78,216,0.06), transparent 55%);
-    pointer-events:none;
+    display:none !important;
   }
   .final-cta-inner{
     position:relative;
@@ -2593,8 +2586,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .solution-glow,
   .comparison::before,
-  .team-glow{
-    background:radial-gradient(ellipse 900px 560px at 50% 42%, rgba(29,78,216,0.08), transparent 68%);
+  .team-glow,
+  .final-cta-glow,
+  .faq-glow{
+    display:none !important;
   }
   .faq{
     border-top-color:rgba(19,34,56,0.06);
