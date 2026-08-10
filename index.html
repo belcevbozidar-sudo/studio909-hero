@@ -69,26 +69,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   .hero{
     position:relative;
-    background:#ffffff;
+    background:#ffffff url('assets/hero-bg-gradient.png') no-repeat top center;
+    background-size:cover;
     display:flex;
     flex-direction:column;
     overflow:hidden;
-  }
-
-  /* Hero Blueprint Grid */
-  .hero-blueprint-grid{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    pointer-events:none;
-    background-image:
-      radial-gradient(ellipse 900px 500px at 50% 20%, rgba(29,78,216,0.09) 0%, rgba(29,78,216,0.02) 50%, rgba(255,255,255,0) 80%),
-      radial-gradient(circle 1.5px at 32px 32px, rgba(29,78,216,0.18) 100%, transparent 0),
-      linear-gradient(to right, rgba(29,78,216,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(29,78,216,0.04) 1px, transparent 1px);
-    background-size:100% 100%, 64px 64px, 64px 64px, 64px 64px;
-    -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 30%, black 20%, transparent 85%);
-    mask-image:radial-gradient(ellipse 85% 75% at 50% 30%, black 20%, transparent 85%);
   }
 
   /* NAV */
@@ -2813,7 +2798,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <body>
 
 <section class="hero">
-  <div class="hero-blueprint-grid"></div>
 
   <nav>
     <img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img">
