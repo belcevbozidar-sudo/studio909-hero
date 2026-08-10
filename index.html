@@ -46,8 +46,8 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 /></noscript>
-<!-- DotLottie Web Component for Telegram Lottie Animations -->
-<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+<!-- Lottie Web Player for High Performance Inline Vector Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
@@ -3443,9 +3443,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       </div>
 
       <!-- Advantage 2: Сигурност -->
-      <div class="standalone-focus-item">
+      <div class="standalone-focus-item" id="focusLockItem">
         <div class="standalone-icon-box">
-          <img src="assets/security-lock.png" alt="Сигурност" class="standalone-focus-img anim-lock" decoding="async">
+          <svg class="standalone-lock-svg" viewBox="0 0 100 100" fill="none">
+            <path class="standalone-lock-shackle anim-lock-shackle" d="M32 46V30C32 20.0589 40.0589 12 50 12C59.9411 12 68 20.0589 68 30V46" stroke="#0f172a" stroke-width="8" stroke-linecap="round"/>
+            <rect x="22" y="42" width="56" height="46" rx="10" fill="#0f172a"/>
+            <circle cx="50" cy="62" r="5" fill="#ffffff"/>
+            <path d="M50 67V74" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+          </svg>
         </div>
         <h3 class="standalone-focus-title">Сигурност</h3>
         <p class="standalone-focus-sub">Уебсайтът ти, както и всички данни са защитени.</p>
@@ -4024,18 +4029,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     }
   });
 
-  /* ===== LOCK ANIMATION OBSERVER ===== */
+  /* ===== LOCK & ADVANTAGES SCROLL OBSERVER ===== */
   const focusLockItem = document.getElementById('focusLockItem');
   if (focusLockItem) {
     const lockObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          focusLockItem.classList.add('is-locked');
+          focusLockItem.classList.add('is-in-view');
         } else {
-          focusLockItem.classList.remove('is-locked');
+          focusLockItem.classList.remove('is-in-view');
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.3 });
     lockObserver.observe(focusLockItem);
   }
 
