@@ -179,7 +179,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .avatars span{
     width:28px;height:28px;
     border-radius:50%;
-    border:2px solid var(--accent);
+    border:2px solid #475569;
     margin-left:-8px;
     display:inline-block;
     background-size:cover;
@@ -2668,10 +2668,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     background:url('assets/hero-sky-gradient.png') no-repeat top center !important;
     background-size:100% 100% !important;
   }
+  .hero-top-wrapper::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,0.35);
+    pointer-events:none;
+    z-index:0;
+  }
   .hero,
   .marquee-wrap,
   .statement{
     background:transparent !important;
+    position:relative;
+    z-index:1;
   }
   .statement::after{
     content:'';
