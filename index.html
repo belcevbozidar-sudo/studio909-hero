@@ -46,7 +46,8 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
+<!-- DotLottie Web Component for Telegram Lottie Animations -->
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
@@ -1929,9 +1930,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     align-items:center;
     justify-content:center;
     margin-bottom:20px;
+    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .standalone-focus-img{
-    width:auto;
+  .standalone-focus-item:hover .standalone-icon-box{
+    transform:scale(1.12) translateY(-4px);
+  }
+  .standalone-focus-img,
+  dotlottie-player{
+    width:90px;
     height:90px;
     max-width:100%;
     object-fit:contain;
@@ -3398,7 +3404,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 2: Сигурност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/security-lock.png" alt="Сигурност" class="standalone-focus-img" decoding="async">
+          <dotlottie-player src="https://assets2.lottiefiles.com/packages/lf20_y0j99uac.json" background="transparent" speed="1" style="width: 90px; height: 90px;" loop autoplay></dotlottie-player>
         </div>
         <h3 class="standalone-focus-title">Сигурност</h3>
         <p class="standalone-focus-sub">Уебсайтът ти, както и всички данни са защитени.</p>
@@ -3434,7 +3440,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 6: Бързина -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/speed-lightning.png" alt="Бързина" class="standalone-focus-img" decoding="async">
+          <dotlottie-player src="https://assets3.lottiefiles.com/packages/lf20_m64871qy.json" background="transparent" speed="1" style="width: 90px; height: 90px;" loop autoplay></dotlottie-player>
         </div>
         <h3 class="standalone-focus-title">Бързина</h3>
         <p class="standalone-focus-sub">Светкавично бързо зареждане.</p>
