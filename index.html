@@ -2514,7 +2514,26 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     color:#132238;
   }
   .hero,
-  .marquee-wrap,
+  .marquee-wrap{
+    background:transparent url('assets/hero-sky-gradient.png') no-repeat top center !important;
+    background-size:cover !important;
+  }
+  .statement{
+    position:relative;
+    background:transparent url('assets/hero-sky-gradient.png') no-repeat bottom center !important;
+    background-size:cover !important;
+  }
+  .statement::after{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:140px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
+    pointer-events:none;
+    z-index:3;
+  }
   .offer,
   .team,
   .proof,
@@ -2524,11 +2543,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .process,
   .faq,
   .final-cta,
-  .site-footer{
-    background:#ffffff;
-  }
-  .hero{
-    background:#ffffff;
+  .site-footer,
+  .moment,
+  .included,
+  .pricing{
+    background:#ffffff !important;
   }
   .hero-arc{
     background:#ffffff;
