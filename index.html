@@ -2519,15 +2519,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     background:#ffffff;
     color:#132238;
   }
-  .hero,
-  .marquee-wrap{
-    background:transparent url('assets/hero-sky-gradient.png') no-repeat top center !important;
-    background-size:cover !important;
-  }
-  .statement{
+  .hero-top-wrapper{
     position:relative;
-    background:transparent url('assets/hero-sky-gradient.png') no-repeat bottom center !important;
-    background-size:cover !important;
+    background:url('assets/hero-sky-gradient.png') no-repeat top center !important;
+    background-size:100% 100% !important;
+  }
+  .hero,
+  .marquee-wrap,
+  .statement{
+    background:transparent !important;
   }
   .statement::after{
     content:'';
@@ -2837,6 +2837,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 </head>
 <body>
 
+<div class="hero-top-wrapper">
 <section class="hero">
   <div class="hero-blueprint-grid"></div>
 
@@ -2922,6 +2923,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <p class="statement-strong">Твоят ще е различен и ще говори директно на идеалния ти клиент. Няма да си просто &quot;един от всички&quot;.</p>
   </div>
 </section>
+</div>
 
 <section class="moment" id="offer">
   <div class="moment-head">
@@ -3281,7 +3283,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <section class="final-cta">
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner">
-    <h2>Попълни формата и ще ти направим безплатно демо</h2>
+    <h2>Попълни формата и ще ти направим безплатно демо до 24 часа</h2>
     <button type="button" class="cta open-inquiry-btn" style="margin-top: 32px;">Заяви демо</button>
     <div class="cta-note"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
   </div>
