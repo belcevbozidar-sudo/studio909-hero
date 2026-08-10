@@ -1901,31 +1901,37 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-align:center;
   }
   .focus-inner{
-    max-width:800px;
+    max-width:900px;
     margin:0 auto;
     text-align:center;
   }
   .focus-grid{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:48px;
-    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:48px 36px;
+    margin-top:52px;
+    align-items:start;
   }
   .standalone-focus-item{
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     text-align:center;
   }
-  .standalone-lock-box{
+  .standalone-icon-box{
     width:90px;
     height:100px;
     display:flex;
     align-items:center;
     justify-content:center;
     margin-bottom:20px;
+  }
+  .standalone-focus-img{
+    width:auto;
+    height:90px;
+    max-width:100%;
+    object-fit:contain;
   }
   .standalone-lock-svg{
     width:100%;
@@ -1947,9 +1953,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:800;
     color:#0f172a;
     letter-spacing:-0.01em;
-    margin:0;
+    margin:0 0 8px;
   }
-  @media(max-width:768px){
+  .standalone-focus-sub{
+    font-size:15px;
+    color:#475569;
+    line-height:1.5;
+    max-width:320px;
+    margin:0 auto;
+  }
+  @media(max-width:640px){
+    .focus-grid{
+      grid-template-columns:1fr;
+      gap:44px;
+    }
     .sad-truth-inner{
       padding:32px 20px;
     }
@@ -3341,14 +3358,25 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <h2 class="section-title">На какво наблягаме</h2>
 
     <div class="focus-grid">
+      <!-- Advantage 1: Ексклузивност -->
+      <div class="standalone-focus-item">
+        <div class="standalone-icon-box">
+          <img src="assets/exclusivity-icon.png" alt="Ексклузивност" class="standalone-focus-img" decoding="async">
+        </div>
+        <h3 class="standalone-focus-title">Ексклузивност</h3>
+        <p class="standalone-focus-sub">Работим само с един бизнес в нишата в града.</p>
+      </div>
+
+      <!-- Advantage 2: Сигурност -->
       <div class="standalone-focus-item" id="focusLockItem">
-        <div class="standalone-lock-box">
+        <div class="standalone-icon-box">
           <svg class="standalone-lock-svg" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path class="standalone-lock-shackle" d="M32 52V30C32 20.0589 40.0589 12 50 12C59.9411 12 68 20.0589 68 30V35" stroke="#0f172a" stroke-width="11" stroke-linecap="round"/>
             <rect x="18" y="48" width="64" height="52" rx="12" fill="#0f172a"/>
           </svg>
         </div>
         <h3 class="standalone-focus-title">Сигурност</h3>
+        <p class="standalone-focus-sub">Защитен уебсайт и данни</p>
       </div>
     </div>
   </div>
