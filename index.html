@@ -179,7 +179,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .avatars span{
     width:28px;height:28px;
     border-radius:50%;
-    border:2px solid #475569;
+    border:1px solid #475569;
     margin-left:-8px;
     display:inline-block;
     background-size:cover;
@@ -1967,17 +1967,34 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   @media(max-width:992px){
     .focus-grid{
+      display:grid;
       grid-template-columns:repeat(2, 1fr);
-      gap:48px 32px;
+      gap:40px 24px;
+    }
+    .standalone-focus-item{
+      max-width:none;
     }
   }
   @media(max-width:640px){
     .focus-grid{
-      grid-template-columns:1fr;
-      gap:44px;
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:36px 16px;
     }
-    .sad-truth-inner{
-      padding:32px 20px;
+    .standalone-icon-box{
+      width:70px;
+      height:80px;
+      margin-bottom:12px;
+    }
+    .standalone-focus-img{
+      height:70px;
+    }
+    .standalone-focus-title{
+      font-size:18px;
+    }
+    .standalone-focus-sub{
+      font-size:13px;
+      line-height:1.4;
     }
   }
 
@@ -2672,7 +2689,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     content:'';
     position:absolute;
     inset:0;
-    background:rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.55);
     pointer-events:none;
     z-index:0;
   }
