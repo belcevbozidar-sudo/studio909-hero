@@ -55,19 +55,21 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <style>
   :root{
     --accent:#1d4ed8;
-    --bg:#050505;
+    --bg:#f8faff;
+    --text:#0f172a;
+    --subtext:#475569;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
     background:var(--bg);
     font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;
-    color:#fff;
+    color:var(--text);
     overflow-x:hidden;
   }
 
   .hero{
     position:relative;
-    background:#050505;
+    background:#f8faff;
     display:flex;
     flex-direction:column;
     overflow:hidden;
@@ -84,12 +86,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     max-width:none;
     transform:translateX(-50%);
     border-radius:50%;
-    background:radial-gradient(ellipse at center, rgba(29,78,216,0.14) 0%, rgba(29,78,216,0.09) 34%, rgba(29,78,216,0.03) 54%, rgba(5,5,5,0) 72%);
+    background:radial-gradient(ellipse at center, rgba(29,78,216,0.06) 0%, rgba(29,78,216,0.02) 54%, rgba(248,250,255,0) 72%);
     filter:blur(8px);
-    box-shadow:
-      0 0 60px 10px rgba(29,78,216,0.16),
-      0 0 180px 42px rgba(29,78,216,0.09),
-      0 0 320px 84px rgba(29,78,216,0.04);
     pointer-events:none;
   }
 
@@ -99,8 +97,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     inset:0;
     z-index:0;
     background:
-      radial-gradient(ellipse 920px 460px at 50% 10%, rgba(29,78,216,0.18), transparent 64%),
-      radial-gradient(ellipse 1280px 540px at 50% 14%, rgba(29,78,216,0.08), transparent 72%);
+      radial-gradient(ellipse 920px 460px at 50% 10%, rgba(29,78,216,0.06), transparent 64%),
+      radial-gradient(ellipse 1280px 540px at 50% 14%, rgba(29,78,216,0.03), transparent 72%);
     pointer-events:none;
   }
   .grid-overlay{
@@ -130,14 +128,14 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     display:flex;
     align-items:center;
     gap:6px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(15,23,42,0.04);
+    border:1px solid rgba(15,23,42,0.07);
     border-radius:24px;
     padding:6px;
   }
   .nav-links a{
     text-decoration:none;
-    color:#ddd;
+    color:#475569;
     font-size:13px;
     font-weight:500;
     padding:8px 16px;
@@ -146,28 +144,29 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     white-space:nowrap;
   }
   .nav-links a.active{
-    background:#fff;
-    color:#111;
+    background:#0f172a;
+    color:#fff;
     font-weight:700;
   }
   .nav-links a:not(.active):hover{
-    color:#fff;
+    color:#0f172a;
   }
 
   .contact-btn{
-    border:1px solid rgba(255,255,255,0.25);
-    color:#fff;
+    border:1px solid rgba(15,23,42,0.12);
+    color:#ffffff;
     text-decoration:none;
     font-size:13px;
-    font-weight:500;
+    font-weight:600;
     padding:10px 20px;
     border-radius:22px;
-    background:rgba(255,255,255,0.03);
+    background:#0f172a;
     transition:background .2s ease;
     white-space:nowrap;
   }
   .contact-btn:hover{
-    background:rgba(255,255,255,0.1);
+    background:var(--accent);
+    color:#ffffff;
   }
 
   .nav-right{
@@ -195,7 +194,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     gap:10px;
     font-size:14px;
     font-weight:500;
-    color:#e5e5e5;
+    color:#475569;
     margin-bottom:68px;
   }
   .avatars{
@@ -204,7 +203,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .avatars span{
     width:28px;height:28px;
     border-radius:50%;
-    border:2px solid #111;
+    border:2px solid #ffffff;
     margin-left:-8px;
     display:inline-block;
     background-size:cover;
@@ -223,6 +222,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     line-height:1.06;
     font-weight:800;
     letter-spacing:-0.01em;
+    color:#0f172a;
   }
   .hero-title .line-1,
   .hero-title .line-2,
@@ -292,7 +292,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .subtext{
     max-width:640px;
     margin:64px auto 0;
-    color:#c9c9c9;
+    color:#475569;
     font-size:17px;
     font-weight:400;
     line-height:1.65;
@@ -319,25 +319,22 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .hero-content .cta{
     margin-top:68px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    color: #0f172a;
+    background: var(--accent);
+    color: #ffffff;
     font-weight: 800;
     font-size: 15px;
     letter-spacing: 0.6px;
     padding: 18px 48px;
     border-radius: 14px;
-    box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+    box-shadow: 0 12px 36px 0 rgba(29, 78, 216, 0.35);
     transition: all .25s ease;
   }
   .hero-content .cta:hover{
-    background: #ffffff;
-    border-color: #ffffff;
-    color: #1d4ed8;
+    background: #1e40af;
+    border-color: #1e40af;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 16px 44px 0 rgba(29, 78, 216, 0.35);
+    box-shadow: 0 16px 44px 0 rgba(29, 78, 216, 0.45);
   }
   .cta-row{
     display:flex;
@@ -426,7 +423,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* OFFER / WHAT YOU GET */
   .offer{
-    background:#050505;
+    background:#f8faff;
     padding:100px 20px 110px;
   }
   .offer-inner{
@@ -450,9 +447,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     line-height:1.25;
     max-width:760px;
     margin:0 auto;
+    color:#0f172a;
   }
   .offer-sub{
-    color:#c9c9c9;
+    color:#475569;
     font-size:16px;
     line-height:1.6;
     max-width:560px;
@@ -463,13 +461,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin-top:56px;
     border:2px solid var(--accent);
     border-radius:20px;
-    background:rgba(255,255,255,0.02);
-    box-shadow:0 0 0 1px rgba(29,78,216,0.25), 0 0 40px rgba(29,78,216,0.15), 0 40px 80px -40px rgba(0,0,0,0.7);
+    background:#ffffff;
+    box-shadow:0 16px 40px -10px rgba(19,34,56,0.08);
     text-align:left;
     overflow:hidden;
   }
   .offer-row{
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid #e2e8f0;
   }
   .offer-row:last-child{
     border-bottom:none;
@@ -494,7 +492,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     width:28px;
     height:28px;
     border-radius:50%;
-    background:rgba(29,78,216,0.15);
+    background:rgba(29,78,216,0.1);
     color:var(--accent);
     display:flex;
     align-items:center;
@@ -512,6 +510,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     display:inline-block;
     font-size:21px;
     font-weight:800;
+    color:#0f172a;
   }
   .offer-toggle-btn{
     flex-shrink:0;
@@ -519,8 +518,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     height:44px;
     border-radius:50%;
     border:none;
-    background:rgba(255,255,255,0.06);
-    color:#fff;
+    background:rgba(15,23,42,0.06);
+    color:#0f172a;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -534,7 +533,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     transform:rotate(180deg);
   }
   .offer-toggle-btn:hover{
-    background:rgba(29,78,216,0.22);
+    background:rgba(29,78,216,0.15);
   }
   .offer-toggle-btn.pulse-btn{
     background:var(--accent);
@@ -573,19 +572,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .offer-row-panel-inner{
     padding-bottom:1px;
+    border-top:1px solid #f1f5f9;
   }
   .offer-row-panel-inner p{
-    padding:0 26px 24px 26px;
+    padding:16px 26px 24px 26px;
     font-size:16px;
     font-weight:500;
-    color:#c9c9c9;
+    color:#475569;
     line-height:1.65;
   }
   .offer-row-panel-inner p + p{
     margin-top:-12px;
   }
   .offer-row-panel-inner p strong{
-    color:#fff;
+    color:#0f172a;
   }
   .google-partner-badge{
     display:inline-flex;
@@ -1169,17 +1169,16 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   /* TEAM / WHO WE ARE */
   .team{
     position:relative;
-    background:#050505;
+    background:#f8faff;
     padding:100px 20px 120px;
     overflow:hidden;
+    color:#0f172a;
   }
   .team-glow{
     position:absolute;
     inset:0;
     z-index:0;
-    background:
-      radial-gradient(ellipse 800px 460px at 20% 15%, rgba(29,78,216,0.14), transparent 60%),
-      radial-gradient(ellipse 700px 460px at 85% 85%, rgba(160,30,90,0.18), transparent 60%);
+    background:radial-gradient(ellipse 800px 460px at 50% 30%, rgba(29,78,216,0.06), transparent 60%);
     pointer-events:none;
   }
   .team-inner{
@@ -1199,16 +1198,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .team-card{
     flex:1 1 300px;
     max-width:340px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.1);
+    background:#ffffff;
+    border:1px solid rgba(218,225,233,0.85);
     border-radius:22px;
     padding:40px 30px 34px;
-    transition:transform .3s ease, border-color .3s ease, background .3s ease;
+    box-shadow:0 12px 32px -8px rgba(19,34,56,0.06);
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
   .team-card:hover{
     transform:translateY(-8px);
     border-color:rgba(29,78,216,0.45);
-    background:rgba(255,255,255,0.045);
+    box-shadow:0 20px 45px -12px rgba(19,34,56,0.12);
   }
   .team-photo{
     width:132px;
@@ -1224,7 +1224,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     border-radius:50%;
     overflow:hidden;
     background:#fff;
-    border:3px solid #050505;
+    border:3px solid #ffffff;
   }
   .team-photo img{
     width:100%;
@@ -1237,6 +1237,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:700;
     letter-spacing:-0.01em;
     margin-bottom:6px;
+    color:#0f172a;
   }
   .team-role{
     display:inline-block;
@@ -1248,7 +1249,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin-bottom:16px;
   }
   .team-card p{
-    color:#aaa;
+    color:#64748b;
     font-size:14px;
     line-height:1.65;
   }
@@ -1270,9 +1271,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     line-height:1.25;
     max-width:760px;
     margin:0 auto;
+    color:#0f172a;
   }
   .section-sub{
-    color:#c9c9c9;
+    color:#475569;
     font-size:16px;
     line-height:1.6;
     max-width:560px;
@@ -1281,9 +1283,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* PROOF / TESTIMONIALS */
   .proof{
-    background:#050505;
+    background:#ffffff;
     padding:100px 20px 110px;
-    border-top:1px solid rgba(255,255,255,0.06);
+    border-top:1px solid #e2e8f0;
   }
   .proof-inner{
     max-width:1100px;
@@ -1298,18 +1300,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-align:left;
   }
   .star-empty{
-    color:#999;
+    color:#cbd5e1;
   }
   .proof-card{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.1);
+    background:#ffffff;
+    border:1px solid rgba(218,225,233,0.85);
     border-radius:18px;
     padding:28px 26px;
-    transition:transform .3s ease, border-color .3s ease;
+    box-shadow:0 10px 28px -6px rgba(19,34,56,0.05);
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
   .proof-card:hover{
     transform:translateY(-6px);
     border-color:rgba(29,78,216,0.4);
+    box-shadow:0 18px 40px -10px rgba(19,34,56,0.1);
   }
   .proof-stars{
     color:#f7b500;
@@ -1318,13 +1322,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin-bottom:14px;
   }
   .stars-count{
-    color:#999;
+    color:#64748b;
     font-size:12.5px;
     letter-spacing:normal;
     font-weight:500;
   }
   .proof-card p{
-    color:#dcdcdc;
+    color:#334155;
     font-size:14.5px;
     line-height:1.65;
     margin-bottom:22px;
@@ -1345,17 +1349,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:700;
     font-size:14px;
     display:block;
+    color:#0f172a;
   }
   .proof-person-role{
-    color:#888;
+    color:#64748b;
     font-size:12.5px;
   }
 
   /* PROBLEM SECTION */
   .problem{
-    background:#050505;
+    background:#f8faff;
     padding:100px 20px 110px;
-    border-top:1px solid rgba(255,255,255,0.06);
+    border-top:1px solid #e2e8f0;
   }
   .problem-inner{
     max-width:1100px;
@@ -1373,21 +1378,23 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin-right:auto;
   }
   .problem-card{
-    background:rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.08);
+    background:#ffffff;
+    border:1px solid rgba(218,225,233,0.85);
     border-radius:16px;
     padding:26px 24px;
-    transition:border-color .3s ease, transform .3s ease;
+    box-shadow:0 10px 28px -6px rgba(19,34,56,0.05);
+    transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
   }
   .problem-card:hover{
     border-color:rgba(239, 68, 68, 0.55);
     transform:translateY(-5px);
+    box-shadow:0 18px 40px -10px rgba(239,68,68,0.1);
   }
   .problem-icon{
     width:40px;
     height:40px;
     border-radius:10px;
-    background:rgba(29,78,216,0.12);
+    background:rgba(29,78,216,0.1);
     color:var(--accent);
     display:flex;
     align-items:center;
@@ -1399,9 +1406,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-size:16px;
     font-weight:700;
     margin-bottom:8px;
+    color:#0f172a;
   }
   .problem-card p{
-    color:#a8a8a8;
+    color:#475569;
     font-size:13.5px;
     line-height:1.6;
   }
@@ -1409,14 +1417,15 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   /* SOLUTION SECTION */
   .solution{
     position:relative;
-    background:linear-gradient(180deg, #050505 0%, #070b16 30%, #070b16 70%, #050505 100%);
+    background:#ffffff;
     padding:100px 20px 110px;
     overflow:hidden;
+    border-top:1px solid #e2e8f0;
   }
   .solution-glow{
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse 900px 560px at 50% 42%, rgba(29,78,216,0.12), transparent 68%);
+    background:radial-gradient(ellipse 900px 560px at 50% 42%, rgba(29,78,216,0.06), transparent 68%);
     pointer-events:none;
   }
   .solution-inner{
@@ -1429,13 +1438,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .solution-statement{
     font-size:clamp(20px, 2.4vw, 26px);
     line-height:1.55;
-    color:#e8e8e8;
+    color:#334155;
     font-weight:500;
     max-width:1100px;
     margin:32px auto 0;
   }
   .solution-statement strong{
-    color:#fff;
+    color:#0f172a;
   }
   .pillars{
     display:grid;
@@ -1445,15 +1454,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     text-align:left;
   }
   .pillar{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.1);
+    background:#ffffff;
+    border:1px solid rgba(218,225,233,0.85);
     border-radius:16px;
     padding:26px 22px;
-    transition:transform .3s ease, border-color .3s ease;
+    box-shadow:0 10px 28px -6px rgba(19,34,56,0.05);
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
   .pillar:hover{
     transform:translateY(-6px);
     border-color:rgba(61, 220, 114, 0.55);
+    box-shadow:0 18px 40px -10px rgba(61,220,114,0.12);
   }
   .pillar-num{
     color:var(--accent);
@@ -1590,9 +1601,9 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* PROCESS */
   .process{
-    background:#050505;
+    background:#ffffff;
     padding:100px 20px 110px;
-    border-top:1px solid rgba(255,255,255,0.06);
+    border-top:1px solid #e2e8f0;
   }
   .process-inner{
     max-width:1000px;
@@ -1612,7 +1623,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     top:26px;
     bottom:26px;
     width:2px;
-    background:rgba(255,255,255,0.1);
+    background:#e2e8f0;
   }
   .process-line-fill{
     position:absolute;
@@ -1657,9 +1668,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-size:17px;
     font-weight:700;
     margin-bottom:6px;
+    color:#0f172a;
   }
   .process-step p{
-    color:#aaa;
+    color:#475569;
     font-size:14px;
     line-height:1.6;
     max-width:600px;
@@ -1669,27 +1681,19 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .faq{
     position:relative;
     overflow:hidden;
-    background:#050505;
+    background:#f8faff;
     padding:100px 20px 110px;
+    border-top:1px solid #e2e8f0;
   }
   .faq-glow{
     position:absolute;
     inset:0;
     z-index:0;
-    background:radial-gradient(ellipse 900px 560px at 50% 40%, rgba(29,78,216,0.16), transparent 65%);
+    background:radial-gradient(ellipse 900px 560px at 50% 40%, rgba(29,78,216,0.06), transparent 65%);
     pointer-events:none;
   }
   .faq-grid-overlay{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size:60px 60px;
-    -webkit-mask-image: radial-gradient(ellipse 900px 560px at 50% 40%, black 40%, transparent 75%);
-    mask-image: radial-gradient(ellipse 900px 560px at 50% 40%, black 40%, transparent 75%);
-    pointer-events:none;
+    display:none !important;
   }
   .faq-inner{
     position:relative;
@@ -1701,10 +1705,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .faq-list{
     margin-top:48px;
     text-align:left;
-    border-top:1px solid rgba(255,255,255,0.1);
+    border-top:1px solid #e2e8f0;
   }
   .faq-item{
-    border-bottom:1px solid rgba(255,255,255,0.1);
+    border-bottom:1px solid #e2e8f0;
   }
   .faq-question{
     display:flex;
@@ -1717,11 +1721,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .faq-question h3{
     font-size:15.5px;
     font-weight:600;
+    color:#0f172a;
   }
   .faq-question svg{
     flex-shrink:0;
     transition:transform .3s ease;
-    color:#999;
+    color:#64748b;
   }
   .faq-item.open .faq-question svg{
     transform:rotate(180deg);
@@ -1734,7 +1739,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .faq-answer p{
     padding:0 4px 22px;
-    color:#aaa;
+    color:#475569;
     font-size:14px;
     line-height:1.65;
   }
@@ -1742,17 +1747,16 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   /* FINAL CTA */
   .final-cta{
     position:relative;
-    background:linear-gradient(180deg, #050505, #070b16);
+    background:#ffffff;
     padding:110px 20px 120px;
     overflow:hidden;
     text-align:center;
+    border-top:1px solid #e2e8f0;
   }
   .final-cta-glow{
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse 900px 460px at 50% 78%, rgba(29,78,216,0.16), transparent 55%);
-    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
-    mask-image:linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
+    background:radial-gradient(ellipse 900px 460px at 50% 78%, rgba(29,78,216,0.06), transparent 55%);
     pointer-events:none;
   }
   .final-cta-inner{
@@ -1766,6 +1770,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     font-weight:800;
     letter-spacing:-0.01em;
     line-height:1.2;
+    color:#0f172a;
   }
   .wobble-question{
     display:inline-block;
@@ -1780,7 +1785,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     50% { transform: rotate(10deg); }
   }
   .final-cta-sub{
-    color:#c9c9c9;
+    color:#475569;
     font-size:16.5px;
     line-height:1.6;
     max-width:560px;
@@ -1798,27 +1803,27 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     display:inline-flex;
     align-items:center;
     gap:8px;
-    border:1px solid rgba(255,255,255,0.25);
-    color:#fff;
+    border:1px solid rgba(15,23,42,0.15);
+    color:#0f172a;
     text-decoration:none;
     font-weight:700;
     font-size:14px;
     padding:17px 32px;
     border-radius:8px;
-    background:rgba(255,255,255,0.03);
+    background:#f8fafc;
     transition:background .2s ease, transform .2s ease;
   }
   .cta-secondary:hover{
-    background:rgba(255,255,255,0.1);
+    background:#e2e8f0;
     transform:translateY(-2px);
   }
   .final-cta-phone{
     margin-top:26px;
     font-size:15px;
-    color:#ddd;
+    color:#475569;
   }
   .final-cta-phone a{
-    color:#fff;
+    color:#0f172a;
     font-weight:700;
     text-decoration:none;
     border-bottom:1px solid var(--accent);
@@ -1830,8 +1835,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* FOOTER */
   .site-footer{
-    background:linear-gradient(180deg, #070b16, #020202 55%);
+    background:#f1f5f9;
+    border-top:1px solid #e2e8f0;
     padding:56px 20px 28px;
+    color:#64748b;
   }
   .footer-inner{
     max-width:1100px;
@@ -1850,7 +1857,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     margin:0 auto 14px;
   }
   .footer-tagline{
-    color:#999;
+    color:#64748b;
     font-size:14px;
     max-width:420px;
     margin:0 auto;
@@ -1863,10 +1870,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     gap:28px;
     flex-wrap:wrap;
     padding-bottom:32px;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid #e2e8f0;
   }
   .footer-links a{
-    color:#ccc;
+    color:#475569;
     text-decoration:none;
     font-size:13.5px;
     font-weight:500;
@@ -1884,7 +1891,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     padding-top:24px;
   }
   .footer-copy{
-    color:#777;
+    color:#64748b;
     font-size:12.5px;
   }
   .footer-legal{
