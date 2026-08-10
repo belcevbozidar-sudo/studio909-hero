@@ -69,11 +69,26 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   .hero{
     position:relative;
-    background:#ffffff url('assets/hero-bg-gradient.png') no-repeat top center;
-    background-size:cover;
+    background:#ffffff;
     display:flex;
     flex-direction:column;
     overflow:hidden;
+  }
+
+  /* Hero Blueprint Grid */
+  .hero-blueprint-grid{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 50% 20%, rgba(29,78,216,0.09) 0%, rgba(29,78,216,0.02) 50%, rgba(255,255,255,0) 80%),
+      radial-gradient(circle 1.5px at 32px 32px, rgba(29,78,216,0.18) 100%, transparent 0),
+      linear-gradient(to right, rgba(29,78,216,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(29,78,216,0.04) 1px, transparent 1px);
+    background-size:100% 100%, 64px 64px, 64px 64px, 64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 30%, black 20%, transparent 85%);
+    mask-image:radial-gradient(ellipse 85% 75% at 50% 30%, black 20%, transparent 85%);
   }
 
   /* NAV */
@@ -2498,26 +2513,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     background:#ffffff;
     color:#132238;
   }
-  .hero{
-    background:transparent url('assets/hero-bg-gradient.png') no-repeat top center !important;
-    background-size:cover !important;
-  }
-  .marquee-wrap{
-    position:relative;
-    background:transparent url('assets/hero-bg-gradient.png') no-repeat bottom center !important;
-    background-size:cover !important;
-  }
-  .marquee-wrap::after{
-    content:'';
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:-1px;
-    height:70px;
-    background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
-    pointer-events:none;
-    z-index:3;
-  }
+  .hero,
+  .marquee-wrap,
   .offer,
   .team,
   .proof,
@@ -2527,12 +2524,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .process,
   .faq,
   .final-cta,
-  .site-footer,
-  .statement,
-  .moment,
-  .included,
-  .pricing{
-    background:#ffffff !important;
+  .site-footer{
+    background:#ffffff;
+  }
+  .hero{
+    background:#ffffff;
   }
   .hero-arc{
     background:#ffffff;
@@ -2817,6 +2813,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 <body>
 
 <section class="hero">
+  <div class="hero-blueprint-grid"></div>
 
   <nav>
     <img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img">
