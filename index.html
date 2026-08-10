@@ -110,13 +110,19 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:relative;
     z-index:30;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     gap:16px;
-    padding:24px 20px 0;
+    padding:28px 20px 0;
   }
   .logo-img{
-    display:none !important;
+    display:block !important;
+    height:50px;
+    max-width:210px;
+    width:auto;
+    object-fit:contain;
+    margin:0 auto;
   }
 
   .nav-links{
@@ -2302,8 +2308,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* ===== MOBILE ===== */
   @media (max-width:560px){
-    nav{padding:16px;}
-    .logo-img{height:38px;max-width:135px;}
+    nav{padding:20px 16px 0;gap:12px;}
+    .logo-img{display:block !important;height:36px;max-width:145px;margin:0 auto;}
     .contact-btn{padding:7px 13px;font-size:10.8px;}
 
     .hero-content{padding:20px 6px 12px;}
