@@ -77,29 +77,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* eclipse arc */
   .hero-arc{
-    position:absolute;
-    z-index:1;
-    left:50%;
-    top:198px;
-    width:5372px;
-    height:1312px;
-    max-width:none;
-    transform:translateX(-50%);
-    border-radius:50%;
-    background:radial-gradient(ellipse at center, rgba(29,78,216,0.05) 0%, rgba(29,78,216,0.01) 54%, rgba(255,255,255,0) 72%);
-    filter:blur(8px);
-    pointer-events:none;
+    display:none !important;
   }
 
   /* glow background */
   .glow{
-    position:absolute;
-    inset:0;
-    z-index:0;
-    background:
-      radial-gradient(ellipse 920px 460px at 50% 10%, rgba(29,78,216,0.06), transparent 64%),
-      radial-gradient(ellipse 1280px 540px at 50% 14%, rgba(29,78,216,0.03), transparent 72%);
-    pointer-events:none;
+    display:none !important;
   }
   .grid-overlay{
     display:none !important;
@@ -2847,7 +2830,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
 <section class="hero">
   <div class="glow"></div>
-  <div class="hero-arc"></div>
 
   <nav>
     <img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img">
