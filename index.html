@@ -851,8 +851,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .laptop-screen{
     position:absolute;
     top:24.7%;
-    left:30.6%;
-    width:38.3%;
+    left:29.8%;
+    width:38.5%;
     height:34.6%;
     overflow:hidden;
     border-radius:10px 10px 6px 6px;
@@ -871,7 +871,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:absolute;
     inset:0;
     opacity:0;
-    transform:translateX(8%);
+    transform:translateX(-8%);
     transition:transform .8s cubic-bezier(.22,1,.36,1), opacity .8s ease;
     z-index:1;
   }
@@ -882,7 +882,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .laptop-slide.is-exit{
     opacity:0;
-    transform:translateX(-8%);
+    transform:translateX(8%);
     z-index:1;
   }
   .laptop-slide picture,
@@ -2259,11 +2259,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       width:100%;
       max-width:100%;
       white-space:nowrap;
-      font-size:clamp(21px, 6.4vw, 34px);
+      font-size:clamp(22px, 7.0vw, 38px);
       line-height:1.08;
     }
     .hero-title .line-3{
-      font-size:clamp(21px, 6.4vw, 34px);
+      font-size:clamp(22px, 7.0vw, 38px);
     }
     .trusted-row{
       row-gap:8px;
@@ -2723,7 +2723,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     </div>
 
     <h1 class="hero-title">
-      <span class="line-1">Уебсайтове за големи бизнеси,</span>
+      <span class="line-1">Сайтове за големи бизнеси,</span>
       <span class="line-2">които искат да придобиват</span>
       <span class="line-3">повече клиенти онлайн.</span>
     </h1>
@@ -2768,7 +2768,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
 <section class="statement">
   <div class="statement-inner">
-    <p class="statement-muted">Повечето сайтове са шаблонни и не говорят на никого.</p>
+    <p class="statement-muted">Повечето сайтове са шаблонни и не говорят на никого. Никой не вижда нищо различно.</p>
     <p class="statement-strong">Твоят ще е различен и ще говори директно на идеалния ти клиент. Няма да си просто &quot;един от всички&quot;.</p>
   </div>
 </section>
@@ -3236,8 +3236,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       if (active) {
         const vh = window.innerHeight;
         const rect = statement.getBoundingClientRect();
-        const start = vh * 0.7;
-        const end = vh * 0.05;
+        const start = vh * 0.45;
+        const end = vh * -0.08;
         const t = clamp01((start - rect.top) / (start - end));
         line1.style.color = mixColor(STRONG, MUTED, t);
         line2.style.color = mixColor(MUTED, STRONG, t);
