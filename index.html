@@ -3392,8 +3392,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       if (active) {
         const vh = window.innerHeight;
         const rect = statement.getBoundingClientRect();
-        const start = vh * 0.65;
-        const end = vh * 0.15;
+        const start = vh * 0.40;
+        const end = vh * -0.05;
         const t = clamp01((start - rect.top) / (start - end));
         line1.style.color = mixColor(STRONG, MUTED, t);
         line2.style.color = mixColor(MUTED, STRONG, t);
