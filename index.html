@@ -1930,73 +1930,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     align-items:center;
     justify-content:center;
     margin-bottom:20px;
-    position:relative;
   }
   .standalone-focus-img{
     width:auto;
     height:90px;
     max-width:100%;
     object-fit:contain;
-    transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  /* CUSTOM ANIMATIONS */
-  /* 1. Ексклузивност (Бизнесмен) - Регулиране на вратовръзката */
-  .anim-businessman{
-    animation:businessman-sway 4s ease-in-out infinite;
-  }
-  @keyframes businessman-sway{
-    0%, 100%{ transform:scale(1) translateY(0); }
-    50%{ transform:scale(1.05) translateY(-3px); }
-  }
-
-  /* 2. Сигурност (Катинар) - Динамично отключване/заключване при скрол */
-  .anim-lock-shackle{
-    transition:transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform-origin:68px 30px;
-  }
-  .standalone-focus-item.is-in-view .anim-lock-shackle{
-    transform:translateY(14px) rotate(0deg) !important;
-  }
-  .standalone-focus-item:not(.is-in-view) .anim-lock-shackle{
-    transform:translateY(0px) rotate(-36deg);
-  }
-
-  /* 3. Удобство (Отметка) - Пружиниращ Bounce */
-  .anim-checkmark{
-    animation:check-bounce 3s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
-  }
-  @keyframes check-bounce{
-    0%, 100%{ transform:scale(1) rotate(0deg); }
-    40%{ transform:scale(1.18) rotate(4deg); }
-    60%{ transform:scale(0.96) rotate(-2deg); }
-  }
-
-  /* 4. Пълна собственост (Ключ) - Плавно 3D завъртане */
-  .anim-key{
-    animation:key-rotate 4.5s ease-in-out infinite;
-  }
-  @keyframes key-rotate{
-    0%, 100%{ transform:rotate(0deg) scale(1); }
-    50%{ transform:rotate(-15deg) scale(1.08); }
-  }
-
-  /* 5. Безгрижност (Кафе) - Плавно издигане и поклащане */
-  .anim-coffee{
-    animation:coffee-steam 3.5s ease-in-out infinite;
-  }
-  @keyframes coffee-steam{
-    0%, 100%{ transform:translateY(0) scale(1); }
-    50%{ transform:translateY(-5px) scale(1.04); }
-  }
-
-  /* 6. Бързина (Светкавица) - Импулсно светкавично примигване */
-  .anim-lightning{
-    animation:lightning-pulse 2.2s ease-in-out infinite;
-  }
-  @keyframes lightning-pulse{
-    0%, 100%{ transform:scale(1) rotate(0deg); filter:drop-shadow(0 0 0px rgba(29,78,216,0)); }
-    50%{ transform:scale(1.16) rotate(-5deg); filter:drop-shadow(0 4px 14px rgba(29,78,216,0.3)); }
   }
   .standalone-focus-title{
     font-size:22px;
@@ -3436,21 +3375,16 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 1: Ексклузивност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/exclusivity-icon.png" alt="Ексклузивност" class="standalone-focus-img anim-businessman" decoding="async">
+          <img src="assets/exclusivity-icon.png" alt="Ексклузивност" class="standalone-focus-img" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Ексклузивност</h3>
         <p class="standalone-focus-sub">Работим само с един бизнес от дадена сфера в града.</p>
       </div>
 
       <!-- Advantage 2: Сигурност -->
-      <div class="standalone-focus-item" id="focusLockItem">
+      <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <svg class="standalone-lock-svg" viewBox="0 0 100 100" fill="none">
-            <path class="standalone-lock-shackle anim-lock-shackle" d="M32 46V30C32 20.0589 40.0589 12 50 12C59.9411 12 68 20.0589 68 30V46" stroke="#0f172a" stroke-width="8" stroke-linecap="round"/>
-            <rect x="22" y="42" width="56" height="46" rx="10" fill="#0f172a"/>
-            <circle cx="50" cy="62" r="5" fill="#ffffff"/>
-            <path d="M50 67V74" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-          </svg>
+          <img src="assets/security-lock.png" alt="Сигурност" class="standalone-focus-img" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Сигурност</h3>
         <p class="standalone-focus-sub">Уебсайтът ти, както и всички данни са защитени.</p>
@@ -3459,7 +3393,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 3: Удобство -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/convenience-icon.png" alt="Удобство" class="standalone-focus-img anim-checkmark" decoding="async">
+          <img src="assets/convenience-icon.png" alt="Удобство" class="standalone-focus-img" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Удобство</h3>
         <p class="standalone-focus-sub">Един екип за всичко, вместо множество различни агенции.</p>
@@ -3468,7 +3402,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 4: Пълна собственост -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/ownership-key.png?v=2" alt="Пълна собственост" class="standalone-focus-img anim-key" decoding="async">
+          <img src="assets/ownership-key.png?v=2" alt="Пълна собственост" class="standalone-focus-img" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Пълна собственост</h3>
         <p class="standalone-focus-sub">Сайтът и всички активи остават твои. Не си обвързан по никакъв начин.</p>
@@ -3477,7 +3411,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 5: Безгрижност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/carefree-coffee.png" alt="Безгрижност" class="standalone-focus-img anim-coffee" decoding="async">
+          <img src="assets/carefree-coffee.png" alt="Безгрижност" class="standalone-focus-img" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Безгрижност</h3>
         <p class="standalone-focus-sub">Поемаме цялата техническа работа, за да се фокусираш върху бизнеса си.</p>
@@ -3486,7 +3420,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 6: Бързина -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/speed-lightning.png" alt="Бързина" class="standalone-focus-img anim-lightning" decoding="async">
+          <img src="assets/speed-lightning.png" alt="Бързина" class="standalone-focus-img" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Бързина</h3>
         <p class="standalone-focus-sub">Светкавично бързо зареждане.</p>
