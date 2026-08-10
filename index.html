@@ -318,21 +318,22 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     transform:translateY(-2px);
   }
   .hero-content .cta{
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #0f172a;
+    font-weight: 800;
     border-radius: 12px;
-    box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+    box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 1);
     transition: all .25s ease;
   }
   .hero-content .cta:hover{
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.45);
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #1d4ed8;
     transform: translateY(-2px);
-    box-shadow: 0 14px 40px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
-    color: #ffffff;
+    box-shadow: 0 14px 40px 0 rgba(0, 0, 0, 0.45);
   }
   .cta-row{
     display:flex;
@@ -954,20 +955,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* ===== PRICING ===== */
   .pricing{
-    position:relative;
     background:#ffffff;
     padding:0 24px 140px;
-  }
-  .pricing::after{
-    content:'';
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:130px;
-    background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(5,5,5,0.35) 45%, rgba(5,5,5,0.92) 85%, #050505 100%);
-    pointer-events:none;
-    z-index:5;
   }
   .pricing-inner{
     max-width:1100px;
@@ -1185,17 +1174,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     background:#050505;
     padding:100px 20px 120px;
     overflow:hidden;
-  }
-  .team::before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    height:100px;
-    background:linear-gradient(to bottom, #050505 0%, rgba(5,5,5,0.6) 60%, transparent 100%);
-    pointer-events:none;
-    z-index:2;
   }
   .team-glow{
     position:absolute;
@@ -2384,11 +2362,12 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     }
     .avatars span{width:24px;height:24px;}
     .subtext{font-size:14px;margin-top:34px;}
-    .cta{
-      margin-top:48px;
-      padding:15px 24px;
+    .hero-content .cta{
+      width:auto;
+      max-width:82%;
+      margin:48px auto 0;
+      padding:15px 26px;
       font-size:13px;
-      width:100%;
       justify-content:center;
     }
     .cta-note{margin-top:32px;}
