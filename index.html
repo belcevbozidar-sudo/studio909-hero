@@ -225,10 +225,29 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     letter-spacing:-0.01em;
     color:#0f172a;
   }
+  .hero-title{
+    position:relative;
+    display:inline-block;
+  }
+  .hero-title-glow{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:115%;
+    height:130%;
+    background:radial-gradient(ellipse at center, rgba(29,78,216,0.16) 0%, rgba(29,78,216,0.06) 45%, rgba(255,255,255,0) 75%);
+    filter:blur(38px);
+    pointer-events:none;
+    z-index:-1;
+    border-radius:50%;
+  }
   .hero-title .line-1,
   .hero-title .line-2,
   .hero-title .line-3{
     display:block;
+    position:relative;
+    z-index:1;
   }
   .mobile-br{
     display:none;
@@ -2861,6 +2880,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     </div>
 
     <h1 class="hero-title">
+      <div class="hero-title-glow"></div>
       <span class="line-1">Сайтове за големи бизнеси,</span>
       <span class="line-2">които искат да придобият</span>
       <span class="line-3">повече клиенти онлайн.</span>
@@ -3050,7 +3070,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <div class="philosophy-badge">За кого е тази оферта</div>
       <h3 class="philosophy-title">Това е скъпа инвестиция, която се избива с времето и помага за развитието на бизнеса.</h3>
       <p class="philosophy-desc">
-        Тя е за хора, които знаят, че евтиното излиза скъпо и искат да инвестират сега, знаейки че в дългосрочен план ще си струва.
+        Тя е за хора, които знаят, че евтиното излиза скъпо и искат да инвестират в актив, който в дългосрочен план ще си струва.
       </p>
       <div class="philosophy-grid">
         <div class="philosophy-item">
