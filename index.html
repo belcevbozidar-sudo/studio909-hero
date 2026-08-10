@@ -110,19 +110,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:relative;
     z-index:30;
     display:flex;
-    flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:space-between;
     gap:16px;
-    padding:28px 20px 0;
+    padding:28px 64px;
   }
   .logo-img{
-    display:block !important;
-    height:50px;
-    max-width:210px;
+    height:56px;
+    max-width:220px;
     width:auto;
+    display:block !important;
+    flex-shrink:0;
     object-fit:contain;
-    margin:0 auto;
   }
 
   .nav-links{
@@ -154,11 +153,27 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
 
   .contact-btn{
-    display:none !important;
+    border:1px solid rgba(15,23,42,0.12);
+    color:#ffffff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    padding:10px 20px;
+    border-radius:22px;
+    background:#0f172a;
+    transition:background .2s ease;
+    white-space:nowrap;
+    display:inline-flex !important;
+  }
+  .contact-btn:hover{
+    background:var(--accent);
+    color:#ffffff;
   }
 
   .nav-right{
-    display:none !important;
+    display:flex !important;
+    align-items:center;
+    gap:10px;
   }
   .label-mobile{display:none;}
 
@@ -2308,8 +2323,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* ===== MOBILE ===== */
   @media (max-width:560px){
-    nav{padding:20px 16px 0;gap:12px;}
-    .logo-img{display:block !important;height:36px;max-width:145px;margin:0 auto;}
+    nav{padding:16px;}
+    .logo-img{height:38px;max-width:135px;margin:0;}
     .contact-btn{padding:7px 13px;font-size:10.8px;}
 
     .hero-content{padding:20px 6px 12px;}
