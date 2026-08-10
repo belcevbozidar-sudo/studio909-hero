@@ -2495,12 +2495,29 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   /* LIGHT THEME PREVIEW */
   body{
-    background:#ffffff url('assets/hero-bg-gradient.png') repeat-y top center fixed !important;
-    background-size:100% auto !important;
+    background:#ffffff;
     color:#132238;
   }
-  .hero,
-  .marquee-wrap,
+  .hero{
+    background:transparent url('assets/hero-bg-gradient.png') no-repeat top center !important;
+    background-size:cover !important;
+  }
+  .marquee-wrap{
+    position:relative;
+    background:transparent url('assets/hero-bg-gradient.png') no-repeat bottom center !important;
+    background-size:cover !important;
+  }
+  .marquee-wrap::after{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:70px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 100%);
+    pointer-events:none;
+    z-index:3;
+  }
   .offer,
   .team,
   .proof,
@@ -2515,7 +2532,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   .moment,
   .included,
   .pricing{
-    background:transparent !important;
+    background:#ffffff !important;
   }
   .hero-arc{
     background:#ffffff;
