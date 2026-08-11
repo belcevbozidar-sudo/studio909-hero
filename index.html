@@ -158,9 +158,20 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     position:relative;
     z-index:2;
     text-align:center;
-    padding:44px 20px 90px;
+    padding:56px 20px 150px;
     max-width:1320px;
     margin:0 auto;
+  }
+
+  .hero-subtext{
+    font-family:'Inter', sans-serif;
+    font-size:clamp(17px, 2.2vw, 22px);
+    font-weight:500;
+    color:#475569;
+    letter-spacing:-0.01em;
+    margin:28px auto 0;
+    max-width:620px;
+    line-height:1.5;
   }
 
   .trusted-row{
@@ -2507,12 +2518,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     .logo-img{height:38px;max-width:135px;margin:0;}
     .contact-btn{padding:7px 13px;font-size:10.8px;}
 
-    .hero-content{padding:44px 16px 96px;}
+    .hero-content{padding:54px 16px 120px;}
     .hero-title .line-1,
     .hero-title .line-2{
       font-size:clamp(30px, 8.8vw, 46px);
       line-height:1.06;
       letter-spacing:-0.02em;
+    }
+    .hero-subtext{
+      font-size:16px;
+      margin-top:20px;
+      padding:0 8px;
     }
     .trusted-row{
       row-gap:8px;
@@ -2655,14 +2671,17 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
   }
   .hero-top-wrapper{
     position:relative;
-    background:url('assets/hero-sky-gradient.png') no-repeat top center !important;
-    background-size:100% 100% !important;
+    background: #ffffff !important;
+    background-image: 
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(219, 234, 254, 0.75), rgba(255, 255, 255, 0)),
+      radial-gradient(circle 600px at 20% 20%, rgba(238, 242, 255, 0.6), rgba(255, 255, 255, 0)),
+      radial-gradient(circle 500px at 80% 30%, rgba(224, 231, 255, 0.5), rgba(255, 255, 255, 0)) !important;
   }
   .hero-top-wrapper::before{
     content:'';
     position:absolute;
     inset:0;
-    background:rgba(255,255,255,0.35);
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.95) 100%);
     pointer-events:none;
     z-index:0;
   }
@@ -3019,6 +3038,10 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <span class="line-1">Уебсайт, устроен за</span>
       <span class="line-2">повече клиенти.</span>
     </h1>
+
+    <p class="hero-subtext">
+      Цялостна инвестиция. Научи нашия Метод 9.
+    </p>
 
     <a href="#offer" class="cta">Виж какво включва</a>
   </div>
