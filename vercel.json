@@ -1,4 +1,5 @@
 {
+  "buildCommand": "if [ \"$VERCEL_ENV\" = \"production\" ]; then npx convex deploy; else echo 'Skipping Convex deploy (not production)'; fi",
   "functions": {
     "api/audit.js": { "maxDuration": 300, "memory": 1792 }
   },

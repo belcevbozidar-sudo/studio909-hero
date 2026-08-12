@@ -13,21 +13,18 @@ reliable-lark-350.eu-west-1.convex.cloud
 `.env.local` сочи към **dev** deployment-а (`academic-dalmatian-762`) — той се
 ползва само от `npx convex dev` при локална работа и вече не обслужва сайта.
 
-## Важно: `git push` НЕ качва промените по тази папка
+## Автоматичен деплой
 
-Vercel деплойва само статичния сайт и `api/`. Функциите и схемата в `convex/`
-живеят в Convex и се качват отделно. След всяка промяна тук:
+`git push` към `main` вече качва и `convex/`. Build командата в
+[`vercel.json`](../vercel.json) вика `npx convex deploy` при production build,
+удостоверена с `CONVEX_DEPLOY_KEY` (Vercel → Settings → Environment Variables,
+само за Production, deploy key с единствено право `deployment:deploy`, взет от
+Convex dashboard на **Production** deployment-а, не Development).
 
-```bash
-npm run convex:deploy
-```
+При preview деплойове (PR-и, branch-ове) тази стъпка се прескача — ключът
+нарочно не е зададен за Preview, за да не може всеки branch да пише в
+production Convex база.
 
-Пропуснатият деплой не дава грешка при билда — сайтът просто продължава да вика
-старата версия на функцията и запитванията от формата се губят.
-
-## Автоматичен деплой (по избор)
-
-За да пада тази стъпка, в Convex dashboard → Settings → Deploy Keys се генерира
-production deploy key, добавя се във Vercel като `CONVEX_DEPLOY_KEY`, и build
-командата на проекта става `npx convex deploy`. Докато ключът не е зададен,
-build командата трябва да остане празна — иначе деплоят на сайта ще фейлва.
+Локална разработка с `npx convex dev` продължава да ползва dev
+deployment-а (`academic-dalmatian-762`) от `.env.local` — той не се пипа от
+build командата по-горе.
