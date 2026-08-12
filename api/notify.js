@@ -3,26 +3,44 @@
    Environment Variables: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID) и никога не
    стигат до браузъра. */
 
-const WINDOW_MS = 10 * 60 * 1000;
-const MAX_PER_WINDOW = 8;
-const hits = new Map();
+const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
+const AUDIT_INTERNAL_SECRET = (process.env.AUDIT_INTERNAL_SECRET || '').trim();
 
-function isRateLimited(ip) {
-  const now = Date.now();
-  if (hits.size > 5000) hits.clear();
-  const recent = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
-  if (recent.length >= MAX_PER_WINDOW) {
-    hits.set(ip, recent);
-    return true;
+async function convexMutation(path, args) {
+  const resp = await fetch(`${CONVEX_URL}/api/mutation`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path, args, format: 'json' }),
+  });
+  const data = await resp.json();
+  if (data.status !== 'success') throw new Error(data.errorMessage || 'Convex mutation failed');
+  return data.value;
+}
+
+async function isRateLimited(ip) {
+  if (!AUDIT_INTERNAL_SECRET) return false;
+  try {
+    const result = await convexMutation('rateLimits:checkAndRecord', {
+      secret: AUDIT_INTERNAL_SECRET,
+      key: `notify:${ip}`,
+      windowMs: 10 * 60 * 1000,
+      max: 8,
+    });
+    return !!result.limited;
+  } catch (err) {
+    console.error('[notify] Rate limit check failed, allowing request:', err.message);
+    return false;
   }
-  recent.push(now);
-  hits.set(ip, recent);
-  return false;
 }
 
 function clientIp(req) {
+  const real = req.headers['x-real-ip'];
+  if (typeof real === 'string' && real.trim()) return real.trim();
   const fwd = req.headers['x-forwarded-for'];
-  if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+  if (typeof fwd === 'string' && fwd.length) {
+    const parts = fwd.split(',').map(s => s.trim()).filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
   return req.socket?.remoteAddress || 'unknown';
 }
 
@@ -39,7 +57,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  if (isRateLimited(clientIp(req))) {
+  if (await isRateLimited(clientIp(req))) {
     res.status(429).json({ error: 'Too many requests' });
     return;
   }

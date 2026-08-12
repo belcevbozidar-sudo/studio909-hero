@@ -30,22 +30,29 @@
 <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#ffffff">
-<!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1576903213988765');
-fbq('track', 'PageView');
+window.STUDIO9_PIXEL_ID = '1576903213988765';
+window.studio9LoadMetaPixel = function(events) {
+  if (window.studio9PixelLoaded) {
+    (events || ['PageView']).forEach(eventName => window.fbq && window.fbq('track', eventName));
+    return;
+  }
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.STUDIO9_PIXEL_ID);
+  window.studio9PixelLoaded = true;
+  (events || ['PageView']).forEach(eventName => fbq('track', eventName));
+};
+if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
+  window.studio9LoadMetaPixel(['PageView']);
+}
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
-/></noscript>
 <!-- Lottie Web Player for High Performance Inline Vector Animations -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2085,11 +2092,11 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     z-index:150;
     max-width:640px;
     margin:0 auto;
-    background:#0d0d0d;
-    border:1px solid rgba(255,255,255,0.14);
+    background:#ffffff;
+    border:1px solid rgba(15,23,42,0.14);
     border-radius:16px;
     padding:22px 24px;
-    box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);
+    box-shadow:0 20px 50px -20px rgba(15,23,42,0.35);
     transform:translateY(140%);
     transition:transform .4s ease;
   }
@@ -2097,13 +2104,13 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     transform:translateY(0);
   }
   .cookie-text{
-    color:#eee;
+    color:#0f172a;
     font-size:13.5px;
     line-height:1.6;
     margin-bottom:14px;
   }
   .cookie-more{
-    color:#aaa;
+    color:#475569;
     font-size:13px;
     line-height:1.6;
     margin-bottom:14px;
@@ -3117,20 +3124,16 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     <div class="carousel-viewport">
       <div class="carousel-track">
         <div class="carousel-slide pair">
-          <picture><img src="meta-examples/meta-1.png" alt="Реклама AERVO" decoding="async"></picture>
-          <picture><source srcset="meta-examples/meta-2.webp" type="image/webp"><img src="meta-examples/meta-2.png" alt="Реклама AeroVent Климатични системи" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-1.webp" type="image/webp"><img src="meta-examples/meta-1.png" alt="Реклама AERVO" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-2.webp" type="image/webp"><img src="meta-examples/meta-2.png" alt="Реклама AeroVent Климатични системи" loading="lazy" decoding="async"></picture>
         </div>
         <div class="carousel-slide pair">
-          <picture><source srcset="meta-examples/meta-3.webp" type="image/webp"><img src="meta-examples/meta-3.png" alt="Реклама Roof Pro BG" decoding="async"></picture>
-          <picture><source srcset="meta-examples/meta-4.webp" type="image/webp"><img src="meta-examples/meta-4.png" alt="Реклама NEXUS" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-3.webp" type="image/webp"><img src="meta-examples/meta-3.png" alt="Реклама Roof Pro BG" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-4.webp" type="image/webp"><img src="meta-examples/meta-4.png" alt="Реклама NEXUS" loading="lazy" decoding="async"></picture>
         </div>
         <div class="carousel-slide pair">
-          <picture><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" decoding="async"></picture>
-          <picture><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" decoding="async"></picture>
-        </div>
-        <div class="carousel-slide pair">
-          <picture><img src="meta-examples/meta-7.png" alt="Реклама FreshBox Здравословна храна" decoding="async"></picture>
-          <picture><img src="meta-examples/meta-1.png" alt="Реклама AERVO" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-5.webp" type="image/webp"><img src="meta-examples/meta-5.png" alt="Реклама Lumina Restaurant" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="meta-examples/meta-6.webp" type="image/webp"><img src="meta-examples/meta-6.png" alt="Реклама Luxora Hotel" loading="lazy" decoding="async"></picture>
         </div>
       </div>
     </div>
@@ -3170,7 +3173,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
         <div class="carousel-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></picture></div>
         <div class="carousel-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" decoding="async"></picture></div>
         <div class="carousel-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><img src="meta-examples/meta-7.png" alt="Маркетингов банер FreshBox" decoding="async"></picture></div>
+        <div class="carousel-slide"><picture><source srcset="marketing-examples/green-delivery.webp" type="image/webp"><img src="marketing-examples/green-delivery.png" alt="Маркетингов банер за транспорт и доставка" loading="lazy" decoding="async"></picture></div>
       </div>
     </div>
   </div>
@@ -3383,7 +3386,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 1: Ексклузивност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/exclusivity-icon.png" alt="Ексклузивност" class="standalone-focus-img" decoding="async">
+          <img src="assets/exclusivity-icon.png" alt="Ексклузивност" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Ексклузивност</h3>
         <p class="standalone-focus-sub">Работим само с един бизнес от дадена сфера в града.</p>
@@ -3392,7 +3395,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 2: Сигурност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/security-lock.png" alt="Сигурност" class="standalone-focus-img" decoding="async">
+          <img src="assets/security-lock.png" alt="Сигурност" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Сигурност</h3>
         <p class="standalone-focus-sub">Уебсайтът ти, както и всички данни са защитени.</p>
@@ -3401,7 +3404,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 3: Удобство -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/convenience-icon.png" alt="Удобство" class="standalone-focus-img" decoding="async">
+          <img src="assets/convenience-icon.png" alt="Удобство" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Удобство</h3>
         <p class="standalone-focus-sub">Един екип за всичко, вместо множество различни агенции.</p>
@@ -3410,7 +3413,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 4: Пълна собственост -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/ownership-key.png?v=2" alt="Пълна собственост" class="standalone-focus-img" decoding="async">
+          <img src="assets/ownership-key.png?v=2" alt="Пълна собственост" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Пълна собственост</h3>
         <p class="standalone-focus-sub">Сайтът и всички активи остават твои. Не си обвързан по никакъв начин.</p>
@@ -3419,7 +3422,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 5: Безгрижност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/carefree-coffee.png" alt="Безгрижност" class="standalone-focus-img" decoding="async">
+          <img src="assets/carefree-coffee.png" alt="Безгрижност" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Безгрижност</h3>
         <p class="standalone-focus-sub">Поемаме цялата техническа работа, за да се фокусираш върху бизнеса си.</p>
@@ -3428,7 +3431,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       <!-- Advantage 6: Бързина -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/speed-lightning.png" alt="Бързина" class="standalone-focus-img" decoding="async">
+          <img src="assets/speed-lightning.png" alt="Бързина" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Бързина</h3>
         <p class="standalone-focus-sub">Светкавично бързо зареждане.</p>
@@ -3556,8 +3559,8 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-banner-inner">
-    <p class="cookie-text">Този сайт използва бисквитки, за да подобри твоето преживяване.</p>
-    <p class="cookie-more" id="cookieMore" hidden>Използваме единствено технически необходими бисквитки - например за да запомним избора ти тук. Не използваме бисквитки за реклама или проследяване. Прочети повече в нашата <a href="cookies.html">Политика за бисквитки</a>.</p>
+    <p class="cookie-text">Този сайт използва технически данни и, ако потвърдиш, Meta Pixel за измерване на рекламите.</p>
+    <p class="cookie-more" id="cookieMore" hidden>Ако потвърдиш, Meta Pixel може да отчете посещение и действия в сайта. Ако откажеш, пазим само избора ти локално в браузъра. Прочети повече в нашата <a href="cookies.html">Политика за бисквитки</a>.</p>
     <div class="cookie-actions">
       <button type="button" class="cta cookie-accept">Потвърждавам</button>
       <button type="button" class="cta-secondary cookie-more-btn">Научи повече</button>
@@ -3802,45 +3805,6 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     });
   });
 
-  /* ===== TELEGRAM NOTIFICATIONS =====
-     Минават през /api/notify на сървъра - бот токенът не присъства в браузъра. */
-  function sendTelegramMessage(text) {
-    fetch('/api/notify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text }),
-    }).catch(() => {});
-  }
-
-  function sendTelegramPhoto(photoFile, caption) {
-    if (photoFile.size > 3 * 1024 * 1024) {
-      sendTelegramMessage(caption + '\n(Прикачената снимка е над 3 MB и не беше изпратена)');
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const photoBase64 = String(reader.result).split(',')[1];
-      fetch('/api/notify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ caption, photoBase64 }),
-      }).catch(() => {});
-    };
-    reader.onerror = () => sendTelegramMessage(caption + '\n(Снимката не можа да бъде прочетена)');
-    reader.readAsDataURL(photoFile);
-  }
-
-  /* ===== CONVEX BACKUP (записва всяко попълване в базата данни) ===== */
-  const CONVEX_URL = 'https://academic-dalmatian-762.eu-west-1.convex.cloud';
-
-  function saveToConvex(path, args) {
-    fetch(`${CONVEX_URL}/api/mutation`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ path, args, format: 'json' }),
-    }).catch(() => {});
-  }
-
   /* ===== MODAL HELPERS ===== */
   /* overflow:hidden не заключва скрола в iOS Safari - фиксираме body
      и запомняме позицията, иначе фонът скролва под модала и мести курсора */
@@ -3918,7 +3882,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
     setInquiryStep(1);
   });
 
-  inquiryForm.addEventListener('submit', e => {
+  inquiryForm.addEventListener('submit', async e => {
     e.preventDefault();
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
@@ -3931,25 +3895,18 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
       return;
     }
 
-    const lines = [
-      '📩 Ново запитване от Big Offer сайта',
-      `Индустрия: ${industry}`,
-      `Проблем: ${problem}`,
-      `Имейл: ${email}`,
-      `Телефон: ${phone}`,
-      `Сегашен сайт: ${website || 'не е посочен'}`,
-    ];
-    sendTelegramMessage(lines.join('\n'));
-    saveToConvex('submissions:logInquiry', { industry, problem, noChange: '', email, phone });
-    fetch('/api/send-sms', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone }),
-    }).catch(() => {});
-
     inquiryViewport.hidden = true;
     inquiryProgress.hidden = true;
     inquiryLoading.hidden = false;
+    try {
+      await fetch('/api/submit-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ industry, problem, email, phone, website }),
+      });
+    } catch {
+      /* Запазваме плавния UX: посетителят не остава заключен в модала. */
+    }
     setTimeout(() => {
       window.location.href = 'thank-you.html';
     }, 1000);
@@ -3967,6 +3924,7 @@ src="https://www.facebook.com/tr?id=1576903213988765&ev=PageView&noscript=1"
 
   cookieAcceptBtn.addEventListener('click', () => {
     localStorage.setItem('studio9_cookie_choice', 'accepted');
+    window.studio9LoadMetaPixel && window.studio9LoadMetaPixel(['PageView']);
     cookieBanner.classList.remove('show');
   });
 
