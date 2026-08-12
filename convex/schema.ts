@@ -8,6 +8,8 @@ export default defineSchema({
     noChange: v.string(),
     email: v.string(),
     phone: v.string(),
+    /* optional, защото редовете отпреди добавянето на полето го нямат */
+    website: v.optional(v.string()),
   }),
   reviews: defineTable({
     business: v.string(),

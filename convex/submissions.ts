@@ -23,6 +23,7 @@ export const logInquiry = mutation({
     noChange: v.string(),
     email: v.string(),
     phone: v.string(),
+    website: v.string(),
   },
   handler: async (ctx, args) => {
     checkSecret(args.secret);
@@ -31,6 +32,7 @@ export const logInquiry = mutation({
     checkLen("noChange", args.noChange, 2000);
     checkLen("email", args.email, 320);
     checkLen("phone", args.phone, 40);
+    checkLen("website", args.website, 200);
     const { secret, ...doc } = args;
     await ctx.db.insert("inquiries", doc);
   },

@@ -115,43 +115,54 @@ export default async function handler(req, res) {
     noChange: '',
     email: trimTo(req.body?.email, 320),
     phone: trimTo(req.body?.phone, 40),
+    website: trimTo(req.body?.website, 200),
   };
-  const website = trimTo(req.body?.website, 200);
 
   if (!inquiry.industry || !inquiry.problem || !inquiry.phone) {
     res.status(400).json({ error: 'Missing required fields' });
     return;
   }
 
+  /* Записът, Telegram-ът и SMS-ът са независими: провал на едното не бива да
+     отменя останалите, иначе една счупена връзка изяжда целия лийд. */
+  let saveFailed = false;
   try {
     await convexMutation('submissions:logInquiry', {
       secret: AUDIT_INTERNAL_SECRET,
       ...inquiry,
     });
   } catch (err) {
+    saveFailed = true;
     console.error('[submit-inquiry] Convex save failed:', err.message);
-    res.status(502).json({ error: 'Inquiry save failed' });
-    return;
   }
 
   const lines = [
+    saveFailed
+      ? '⚠️ ЗАПИСЪТ В БАЗАТА СЕ ПРОВАЛИ - запази данните ръчно!'
+      : null,
     'Ново запитване от Big Offer сайта',
     `Индустрия: ${inquiry.industry}`,
     `Проблем: ${inquiry.problem}`,
     `Имейл: ${inquiry.email}`,
     `Телефон: ${inquiry.phone}`,
-    `Сегашен сайт: ${website || 'не е посочен'}`,
-  ];
+    `Сегашен сайт: ${inquiry.website || 'не е посочен'}`,
+  ].filter(Boolean);
 
-  const results = await Promise.allSettled([
+  const [telegram, sms] = await Promise.allSettled([
     notifyTelegram(lines.join('\n')),
     sendSms(inquiry.phone),
   ]);
-  results.forEach((result) => {
+  [telegram, sms].forEach((result) => {
     if (result.status === 'rejected') {
       console.error('[submit-inquiry] Follow-up failed:', result.reason?.message || result.reason);
     }
   });
+
+  /* 502 само ако запитването е изгубено навсякъде - нито в базата, нито в Telegram. */
+  if (saveFailed && telegram.status === 'rejected') {
+    res.status(502).json({ error: 'Inquiry delivery failed' });
+    return;
+  }
 
   res.status(200).json({ ok: true });
 }
