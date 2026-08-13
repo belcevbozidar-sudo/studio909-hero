@@ -1,5 +1,6 @@
 const CONVEX_URL = 'https://reliable-lark-350.eu-west-1.convex.cloud';
 const AUDIT_INTERNAL_SECRET = (process.env.AUDIT_INTERNAL_SECRET || '').trim();
+const OWNER_SMS_PHONE = '0882489182';
 
 function clientIp(req) {
   const real = req.headers['x-real-ip'];
@@ -66,7 +67,7 @@ async function notifyTelegram(text) {
   if (!tgRes.ok) throw new Error(`Telegram ${tgRes.status}`);
 }
 
-async function sendSms(phone) {
+async function sendSms(phone, message) {
   const to = normalizeBgMobile(phone);
   if (!to) return;
 
@@ -78,7 +79,7 @@ async function sendSms(phone) {
   const body = new URLSearchParams({
     To: to,
     From: from,
-    Body: 'Благодарим ти! Екипът ни скоро ще разгледа заявката ти и ще се свърже с теб.',
+    Body: trimTo(message, 1000),
   });
 
   const twilioRes = await fetch(
@@ -148,11 +149,20 @@ export default async function handler(req, res) {
     `Сегашен сайт: ${inquiry.website || 'не е посочен'}`,
   ].filter(Boolean);
 
-  const [telegram, sms] = await Promise.allSettled([
+  const customerSms = 'Благодарим ти! Екипът ни скоро ще разгледа заявката ти и ще се свърже с теб.';
+  const ownerSms = [
+    'Ново запитване от сайта.',
+    `Индустрия: ${inquiry.industry}`,
+    `Телефон: ${inquiry.phone}`,
+    inquiry.email ? `Имейл: ${inquiry.email}` : null,
+  ].filter(Boolean).join('\n');
+
+  const [telegram, customerSmsResult, ownerSmsResult] = await Promise.allSettled([
     notifyTelegram(lines.join('\n')),
-    sendSms(inquiry.phone),
+    sendSms(inquiry.phone, customerSms),
+    sendSms(OWNER_SMS_PHONE, ownerSms),
   ]);
-  [telegram, sms].forEach((result) => {
+  [telegram, customerSmsResult, ownerSmsResult].forEach((result) => {
     if (result.status === 'rejected') {
       console.error('[submit-inquiry] Follow-up failed:', result.reason?.message || result.reason);
     }
