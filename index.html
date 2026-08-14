@@ -1775,6 +1775,116 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     line-height:1.65;
   }
 
+  /* ===== QUALIFICATION SECTION (ЗА КОГО Е И ЗА КОГО НЕ Е) ===== */
+  .qualification {
+    position: relative;
+    background: #f8fafc;
+    padding: 96px 24px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .qualification-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .qualification-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+    text-align: left;
+  }
+  @media (max-width: 840px) {
+    .qualification-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+  .qualification-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .qualification-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.09);
+  }
+  .qualification-card.fit {
+    border-top: 4px solid #16a34a;
+  }
+  .qualification-card.no-fit {
+    border-top: 4px solid #dc2626;
+  }
+  .qualification-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .qualification-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 30px;
+    letter-spacing: 0.02em;
+  }
+  .fit-badge {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  .no-fit-badge {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+  .qualification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .qualification-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #334155;
+  }
+  .qualification-list li strong {
+    color: #0f172a;
+  }
+  .qual-icon-wrap {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .fit-icon {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+  .no-fit-icon {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
   /* FINAL CTA */
   .final-cta{
     position:relative;
@@ -1794,10 +1904,10 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     margin:0 auto;
   }
   .final-cta h2{
-    font-size:clamp(30px, 4vw, 48px);
+    font-size:clamp(26px, 3.8vw, 42px);
     font-weight:800;
     letter-spacing:-0.01em;
-    line-height:1.2;
+    line-height:1.25;
     color:#0f172a;
   }
   .wobble-question{
@@ -1814,10 +1924,11 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   }
   .final-cta-sub{
     color:#475569;
-    font-size:16.5px;
+    font-size:17.5px;
     line-height:1.6;
-    max-width:560px;
+    max-width:620px;
     margin:20px auto 0;
+    font-weight:500;
   }
   .cta-row{
     display:flex;
@@ -3087,7 +3198,8 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     <p class="statement-muted">Повечето сайтове са шаблонни и не говорят на никого. Никой не вижда нищо различно.</p>
     <p class="statement-strong">Твоят ще е различен и ще говори директно на идеалния ти клиент. Няма да си просто &quot;един от всички&quot;.</p>
     <p class="statement-subtext">Използваме Метод 9, за да позиционираме бизнеса ти директно пред идеалния ти клиент.</p>
-    <p class="statement-extra">Започваме с безплатно демо до 24 часа - без никакъв риск.</p>
+    <p class="statement-extra">Виж дали бизнеса ти е подходящ и можем да си бъдем полезни.</p>
+    <div class="cta-note" style="margin-top: 24px;"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
   </div>
 </section>
 </div>
@@ -3461,11 +3573,11 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       </div>
       <div class="faq-item">
         <div class="faq-question">
-          <h3>За кого е подходяща офертата?</h3>
+          <h3>Приемате ли всеки проект?</h3>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="faq-answer">
-          <p>На практика за всеки бизнес, стига вече да не работим с негов конкурент в същия град.</p>
+          <p>Не. Поемаме само проекти, в които виждаме реален потенциал за растеж, и при условие че все още не работим с ваш конкурент в същия град. Ако вашият бизнес е в нискобюджетната ниша (напр. продукти по €20 с малък марж), нашата система няма да бъде финансово оправдана за вас.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -3526,10 +3638,85 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   </div>
 </section>
 
+<section class="qualification" id="qualification">
+  <div class="qualification-inner">
+    <span class="section-eyebrow">ПОДБОР НА ПАРТНЬОРИ</span>
+    <h2 class="section-title">За кого Е и за кого НЕ е нашата услуга</h2>
+    <p class="section-sub">Работим само с подбрани бизнеси, при които можем да гарантираме истински резултат.</p>
+
+    <div class="qualification-grid">
+      <div class="qualification-card fit">
+        <div class="qualification-header">
+          <div class="qualification-badge fit-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            За кого Е
+          </div>
+        </div>
+        <ul class="qualification-list">
+          <li>
+            <div class="qual-icon-wrap fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span><strong>Бизнеси с висок чек (High-Ticket):</strong> Продукти или услуги с висока стойност, доказан продукт и потенциал за бързо скалиране.</span>
+          </li>
+          <li>
+            <div class="qual-icon-wrap fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span><strong>Изграден бизнес с визия:</strong> Собственици, които разбират стойността на качествената стратегия и дългосрочния актив.</span>
+          </li>
+          <li>
+            <div class="qual-icon-wrap fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span><strong>Желание за пълна ексклузивност:</strong> Когато искате да доминирате във вашата ниша и град пред конкуренцията.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="qualification-card no-fit">
+        <div class="qualification-header">
+          <div class="qualification-badge no-fit-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            За кого НЕ е
+          </div>
+        </div>
+        <ul class="qualification-list">
+          <li>
+            <div class="qual-icon-wrap no-fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+            <span><strong>Малки e-commerce магазини:</strong> Евтини онлайн продукти под €30-50 с нисък марж.</span>
+          </li>
+          <li>
+            <div class="qual-icon-wrap no-fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+            <span><strong>Бизнеси без ясен марж:</strong> Хора без изграден модел или визия за инвестиция в растеж.</span>
+          </li>
+          <li>
+            <div class="qual-icon-wrap no-fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+            <span><strong>Търсещи евтини/бързи решения:</strong> Опит за "бързи трикове" без стратегия и без внимание към бранда.</span>
+          </li>
+          <li>
+            <div class="qual-icon-wrap no-fit-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+            <span><strong>Конкуренти в същия град:</strong> Ниши и градове, в които вече работим с наш активен ексклузивен партньор.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="final-cta">
   <div class="final-cta-glow"></div>
   <div class="final-cta-inner">
-    <h2>Попълни формата и ще ти направим безплатно демо до 24 часа</h2>
+    <h2>Работим с ограничен брой подбрани бизнеси всеки месец, за да гарантираме 100% фокус и резултат.</h2>
+    <p class="final-cta-sub">Попълнете кратката форма, за да преценим дали можем да си бъдем полезни.</p>
     <button type="button" class="cta open-inquiry-btn" style="margin-top: 32px;">Заяви демо</button>
     <div class="cta-note"><span class="pulse-dot"></span>В момента сме отворени за нови партньори</div>
   </div>
@@ -3585,6 +3772,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <div class="form-step" data-step="1">
         <span class="modal-eyebrow">ЗАПИТВАНЕ</span>
         <h3>Разкажи ни малко за бизнеса си</h3>
+        <p style="color: #64748b; font-size: 13.5px; margin-top: 6px; margin-bottom: 18px; line-height: 1.5; font-weight: 500;">Работим с ограничен брой подбрани бизнеси всеки месец, за да гарантираме 100% фокус и резултат. Попълни формата, за да преценим дали можем да си бъдем полезни.</p>
 
         <label for="industryInput" class="form-label">С какво се занимава фирмата?</label>
         <input type="text" id="industryInput" name="industry" required maxlength="200" placeholder="напр. Строителна фирма, Транспортни...">
