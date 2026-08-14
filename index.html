@@ -1837,46 +1837,49 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 
   /* ===== INTEGRATIONS BANNER & MODAL ===== */
   .integrations-banner {
-    margin-top: 48px;
+    margin-top: 36px;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    border-radius: 20px;
-    padding: 32px 36px;
+    border-radius: 16px;
+    padding: 24px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 20px;
     color: #ffffff;
-    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
   }
   @media (max-width: 768px) {
     .integrations-banner {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 26px 22px;
-      gap: 20px;
+      margin-top: 24px;
+      padding: 18px 20px;
+      gap: 14px;
+      border-radius: 14px;
+    }
+    .integrations-banner-content h3 {
+      font-size: 16px !important;
+      margin: 2px 0 0 !important;
+    }
+    .integrations-badge {
+      font-size: 10.5px !important;
     }
     .integrations-banner .open-integrations-btn {
       width: 100%;
       text-align: center;
       justify-content: center;
+      padding: 10px 16px;
+      font-size: 13.5px;
     }
   }
   .integrations-banner-content h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    margin: 6px 0 6px;
+    margin: 4px 0 0;
     color: #ffffff;
     letter-spacing: -0.01em;
   }
-  .integrations-banner-content p {
-    font-size: 14.5px;
-    color: #94a3b8;
-    margin: 0;
-    line-height: 1.5;
-  }
   .integrations-badge {
     display: inline-block;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
     color: #38bdf8;
@@ -1884,62 +1887,50 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   }
 
   .integrations-modal-box {
-    max-width: 640px;
+    max-width: 540px;
   }
   .integrations-modal-content h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 800;
     color: #0f172a;
-    margin: 6px 0 10px;
+    margin: 4px 0 20px;
     line-height: 1.25;
-  }
-  .modal-subtitle {
-    font-size: 14.5px;
-    color: #64748b;
-    line-height: 1.5;
-    margin-bottom: 24px;
   }
   .integrations-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
   .integration-item {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 16px;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 14px;
+    border-radius: 12px;
     transition: background 0.2s ease;
   }
   .integration-item:hover {
     background: #f1f5f9;
   }
   .integration-icon {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1;
     flex-shrink: 0;
-    padding: 8px;
+    padding: 6px;
     background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
   .integration-item h4 {
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 700;
     color: #0f172a;
-    margin: 0 0 4px;
-  }
-  .integration-item p {
-    font-size: 13.5px;
-    color: #475569;
     margin: 0;
-    line-height: 1.5;
   }
   .integrations-modal-foot {
-    margin-top: 24px;
+    margin-top: 20px;
     text-align: center;
   }
 
@@ -3612,9 +3603,8 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     <!-- Integrations Banner Element -->
     <div class="integrations-banner">
       <div class="integrations-banner-content">
-        <span class="integrations-badge">⚡ ИНТЕГРАЦИИ & АВТОМАТИЗАЦИИ</span>
+        <span class="integrations-badge">⚡ ИНТЕГРАЦИИ</span>
         <h3>Възможности за интеграция в уебсайта</h3>
-        <p>Автоматично генериране на фактури, куриери (Еконт/Спиди), онлайн плащания, табло за посещения и други.</p>
       </div>
       <button type="button" class="cta open-integrations-btn" style="background:#ffffff; color:#0f172a; border: 1px solid #cbd5e1; font-weight:700;">Виж интеграциите ➔</button>
     </div>
@@ -3823,57 +3813,33 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   <div class="modal-box integrations-modal-box">
     <button type="button" class="modal-close" aria-label="Затвори">✕</button>
     <div class="integrations-modal-content">
-      <span class="modal-eyebrow">ВЪЗМОЖНОСТИ ЗА ИНТЕГРАЦИЯ</span>
-      <h3>Интеграции и автоматизации за уебсайта</h3>
-      <p class="modal-subtitle">Всеки уебсайт, който изработваме, може да бъде разширен и свързан с водещи системи за пълна автоматизация на бизнеса ви:</p>
+      <span class="modal-eyebrow">ВЪЗМОЖНОСТИ</span>
+      <h3>Интеграции за уебсайта</h3>
       
       <div class="integrations-list">
         <div class="integration-item">
           <div class="integration-icon">🧾</div>
-          <div>
-            <h4>Автоматично генериране на фактури</h4>
-            <p>Автоматично издаване и изпращане на фактури към клиентите веднага след поръчка или плащане.</p>
-          </div>
+          <h4>Автоматично генериране на фактури</h4>
         </div>
 
         <div class="integration-item">
           <div class="integration-icon">💳</div>
-          <div>
-            <h4>Онлайн плащания (Stripe, Борика, Apple Pay & Google Pay)</h4>
-            <p>Директно приемане на картови плащания без пренасочване и с висок процент успешни транзакции.</p>
-          </div>
+          <h4>Онлайн плащания (Stripe, Борика, Apple Pay & Google Pay)</h4>
         </div>
 
         <div class="integration-item">
           <div class="integration-icon">📦</div>
-          <div>
-            <h4>Интеграция с куриери (Еконт / Спиди)</h4>
-            <p>Автоматично генериране на товарителници с един клик, изчисляване на точна доставка и автоматичен избор на офиси.</p>
-          </div>
+          <h4>Интеграция с куриери (Еконт / Спиди)</h4>
         </div>
 
         <div class="integration-item">
           <div class="integration-icon">📊</div>
-          <div>
-            <h4>Табло за посещения и анализи (Traffic Dashboard)</h4>
-            <p>Удобна статистическа система за следене на реалния трафик, най-гледаните страници и източниците на клиенти.</p>
-          </div>
-        </div>
-
-        <div class="integration-item">
-          <div class="integration-icon">💬</div>
-          <div>
-            <h4>WhatsApp & Viber бутон за бърза връзка</h4>
-            <p>Директен чат с клиентите с един клик от мобилни устройства за максимални конверсии.</p>
-          </div>
+          <h4>Табло за следене на посещенията в сайта</h4>
         </div>
 
         <div class="integration-item">
           <div class="integration-icon">🤖</div>
-          <div>
-            <h4>Свързване с CRM системи & AI чат-бот</h4>
-            <p>Автоматично записване на новите контакти в CRM база данни и 24/7 отговаряне на клиентски въпроси.</p>
-          </div>
+          <h4>AI чат-бот, отговарящ на въпроси 24/7</h4>
         </div>
       </div>
 
