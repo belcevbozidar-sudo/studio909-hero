@@ -1835,54 +1835,74 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     color: #0f172a;
   }
 
-  /* ===== INTEGRATIONS BANNER & MODAL ===== */
+  /* ===== INTEGRATIONS BANNER (COMPACT GLASSMORPHISM) ===== */
   .integrations-banner {
-    margin-top: 36px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    max-width: 720px;
+    margin: 32px auto 0;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(226, 232, 240, 0.95);
     border-radius: 16px;
-    padding: 24px 28px;
+    padding: 14px 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    color: #ffffff;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+    gap: 16px;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .integrations-banner:hover {
+    box-shadow: 0 14px 35px -5px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
   }
   @media (max-width: 768px) {
     .integrations-banner {
-      margin-top: 24px;
-      padding: 18px 20px;
-      gap: 14px;
+      margin-top: 20px;
+      padding: 12px 16px;
+      gap: 12px;
       border-radius: 14px;
+      flex-direction: row;
+      align-items: center;
     }
     .integrations-banner-content h3 {
-      font-size: 16px !important;
-      margin: 2px 0 0 !important;
+      font-size: 13.5px !important;
+      margin: 1px 0 0 !important;
     }
     .integrations-badge {
-      font-size: 10.5px !important;
+      font-size: 10px !important;
+      padding: 2px 6px !important;
     }
     .integrations-banner .open-integrations-btn {
-      width: 100%;
-      text-align: center;
-      justify-content: center;
-      padding: 10px 16px;
-      font-size: 13.5px;
+      width: auto;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
   }
+  .integrations-banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .integrations-banner-content h3 {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    margin: 4px 0 0;
-    color: #ffffff;
+    margin: 3px 0 0;
+    color: #0f172a;
     letter-spacing: -0.01em;
   }
   .integrations-badge {
-    display: inline-block;
-    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10.5px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #38bdf8;
+    letter-spacing: 0.05em;
+    color: #0284c7;
+    background: #e0f2fe;
+    padding: 2px 8px;
+    border-radius: 10px;
     text-transform: uppercase;
   }
 
@@ -3606,7 +3626,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
         <span class="integrations-badge">⚡ ИНТЕГРАЦИИ</span>
         <h3>Възможности за интеграция в уебсайта</h3>
       </div>
-      <button type="button" class="cta open-integrations-btn" style="background:#ffffff; color:#0f172a; border: 1px solid #cbd5e1; font-weight:700;">Виж интеграциите ➔</button>
+      <button type="button" class="cta open-integrations-btn">Виж интеграциите ➔</button>
     </div>
   </div>
 </section>
