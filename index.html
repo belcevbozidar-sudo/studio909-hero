@@ -180,6 +180,19 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     max-width:620px;
     line-height:1.5;
   }
+  .section-title-char{
+    color:#0e0e101f;
+  }
+  .section-title-char[data-triggered]{
+    animation:0.6s ease-out forwards section-title-sweep-muted;
+  }
+  @keyframes section-title-sweep-muted{
+    0%   { color:#0e0e101a; }
+    20%  { color:#498fff; }
+    50%  { color:#ff7a7a; }
+    80%  { color:#ffbc74; }
+    100% { color:#475569; }
+  }
 
   .trusted-row{
     display:flex;
@@ -2896,19 +2909,22 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .hero-top-wrapper{
     position:relative;
     background: #ffffff !important;
-    background-image:
-      radial-gradient(circle at 0% 0%, rgba(104,229,243,0.42) 3%, rgba(104,229,243,0) 40%),
-      radial-gradient(circle at 20% 0%, rgba(92,196,245,0.42) 3%, rgba(92,196,245,0) 40%),
-      radial-gradient(circle at 40% 0%, rgba(100,164,247,0.42) 3%, rgba(100,164,247,0) 40%),
-      radial-gradient(circle at 60% 0%, rgba(122,139,245,0.40) 3%, rgba(122,139,245,0) 40%),
-      radial-gradient(circle at 80% 0%, rgba(157,136,242,0.38) 3%, rgba(157,136,242,0) 40%),
-      radial-gradient(circle at 100% 0%, rgba(248,182,89,0.34) 3%, rgba(248,182,89,0) 40%) !important;
   }
   .hero-top-wrapper::before{
     content:'';
     position:absolute;
-    inset:0;
-    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.95) 100%);
+    inset:0 0 auto 0;
+    top:0;
+    height:420px;
+    background-image:
+      radial-gradient(circle at 0 0, #68e5f36b 3%, #0000 40%),
+      radial-gradient(circle at 20% 0, #5cc4f56b 3%, #0000 40%),
+      radial-gradient(circle at 40% 0, #64a4f76b 3%, #0000 40%),
+      radial-gradient(circle at 60% 0, #7a8bf566 3%, #0000 40%),
+      radial-gradient(circle at 80% 0, #9d88f261 3%, #0000 40%),
+      radial-gradient(circle at 100% 0, #f8b65957 3%, #0000 40%);
+    -webkit-mask-image:linear-gradient(#000 0%, #0000 100%);
+    mask-image:linear-gradient(#000 0%, #0000 100%);
     pointer-events:none;
     z-index:0;
   }
@@ -3819,6 +3835,48 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 </div>
 
 <script>
+  /* Hero subtext sweeps in letter-by-letter (blue -> coral -> orange -> final
+     gray) as soon as it's in view, 30ms stagger per character. */
+  (() => {
+    const subtext = document.querySelector('.hero-subtext');
+    if (!subtext) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const text = subtext.textContent;
+    subtext.textContent = '';
+    const frag = document.createDocumentFragment();
+    let charIndex = 0;
+    for (const ch of text) {
+      if (ch.trim() === '') {
+        frag.appendChild(document.createTextNode(ch));
+        continue;
+      }
+      const span = document.createElement('span');
+      span.className = 'section-title-char';
+      span.textContent = ch;
+      span.style.animationDelay = (charIndex * 30) + 'ms';
+      frag.appendChild(span);
+      charIndex++;
+    }
+    subtext.appendChild(frag);
+
+    const trigger = () => {
+      subtext.querySelectorAll('.section-title-char').forEach(el => el.setAttribute('data-triggered', ''));
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          trigger();
+          observer.disconnect();
+        }
+      });
+      observer.observe(subtext);
+    } else {
+      trigger();
+    }
+  })();
+
   /* Crossfade on the quiet statement section: the top line is dark and the
      bottom line is gray as the section enters, and they swap emphasis as
      it scrolls through. Gated by IntersectionObserver so it only runs
