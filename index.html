@@ -387,7 +387,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .marquee-wrap{
     position:relative;
     z-index:2;
-    background:transparent url('assets/hero-sky-gradient.png') no-repeat bottom center !important;
+    background:transparent url('assets/hero-sky-gradient.webp') no-repeat bottom center !important;
     background-size:cover !important;
   }
   .marquee{
@@ -2438,6 +2438,41 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     background:var(--accent);
     transition:background .35s ease;
   }
+  .inquiry-intro{
+    text-align:center;
+    padding:8px 0 4px;
+  }
+  .inquiry-intro h3{
+    padding:0;
+    margin-bottom:10px;
+  }
+  .inquiry-intro p{
+    color:#0f172a;
+    font-size:clamp(18px, 4.8vw, 21px);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.42;
+    margin:4px auto 28px;
+    max-width:385px;
+  }
+  .inquiry-intro-actions{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .inquiry-intro-actions button{
+    width:100%;
+    min-height:62px;
+    justify-content:center;
+    padding:14px 20px;
+    line-height:1.35;
+  }
+  .inquiry-intro-actions .cta-secondary{
+    padding:14px 20px;
+  }
+  .inquiry-intro-actions .cta{
+    margin-top:0;
+  }
   .form-steps-viewport{
     overflow:hidden;
   }
@@ -2861,10 +2896,13 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .hero-top-wrapper{
     position:relative;
     background: #ffffff !important;
-    background-image: 
-      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(219, 234, 254, 0.75), rgba(255, 255, 255, 0)),
-      radial-gradient(circle 600px at 20% 20%, rgba(238, 242, 255, 0.6), rgba(255, 255, 255, 0)),
-      radial-gradient(circle 500px at 80% 30%, rgba(224, 231, 255, 0.5), rgba(255, 255, 255, 0)) !important;
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(104,229,243,0.42) 3%, rgba(104,229,243,0) 40%),
+      radial-gradient(circle at 20% 0%, rgba(92,196,245,0.42) 3%, rgba(92,196,245,0) 40%),
+      radial-gradient(circle at 40% 0%, rgba(100,164,247,0.42) 3%, rgba(100,164,247,0) 40%),
+      radial-gradient(circle at 60% 0%, rgba(122,139,245,0.40) 3%, rgba(122,139,245,0) 40%),
+      radial-gradient(circle at 80% 0%, rgba(157,136,242,0.38) 3%, rgba(157,136,242,0) 40%),
+      radial-gradient(circle at 100% 0%, rgba(248,182,89,0.34) 3%, rgba(248,182,89,0) 40%) !important;
   }
   .hero-top-wrapper::before{
     content:'';
@@ -3187,7 +3225,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 <body>
 
 <div class="hero-top-wrapper">
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-blueprint-grid"></div>
 
   <nav>
@@ -3210,14 +3248,14 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     <div class="trusted-row">
       <span>Доверени от</span>
       <div class="avatars">
-        <span style="background-image:url('photos/image-1783144446077.png')"></span>
-        <span style="background-image:url('photos/image-1783144448316.png')"></span>
-        <span style="background-image:url('photos/image-1783144449995.png')"></span>
-        <span style="background-image:url('photos/image-1783144451635.png')"></span>
-        <span style="background-image:url('photos/image-1783144453296.png')"></span>
+        <span style="background-image:url('photos/image-1783144446077.webp')"></span>
+        <span style="background-image:url('photos/image-1783144448316.webp')"></span>
+        <span style="background-image:url('photos/image-1783144449995.webp')"></span>
+        <span style="background-image:url('photos/image-1783144451635.webp')"></span>
+        <span style="background-image:url('photos/image-1783144453296.webp')"></span>
       </div>
       <span>37 бизнеса</span>
-      <picture><source srcset="assets/stars.webp" type="image/webp"><img src="assets/stars.png" alt="5 звезди" class="stars"></picture>
+      <img src="assets/stars.webp" alt="5 звезди" class="stars">
     </div>
 
     <h1 class="hero-title">
@@ -3279,7 +3317,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   </div>
   <div class="laptop-showcase" data-laptop-interval="1500">
     <div class="laptop-stage">
-      <img src="assets/laptop-showcase.png" alt="Лаптоп макет" class="laptop-frame" decoding="async">
+      <img src="assets/laptop-showcase.webp" alt="Лаптоп макет" class="laptop-frame" decoding="async">
       <div class="laptop-screen">
         <div class="laptop-slide is-active"><img src="examples/showcase-2.webp" alt="Примерен сайт 2" decoding="async"></div>
         <div class="laptop-slide"><img src="examples/showcase-3.webp" alt="Примерен сайт 3" decoding="async"></div>
@@ -3303,17 +3341,17 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   <div class="carousel large" data-interval="1000">
     <div class="carousel-viewport">
       <div class="carousel-track">
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/lunora.webp" type="image/webp"><img src="marketing-examples/lunora.jpg" alt="Маркетингов банер Lunora" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/novira.webp" type="image/webp"><img src="marketing-examples/novira.jpg" alt="Маркетингов банер Novira" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/sawesoda.webp" type="image/webp"><img src="marketing-examples/sawesoda.jpg" alt="Маркетингов банер sawe soda" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/sneakerclean.webp" type="image/webp"><img src="marketing-examples/sneakerclean.jpg" alt="Маркетингов банер за почистване на маратонки" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/sportshades.webp" type="image/webp"><img src="marketing-examples/sportshades.jpg" alt="Маркетингов банер спортни очила" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/oakleyconcept.webp" type="image/webp"><img src="marketing-examples/oakleyconcept.jpg" alt="Маркетингов банер концептуални очила" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/dreamygummies.webp" type="image/webp"><img src="marketing-examples/dreamygummies.jpg" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/greenhaven.webp" type="image/webp"><img src="marketing-examples/greenhaven.jpg" alt="Маркетингов банер Green Haven имоти" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/trackwear.webp" type="image/webp"><img src="marketing-examples/trackwear.jpg" alt="Маркетингов банер спортен екип" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/warehouse-rent.webp" type="image/webp"><img src="marketing-examples/warehouse-rent.png" alt="Маркетингов банер за складови и търговски пространства" loading="lazy" decoding="async"></picture></div>
-        <div class="carousel-slide"><picture><source srcset="marketing-examples/night-logistics.webp" type="image/webp"><img src="marketing-examples/night-logistics.png" alt="Маркетингов банер за логистични услуги" loading="lazy" decoding="async"></picture></div>
+        <div class="carousel-slide"><img src="marketing-examples/lunora.webp" alt="Маркетингов банер Lunora" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/novira.webp" alt="Маркетингов банер Novira" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/sawesoda.webp" alt="Маркетингов банер sawe soda" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/sneakerclean.webp" alt="Маркетингов банер за почистване на маратонки" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/sportshades.webp" alt="Маркетингов банер спортни очила" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/oakleyconcept.webp" alt="Маркетингов банер концептуални очила" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/dreamygummies.webp" alt="Маркетингов банер Dreamy Sleep Gummies" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/greenhaven.webp" alt="Маркетингов банер Green Haven имоти" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/trackwear.webp" alt="Маркетингов банер спортен екип" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/warehouse-rent.webp" alt="Маркетингов банер за складови и търговски пространства" loading="lazy" decoding="async"></div>
+        <div class="carousel-slide"><img src="marketing-examples/night-logistics.webp" alt="Маркетингов банер за логистични услуги" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </div>
@@ -3436,7 +3474,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <div class="team-card">
         <div class="team-photo">
           <div class="team-photo-inner">
-            <picture><source srcset="team/bozhidar.webp" type="image/webp"><img src="team/bozhidar.png" alt="Божидар Иванов" loading="lazy" decoding="async"></picture>
+            <img src="team/bozhidar.webp" alt="Божидар Иванов" loading="lazy" decoding="async">
           </div>
         </div>
         <h3>Божидар Иванов</h3>
@@ -3446,7 +3484,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <div class="team-card">
         <div class="team-photo">
           <div class="team-photo-inner">
-            <picture><source srcset="team/kaloyan.webp" type="image/webp"><img src="team/kaloyan.png" alt="Калоян Димитров" loading="lazy" decoding="async"></picture>
+            <img src="team/kaloyan.webp" alt="Калоян Димитров" loading="lazy" decoding="async">
           </div>
         </div>
         <h3>Калоян Димитров</h3>
@@ -3519,7 +3557,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <!-- Advantage 1: Удобство -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/convenience-icon.png" alt="Удобство" class="standalone-focus-img" loading="lazy" decoding="async">
+          <img src="assets/convenience-icon.webp" alt="Удобство" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Удобство</h3>
         <p class="standalone-focus-sub">Един екип за всичко, вместо множество различни агенции.</p>
@@ -3528,7 +3566,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <!-- Advantage 2: Пълна собственост -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/ownership-key.png?v=2" alt="Пълна собственост" class="standalone-focus-img" loading="lazy" decoding="async">
+          <img src="assets/ownership-key.webp?v=2" alt="Пълна собственост" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Пълна собственост</h3>
         <p class="standalone-focus-sub">Сайтът и всички активи остават твои. Не си обвързан по никакъв начин.</p>
@@ -3537,7 +3575,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <!-- Advantage 3: Безгрижност -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/carefree-coffee.png" alt="Безгрижност" class="standalone-focus-img" loading="lazy" decoding="async">
+          <img src="assets/carefree-coffee.webp" alt="Безгрижност" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Безгрижност</h3>
         <p class="standalone-focus-sub">Поемаме цялата техническа работа, за да се фокусираш върху бизнеса си.</p>
@@ -3546,7 +3584,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <!-- Advantage 4: Бързина -->
       <div class="standalone-focus-item">
         <div class="standalone-icon-box">
-          <img src="assets/speed-lightning.png" alt="Бързина" class="standalone-focus-img" loading="lazy" decoding="async">
+          <img src="assets/speed-lightning.webp" alt="Бързина" class="standalone-focus-img" loading="lazy" decoding="async">
         </div>
         <h3 class="standalone-focus-title">Бързина</h3>
         <p class="standalone-focus-sub">Много бърз сайт, както и реакция от екипа при въпроси.</p>
@@ -3680,7 +3718,15 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   <div class="modal-box">
     <button type="button" class="modal-close" aria-label="Затвори">✕</button>
     <form id="inquiryForm" novalidate>
-      <div class="form-progress">
+      <div class="inquiry-intro" id="inquiryIntro">
+        <span class="modal-eyebrow">ПРЕДИ ДА ПРОДЪЛЖИШ</span>
+        <p>Важно е да се уверите, че сте прочели сайта и сте видели цената.</p>
+        <div class="inquiry-intro-actions">
+          <button type="button" class="cta-secondary inquiry-review">Върни се към сайта</button>
+          <button type="button" class="cta inquiry-confirm">Прочетох сайта и съм запознат с офертата и цената</button>
+        </div>
+      </div>
+      <div class="form-progress" hidden>
         <span class="form-progress-label" id="inquiryProgressLabel">Стъпка 1 от 2</span>
         <div class="form-progress-bar">
           <span class="form-progress-dot" data-progress-dot="1"></span>
@@ -3996,20 +4042,62 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   const inquiryDots = inquiryForm.querySelectorAll('.form-progress-dot');
   const inquiryProgressLabel = document.getElementById('inquiryProgressLabel');
   const inquiryLoading = inquiryForm.querySelector('[data-step="loading"]');
+  const inquiryIntro = document.getElementById('inquiryIntro');
 
-  function setInquiryStep(step) {
-    inquiryTrack.classList.toggle('step-2', step === 2);
+  function updateInquiryProgress(step) {
     inquiryDots.forEach((dot, i) => dot.classList.toggle('active', i < step));
     inquiryProgressLabel.textContent = `Стъпка ${step} от 2`;
   }
 
+  function setInquiryStep(step) {
+    const currentStep = step === 2 ? 2 : 1;
+    inquiryForm.dataset.currentStep = String(currentStep);
+    inquiryTrack.classList.toggle('step-2', currentStep === 2);
+    updateInquiryProgress(currentStep);
+  }
+
+  /* Instagram понякога възстановява визуалната позиция на формата от кеша,
+     без да възстанови текста на индикатора. Винаги извличаме стъпката от
+     показвания екран, за да не може вторият екран да остане с „Стъпка 1“. */
+  function syncInquiryStepFromScreen() {
+    const visibleStep = inquiryTrack.classList.contains('step-2') ? 2 : 1;
+    inquiryForm.dataset.currentStep = String(visibleStep);
+    updateInquiryProgress(visibleStep);
+  }
+
+  new MutationObserver(syncInquiryStepFromScreen).observe(inquiryTrack, {
+    attributes:true,
+    attributeFilter:['class']
+  });
+
+  window.addEventListener('pageshow', () => {
+    if (!inquiryViewport.hidden && inquiryIntro.hidden) {
+      syncInquiryStepFromScreen();
+    }
+  });
+
   function resetInquiryForm() {
     inquiryForm.reset();
     setInquiryStep(1);
-    inquiryViewport.hidden = false;
-    inquiryProgress.hidden = false;
+    inquiryIntro.hidden = false;
+    inquiryViewport.hidden = true;
+    inquiryProgress.hidden = true;
     inquiryLoading.hidden = true;
   }
+
+  inquiryForm.querySelector('.inquiry-confirm').addEventListener('click', () => {
+    inquiryIntro.hidden = true;
+    inquiryViewport.hidden = false;
+    inquiryProgress.hidden = false;
+    setInquiryStep(1);
+  });
+
+  inquiryForm.querySelector('.inquiry-review').addEventListener('click', () => {
+    closeModal('inquiryModal');
+    requestAnimationFrame(() => {
+      document.getElementById('hero').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
   document.querySelectorAll('.open-inquiry-btn').forEach(btn => {
     btn.addEventListener('click', () => {
