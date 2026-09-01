@@ -180,10 +180,10 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     max-width:620px;
     line-height:1.5;
   }
-  .section-title-char{
+  .text-sweep-char{
     color:#0e0e101f;
   }
-  .section-title-char[data-triggered]{
+  .text-sweep-char[data-triggered]{
     animation:0.6s ease-out forwards section-title-sweep-muted;
   }
   @keyframes section-title-sweep-muted{
@@ -191,7 +191,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     20%  { color:#498fff; }
     50%  { color:#ff7a7a; }
     80%  { color:#ffbc74; }
-    100% { color:#475569; }
+    100% { color:var(--text-sweep-final-color, #475569); }
   }
 
   .trusted-row{
@@ -3279,7 +3279,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <span class="line-2">повече клиенти.</span>
     </h1>
 
-    <p class="hero-subtext">
+    <p class="hero-subtext js-text-sweep">
       Виж как бизнесът ти може да се окаже най-логичният избор за клиентите с този нов сайт.
     </p>
 
@@ -3329,7 +3329,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 <section class="moment" id="offer">
   <div class="moment-head">
     <h2>Сайт, който говори на идеалния ти клиент.</h2>
-    <p>Проучваме кой купува от теб и пишем сайта за него.</p>
+    <p class="js-text-sweep">Проучваме кой купува от теб и пишем сайта за него.</p>
   </div>
   <div class="laptop-showcase" data-laptop-interval="1500">
     <div class="laptop-stage">
@@ -3352,7 +3352,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 <section class="moment">
   <div class="moment-head">
     <h2>Подаряваме ти 10 маркетингови визии, които спират скрола.</h2>
-    <p>Към сайта получаваш 10 персонализирани материала, създадени с Photoshop + AI за социалните мрежи на твоя бизнес.</p>
+    <p class="js-text-sweep">Към сайта получаваш 10 персонализирани материала, създадени с Photoshop + AI за социалните мрежи на твоя бизнес.</p>
   </div>
   <div class="carousel large" data-interval="1000">
     <div class="carousel-viewport">
@@ -3377,7 +3377,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   <div class="included-inner">
     <div class="included-head">
       <h2 class="included-title-wrap"><span>И всичко останало</span><img src="assets/verified-badge.png" alt="Verified" class="included-badge-img" decoding="async"></h2>
-      <p>Включено в същия пакет. Без нищо допълнително.</p>
+      <p class="js-text-sweep">Включено в същия пакет. Без нищо допълнително.</p>
     </div>
     <div class="included-grid">
       <div class="included-item">
@@ -3451,7 +3451,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 
     <div class="offer-price">
       <div class="pricing-card">
-        <span class="pricing-badge">Инвестиция</span>
+        <span class="pricing-badge js-text-sweep">Инвестиция</span>
         <div class="pricing-amount">
           <span class="price-main">690 €</span>
           <span class="price-recurring">+ 29 € / месец</span>
@@ -3835,46 +3835,48 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 </div>
 
 <script>
-  /* Hero subtext sweeps in letter-by-letter (blue -> coral -> orange -> final
-     gray) as soon as it's in view, 30ms stagger per character. */
+  /* Text sweeps in letter-by-letter (blue -> coral -> orange -> its original
+     colour) as soon as it enters view, with a 30ms stagger per character. */
   (() => {
-    const subtext = document.querySelector('.hero-subtext');
-    if (!subtext) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const text = subtext.textContent;
-    subtext.textContent = '';
-    const frag = document.createDocumentFragment();
-    let charIndex = 0;
-    for (const ch of text) {
-      if (ch.trim() === '') {
-        frag.appendChild(document.createTextNode(ch));
-        continue;
-      }
-      const span = document.createElement('span');
-      span.className = 'section-title-char';
-      span.textContent = ch;
-      span.style.animationDelay = (charIndex * 30) + 'ms';
-      frag.appendChild(span);
-      charIndex++;
-    }
-    subtext.appendChild(frag);
+    document.querySelectorAll('.js-text-sweep').forEach(element => {
+      const text = element.textContent;
+      element.style.setProperty('--text-sweep-final-color', getComputedStyle(element).color);
+      element.textContent = '';
 
-    const trigger = () => {
-      subtext.querySelectorAll('.section-title-char').forEach(el => el.setAttribute('data-triggered', ''));
-    };
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          trigger();
-          observer.disconnect();
+      const frag = document.createDocumentFragment();
+      let charIndex = 0;
+      for (const ch of text) {
+        if (ch.trim() === '') {
+          frag.appendChild(document.createTextNode(ch));
+          continue;
         }
-      });
-      observer.observe(subtext);
-    } else {
-      trigger();
-    }
+        const span = document.createElement('span');
+        span.className = 'text-sweep-char';
+        span.textContent = ch;
+        span.style.animationDelay = (charIndex * 30) + 'ms';
+        frag.appendChild(span);
+        charIndex++;
+      }
+      element.appendChild(frag);
+
+      const trigger = () => {
+        element.querySelectorAll('.text-sweep-char').forEach(char => char.setAttribute('data-triggered', ''));
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            trigger();
+            observer.disconnect();
+          }
+        });
+        observer.observe(element);
+      } else {
+        trigger();
+      }
+    });
   })();
 
   /* Crossfade on the quiet statement section: the top line is dark and the
