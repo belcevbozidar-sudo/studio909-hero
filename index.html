@@ -97,9 +97,9 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     padding:38px 64px 34px;
   }
   .logo-img{
-    height:56px;
+    width:220px;
     max-width:220px;
-    width:auto;
+    height:auto;
     display:block !important;
     flex-shrink:0;
     object-fit:contain;
@@ -2217,8 +2217,8 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     margin-bottom:36px;
   }
   .footer-logo{
-    height:44px;
-    width:auto;
+    width:260px;
+    height:auto;
     max-width:100%;
     object-fit:contain;
     display:block;
@@ -2750,7 +2750,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   /* ===== MOBILE ===== */
   @media (max-width:560px){
     nav{padding:22px 16px;}
-    .logo-img{height:38px;max-width:135px;margin:0;}
+    .logo-img{width:135px;max-width:135px;height:auto;margin:0;}
     .contact-btn{padding:7px 13px;font-size:10.8px;}
 
     .hero-content{padding:54px 16px 120px;}
@@ -2889,7 +2889,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     .form-actions{flex-direction:column;}
 
     .site-footer{padding:40px 16px 24px;}
-    .footer-logo{height:68px;}
+    .footer-logo{width:min(320px, 100%);height:auto;}
     .footer-links{display:none;}
     .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:14px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
     .footer-legal{order:1;justify-content:center;width:100%;}
@@ -3243,7 +3243,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   <div class="hero-blueprint-grid"></div>
 
   <nav>
-    <img src="assets/studio9-logo.png" alt="Studio 9" class="logo-img">
+    <img src="assets/studio9-logo-optimized.webp" width="480" height="82" alt="Studio 9" class="logo-img" fetchpriority="high" decoding="async">
     <div class="nav-links">
       <a href="#offer" class="active">Услуги</a>
       <a href="#process">Процес</a>
@@ -3697,7 +3697,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <img src="assets/studio9-logo.png" alt="Studio 9" class="footer-logo" loading="lazy" decoding="async">
+      <img src="assets/studio9-logo-optimized.webp" width="480" height="82" alt="Studio 9" class="footer-logo" loading="lazy" decoding="async">
       <p class="footer-tagline">Професионални уебсайтове за изградени бизнеси.</p>
     </div>
     <nav class="footer-links">
