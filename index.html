@@ -1020,6 +1020,91 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     margin:0;
   }
 
+  /* ===== CHATBOT DEMO ===== */
+  .chatbot-demo{
+    background:#f8fafc;
+    padding:120px 24px 130px;
+    border-top:1px solid #e2e8f0;
+    border-bottom:1px solid #e2e8f0;
+  }
+  .chatbot-demo-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .chatbot-demo-text .chatbot-chk{
+    display:grid;
+    gap:14px;
+    margin-top:8px;
+    list-style:none;
+  }
+  .chatbot-demo-text .chatbot-chk li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    font-size:15px;
+    color:#334155;
+    line-height:1.5;
+  }
+  .chatbot-tick{
+    width:18px;height:18px;flex:none;margin-top:2px;
+    border-radius:50%;
+    background:rgba(29,78,216,0.12);
+    display:grid;place-items:center;
+  }
+  .chatbot-tick svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .chatbot-phone-wrap{display:flex;justify-content:center;}
+  .chatbot-phone{
+    width:min(300px,84vw);
+    border-radius:38px;
+    border:1px solid #e2e8f0;
+    background:linear-gradient(180deg,#17171B,#0F0F12);
+    padding:11px;
+    position:relative;
+    box-shadow:0 40px 90px -40px rgba(15,23,42,.45),0 0 0 1px rgba(255,255,255,.04) inset;
+  }
+  .chatbot-phone::before{
+    content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);
+    width:78px;height:20px;border-radius:100px;background:#0B0B0C;z-index:3;
+  }
+  .chatbot-screen{
+    border-radius:29px;background:#0B0B0C;padding:44px 13px 14px;
+    min-height:430px;display:flex;flex-direction:column;overflow:hidden;
+  }
+  .chatbot-head{
+    display:flex;align-items:center;gap:9px;padding:0 4px 12px;
+    border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:14px;
+  }
+  .chatbot-av{
+    width:30px;height:30px;border-radius:50%;background:var(--accent);
+    display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff;flex:none;
+  }
+  .chatbot-head b{font-size:13px;display:block;font-weight:700;color:#fff;}
+  .chatbot-head small{font-size:11px;color:#93c5fd;display:flex;align-items:center;gap:5px;}
+  .chatbot-head small::before{content:"";width:5px;height:5px;border-radius:50%;background:#93c5fd;}
+  .chatbot-msgs{display:flex;flex-direction:column;gap:9px;flex:1;justify-content:flex-end;}
+  .chatbot-msg{
+    max-width:84%;padding:10px 13px;border-radius:15px;font-size:13.2px;line-height:1.45;
+    opacity:0;transform:translateY(10px) scale(.97);
+  }
+  .chatbot-msg.show{animation:chatbotPop .5s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes chatbotPop{to{opacity:1;transform:none;}}
+  .chatbot-msg.bot{background:#1B1B20;border:1px solid rgba(255,255,255,.1);color:#e2e8f0;border-bottom-left-radius:5px;align-self:flex-start;}
+  .chatbot-msg.usr{background:var(--accent);color:#fff;border-bottom-right-radius:5px;align-self:flex-end;}
+  .chatbot-msg.cta{background:rgba(29,78,216,.16);border:1px solid rgba(29,78,216,.34);color:#93c5fd;font-weight:700;align-self:flex-start;display:flex;align-items:center;gap:8px;}
+  .chatbot-typing{
+    display:flex;gap:4px;padding:13px;background:#1B1B20;border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;border-bottom-left-radius:5px;align-self:flex-start;opacity:0;
+  }
+  .chatbot-typing.show{opacity:1;}
+  .chatbot-typing i{width:5px;height:5px;border-radius:50%;background:#9C9AA3;animation:chatbotBlink 1.3s infinite;}
+  .chatbot-typing i:nth-child(2){animation-delay:.18s;}
+  .chatbot-typing i:nth-child(3){animation-delay:.36s;}
+  @keyframes chatbotBlink{0%,60%,100%{opacity:.28;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+
   /* ===== PRICING ===== */
   .pricing{
     background:#ffffff;
@@ -2759,6 +2844,9 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     .included-grid{grid-template-columns:repeat(2, 1fr);gap:44px 32px;}
     .included-head{margin-bottom:60px;}
     .pricing{padding:0 24px 110px;}
+    .chatbot-demo{padding:80px 20px 90px;}
+    .chatbot-demo-inner{grid-template-columns:1fr;gap:44px;text-align:center;}
+    .chatbot-demo-text .chatbot-chk{text-align:left;}
   }
 
   /* ===== MOBILE ===== */
@@ -2895,6 +2983,9 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     .included-item h3{font-size:14.5px;padding-top:13px;margin-bottom:7px;}
     .included-item p{font-size:13px;}
     .pricing{padding:0 20px 96px;}
+    .chatbot-demo{padding:64px 20px 72px;}
+    .chatbot-phone{width:min(260px,86vw);}
+    .chatbot-screen{min-height:390px;}
     .cta-row{flex-direction:column;width:100%;}
     .cta-row .cta, .cta-row .cta-secondary{width:100%;justify-content:center;}
 
@@ -3424,6 +3515,41 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       <div class="included-item">
         <h3>Директна връзка</h3>
         <p>Пишеш директно на нас - хората, които ти правят и поддържат сайта.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chatbot-demo" id="chatbot">
+  <div class="chatbot-demo-inner">
+    <div class="chatbot-demo-text">
+      <span class="section-eyebrow">Чатботът</span>
+      <h2 class="section-title" style="margin:0 0 20px;max-width:520px;">Отговаря, докато ти вършиш работата.</h2>
+      <p class="section-sub" style="margin:0 0 30px;max-width:520px;">Когато запитване дойде вечер или през почивните дни, ботът отговаря веднага, събира основните данни и ги предава на теб за разговор.</p>
+      <ul class="chatbot-chk">
+        <li><span class="chatbot-tick"><svg viewBox="0 0 12 12"><path d="M2 6.5 4.5 9 10 3"/></svg></span> Обучен с твоите услуги и начин на работа</li>
+        <li><span class="chatbot-tick"><svg viewBox="0 0 12 12"><path d="M2 6.5 4.5 9 10 3"/></svg></span> Пита правилните неща: услуга, бюджет, срок</li>
+        <li><span class="chatbot-tick"><svg viewBox="0 0 12 12"><path d="M2 6.5 4.5 9 10 3"/></svg></span> Насочва към обаждане или оставя контакт за теб</li>
+        <li><span class="chatbot-tick"><svg viewBox="0 0 12 12"><path d="M2 6.5 4.5 9 10 3"/></svg></span> Не измисля цени - казва това, което си определил</li>
+      </ul>
+    </div>
+
+    <div class="chatbot-phone-wrap">
+      <div class="chatbot-phone">
+        <div class="chatbot-screen">
+          <div class="chatbot-head">
+            <div class="chatbot-av">С9</div>
+            <div><b>Асистент на фирмата</b><small>онлайн сега</small></div>
+          </div>
+          <div class="chatbot-msgs" id="chatbotMsgs">
+            <div class="chatbot-msg usr" data-t="0">Здравейте, работите ли в събота?</div>
+            <div class="chatbot-msg bot" data-t="1">Да, приемаме запитвания и през уикенда. За каква услуга се интересувате?</div>
+            <div class="chatbot-msg usr" data-t="2">Искам да запиша час за консултация.</div>
+            <div class="chatbot-msg bot" data-t="3">Благодаря. Как се казвате и на кой номер да се свържем с вас?</div>
+            <div class="chatbot-msg usr" data-t="4">Иван Петров, 0888 123 456.</div>
+            <div class="chatbot-msg cta" data-t="5">📞 Записах данните и уведомих екипа. Очаквайте обаждане.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -4339,6 +4465,62 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   window.addEventListener('scroll', requestProcessLineUpdate, { passive: true });
   window.addEventListener('resize', requestProcessLineUpdate);
   updateProcessLine();
+
+  /* ===== CHATBOT DEMO ANIMATION ===== */
+  const chatbotMsgs = document.getElementById('chatbotMsgs');
+  if (chatbotMsgs) {
+    const chatbotItems = Array.from(chatbotMsgs.querySelectorAll('.chatbot-msg'));
+    const chatbotTyping = document.createElement('div');
+    chatbotTyping.className = 'chatbot-typing';
+    chatbotTyping.innerHTML = '<i></i><i></i><i></i>';
+    const chatbotReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let chatbotPlayed = false;
+
+    function playChatbot() {
+      if (chatbotPlayed) return;
+      chatbotPlayed = true;
+      if (chatbotReduceMotion) {
+        chatbotItems.forEach(el => el.classList.add('show'));
+        return;
+      }
+      let i = 0;
+      function next() {
+        if (i >= chatbotItems.length) return;
+        const el = chatbotItems[i];
+        const isBot = el.classList.contains('bot') || el.classList.contains('cta');
+        if (isBot) {
+          chatbotMsgs.insertBefore(chatbotTyping, el);
+          chatbotTyping.classList.add('show');
+          setTimeout(() => {
+            chatbotTyping.classList.remove('show');
+            if (chatbotTyping.parentNode) chatbotTyping.parentNode.removeChild(chatbotTyping);
+            el.classList.add('show');
+            i++;
+            setTimeout(next, 620);
+          }, 900);
+        } else {
+          el.classList.add('show');
+          i++;
+          setTimeout(next, 850);
+        }
+      }
+      setTimeout(next, 300);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const chatbotObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            playChatbot();
+            chatbotObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.55 });
+      chatbotObserver.observe(chatbotMsgs);
+    } else {
+      playChatbot();
+    }
+  }
 </script>
 
 </body>
