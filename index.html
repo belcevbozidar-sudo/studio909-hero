@@ -1087,7 +1087,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .chatbot-head b{font-size:13px;display:block;font-weight:700;color:#fff;}
   .chatbot-head small{font-size:11px;color:#93c5fd;display:flex;align-items:center;gap:5px;}
   .chatbot-head small::before{content:"";width:5px;height:5px;border-radius:50%;background:#93c5fd;}
-  .chatbot-msgs{display:flex;flex-direction:column;gap:7px;flex:1;justify-content:flex-end;}
+  .chatbot-msgs{display:flex;flex-direction:column;gap:7px;flex:1;justify-content:flex-start;}
   .chatbot-msg{
     max-width:88%;padding:8px 11px;border-radius:14px;font-size:12.4px;line-height:1.38;
     opacity:0;transform:translateY(10px) scale(.97);
@@ -3548,10 +3548,11 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
           </div>
           <div class="chatbot-msgs" id="chatbotMsgs">
             <div class="chatbot-msg usr" data-t="0">Здравейте, светна ми „check engine“ на Golf 7. Имате ли час утре?</div>
-            <div class="chatbot-msg bot" data-t="1">Да — имаме час в 10:30 или 15:00. Диагностиката е около 40 минути.</div>
-            <div class="chatbot-msg usr" data-t="2">10:30. Николай, 0888 123 456.</div>
-            <div class="chatbot-msg bot" data-t="3">Готово — записах ви за утре в 10:30. Ще ви очакваме!</div>
-            <div class="chatbot-msg cta" data-t="4">🔧 Часът за диагностика е потвърден.</div>
+            <div class="chatbot-msg bot" data-t="1">Да - имаме свободни часове в 10:30 и 15:00. Диагностиката е около 40 минути.</div>
+            <div class="chatbot-msg bot" data-t="2">Кой час ви е удобен? Оставете име и телефон за връзка.</div>
+            <div class="chatbot-msg usr" data-t="3">10:30. Николай Петров, 0888 123 456.</div>
+            <div class="chatbot-msg bot" data-t="4">Готово - записах ви за утре в 10:30. Ще ви очакваме!</div>
+            <div class="chatbot-msg cta" data-t="5">🔧 Часът за диагностика е потвърден.</div>
           </div>
         </div>
       </div>
