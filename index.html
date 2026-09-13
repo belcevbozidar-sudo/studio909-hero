@@ -364,6 +364,65 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     box-shadow: 0 18px 44px 0 rgba(29, 78, 216, 0.48), inset 0 1px 1px rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
   }
+  .hero-laptop-trio{
+    position:relative;
+    z-index:4;
+    width:min(100%, 1120px);
+    height:clamp(275px, 32vw, 440px);
+    margin:clamp(64px, 7vw, 96px) auto 0;
+    isolation:isolate;
+  }
+  .hero-laptop{
+    position:absolute;
+    bottom:0;
+    filter:drop-shadow(0 24px 30px rgba(15, 34, 56, 0.16));
+    transform-origin:center bottom;
+  }
+  .hero-laptop--center{
+    width:64%;
+    left:18%;
+    z-index:3;
+  }
+  .hero-laptop--left,
+  .hero-laptop--right{
+    width:50%;
+    bottom:6%;
+    z-index:2;
+  }
+  .hero-laptop--left{
+    left:-3%;
+    transform:rotate(-11deg);
+  }
+  .hero-laptop--right{
+    right:-3%;
+    transform:rotate(11deg);
+  }
+  .hero-laptop-frame{
+    display:block;
+    width:100%;
+    height:auto;
+    mix-blend-mode:multiply;
+    user-select:none;
+    pointer-events:none;
+  }
+  .hero-laptop-screen{
+    position:absolute;
+    top:24.7%;
+    left:30.6%;
+    width:38.1%;
+    height:34.6%;
+    overflow:hidden;
+    border-radius:clamp(4px, 0.7vw, 9px) clamp(4px, 0.7vw, 9px) 5px 5px;
+    background:#edf5ff;
+    box-shadow:inset 0 0 0 1px rgba(19,34,56,0.1);
+  }
+  .hero-laptop-screen img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top center;
+  }
   .cta-row{
     display:flex;
     align-items:center;
@@ -2892,6 +2951,23 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       font-size:14px;
       justify-content:center;
     }
+    .hero-laptop-trio{
+      width:calc(100% + 28px);
+      height:clamp(210px, 60vw, 275px);
+      margin-top:54px;
+      margin-left:-14px;
+    }
+    .hero-laptop--center{
+      width:72%;
+      left:14%;
+    }
+    .hero-laptop--left,
+    .hero-laptop--right{
+      width:56%;
+      bottom:5%;
+    }
+    .hero-laptop--left{left:-9%;}
+    .hero-laptop--right{right:-9%;}
     .cta-note{margin-top:18px;}
     .hero-content{padding-bottom:96px;}
     .marquee{padding:20px 0;}
@@ -3388,6 +3464,21 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     </p>
 
     <a href="#offer" class="cta">Виж какво включва</a>
+
+    <div class="hero-laptop-trio" aria-label="Примери за изработени от нас уебсайтове">
+      <div class="hero-laptop hero-laptop--left">
+        <img src="assets/laptop-showcase.webp" width="1496" height="1051" alt="" class="hero-laptop-frame" aria-hidden="true" decoding="async">
+        <div class="hero-laptop-screen"><img src="examples/showcase-4.webp" width="1586" height="992" alt="Примерен изработен сайт" decoding="async"></div>
+      </div>
+      <div class="hero-laptop hero-laptop--center">
+        <img src="assets/laptop-showcase.webp" width="1496" height="1051" alt="" class="hero-laptop-frame" aria-hidden="true" fetchpriority="high" decoding="async">
+        <div class="hero-laptop-screen"><img src="examples/showcase-2.webp" width="1586" height="992" alt="Примерен изработен сайт" fetchpriority="high" decoding="async"></div>
+      </div>
+      <div class="hero-laptop hero-laptop--right">
+        <img src="assets/laptop-showcase.webp" width="1496" height="1051" alt="" class="hero-laptop-frame" aria-hidden="true" decoding="async">
+        <div class="hero-laptop-screen"><img src="examples/showcase-8.webp" width="1586" height="992" alt="Примерен изработен сайт" decoding="async"></div>
+      </div>
+    </div>
   </div>
 </section>
 
