@@ -1026,6 +1026,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     padding:120px 24px 130px;
     border-top:1px solid #e2e8f0;
     border-bottom:1px solid #e2e8f0;
+    overflow:hidden;
   }
   .chatbot-demo-inner{
     max-width:1100px;
@@ -1058,21 +1059,22 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .chatbot-tick svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
   .chatbot-phone-wrap{display:flex;justify-content:center;}
   .chatbot-phone{
-    width:min(344px,88vw);
-    border-radius:34px;
-    border:1px solid #e2e8f0;
-    background:linear-gradient(180deg,#17171B,#0F0F12);
-    padding:10px;
+    width:min(430px,calc(100vw - 8px));
+    aspect-ratio:700 / 999;
     position:relative;
-    box-shadow:0 40px 90px -40px rgba(15,23,42,.45),0 0 0 1px rgba(255,255,255,.04) inset;
+    flex:none;
+    filter:drop-shadow(0 34px 34px rgba(15,23,42,.24));
   }
-  .chatbot-phone::before{
-    content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
-    width:72px;height:18px;border-radius:100px;background:#0B0B0C;z-index:3;
+  .chatbot-phone-frame{
+    position:absolute;inset:0;z-index:3;
+    width:100%;height:100%;object-fit:contain;
+    pointer-events:none;user-select:none;
   }
   .chatbot-screen{
-    border-radius:26px;background:#0B0B0C;padding:40px 12px 12px;
-    height:390px;display:flex;flex-direction:column;overflow:hidden;
+    position:absolute;z-index:1;
+    left:20.7%;right:15.7%;top:3%;bottom:2.8%;
+    border-radius:12% / 6%;background:#0B0B0C;padding:48px 14px 18px;
+    display:flex;flex-direction:column;overflow:hidden;
   }
   .chatbot-head{
     display:flex;align-items:center;gap:9px;padding:0 4px 10px;
@@ -2984,11 +2986,11 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     .included-item p{font-size:13px;}
     .pricing{padding:0 20px 96px;}
     .chatbot-demo{padding:64px 20px 72px;}
-    .chatbot-phone{width:min(300px,88vw);}
-    .chatbot-screen{height:350px;}
+    .chatbot-phone{width:min(390px,calc(100vw - 8px));}
+    .chatbot-screen{padding:44px 12px 14px;}
     .chatbot-head{padding-bottom:7px;margin-bottom:7px;}
-    .chatbot-msgs{gap:5px;}
-    .chatbot-msg{padding:6px 9px;font-size:11.5px;line-height:1.32;border-radius:12px;}
+    .chatbot-msgs{gap:6px;}
+    .chatbot-msg{padding:7px 10px;font-size:12px;line-height:1.34;border-radius:12px;}
     .cta-row{flex-direction:column;width:100%;}
     .cta-row .cta, .cta-row .cta-secondary{width:100%;justify-content:center;}
 
@@ -3538,6 +3540,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
 
     <div class="chatbot-phone-wrap">
       <div class="chatbot-phone">
+        <img class="chatbot-phone-frame" src="assets/chatbot-phone-frame.png" alt="" aria-hidden="true" width="700" height="999" loading="lazy" decoding="async">
         <div class="chatbot-screen">
           <div class="chatbot-head">
             <div class="chatbot-av">МП</div>
