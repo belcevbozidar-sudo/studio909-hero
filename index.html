@@ -1057,7 +1057,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     display:grid;place-items:center;
   }
   .chatbot-tick svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-  .chatbot-phone-wrap{display:flex;justify-content:center;}
+  .chatbot-phone-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .chatbot-phone{
     width:min(430px,calc(100vw - 8px));
     aspect-ratio:700 / 999;
@@ -1068,11 +1068,12 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .chatbot-phone-frame{
     position:absolute;inset:0;z-index:3;
     width:100%;height:100%;object-fit:contain;
+    clip-path:inset(1.4% 0 1% 0);
     pointer-events:none;user-select:none;
   }
   .chatbot-screen{
     position:absolute;z-index:1;
-    left:20.7%;right:15.7%;top:3%;bottom:2.8%;
+    left:20.7%;right:15.7%;top:1.5%;bottom:1.2%;
     border-radius:12% / 6%;background:#0B0B0C;padding:48px 14px 18px;
     display:flex;flex-direction:column;overflow:hidden;
   }
@@ -1106,6 +1107,10 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   .chatbot-typing i:nth-child(2){animation-delay:.18s;}
   .chatbot-typing i:nth-child(3){animation-delay:.36s;}
   @keyframes chatbotBlink{0%,60%,100%{opacity:.28;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+  .chatbot-phone-note{
+    max-width:360px;margin:18px auto 0;text-align:center;
+    color:#64748b;font-size:13.5px;line-height:1.55;
+  }
 
   /* ===== PRICING ===== */
   .pricing{
@@ -3556,6 +3561,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
           </div>
         </div>
       </div>
+      <p class="chatbot-phone-note">Примерът е за автосервиз, но чатботът се настройва за абсолютно всяка ниша и тип бизнес - включително този, в който работиш ти.</p>
     </div>
   </div>
 </section>
