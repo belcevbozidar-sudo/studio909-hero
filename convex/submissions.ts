@@ -21,18 +21,20 @@ export const logInquiry = mutation({
     industry: v.string(),
     problem: v.string(),
     noChange: v.string(),
-    email: v.string(),
+    email: v.optional(v.string()),
     phone: v.string(),
     website: v.string(),
+    budget: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     checkSecret(args.secret);
     checkLen("industry", args.industry, 200);
     checkLen("problem", args.problem, 2000);
     checkLen("noChange", args.noChange, 2000);
-    checkLen("email", args.email, 320);
+    if (args.email) checkLen("email", args.email, 320);
     checkLen("phone", args.phone, 40);
     checkLen("website", args.website, 200);
+    if (args.budget) checkLen("budget", args.budget, 40);
     const { secret, ...doc } = args;
     await ctx.db.insert("inquiries", doc);
   },

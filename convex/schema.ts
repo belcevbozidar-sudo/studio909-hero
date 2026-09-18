@@ -6,10 +6,13 @@ export default defineSchema({
     industry: v.string(),
     problem: v.string(),
     noChange: v.string(),
-    email: v.string(),
+    /* optional, защото полето имейл вече не се събира от формата */
+    email: v.optional(v.string()),
     phone: v.string(),
     /* optional, защото редовете отпреди добавянето на полето го нямат */
     website: v.optional(v.string()),
+    /* optional, защото редовете отпреди добавянето на полето го нямат */
+    budget: v.optional(v.string()),
   }),
   reviews: defineTable({
     business: v.string(),

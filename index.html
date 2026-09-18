@@ -2601,8 +2601,10 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   #inquiryForm input[type="text"],
   #inquiryForm input[type="email"],
   #inquiryForm input[type="tel"],
+  #inquiryForm select,
   #inquiryForm textarea,
   .form-label input,
+  .form-label select,
   .form-label textarea{
     display:block;
     width:100%;
@@ -2619,13 +2621,22 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     resize:vertical;
     transition:border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
   }
+  #inquiryForm select{
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M5 7l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    padding-right:40px;
+  }
   #inquiryForm input[type="text"]:focus,
   #inquiryForm input[type="email"]:focus,
   #inquiryForm input[type="tel"]:focus,
+  #inquiryForm select:focus,
   #inquiryForm textarea:focus{
     outline:none;
     border-color:var(--accent);
-    background:#ffffff;
+    background-color:#ffffff;
     box-shadow:0 0 0 3px rgba(29,78,216,0.12);
   }
   #inquiryForm ::placeholder,
@@ -3877,8 +3888,13 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
         <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
         <h3>Данни за връзка</h3>
 
-        <label for="emailInput" class="form-label">Имейл адрес (препоръчително)</label>
-        <input type="email" id="emailInput" name="email" maxlength="320" placeholder="напр. ivan@example.com">
+        <label for="budgetInput" class="form-label">Какъв бюджет сте готови реално да инвестирате в новия си уебсайт?</label>
+        <select id="budgetInput" name="budget">
+          <option value="Под 500 €">Под 500 €</option>
+          <option value="500 - 1 000 €">500 - 1 000 €</option>
+          <option value="1 000 - 1 500 €">1 000 - 1 500 €</option>
+          <option value="1 500+ €">1 500+ €</option>
+        </select>
 
         <label for="phoneInput" class="form-label">Телефонен номер за връзка</label>
         <input type="tel" id="phoneInput" name="phone" required inputmode="numeric" pattern="[0-9]*" maxlength="20" placeholder="08XX XXX XXX">
@@ -4320,7 +4336,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     e.preventDefault();
     const industry = inquiryForm.industry.value.trim();
     const problem = inquiryForm.problem.value.trim();
-    const email = inquiryForm.email.value.trim();
+    const budget = inquiryForm.budget.value.trim();
     const phone = inquiryForm.phone.value.trim();
     const website = inquiryForm.website.value.trim();
 
@@ -4336,7 +4352,7 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       await fetch('/api/submit-inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ industry, problem, email, phone, website }),
+        body: JSON.stringify({ industry, problem, budget, phone, website }),
       });
     } catch {
       /* Запазваме плавния UX: посетителят не остава заключен в модала. */

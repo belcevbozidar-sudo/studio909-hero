@@ -117,6 +117,7 @@ export default async function handler(req, res) {
     email: trimTo(req.body?.email, 320),
     phone: trimTo(req.body?.phone, 40),
     website: trimTo(req.body?.website, 200),
+    budget: trimTo(req.body?.budget, 40),
   };
 
   if (!inquiry.industry || !inquiry.problem || !inquiry.phone) {
@@ -144,7 +145,7 @@ export default async function handler(req, res) {
     'Ново запитване от Big Offer сайта',
     `Индустрия: ${inquiry.industry}`,
     `Проблем: ${inquiry.problem}`,
-    `Имейл: ${inquiry.email}`,
+    `Бюджет: ${inquiry.budget || 'не е посочен'}`,
     `Телефон: ${inquiry.phone}`,
     `Сегашен сайт: ${inquiry.website || 'не е посочен'}`,
   ].filter(Boolean);
@@ -154,7 +155,7 @@ export default async function handler(req, res) {
     'Ново запитване от сайта.',
     `Индустрия: ${inquiry.industry}`,
     `Телефон: ${inquiry.phone}`,
-    inquiry.email ? `Имейл: ${inquiry.email}` : null,
+    inquiry.budget ? `Бюджет: ${inquiry.budget}` : null,
   ].filter(Boolean).join('\n');
 
   const [telegram, customerSmsResult, ownerSmsResult] = await Promise.allSettled([
