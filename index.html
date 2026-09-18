@@ -2629,6 +2629,12 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     background-position:right 14px center;
     padding-right:40px;
   }
+  #inquiryForm select:invalid{
+    color:#94a3b8;
+  }
+  .form-step2-title{
+    margin-top:-6px;
+  }
   #inquiryForm input[type="text"]:focus,
   #inquiryForm input[type="email"]:focus,
   #inquiryForm input[type="tel"]:focus,
@@ -3885,11 +3891,11 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       </div>
 
       <div class="form-step" data-step="2">
-        <span class="modal-eyebrow">ПОСЛЕДНА СТЪПКА</span>
-        <h3>Данни за връзка</h3>
+        <h3 class="form-step2-title">Данни за връзка</h3>
 
         <label for="budgetInput" class="form-label">Какъв бюджет сте готови реално да инвестирате в новия си уебсайт?</label>
-        <select id="budgetInput" name="budget">
+        <select id="budgetInput" name="budget" required>
+          <option value="" disabled selected>- - -</option>
           <option value="Под 500 €">Под 500 €</option>
           <option value="500 - 1 000 €">500 - 1 000 €</option>
           <option value="1 000 - 1 500 €">1 000 - 1 500 €</option>
@@ -4339,6 +4345,11 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     const budget = inquiryForm.budget.value.trim();
     const phone = inquiryForm.phone.value.trim();
     const website = inquiryForm.website.value.trim();
+
+    if (!budget) {
+      inquiryForm.budget.reportValidity();
+      return;
+    }
 
     if (!phone) {
       inquiryForm.phone.reportValidity();
