@@ -142,7 +142,7 @@ export default async function handler(req, res) {
     saveFailed
       ? '⚠️ ЗАПИСЪТ В БАЗАТА СЕ ПРОВАЛИ - запази данните ръчно!'
       : null,
-    'Ново запитване от Big Offer сайта',
+    req.body?.source === 'lp' ? 'Ново запитване от Big Offer сайта [LP /lp]' : 'Ново запитване от Big Offer сайта',
     `Индустрия: ${inquiry.industry}`,
     `Проблем: ${inquiry.problem}`,
     `Бюджет: ${inquiry.budget || 'не е посочен'}`,
