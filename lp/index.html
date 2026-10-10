@@ -231,7 +231,7 @@ h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,5vw,68px);line-h
 .mk{background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(122,92,255,.18),transparent 70%)}
 .mk-wrap{overflow:hidden;margin-top:64px;padding:30px 0 60px}
 .mk-track{display:flex;gap:26px;width:max-content;animation:marq 70s linear infinite;align-items:center}
-.mk-wrap:hover .mk-track{animation-play-state:paused}
+.mk-wrap .mk-track,.mk-wrap:hover .mk-track,.mk-wrap:active .mk-track,.mk-wrap:focus-within .mk-track{animation-play-state:running !important}
 .mk-card{flex:none;height:clamp(340px,40vw,520px);border-radius:26px;overflow:hidden;border:1px solid var(--line2);transition:transform .5s var(--ease)}
 .mk-card:nth-child(odd){transform:rotate(-2.5deg) translateY(14px)}
 .mk-card:nth-child(even){transform:rotate(2.5deg) translateY(-14px)}
@@ -595,8 +595,7 @@ h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,5vw,68px);line-h
     <p class="lead">Домейн, чатбот, хостинг и промени по всяко време. Една ясна цена - <b>нищо друго не плащаш.</b></p>
 
     <div class="hero-cta">
-      <a href="#price" class="btn btn-lime btn-xl">Виж цената <span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      <a href="#showcase" class="btn btn-ghost btn-xl">Примери за сайтове</a>
+      <a href="#showcase" class="btn btn-lime btn-xl">Виж примери <span class="arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
     <div class="open-note"><span class="pulse"></span>В момента сме отворени за нови партньори</div>
   </div>
@@ -618,7 +617,6 @@ h2{font-family:var(--disp);font-weight:600;font-size:clamp(30px,5vw,68px);line-h
         </div>
       </div>
       <div class="lp-base"><i></i></div>
-      <div class="chip c1"><span class="ico" style="background:rgba(210,255,63,.16);color:var(--lime)">€</span><div>450 €<small>еднократно</small></div></div>
     </div>
   </div>
 </section>
