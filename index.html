@@ -3353,6 +3353,50 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
   @media (max-width:640px){
     .final-cta{margin:24px 10px 10px;border-radius:26px;}
   }
+
+  /* ===== INCLUDED — карти с иконки (единен цвят) ===== */
+  .included-grid{grid-template-columns:repeat(2,1fr);gap:18px;max-width:980px;margin-inline:auto;}
+  .included-item{
+    display:grid;grid-template-columns:56px 1fr;column-gap:20px;align-items:start;
+    background:#fff;border:1px solid #e6eaf0;border-radius:24px;padding:26px 28px;
+    box-shadow:0 14px 34px -24px rgba(19,34,56,.28);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s cubic-bezier(.2,.7,.2,1),border-color .35s;
+  }
+  .included-item:hover{transform:translateY(-4px);border-color:rgba(47,84,235,.28);box-shadow:0 26px 50px -28px rgba(47,84,235,.4);}
+  .included-item::before{
+    content:"";grid-row:1 / span 2;width:56px;height:56px;border-radius:17px;
+    background-color:#2f54eb;
+    background-image:var(--inc-icon),linear-gradient(135deg,#2f54eb,#4f46e5);
+    background-repeat:no-repeat;background-position:center;background-size:26px 26px,cover;
+    box-shadow:0 12px 22px -8px rgba(47,84,235,.5),inset 0 1px 0 rgba(255,255,255,.3);
+  }
+  .included-item h3{border-top:0;padding-top:4px;margin:0 0 6px;font-size:18px;}
+  .included-item p{font-size:15px;}
+  .included-item:nth-child(1){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3Cpath d='M8 13l2-2 2 1.5 2-3'/%3E%3C/svg%3E");}
+  .included-item:nth-child(2){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z'/%3E%3Cpath d='M8.5 12h.01M12 12h.01M15.5 12h.01'/%3E%3C/svg%3E");}
+  .included-item:nth-child(3){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20'/%3E%3Cpath d='M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z'/%3E%3C/svg%3E");}
+  .included-item:nth-child(4){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z'/%3E%3C/svg%3E");}
+  .included-item:nth-child(5){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-10 6L2 7'/%3E%3C/svg%3E");}
+  .included-item:nth-child(6){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='8' rx='2'/%3E%3Crect x='2' y='13' width='20' height='8' rx='2'/%3E%3Cpath d='M6 7h.01M6 17h.01'/%3E%3C/svg%3E");}
+  .included-item:nth-child(7){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12a9 9 0 1 1-3-6.7L21 8'/%3E%3Cpath d='M21 3v5h-5'/%3E%3C/svg%3E");}
+  .included-item:nth-child(8){--inc-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 2 11 13'/%3E%3Cpath d='M22 2l-7 20-4-9-9-4z'/%3E%3C/svg%3E");}
+  @media (max-width:760px){
+    .included-grid{grid-template-columns:1fr;gap:14px;}
+    .included-item{padding:22px 20px;column-gap:16px;border-radius:22px;}
+    .included-item h3{font-size:17px;padding-top:2px;}
+    .included-item p{font-size:14.5px;}
+  }
+
+  /* ===== OCT PROMO — същият фон като картата за 49 € ===== */
+  .oct-promo{
+    background:
+      radial-gradient(90% 60% at 100% 0%,rgba(124,92,255,.45),transparent 60%),
+      radial-gradient(70% 50% at 0% 100%,rgba(47,84,235,.4),transparent 65%),
+      #0b1220 !important;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 40px 80px -36px rgba(47,84,235,.7) !important;
+  }
+  .oct-promo-glow{display:none;}
 </style>
 <script type="application/ld+json">
 {
