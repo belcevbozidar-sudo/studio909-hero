@@ -3311,6 +3311,37 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
     border-color:rgba(19,34,56,0.12);
     border-top-color:var(--accent);
   }
+
+  /* PRICING — тъмна подчертана карта за пълната поддръжка (49 € / месец) */
+  .price-box-accent{
+    background:
+      radial-gradient(90% 60% at 100% 0%,rgba(124,92,255,.45),transparent 60%),
+      radial-gradient(70% 50% at 0% 100%,rgba(47,84,235,.4),transparent 65%),
+      #0b1220 !important;
+    border-color:rgba(255,255,255,.12) !important;color:#fff;
+    box-shadow:0 40px 80px -36px rgba(47,84,235,.7) !important;
+  }
+  .price-box-accent .pricing-amount,
+  .price-box-accent .price-main,
+  .price-box-accent .price-recurring{color:#fff !important;}
+  .price-box-accent .price-box-note,
+  .price-box-accent .price-was,
+  .price-box-accent .price-was s,
+  .price-box-accent .pricing-feature,
+  .price-box-accent .pricing-feature span{color:rgba(255,255,255,.72) !important;}
+  .price-box-accent .pricing-badge{background:rgba(255,255,255,.12) !important;color:#fff !important;border-color:rgba(255,255,255,.18) !important;}
+  .price-box-accent .pricing-feature svg{stroke:#8fa6ff;}
+
+  /* FINAL CTA — тъмен градиентен фон */
+  .final-cta{
+    background:
+      radial-gradient(70% 90% at 15% 0%,rgba(124,92,255,.55),transparent 60%),
+      radial-gradient(60% 90% at 90% 100%,rgba(47,84,235,.55),transparent 60%),
+      #0b1220 !important;
+  }
+  .final-cta h2{color:#fff !important;}
+  .final-cta .cta{background:#fff !important;color:#0b1220 !important;}
+  .final-cta .cta-note,.final-cta .cta-note *{color:rgba(255,255,255,.8) !important;}
 </style>
 <script type="application/ld+json">
 {
