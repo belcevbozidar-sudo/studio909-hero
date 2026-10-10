@@ -3339,9 +3339,20 @@ if (localStorage.getItem('studio9_cookie_choice') === 'accepted') {
       radial-gradient(60% 90% at 90% 100%,rgba(47,84,235,.55),transparent 60%),
       #0b1220 !important;
   }
-  .final-cta h2{color:#fff !important;}
-  .final-cta .cta{background:#fff !important;color:#0b1220 !important;}
+  .final-cta{margin:40px 16px 16px;border-radius:36px;overflow:hidden;}
+  .final-cta h2{color:#fff !important;letter-spacing:-.03em;}
+  .final-cta .cta{
+    background:#fff !important;color:#0b1220 !important;border:0 !important;border-radius:999px !important;
+    box-shadow:0 18px 40px -14px rgba(0,0,0,.6) !important;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),filter .3s !important;
+  }
+  .final-cta .cta::after{content:"→";margin-left:10px;display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1);}
+  .final-cta .cta:hover{transform:translateY(-2px) !important;filter:brightness(1.03);}
+  .final-cta .cta:hover::after{transform:translateX(4px);}
   .final-cta .cta-note,.final-cta .cta-note *{color:rgba(255,255,255,.8) !important;}
+  @media (max-width:640px){
+    .final-cta{margin:24px 10px 10px;border-radius:26px;}
+  }
 </style>
 <script type="application/ld+json">
 {
