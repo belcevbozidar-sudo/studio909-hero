@@ -25,4 +25,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.studio9.site/sitemap.xml
+Sitemap: https://sait.studio9.site/sitemap.xml
